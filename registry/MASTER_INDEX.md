@@ -129,7 +129,6 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 ## 🧬 4. Templates & Blueprints
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
-| [Template-A2A-SIN-TelegramBot](https://github.com/OpenSIN-AI/Template-A2A-SIN-TelegramBot) | 🔒 Private | Telegram bot template for A2A agents — standardized Telegram integration blueprint. |
 | [Template-SIN-Agent](https://github.com/OpenSIN-AI/Template-SIN-Agent) | 🔒 Private | Template for creating new A2A agents — standardized blueprint for OpenSIN agent development. |
 | [Template-SIN-Team](https://github.com/OpenSIN-AI/Template-SIN-Team) | 🔒 Private | Canonical template for SIN A2A Team Manager agents |
 | [Template-SIN-Worker](https://github.com/OpenSIN-AI/Template-SIN-Worker) | 🔒 Private | Worker process template for A2A agent execution — standardized worker blueprint. |
@@ -165,6 +164,7 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 | [Biz-SIN-Blueprints](https://github.com/OpenSIN-AI/Biz-SIN-Blueprints) | 🌍 Public | Reusable blueprints for AI products, workflow systems, and developer platforms. |
 | [Biz-SIN-Competitor-Tracker](https://github.com/OpenSIN-AI/Biz-SIN-Competitor-Tracker) | 🌍 Public | Automated competitor research and feature gap analysis for SIN Agent Fleet |
 | [Biz-SIN-Jobs](https://github.com/OpenSIN-AI/Biz-SIN-Jobs) | 🔒 Private | Job board and career opportunities at OpenSIN-AI. |
+| [Biz-SIN-Ledger](https://github.com/OpenSIN-AI/Biz-SIN-Ledger) | 🌍 Public | Live autonomous logbook and activity showcase of the OpenSIN 24/7 A2A Agent Fleet. |
 | [Biz-SIN-Marketing](https://github.com/OpenSIN-AI/Biz-SIN-Marketing) | 🔒 Private | Marketing & release strategy for OpenSIN (open-source) and MyOpenSIN (subscription). Launch hub, community discussions, and execution playbooks. |
 | [Biz-SIN-Patents](https://github.com/OpenSIN-AI/Biz-SIN-Patents) | 🔒 Private | Patent portfolio and intellectual property management for OpenSIN technology. |
 
@@ -172,7 +172,6 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
 | [.github](https://github.com/OpenSIN-AI/.github) | 🌍 Public | OpenSIN-AI organization profile and community defaults |
-| [OpenSIN-Ledger](https://github.com/OpenSIN-AI/OpenSIN-Ledger) | 🌍 Public | Live autonomous logbook and activity showcase of the OpenSIN 24/7 A2A Agent Fleet. |
 | [awesome-opensin](https://github.com/OpenSIN-AI/awesome-opensin) | 🌍 Public | A curated list of awesome plugins, themes, agents, projects, and resources for https://opencode.ai |
 | [documentation](https://github.com/OpenSIN-AI/documentation) | 🔒 Private | ⚠️ ARCHIVED — All docs migrated to github.com/OpenSIN-AI/OpenSIN-documentation |
 | [website-my-opensin-ai](https://github.com/OpenSIN-AI/website-my-opensin-ai) | 🔒 Private | MyOpenSIN — Premium AI Agent Workspace (my.opensin.ai) |
@@ -206,4 +205,5 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 | [Skill-SIN-Agent-Forge](https://github.com/OpenSIN-AI/Skill-SIN-Agent-Forge) | 🔒 Private | OpenCode skill SSOT: sin-a2a-agent-forge |
 | [Skill-SIN-Create-TelegramBot](https://github.com/OpenSIN-AI/Skill-SIN-Create-TelegramBot) | 🔒 Private | OpenCode skill SSOT: create-telegrambot |
 | [Skill-SIN-Enterprise-Deep-Debug](https://github.com/OpenSIN-AI/Skill-SIN-Enterprise-Deep-Debug) | 🔒 Private | OpenCode skill SSOT: enterprise-deep-debug |
+| [Template-A2A-SIN-TelegramBot](https://github.com/OpenSIN-AI/Template-A2A-SIN-TelegramBot) | 🔒 Private | Telegram bot template for A2A agents — standardized Telegram integration blueprint. |
 | [cloud-backend](https://github.com/OpenSIN-AI/cloud-backend) | 🔒 Private | Hier liegt der Geldverdiener! Dieses Repo bleibt Privat. Es enthält die proprietäre Logik, das Stripe-Billing, die OAuth-Authentifizierung und die API für die Premium-Dienste. Niemand außer uns sieht diesen Code. |
