@@ -2,32 +2,26 @@
 
 **TOTAL REPOSITORIES SCANNED:** 174
 
-Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organisation. **Jedes** der 174 Repositories ist hier kategorisiert und logisch in die Architektur integriert.
-
 ---
 
 ## 👑 1. Team Orchestrators (Die Gehirne)
-Diese Agenten sind die Hubs der Architektur. Sie haben das Telegram-Brain und delegieren Aufgaben.
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
-| [Team-SIN-Backend](https://github.com/OpenSIN-AI/Team-SIN-Backend) | 🔒 Private | Keine Beschreibung hinterlegt. (Mandat-Verstoß) |
-| [Team-SIN-Commerce](https://github.com/OpenSIN-AI/Team-SIN-Commerce) | 🔒 Private | Keine Beschreibung hinterlegt. (Mandat-Verstoß) |
-| [Team-SIN-Community](https://github.com/OpenSIN-AI/Team-SIN-Community) | 🔒 Private | Keine Beschreibung hinterlegt. (Mandat-Verstoß) |
-| [Team-SIN-CyberSec](https://github.com/OpenSIN-AI/Team-SIN-CyberSec) | 🔒 Private | Keine Beschreibung hinterlegt. (Mandat-Verstoß) |
-| [Team-SIN-Ecosystem](https://github.com/OpenSIN-AI/Team-SIN-Ecosystem) | 🔒 Private | Keine Beschreibung hinterlegt. (Mandat-Verstoß) |
-| [Team-SIN-Frontend](https://github.com/OpenSIN-AI/Team-SIN-Frontend) | 🔒 Private | Keine Beschreibung hinterlegt. (Mandat-Verstoß) |
-| [Team-SIN-Infrastructure](https://github.com/OpenSIN-AI/Team-SIN-Infrastructure) | 🔒 Private | Keine Beschreibung hinterlegt. (Mandat-Verstoß) |
-| [Team-SIN-Legal](https://github.com/OpenSIN-AI/Team-SIN-Legal) | 🔒 Private | Keine Beschreibung hinterlegt. (Mandat-Verstoß) |
-| [Team-SIN-Media](https://github.com/OpenSIN-AI/Team-SIN-Media) | 🔒 Private | Keine Beschreibung hinterlegt. (Mandat-Verstoß) |
-| [Team-SIN-Messaging](https://github.com/OpenSIN-AI/Team-SIN-Messaging) | 🔒 Private | Keine Beschreibung hinterlegt. (Mandat-Verstoß) |
-| [Team-SIN-Research](https://github.com/OpenSIN-AI/Team-SIN-Research) | 🔒 Private | Keine Beschreibung hinterlegt. (Mandat-Verstoß) |
-| [Team-SIN-Social](https://github.com/OpenSIN-AI/Team-SIN-Social) | 🔒 Private | Keine Beschreibung hinterlegt. (Mandat-Verstoß) |
-| [Team-SIN-Workforce](https://github.com/OpenSIN-AI/Team-SIN-Workforce) | 🔒 Private | Keine Beschreibung hinterlegt. (Mandat-Verstoß) |
-
----
+| [Team-SIN-Backend](https://github.com/OpenSIN-AI/Team-SIN-Backend) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [Team-SIN-Commerce](https://github.com/OpenSIN-AI/Team-SIN-Commerce) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [Team-SIN-Community](https://github.com/OpenSIN-AI/Team-SIN-Community) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [Team-SIN-CyberSec](https://github.com/OpenSIN-AI/Team-SIN-CyberSec) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [Team-SIN-Ecosystem](https://github.com/OpenSIN-AI/Team-SIN-Ecosystem) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [Team-SIN-Frontend](https://github.com/OpenSIN-AI/Team-SIN-Frontend) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [Team-SIN-Infrastructure](https://github.com/OpenSIN-AI/Team-SIN-Infrastructure) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [Team-SIN-Legal](https://github.com/OpenSIN-AI/Team-SIN-Legal) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [Team-SIN-Media](https://github.com/OpenSIN-AI/Team-SIN-Media) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [Team-SIN-Messaging](https://github.com/OpenSIN-AI/Team-SIN-Messaging) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [Team-SIN-Research](https://github.com/OpenSIN-AI/Team-SIN-Research) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [Team-SIN-Social](https://github.com/OpenSIN-AI/Team-SIN-Social) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [Team-SIN-Workforce](https://github.com/OpenSIN-AI/Team-SIN-Workforce) | 🔒 Private | Keine Beschreibung hinterlegt. |
 
 ## 👷 2. A2A Worker Agents (Die Flotte)
-Diese Agenten führen die eigentliche Arbeit aus. Sie kommunizieren **nur** mit ihrem jeweiligen Team-Orchestrator.
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
 | [A2A-SIN-Apple-Calendar-Contacts](https://github.com/OpenSIN-AI/A2A-SIN-Apple-Calendar-Contacts) | 🔒 Private | SIN A2A component: sin-apple-calendar-contacts |
@@ -106,16 +100,16 @@ Diese Agenten führen die eigentliche Arbeit aus. Sie kommunizieren **nur** mit 
 | [A2A-SIN-Summary](https://github.com/OpenSIN-AI/A2A-SIN-Summary) | 🔒 Private | SIN A2A component: A2A-SIN-Summary |
 | [A2A-SIN-Tax](https://github.com/OpenSIN-AI/A2A-SIN-Tax) | 🔒 Private | SIN A2A component: sin-tax |
 | [A2A-SIN-Team-Apple-Apps](https://github.com/OpenSIN-AI/A2A-SIN-Team-Apple-Apps) | 🔒 Private | SIN A2A component: sin-team-apple-apps |
-| [A2A-SIN-Team-Backend](https://github.com/OpenSIN-AI/A2A-SIN-Team-Backend) | 🔒 Private | Keine Beschreibung hinterlegt. (Mandat-Verstoß) |
-| [A2A-SIN-Team-Community](https://github.com/OpenSIN-AI/A2A-SIN-Team-Community) | 🔒 Private | Keine Beschreibung hinterlegt. (Mandat-Verstoß) |
+| [A2A-SIN-Team-Backend](https://github.com/OpenSIN-AI/A2A-SIN-Team-Backend) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [A2A-SIN-Team-Community](https://github.com/OpenSIN-AI/A2A-SIN-Team-Community) | 🔒 Private | Keine Beschreibung hinterlegt. |
 | [A2A-SIN-Team-Company](https://github.com/OpenSIN-AI/A2A-SIN-Team-Company) | 🔒 Private | SIN A2A component: sin-team-company |
 | [A2A-SIN-Team-Creator](https://github.com/OpenSIN-AI/A2A-SIN-Team-Creator) | 🔒 Private | SIN A2A component: sin-team-creator |
-| [A2A-SIN-Team-CyberSec](https://github.com/OpenSIN-AI/A2A-SIN-Team-CyberSec) | 🔒 Private | Keine Beschreibung hinterlegt. (Mandat-Verstoß) |
-| [A2A-SIN-Team-Frontend](https://github.com/OpenSIN-AI/A2A-SIN-Team-Frontend) | 🔒 Private | Keine Beschreibung hinterlegt. (Mandat-Verstoß) |
+| [A2A-SIN-Team-CyberSec](https://github.com/OpenSIN-AI/A2A-SIN-Team-CyberSec) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [A2A-SIN-Team-Frontend](https://github.com/OpenSIN-AI/A2A-SIN-Team-Frontend) | 🔒 Private | Keine Beschreibung hinterlegt. |
 | [A2A-SIN-Team-Google-Apps](https://github.com/OpenSIN-AI/A2A-SIN-Team-Google-Apps) | 🔒 Private | SIN A2A component: sin-team-google-apps |
-| [A2A-SIN-Team-Legal](https://github.com/OpenSIN-AI/A2A-SIN-Team-Legal) | 🔒 Private | Keine Beschreibung hinterlegt. (Mandat-Verstoß) |
+| [A2A-SIN-Team-Legal](https://github.com/OpenSIN-AI/A2A-SIN-Team-Legal) | 🔒 Private | Keine Beschreibung hinterlegt. |
 | [A2A-SIN-Team-Marketing](https://github.com/OpenSIN-AI/A2A-SIN-Team-Marketing) | 🔒 Private | OpenSIN Marketing Agent for Team-Marketing - Autonomous cold outreach, lead scraping, and engagement |
-| [A2A-SIN-Team-Messaging](https://github.com/OpenSIN-AI/A2A-SIN-Team-Messaging) | 🔒 Private | Keine Beschreibung hinterlegt. (Mandat-Verstoß) |
+| [A2A-SIN-Team-Messaging](https://github.com/OpenSIN-AI/A2A-SIN-Team-Messaging) | 🔒 Private | Keine Beschreibung hinterlegt. |
 | [A2A-SIN-Team-Orchestrator](https://github.com/OpenSIN-AI/A2A-SIN-Team-Orchestrator) | 🔒 Private | SIN A2A component: sin-team-orchestrator |
 | [A2A-SIN-Team-Shop](https://github.com/OpenSIN-AI/A2A-SIN-Team-Shop) | 🔒 Private | SIN A2A component: sin-team-shop |
 | [A2A-SIN-Team-Social](https://github.com/OpenSIN-AI/A2A-SIN-Team-Social) | 🔒 Private | SIN A2A component: sin-team-social |
@@ -133,10 +127,7 @@ Diese Agenten führen die eigentliche Arbeit aus. Sie kommunizieren **nur** mit 
 | [A2A-SIN-YouTube](https://github.com/OpenSIN-AI/A2A-SIN-YouTube) | 🔒 Private | SIN A2A component: A2A-SIN-YouTube |
 | [A2A-SIN-Zoom](https://github.com/OpenSIN-AI/A2A-SIN-Zoom) | 🌍 Public | SIN A2A component: Zoom integration — Zoom meeting management and chat. |
 
----
-
 ## 🏗️ 3. Core Infrastructure & Engines
-Das Fundament, auf dem die Agenten laufen (SDKs, CLI, Backend-Routing).
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
 | [OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | 🔒 Private | The autonomous OpenSIN-Code CLI |
@@ -144,10 +135,7 @@ Das Fundament, auf dem die Agenten laufen (SDKs, CLI, Backend-Routing).
 | [OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation) | 🌍 Public | Official documentation for OpenSIN - docs.opensin.ai |
 | [OpenSIN](https://github.com/OpenSIN-AI/OpenSIN) | 🌍 Public | OpenSIN Core — 310+ packages across 25+ domains. The most comprehensive open-source AI agent system in the world. |
 
----
-
 ## 🧬 4. Templates & Blueprints
-Die Blaupausen für den `sin-forge` Prozess.
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
 | [Template-A2A-SIN-TelegramBot](https://github.com/OpenSIN-AI/Template-A2A-SIN-TelegramBot) | 🔒 Private | Telegram bot template for A2A agents — standardized Telegram integration blueprint. |
@@ -155,10 +143,7 @@ Die Blaupausen für den `sin-forge` Prozess.
 | [Template-SIN-Team](https://github.com/OpenSIN-AI/Template-SIN-Team) | 🔒 Private | Canonical template for SIN A2A Team Manager agents |
 | [Template-SIN-Worker](https://github.com/OpenSIN-AI/Template-SIN-Worker) | 🔒 Private | Worker process template for A2A agent execution — standardized worker blueprint. |
 
----
-
 ## 🌐 5. Websites & Frontends (Vercel/Cloudflare)
-Öffentliche Dashboards, Landing Pages und Dokumentations-Portale.
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
 | [OpenSIN-Blog-Posts](https://github.com/OpenSIN-AI/OpenSIN-Blog-Posts) | 🌍 Public | OpenSIN Blog Posts - Public mirror from marketing strategie |
@@ -168,12 +153,7 @@ Die Blaupausen für den `sin-forge` Prozess.
 | [website-my.opensin.ai](https://github.com/OpenSIN-AI/website-my.opensin.ai) | 🔒 Private | Hier findet das Geschäftliche statt. User loggen sich ein, verwalten ihre Cloud-Agenten, hinterlegen ihre Kreditkarte und holen sich ihre API-Keys. Da das in einem komplett eigenen, privaten Repository liegt, kommt uns kein Open-Source-Code und kein fremder Entwickler in die Quere. |
 | [website-opensin.ai](https://github.com/OpenSIN-AI/website-opensin.ai) | 🔒 Private | Webseite für unsere OpenSIN Open-Source Version |
 
----
-
 ## 🗑️ 6. Legacy, Orphans & Technical Debt
-Diese Repositories stammen aus der Zeit vor dem "Great Realignment". Sie verletzen die aktuelle Naming-Convention oder das Hub & Spoke Modell.
-**Mandat:** Diese Repositories sind *Frozen*. Sie müssen in `A2A-SIN-*` Worker oder `Team-SIN-*` Manager umgewandelt werden, bevor neuer Code geschrieben wird.
-
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
 | [.github](https://github.com/OpenSIN-AI/.github) | 🌍 Public | OpenSIN-AI organization profile and community defaults |
