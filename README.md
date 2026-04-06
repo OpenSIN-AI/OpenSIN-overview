@@ -11,6 +11,11 @@ This repository is the central brain, registry, and rulebook for the entire Open
 - 🗄️ **[Supabase Architecture](./onboarding/06_SUPABASE_ARCHITECTURE.md)** - The Global Memory rules.
 - 🕸️ **[N8N Inbound Pipeline](./onboarding/07_N8N_INBOUND_PIPELINE.md)** - How raw payloads become A2A tasks.
 - 🧠 **[OpenCode CLI & Skills](./onboarding/08_OPENCODE_CLI_AND_SKILLS.md)** - LLM Routing and Fleet Synchronization.
+- ⚖️ **[The Unwritten Laws](./onboarding/09_THE_UNWRITTEN_LAWS.md)** - Priority Mandates (-5.0 to 0).
+- 💸 **[Monetization & Idle Work](./onboarding/10_MONETIZATION_AND_IDLE_WORK.md)** - How the fleet earns money autonomously.
+- 🏥 **[Global Self-Healing](./onboarding/11_GLOBAL_SELF_HEALING.md)** - Automated Issue & Swarm Fix Protocol.
+- ⚠️ **[Chrome Profiles & DevTools](./onboarding/12_CHROME_PROFILES_AND_DEVTOOLS.md)** - The strict DevTools-First mandate.
+
 
 
 - 📜 **[Global Rules & Mandates](./rules/GLOBAL_MANDATES.md)** - The unchangeable laws of OpenSIN.
