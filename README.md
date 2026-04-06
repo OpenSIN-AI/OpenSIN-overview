@@ -2,7 +2,20 @@
 
 > **The Ultimate Single Source of Truth für die OpenSIN-AI Organisation**
 >
-> 📊 **162 Repositories** | **17 Teams** | **92 Worker** | **3 Templates** | **5 Plugins/Skills**
+> 📊 **162 Repositories** | **17 Teams** | **92 Worker** | **3 Templates** | **5 Plugins/Skills** | **6 Websites**
+
+---
+
+## 🌐 WEBSITES & DOMAINS
+
+| Domain | Repo | Zweck | Sichtbarkeit |
+|--------|------|-------|-------------|
+| [opensin.ai](https://opensin.ai) | [website-opensin.ai](https://github.com/OpenSIN-AI/website-opensin.ai) | Open-Source Landing Page & Produktvorstellung | 🔒 Privat |
+| [my.opensin.ai](https://my.opensin.ai) | [website-my.opensin.ai](https://github.com/OpenSIN-AI/website-my.opensin.ai) | Premium Abo-Modell: User-Login, Cloud-Agenten, Billing, API-Keys | 🔒 Privat |
+| [docs.opensin.ai](https://docs.opensin.ai) | [OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation) | Offizielle Benutzer-Dokumentation (VitePress) | 🌍 Public |
+| [blog.opensin.ai](https://blog.opensin.ai) | [Biz-SIN-Blog-Posts](https://github.com/OpenSIN-AI/Biz-SIN-Blog-Posts) | OpenSIN-AI Blog & Marketing | 🌍 Public |
+| [a2a.delqhi.com](https://a2a.delqhi.com) | [OpenSIN-backend](https://github.com/OpenSIN-AI/OpenSIN-backend) | A2A Fleet Dashboard & Agenten-Verwaltung | 🔒 Privat |
+| [chat.opensin.ai](https://chat.opensin.ai) | [dashboard-enterprise](https://github.com/OpenSIN-AI/OpenSIN-backend/tree/main/dashboard-enterprise) | OpenSIN WebApp (Next.js auf Vercel) | 🔒 Privat |
 
 ---
 
