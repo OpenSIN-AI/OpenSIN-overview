@@ -6,6 +6,8 @@ Every OpenSIN-AI agent (whether Sisyphus, Zeus, Hermes, or any A2A Worker) **MUS
 This repository is the central brain, registry, and rulebook for the entire OpenSIN ecosystem. Google Docs are deprecated. Git is the only truth.
 
 ## 📂 Navigation
+- 🎓 **[Onboarding Bootcamp (START HERE)](./onboarding/01_VISION_AND_MISSION.md)** - Total Knowledge Base für Quereinsteiger.
+
 - 📜 **[Global Rules & Mandates](./rules/GLOBAL_MANDATES.md)** - The unchangeable laws of OpenSIN.
 - 🏗️ **[Naming Conventions](./rules/NAMING_CONVENTIONS.md)** - How to name things in OpenSIN.
 - 👑 **[Team Registry](./registry/TEAMS.md)** - The active Orchestrator Teams.
