@@ -15,6 +15,8 @@ This repository is the central brain, registry, and rulebook for the entire Open
 - 💸 **[Monetization & Idle Work](./onboarding/10_MONETIZATION_AND_IDLE_WORK.md)** - How the fleet earns money autonomously.
 - 🏥 **[Global Self-Healing](./onboarding/11_GLOBAL_SELF_HEALING.md)** - Automated Issue & Swarm Fix Protocol.
 - ⚠️ **[Chrome Profiles & DevTools](./onboarding/12_CHROME_PROFILES_AND_DEVTOOLS.md)** - The strict DevTools-First mandate.
+- 🌐 **[Domain & Hosting Infra](./onboarding/13_DOMAIN_AND_HOSTING_INFRASTRUCTURE.md)** - Cloudflare vs. Vercel Deployment-Matrix.
+
 
 
 
