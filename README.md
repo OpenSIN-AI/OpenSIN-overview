@@ -5,6 +5,9 @@ Every OpenSIN-AI agent (whether Sisyphus, Zeus, Hermes, or any A2A Worker) **MUS
 
 This repository is the central brain, registry, and rulebook for the entire OpenSIN ecosystem. Google Docs are deprecated. Git is the only truth.
 
+## 🗺️ Global Roadmap
+- 🚀 **[Active Epics & Roadmap](./roadmap/ACTIVE_EPICS.md)** - Was bauen wir gerade? (VSCode Extension, Backend Purge, LangGraph).
+
 ## 📂 Navigation
 - 🎓 **[Onboarding Bootcamp (START HERE)](./onboarding/01_VISION_AND_MISSION.md)** - Total Knowledge Base für Quereinsteiger.
 - 🚢 **[Deployment & CI/CD](./onboarding/05_DEPLOYMENT_AND_CICD.md)** - OCI vs. HF Spaces, 48h-Sleep Fix.
@@ -25,4 +28,8 @@ This repository is the central brain, registry, and rulebook for the entire Open
 - 👑 **[Team Registry](./registry/TEAMS.md)** - The active Orchestrator Teams.
 - 👷 **[Worker Registry](./registry/WORKERS.md)** - The active A2A Worker Agents.
 - 🔌 **[MCP Registry](./registry/MCPS.md)** - The active Model Context Protocol servers.
+- 🏗️ **[Core Infrastructure](./registry/CORE_INFRASTRUCTURE.md)** - OpenSIN-Code, Backends & Docs.
+- 🧩 **[Plugins & Skills](./registry/PLUGINS.md)** - OpenCode Plugins and custom Agent Skills.
+- 🏛️ **[Legacy Backend Services](./registry/LEGACY_BACKEND_SERVICES.md)** - Deprecated Monoliths & "Rooms".
+
 - 🗑️ **[Legacy & Technical Debt](./registry/LEGACY_ORPHANS.md)** - Repositories pending migration/deletion.
