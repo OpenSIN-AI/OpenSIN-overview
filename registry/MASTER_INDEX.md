@@ -2,7 +2,7 @@
 
 **TOTAL REPOSITORIES SCANNED:** 161
 
-Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organisation. **Jedes** der 161 Repositories ist hier kategorisiert und logisch in die Architektur integriert.
+Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organisation.
 
 ---
 
@@ -26,11 +26,15 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 | [Team-SIN-Research](https://github.com/OpenSIN-AI/Team-SIN-Research) | 🔒 Private | Keine Beschreibung hinterlegt. |
 | [Team-SIN-Social](https://github.com/OpenSIN-AI/Team-SIN-Social) | 🔒 Private | Keine Beschreibung hinterlegt. |
 
+---
+
 ## 👑 2. Legacy Team Orchestrators (A2A-SIN-Team-*)
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
 | [A2A-SIN-Team-MoneyEarners](https://github.com/OpenSIN-AI/A2A-SIN-Team-MoneyEarners) | 🔒 Private | Keine Beschreibung hinterlegt. |
 | [A2A-SIN-Team-MyCompany](https://github.com/OpenSIN-AI/A2A-SIN-Team-MyCompany) | 🔒 Private | SIN A2A component: sin-team-company |
+
+---
 
 ## 👷 3. A2A Worker Agents (Die Flotte)
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
@@ -120,6 +124,8 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 | [A2A-SIN-Xbox](https://github.com/OpenSIN-AI/A2A-SIN-Xbox) | 🌍 Public | SIN A2A component: Xbox gaming platform integration — Xbox Live messaging. |
 | [A2A-SIN-Zoom](https://github.com/OpenSIN-AI/A2A-SIN-Zoom) | 🌍 Public | SIN A2A component: Zoom integration — Zoom meeting management and chat. |
 
+---
+
 ## 🧬 4. Templates & Blueprints
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
@@ -127,6 +133,8 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 | [Template-SIN-Agent](https://github.com/OpenSIN-AI/Template-SIN-Agent) | 🔒 Private | Template for creating new A2A agents — standardized blueprint for OpenSIN agent development. |
 | [Template-SIN-Team](https://github.com/OpenSIN-AI/Template-SIN-Team) | 🔒 Private | Canonical template for SIN A2A Team Manager agents |
 | [Template-SIN-Worker](https://github.com/OpenSIN-AI/Template-SIN-Worker) | 🔒 Private | Worker process template for A2A agent execution — standardized worker blueprint. |
+
+---
 
 ## 🏗️ 5. Core Infrastructure & Engines
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
@@ -137,6 +145,8 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 | [OpenSIN-overview](https://github.com/OpenSIN-AI/OpenSIN-overview) | 🌍 Public | The Ultimate Single Source of Truth for the OpenSIN-AI organization (Rules, Teams, Agents, MCPs) |
 | [OpenSIN](https://github.com/OpenSIN-AI/OpenSIN) | 🌍 Public | OpenSIN Core — 310+ packages across 25+ domains. The most comprehensive open-source AI agent system in the world. |
 
+---
+
 ## 🌐 6. Websites & Frontends (Vercel/Cloudflare)
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
@@ -146,6 +156,8 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 | [website-my-opensin-ai](https://github.com/OpenSIN-AI/website-my-opensin-ai) | 🔒 Private | MyOpenSIN — Premium AI Agent Workspace (my.opensin.ai) |
 | [website-my.opensin.ai](https://github.com/OpenSIN-AI/website-my.opensin.ai) | 🔒 Private | Hier findet das Geschäftliche statt. User loggen sich ein, verwalten ihre Cloud-Agenten, hinterlegen ihre Kreditkarte und holen sich ihre API-Keys. Da das in einem komplett eigenen, privaten Repository liegt, kommt uns kein Open-Source-Code und kein fremder Entwickler in die Quere. |
 | [website-opensin.ai](https://github.com/OpenSIN-AI/website-opensin.ai) | 🔒 Private | Webseite für unsere OpenSIN Open-Source Version |
+
+---
 
 ## 🗑️ 7. Legacy, Orphans & Technical Debt
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
