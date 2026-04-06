@@ -9,6 +9,8 @@ This repository is the central brain, registry, and rulebook for the entire Open
 - 🚀 **[Active Epics & Roadmap](./roadmap/ACTIVE_EPICS.md)** - Was bauen wir gerade? (VSCode Extension, Backend Purge, LangGraph).
 
 ## 📂 Navigation
+- 📚 **[THE MASTER INDEX (100% COVERAGE)](./registry/MASTER_INDEX.md)** - Die lückenlose Liste aller 170 Repositories der Organisation.
+
 - 🎓 **[Onboarding Bootcamp (START HERE)](./onboarding/01_VISION_AND_MISSION.md)** - Total Knowledge Base für Quereinsteiger.
 - 🚢 **[Deployment & CI/CD](./onboarding/05_DEPLOYMENT_AND_CICD.md)** - OCI vs. HF Spaces, 48h-Sleep Fix.
 - 🗄️ **[Supabase Architecture](./onboarding/06_SUPABASE_ARCHITECTURE.md)** - The Global Memory rules.
