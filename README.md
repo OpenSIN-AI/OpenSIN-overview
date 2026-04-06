@@ -7,6 +7,11 @@ This repository is the central brain, registry, and rulebook for the entire Open
 
 ## 📂 Navigation
 - 🎓 **[Onboarding Bootcamp (START HERE)](./onboarding/01_VISION_AND_MISSION.md)** - Total Knowledge Base für Quereinsteiger.
+- 🚢 **[Deployment & CI/CD](./onboarding/05_DEPLOYMENT_AND_CICD.md)** - OCI vs. HF Spaces, 48h-Sleep Fix.
+- 🗄️ **[Supabase Architecture](./onboarding/06_SUPABASE_ARCHITECTURE.md)** - The Global Memory rules.
+- 🕸️ **[N8N Inbound Pipeline](./onboarding/07_N8N_INBOUND_PIPELINE.md)** - How raw payloads become A2A tasks.
+- 🧠 **[OpenCode CLI & Skills](./onboarding/08_OPENCODE_CLI_AND_SKILLS.md)** - LLM Routing and Fleet Synchronization.
+
 
 - 📜 **[Global Rules & Mandates](./rules/GLOBAL_MANDATES.md)** - The unchangeable laws of OpenSIN.
 - 🏗️ **[Naming Conventions](./rules/NAMING_CONVENTIONS.md)** - How to name things in OpenSIN.
