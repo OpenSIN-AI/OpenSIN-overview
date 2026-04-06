@@ -1,27 +1,38 @@
 # 📚 THE ULTIMATE MASTER INDEX (100% COVERAGE)
 
-**TOTAL REPOSITORIES SCANNED:** 174
+**TOTAL REPOSITORIES SCANNED:** 161
+
+Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organisation. **Jedes** der 161 Repositories ist hier kategorisiert und logisch in die Architektur integriert.
 
 ---
 
 ## 👑 1. Team Orchestrators (Die Gehirne)
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
-| [Team-SIN-Backend](https://github.com/OpenSIN-AI/Team-SIN-Backend) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [Team-SIN-Apple](https://github.com/OpenSIN-AI/Team-SIN-Apple) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [Team-SIN-Code-Backend](https://github.com/OpenSIN-AI/Team-SIN-Code-Backend) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [Team-SIN-Code-CyberSec](https://github.com/OpenSIN-AI/Team-SIN-Code-CyberSec) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [Team-SIN-Code-Frontend](https://github.com/OpenSIN-AI/Team-SIN-Code-Frontend) | 🔒 Private | Keine Beschreibung hinterlegt. |
 | [Team-SIN-Commerce](https://github.com/OpenSIN-AI/Team-SIN-Commerce) | 🔒 Private | Keine Beschreibung hinterlegt. |
 | [Team-SIN-Community](https://github.com/OpenSIN-AI/Team-SIN-Community) | 🔒 Private | Keine Beschreibung hinterlegt. |
-| [Team-SIN-CyberSec](https://github.com/OpenSIN-AI/Team-SIN-CyberSec) | 🔒 Private | Keine Beschreibung hinterlegt. |
-| [Team-SIN-Ecosystem](https://github.com/OpenSIN-AI/Team-SIN-Ecosystem) | 🔒 Private | Keine Beschreibung hinterlegt. |
-| [Team-SIN-Frontend](https://github.com/OpenSIN-AI/Team-SIN-Frontend) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [Team-SIN-Forum](https://github.com/OpenSIN-AI/Team-SIN-Forum) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [Team-SIN-Google](https://github.com/OpenSIN-AI/Team-SIN-Google) | 🔒 Private | Keine Beschreibung hinterlegt. |
 | [Team-SIN-Infrastructure](https://github.com/OpenSIN-AI/Team-SIN-Infrastructure) | 🔒 Private | Keine Beschreibung hinterlegt. |
 | [Team-SIN-Legal](https://github.com/OpenSIN-AI/Team-SIN-Legal) | 🔒 Private | Keine Beschreibung hinterlegt. |
-| [Team-SIN-Media](https://github.com/OpenSIN-AI/Team-SIN-Media) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [Team-SIN-Media-ComfyUI](https://github.com/OpenSIN-AI/Team-SIN-Media-ComfyUI) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [Team-SIN-Media-Music](https://github.com/OpenSIN-AI/Team-SIN-Media-Music) | 🔒 Private | Keine Beschreibung hinterlegt. |
 | [Team-SIN-Messaging](https://github.com/OpenSIN-AI/Team-SIN-Messaging) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [Team-SIN-Microsoft](https://github.com/OpenSIN-AI/Team-SIN-Microsoft) | 🔒 Private | Keine Beschreibung hinterlegt. |
 | [Team-SIN-Research](https://github.com/OpenSIN-AI/Team-SIN-Research) | 🔒 Private | Keine Beschreibung hinterlegt. |
 | [Team-SIN-Social](https://github.com/OpenSIN-AI/Team-SIN-Social) | 🔒 Private | Keine Beschreibung hinterlegt. |
-| [Team-SIN-Workforce](https://github.com/OpenSIN-AI/Team-SIN-Workforce) | 🔒 Private | Keine Beschreibung hinterlegt. |
 
-## 👷 2. A2A Worker Agents (Die Flotte)
+## 👑 2. Legacy Team Orchestrators (A2A-SIN-Team-*)
+| Repository | Sichtbarkeit | Beschreibung/Zweck |
+|------------|-------------|-------------------|
+| [A2A-SIN-Team-MoneyEarners](https://github.com/OpenSIN-AI/A2A-SIN-Team-MoneyEarners) | 🔒 Private | Keine Beschreibung hinterlegt. |
+| [A2A-SIN-Team-MyCompany](https://github.com/OpenSIN-AI/A2A-SIN-Team-MyCompany) | 🔒 Private | SIN A2A component: sin-team-company |
+
+## 👷 3. A2A Worker Agents (Die Flotte)
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
 | [A2A-SIN-Apple-Calendar-Contacts](https://github.com/OpenSIN-AI/A2A-SIN-Apple-Calendar-Contacts) | 🔒 Private | SIN A2A component: sin-apple-calendar-contacts |
@@ -62,7 +73,6 @@
 | [A2A-SIN-LinkedIn](https://github.com/OpenSIN-AI/A2A-SIN-LinkedIn) | 🔒 Private | OpenSIN Marketing Agent for LinkedIn - Autonomous cold outreach, lead scraping, and engagement |
 | [A2A-SIN-Lobsters](https://github.com/OpenSIN-AI/A2A-SIN-Lobsters) | 🔒 Private | OpenSIN Forum Agent for Lobsters - Autonomous cold outreach, lead scraping, and engagement |
 | [A2A-SIN-Matrix](https://github.com/OpenSIN-AI/A2A-SIN-Matrix) | 🌍 Public | SIN A2A component: Matrix protocol integration — Matrix messaging bridge. |
-| [A2A-SIN-Medium](https://github.com/OpenSIN-AI/A2A-SIN-Medium) | 🔒 Private | SIN A2A component: A2A-SIN-Medium |
 | [A2A-SIN-Mindrift](https://github.com/OpenSIN-AI/A2A-SIN-Mindrift) | 🔒 Private | SIN A2A component: sin-mindrift |
 | [A2A-SIN-N8N](https://github.com/OpenSIN-AI/A2A-SIN-N8N) | 🔒 Private | N8N workflow automation for OpenSIN A2A agents — automated workflow management. |
 | [A2A-SIN-Nintendo](https://github.com/OpenSIN-AI/A2A-SIN-Nintendo) | 🌍 Public | SIN A2A component: Nintendo Switch Online integration — Nintendo messaging. |
@@ -99,41 +109,16 @@
 | [A2A-SIN-Stripe](https://github.com/OpenSIN-AI/A2A-SIN-Stripe) | 🌍 Public | SIN Stripe automation agent for payment links, webhooks, checkout redirects, and sub-3-minute onboarding |
 | [A2A-SIN-Summary](https://github.com/OpenSIN-AI/A2A-SIN-Summary) | 🔒 Private | SIN A2A component: A2A-SIN-Summary |
 | [A2A-SIN-Tax](https://github.com/OpenSIN-AI/A2A-SIN-Tax) | 🔒 Private | SIN A2A component: sin-tax |
-| [A2A-SIN-Team-Apple-Apps](https://github.com/OpenSIN-AI/A2A-SIN-Team-Apple-Apps) | 🔒 Private | SIN A2A component: sin-team-apple-apps |
-| [A2A-SIN-Team-Backend](https://github.com/OpenSIN-AI/A2A-SIN-Team-Backend) | 🔒 Private | Keine Beschreibung hinterlegt. |
-| [A2A-SIN-Team-Community](https://github.com/OpenSIN-AI/A2A-SIN-Team-Community) | 🔒 Private | Keine Beschreibung hinterlegt. |
-| [A2A-SIN-Team-Company](https://github.com/OpenSIN-AI/A2A-SIN-Team-Company) | 🔒 Private | SIN A2A component: sin-team-company |
-| [A2A-SIN-Team-Creator](https://github.com/OpenSIN-AI/A2A-SIN-Team-Creator) | 🔒 Private | SIN A2A component: sin-team-creator |
-| [A2A-SIN-Team-CyberSec](https://github.com/OpenSIN-AI/A2A-SIN-Team-CyberSec) | 🔒 Private | Keine Beschreibung hinterlegt. |
-| [A2A-SIN-Team-Frontend](https://github.com/OpenSIN-AI/A2A-SIN-Team-Frontend) | 🔒 Private | Keine Beschreibung hinterlegt. |
-| [A2A-SIN-Team-Google-Apps](https://github.com/OpenSIN-AI/A2A-SIN-Team-Google-Apps) | 🔒 Private | SIN A2A component: sin-team-google-apps |
-| [A2A-SIN-Team-Legal](https://github.com/OpenSIN-AI/A2A-SIN-Team-Legal) | 🔒 Private | Keine Beschreibung hinterlegt. |
-| [A2A-SIN-Team-Marketing](https://github.com/OpenSIN-AI/A2A-SIN-Team-Marketing) | 🔒 Private | OpenSIN Marketing Agent for Team-Marketing - Autonomous cold outreach, lead scraping, and engagement |
-| [A2A-SIN-Team-Messaging](https://github.com/OpenSIN-AI/A2A-SIN-Team-Messaging) | 🔒 Private | Keine Beschreibung hinterlegt. |
-| [A2A-SIN-Team-Orchestrator](https://github.com/OpenSIN-AI/A2A-SIN-Team-Orchestrator) | 🔒 Private | SIN A2A component: sin-team-orchestrator |
-| [A2A-SIN-Team-Shop](https://github.com/OpenSIN-AI/A2A-SIN-Team-Shop) | 🔒 Private | SIN A2A component: sin-team-shop |
-| [A2A-SIN-Team-Social](https://github.com/OpenSIN-AI/A2A-SIN-Team-Social) | 🔒 Private | SIN A2A component: sin-team-social |
-| [A2A-SIN-Team-Worker](https://github.com/OpenSIN-AI/A2A-SIN-Team-Worker) | 🔒 Private | SIN A2A component: sin-team-worker |
 | [A2A-SIN-Teams](https://github.com/OpenSIN-AI/A2A-SIN-Teams) | 🌍 Public | SIN A2A component: Team coordination and management — multi-agent team orchestration. |
 | [A2A-SIN-Telegram](https://github.com/OpenSIN-AI/A2A-SIN-Telegram) | 🔒 Private | OpenSIN Marketing Agent for Telegram - Autonomous cold outreach, lead scraping, and engagement |
 | [A2A-SIN-TikTok-Shop](https://github.com/OpenSIN-AI/A2A-SIN-TikTok-Shop) | 🔒 Private | SIN A2A component: sin-tiktok-shop |
-| [A2A-SIN-TikTok](https://github.com/OpenSIN-AI/A2A-SIN-TikTok) | 🔒 Private | SIN A2A component: A2A-SIN-TikTok |
 | [A2A-SIN-WeChat](https://github.com/OpenSIN-AI/A2A-SIN-WeChat) | 🌍 Public | SIN A2A component: WeChat messaging integration — WeChat bot and message handling. |
 | [A2A-SIN-WebChat](https://github.com/OpenSIN-AI/A2A-SIN-WebChat) | 🌍 Public | SIN A2A component: WebChat integration — web-based chat widget. |
 | [A2A-SIN-WhatsApp](https://github.com/OpenSIN-AI/A2A-SIN-WhatsApp) | 🌍 Public | SIN A2A component: WhatsApp messaging integration — WhatsApp Business API. |
-| [A2A-SIN-Worker-Prolific](https://github.com/OpenSIN-AI/A2A-SIN-Worker-Prolific) | 🔒 Private | SIN A2A Prolific Worker — Autonomous study completion with AppleScript browser automation |
+| [A2A-SIN-Worker-Prolific](https://github.com/OpenSIN-AI/A2A-SIN-Worker-Prolific) | 🔒 Private | Keine Beschreibung hinterlegt. |
 | [A2A-SIN-X-Twitter](https://github.com/OpenSIN-AI/A2A-SIN-X-Twitter) | 🔒 Private | SIN A2A component: A2A-SIN-X-Twitter |
 | [A2A-SIN-Xbox](https://github.com/OpenSIN-AI/A2A-SIN-Xbox) | 🌍 Public | SIN A2A component: Xbox gaming platform integration — Xbox Live messaging. |
-| [A2A-SIN-YouTube](https://github.com/OpenSIN-AI/A2A-SIN-YouTube) | 🔒 Private | SIN A2A component: A2A-SIN-YouTube |
 | [A2A-SIN-Zoom](https://github.com/OpenSIN-AI/A2A-SIN-Zoom) | 🌍 Public | SIN A2A component: Zoom integration — Zoom meeting management and chat. |
-
-## 🏗️ 3. Core Infrastructure & Engines
-| Repository | Sichtbarkeit | Beschreibung/Zweck |
-|------------|-------------|-------------------|
-| [OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | 🔒 Private | The autonomous OpenSIN-Code CLI |
-| [OpenSIN-backend](https://github.com/OpenSIN-AI/OpenSIN-backend) | 🔒 Private | OpenSIN backend and A2A fleet control plane |
-| [OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation) | 🌍 Public | Official documentation for OpenSIN - docs.opensin.ai |
-| [OpenSIN](https://github.com/OpenSIN-AI/OpenSIN) | 🌍 Public | OpenSIN Core — 310+ packages across 25+ domains. The most comprehensive open-source AI agent system in the world. |
 
 ## 🧬 4. Templates & Blueprints
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
@@ -143,7 +128,16 @@
 | [Template-SIN-Team](https://github.com/OpenSIN-AI/Template-SIN-Team) | 🔒 Private | Canonical template for SIN A2A Team Manager agents |
 | [Template-SIN-Worker](https://github.com/OpenSIN-AI/Template-SIN-Worker) | 🔒 Private | Worker process template for A2A agent execution — standardized worker blueprint. |
 
-## 🌐 5. Websites & Frontends (Vercel/Cloudflare)
+## 🏗️ 5. Core Infrastructure & Engines
+| Repository | Sichtbarkeit | Beschreibung/Zweck |
+|------------|-------------|-------------------|
+| [OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | 🔒 Private | The autonomous OpenSIN-Code CLI |
+| [OpenSIN-backend](https://github.com/OpenSIN-AI/OpenSIN-backend) | 🔒 Private | OpenSIN backend and A2A fleet control plane |
+| [OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation) | 🌍 Public | Official documentation for OpenSIN - docs.opensin.ai |
+| [OpenSIN-overview](https://github.com/OpenSIN-AI/OpenSIN-overview) | 🌍 Public | The Ultimate Single Source of Truth for the OpenSIN-AI organization (Rules, Teams, Agents, MCPs) |
+| [OpenSIN](https://github.com/OpenSIN-AI/OpenSIN) | 🌍 Public | OpenSIN Core — 310+ packages across 25+ domains. The most comprehensive open-source AI agent system in the world. |
+
+## 🌐 6. Websites & Frontends (Vercel/Cloudflare)
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
 | [OpenSIN-Blog-Posts](https://github.com/OpenSIN-AI/OpenSIN-Blog-Posts) | 🌍 Public | OpenSIN Blog Posts - Public mirror from marketing strategie |
@@ -153,7 +147,7 @@
 | [website-my.opensin.ai](https://github.com/OpenSIN-AI/website-my.opensin.ai) | 🔒 Private | Hier findet das Geschäftliche statt. User loggen sich ein, verwalten ihre Cloud-Agenten, hinterlegen ihre Kreditkarte und holen sich ihre API-Keys. Da das in einem komplett eigenen, privaten Repository liegt, kommt uns kein Open-Source-Code und kein fremder Entwickler in die Quere. |
 | [website-opensin.ai](https://github.com/OpenSIN-AI/website-opensin.ai) | 🔒 Private | Webseite für unsere OpenSIN Open-Source Version |
 
-## 🗑️ 6. Legacy, Orphans & Technical Debt
+## 🗑️ 7. Legacy, Orphans & Technical Debt
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
 | [.github](https://github.com/OpenSIN-AI/.github) | 🌍 Public | OpenSIN-AI organization profile and community defaults |
@@ -194,7 +188,6 @@
 | [OpenSIN-TelegramBot-CLI](https://github.com/OpenSIN-AI/OpenSIN-TelegramBot-CLI) | 🔒 Private | SIN Fleet Telegram Bot CLI + MCP — canonical fleet-wide Telegram tooling for all A2A agents |
 | [OpenSIN-Tester](https://github.com/OpenSIN-AI/OpenSIN-Tester) | 🔒 Private | SIN A2A component: sin-tester |
 | [OpenSIN-iMessage](https://github.com/OpenSIN-AI/OpenSIN-iMessage) | 🔒 Private | SIN A2A component: sin-imessage |
-| [OpenSIN-overview](https://github.com/OpenSIN-AI/OpenSIN-overview) | 🌍 Public | The Ultimate Single Source of Truth for the OpenSIN-AI organization (Rules, Teams, Agents, MCPs) |
 | [Patents](https://github.com/OpenSIN-AI/Patents) | 🔒 Private | Patent portfolio and intellectual property management for OpenSIN technology. |
 | [awesome-opensin](https://github.com/OpenSIN-AI/awesome-opensin) | 🌍 Public | A curated list of awesome plugins, themes, agents, projects, and resources for https://opencode.ai |
 | [cloud-backend](https://github.com/OpenSIN-AI/cloud-backend) | 🔒 Private | Hier liegt der Geldverdiener! Dieses Repo bleibt Privat. Es enthält die proprietäre Logik, das Stripe-Billing, die OAuth-Authentifizierung und die API für die Premium-Dienste. Niemand außer uns sieht diesen Code. |
