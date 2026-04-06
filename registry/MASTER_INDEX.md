@@ -2,7 +2,7 @@
 
 **TOTAL REPOSITORIES SCANNED:** 162
 
-Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organisation.
+Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organisation. **Jedes** der 162 Repositories ist hier kategorisiert und logisch in die Architektur integriert.
 
 ---
 
@@ -27,15 +27,11 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 | [Team-SIN-Research](https://github.com/OpenSIN-AI/Team-SIN-Research) | 🔒 Private | Keine Beschreibung hinterlegt. |
 | [Team-SIN-Social](https://github.com/OpenSIN-AI/Team-SIN-Social) | 🔒 Private | Keine Beschreibung hinterlegt. |
 
----
-
 ## 👑 2. Legacy Team Orchestrators (A2A-SIN-Team-*)
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
 | [A2A-SIN-Team-MoneyEarners](https://github.com/OpenSIN-AI/A2A-SIN-Team-MoneyEarners) | 🔒 Private | Keine Beschreibung hinterlegt. |
 | [A2A-SIN-Team-MyCompany](https://github.com/OpenSIN-AI/A2A-SIN-Team-MyCompany) | 🔒 Private | SIN A2A component: sin-team-company |
-
----
 
 ## 👷 3. A2A Worker Agents (Die Flotte)
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
@@ -130,8 +126,6 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 | [A2A-SIN-Xbox](https://github.com/OpenSIN-AI/A2A-SIN-Xbox) | 🌍 Public | SIN A2A component: Xbox gaming platform integration — Xbox Live messaging. |
 | [A2A-SIN-Zoom](https://github.com/OpenSIN-AI/A2A-SIN-Zoom) | 🌍 Public | SIN A2A component: Zoom integration — Zoom meeting management and chat. |
 
----
-
 ## 🧬 4. Templates & Blueprints
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
@@ -140,70 +134,76 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 | [Template-SIN-Team](https://github.com/OpenSIN-AI/Template-SIN-Team) | 🔒 Private | Canonical template for SIN A2A Team Manager agents |
 | [Template-SIN-Worker](https://github.com/OpenSIN-AI/Template-SIN-Worker) | 🔒 Private | Worker process template for A2A agent execution — standardized worker blueprint. |
 
----
-
-## 🏗️ 5. Core Infrastructure & Engines
+## 🔌 5. Plugins & Erweiterungen
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
+| [Plugin-SIN-Biometrics](https://github.com/OpenSIN-AI/Plugin-SIN-Biometrics) | 🌍 Public | OpenCode plugin for bootstrapping and operating the BIOMETRICS control plane. Adds governance, policy enforcement, and supervisor capabilities to OpenCode workflows. |
+| [Plugin-SIN-Swarm](https://github.com/OpenSIN-AI/Plugin-SIN-Swarm) | 🌍 Public | OpenSIN subagent workflow plugin for OpenCode with tmux side-by-side sessions, parallel fan-out, messaging, and MAX-mode git worktrees. |
+
+## 🏗️ 6. Core Infrastructure & Engines
+| Repository | Sichtbarkeit | Beschreibung/Zweck |
+|------------|-------------|-------------------|
+| [Core-SIN-Control-Plane](https://github.com/OpenSIN-AI/Core-SIN-Control-Plane) | 🔒 Private | Shared Doctor/Preflight/Eval layer for SIN-Solver |
 | [OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | 🔒 Private | The autonomous OpenSIN-Code CLI |
 | [OpenSIN-backend](https://github.com/OpenSIN-AI/OpenSIN-backend) | 🔒 Private | OpenSIN backend and A2A fleet control plane |
 | [OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation) | 🌍 Public | Official documentation for OpenSIN - docs.opensin.ai |
 | [OpenSIN-overview](https://github.com/OpenSIN-AI/OpenSIN-overview) | 🌍 Public | The Ultimate Single Source of Truth for the OpenSIN-AI organization (Rules, Teams, Agents, MCPs) |
 | [OpenSIN](https://github.com/OpenSIN-AI/OpenSIN) | 🌍 Public | OpenSIN Core — 310+ packages across 25+ domains. The most comprehensive open-source AI agent system in the world. |
 
----
-
-## 🌐 6. Websites & Frontends (Vercel/Cloudflare)
+## 🏭 7. IT-Infrastruktur & DevOps (Infra-SIN-*)
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
-| [OpenSIN-Blog-Posts](https://github.com/OpenSIN-AI/OpenSIN-Blog-Posts) | 🌍 Public | OpenSIN Blog Posts - Public mirror from marketing strategie |
-| [documentation-templates](https://github.com/OpenSIN-AI/documentation-templates) | 🌍 Public | OpenSIN Documentation Templates - 453K auto-generated templates for consistent documentation structures |
+| [Infra-SIN-Dev-Setup](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup) | 🌍 Public | Development Environment Setup |
+| [Infra-SIN-Doc-Templates](https://github.com/OpenSIN-AI/Infra-SIN-Doc-Templates) | 🌍 Public | OpenSIN Documentation Templates - 453K auto-generated templates for consistent documentation structures |
+| [Infra-SIN-Docker-Empire](https://github.com/OpenSIN-AI/Infra-SIN-Docker-Empire) | 🔒 Private | SIN-Solver Docker Infrastructure - 26 Container Empire |
+| [Infra-SIN-Docs-Standard](https://github.com/OpenSIN-AI/Infra-SIN-Docs-Standard) | 🔒 Private | Global Development Documentation Standard — Templates, guidelines, and best practices for all OpenSIN-AI repositories. |
+
+## 💼 8. Business & Operations (Biz-SIN-*)
+| Repository | Sichtbarkeit | Beschreibung/Zweck |
+|------------|-------------|-------------------|
+| [Biz-SIN-Blog-Posts](https://github.com/OpenSIN-AI/Biz-SIN-Blog-Posts) | 🌍 Public | OpenSIN Blog Posts - Public mirror from marketing strategie |
+| [Biz-SIN-Blueprints](https://github.com/OpenSIN-AI/Biz-SIN-Blueprints) | 🌍 Public | Reusable blueprints for AI products, workflow systems, and developer platforms. |
+| [Biz-SIN-Competitor-Tracker](https://github.com/OpenSIN-AI/Biz-SIN-Competitor-Tracker) | 🌍 Public | Automated competitor research and feature gap analysis for SIN Agent Fleet |
+| [Biz-SIN-Jobs](https://github.com/OpenSIN-AI/Biz-SIN-Jobs) | 🔒 Private | Job board and career opportunities at OpenSIN-AI. |
+| [Biz-SIN-Marketing](https://github.com/OpenSIN-AI/Biz-SIN-Marketing) | 🔒 Private | Marketing & release strategy for OpenSIN (open-source) and MyOpenSIN (subscription). Launch hub, community discussions, and execution playbooks. |
+| [Biz-SIN-Patents](https://github.com/OpenSIN-AI/Biz-SIN-Patents) | 🔒 Private | Patent portfolio and intellectual property management for OpenSIN technology. |
+
+## 🌐 9. Websites, Showcases & Frontends
+| Repository | Sichtbarkeit | Beschreibung/Zweck |
+|------------|-------------|-------------------|
+| [.github](https://github.com/OpenSIN-AI/.github) | 🌍 Public | OpenSIN-AI organization profile and community defaults |
+| [OpenSIN-Ledger](https://github.com/OpenSIN-AI/OpenSIN-Ledger) | 🌍 Public | Live autonomous logbook and activity showcase of the OpenSIN 24/7 A2A Agent Fleet. |
+| [awesome-opensin](https://github.com/OpenSIN-AI/awesome-opensin) | 🌍 Public | A curated list of awesome plugins, themes, agents, projects, and resources for https://opencode.ai |
 | [documentation](https://github.com/OpenSIN-AI/documentation) | 🔒 Private | ⚠️ ARCHIVED — All docs migrated to github.com/OpenSIN-AI/OpenSIN-documentation |
 | [website-my-opensin-ai](https://github.com/OpenSIN-AI/website-my-opensin-ai) | 🔒 Private | MyOpenSIN — Premium AI Agent Workspace (my.opensin.ai) |
 | [website-my.opensin.ai](https://github.com/OpenSIN-AI/website-my.opensin.ai) | 🔒 Private | Hier findet das Geschäftliche statt. User loggen sich ein, verwalten ihre Cloud-Agenten, hinterlegen ihre Kreditkarte und holen sich ihre API-Keys. Da das in einem komplett eigenen, privaten Repository liegt, kommt uns kein Open-Source-Code und kein fremder Entwickler in die Quere. |
 | [website-opensin.ai](https://github.com/OpenSIN-AI/website-opensin.ai) | 🔒 Private | Webseite für unsere OpenSIN Open-Source Version |
 
----
-
-## 🗑️ 7. Legacy, Orphans & Technical Debt
+## 🗑️ 10. Legacy, Orphans & Technical Debt
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
-| [.github](https://github.com/OpenSIN-AI/.github) | 🌍 Public | OpenSIN-AI organization profile and community defaults |
 | [CLI-SIN-Repo-Sync](https://github.com/OpenSIN-AI/CLI-SIN-Repo-Sync) | 🔒 Private | SIN A2A component: sin-repo-sync |
 | [CLI-SIN-TelegramBot](https://github.com/OpenSIN-AI/CLI-SIN-TelegramBot) | 🔒 Private | SIN Fleet Telegram Bot CLI + MCP — canonical fleet-wide Telegram tooling for all A2A agents |
-| [Global-Dev-Docs-Standard](https://github.com/OpenSIN-AI/Global-Dev-Docs-Standard) | 🔒 Private | Global Development Documentation Standard — Templates, guidelines, and best practices for all OpenSIN-AI repositories. |
 | [OpenSIN-2Captcha-Worker](https://github.com/OpenSIN-AI/OpenSIN-2Captcha-Worker) | 🔒 Private | SIN A2A component: sin-2captcha-worker |
 | [OpenSIN-Agent-Backend](https://github.com/OpenSIN-AI/OpenSIN-Agent-Backend) | 🔒 Private | SIN A2A component: sin-backend |
 | [OpenSIN-Agent-Forge-Skill-Alt](https://github.com/OpenSIN-AI/OpenSIN-Agent-Forge-Skill-Alt) | 🔒 Private | Codex skill for canonical SIN A2A agent creation and standardization |
 | [OpenSIN-Agent-Frontend](https://github.com/OpenSIN-AI/OpenSIN-Agent-Frontend) | 🔒 Private | SIN A2A component: sin-frontend |
 | [OpenSIN-Authenticator-Legacy](https://github.com/OpenSIN-AI/OpenSIN-Authenticator-Legacy) | 🔒 Private | Legacy authentication service for OpenSIN — deprecated, use OpenSIN-Authenticator instead. |
 | [OpenSIN-Authenticator](https://github.com/OpenSIN-AI/OpenSIN-Authenticator) | 🔒 Private | SIN A2A component: sin-authenticator |
-| [OpenSIN-Biometrics](https://github.com/OpenSIN-AI/OpenSIN-Biometrics) | 🌍 Public | OpenCode plugin for bootstrapping and operating the BIOMETRICS control plane. Adds governance, policy enforcement, and supervisor capabilities to OpenCode workflows. |
-| [OpenSIN-Blueprints](https://github.com/OpenSIN-AI/OpenSIN-Blueprints) | 🌍 Public | Reusable blueprints for AI products, workflow systems, and developer platforms. |
 | [OpenSIN-Cloudflare](https://github.com/OpenSIN-AI/OpenSIN-Cloudflare) | 🔒 Private | SIN A2A component: sin-cloudflare |
 | [OpenSIN-Code-Database](https://github.com/OpenSIN-AI/OpenSIN-Code-Database) | 🔒 Private | SIN A2A component: sin-code-database |
 | [OpenSIN-Code-Integration](https://github.com/OpenSIN-AI/OpenSIN-Code-Integration) | 🔒 Private | SIN A2A component: sin-code-integration |
 | [OpenSIN-Code-Security](https://github.com/OpenSIN-AI/OpenSIN-Code-Security) | 🔒 Private | SIN A2A component: sin-code-security |
-| [OpenSIN-Competitor-Tracker](https://github.com/OpenSIN-AI/OpenSIN-Competitor-Tracker) | 🌍 Public | Automated competitor research and feature gap analysis for SIN Agent Fleet |
-| [OpenSIN-Control-Plane](https://github.com/OpenSIN-AI/OpenSIN-Control-Plane) | 🔒 Private | Shared Doctor/Preflight/Eval layer for SIN-Solver |
 | [OpenSIN-Designer](https://github.com/OpenSIN-AI/OpenSIN-Designer) | 🔒 Private | SIN A2A component: sin-designer |
 | [OpenSIN-GitHub-Issues](https://github.com/OpenSIN-AI/OpenSIN-GitHub-Issues) | 🔒 Private | SIN A2A component: sin-github-issues |
-| [OpenSIN-Infrastructure](https://github.com/OpenSIN-AI/OpenSIN-Infrastructure) | 🔒 Private | SIN-Solver Docker Infrastructure - 26 Container Empire |
 | [OpenSIN-Issues](https://github.com/OpenSIN-AI/OpenSIN-Issues) | 🔒 Private | SIN A2A component: sin-issues |
-| [OpenSIN-Ledger](https://github.com/OpenSIN-AI/OpenSIN-Ledger) | 🌍 Public | Live autonomous logbook and activity showcase of the OpenSIN 24/7 A2A Agent Fleet. |
-| [OpenSIN-Marketing-Release-Strategie](https://github.com/OpenSIN-AI/OpenSIN-Marketing-Release-Strategie) | 🔒 Private | Marketing & release strategy for OpenSIN (open-source) and MyOpenSIN (subscription). Launch hub, community discussions, and execution playbooks. |
 | [OpenSIN-OracleCloud-MCP](https://github.com/OpenSIN-AI/OpenSIN-OracleCloud-MCP) | 🔒 Private | SIN A2A component: sin-oraclecloud-mcp |
 | [OpenSIN-PasswordManager](https://github.com/OpenSIN-AI/OpenSIN-PasswordManager) | 🔒 Private | SIN A2A component: sin-passwordmanager |
 | [OpenSIN-Storage](https://github.com/OpenSIN-AI/OpenSIN-Storage) | 🔒 Private | SIN A2A component: sin-storage |
 | [OpenSIN-Supabase](https://github.com/OpenSIN-AI/OpenSIN-Supabase) | 🔒 Private | SIN A2A component: sin-supabase |
 | [OpenSIN-Tester](https://github.com/OpenSIN-AI/OpenSIN-Tester) | 🔒 Private | SIN A2A component: sin-tester |
 | [OpenSIN-iMessage](https://github.com/OpenSIN-AI/OpenSIN-iMessage) | 🔒 Private | SIN A2A component: sin-imessage |
-| [Patents](https://github.com/OpenSIN-AI/Patents) | 🔒 Private | Patent portfolio and intellectual property management for OpenSIN technology. |
 | [Skill-SIN-Agent-Forge](https://github.com/OpenSIN-AI/Skill-SIN-Agent-Forge) | 🔒 Private | OpenCode skill SSOT: sin-a2a-agent-forge |
 | [Skill-SIN-Create-TelegramBot](https://github.com/OpenSIN-AI/Skill-SIN-Create-TelegramBot) | 🔒 Private | OpenCode skill SSOT: create-telegrambot |
 | [Skill-SIN-Enterprise-Deep-Debug](https://github.com/OpenSIN-AI/Skill-SIN-Enterprise-Deep-Debug) | 🔒 Private | OpenCode skill SSOT: enterprise-deep-debug |
-| [awesome-opensin](https://github.com/OpenSIN-AI/awesome-opensin) | 🌍 Public | A curated list of awesome plugins, themes, agents, projects, and resources for https://opencode.ai |
 | [cloud-backend](https://github.com/OpenSIN-AI/cloud-backend) | 🔒 Private | Hier liegt der Geldverdiener! Dieses Repo bleibt Privat. Es enthält die proprietäre Logik, das Stripe-Billing, die OAuth-Authentifizierung und die API für die Premium-Dienste. Niemand außer uns sieht diesen Code. |
-| [dev-setup](https://github.com/OpenSIN-AI/dev-setup) | 🌍 Public | Development Environment Setup |
-| [jobs](https://github.com/OpenSIN-AI/jobs) | 🔒 Private | Job board and career opportunities at OpenSIN-AI. |
-| [opensin-swarm](https://github.com/OpenSIN-AI/opensin-swarm) | 🌍 Public | OpenSIN subagent workflow plugin for OpenCode with tmux side-by-side sessions, parallel fan-out, messaging, and MAX-mode git worktrees. |
