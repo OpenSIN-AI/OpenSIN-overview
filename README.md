@@ -23,7 +23,7 @@ GitHub Push → sin-github-action (~2s, curl only) → n8n Webhook → OCI CI Ru
 | Komponente | Details |
 |-----------|---------|
 | **GitHub Action** | [sin-github-action](https://github.com/OpenSIN-AI/sin-github-action) — Composite Action (nur curl, ~2s) |
-| **n8n Workflow** | ID `cx2UwQYwBPKucckV` auf `http://92.5.60.87:5678/webhook/opensin-ci` |
+| **n8n Workflow** | ID `VhDVux7dSCoQdkOP` auf `http://92.5.60.87:5678/webhook/opensin-ci` |
 | **CI Runner** | `opensin-ci-runner.py` als systemd Service auf OCI VM (`ubuntu@92.5.60.87:3456`) |
 | **n8n API Key** | `n8n_api_69175bcabef4b10d619b43598cd557a92ee38aac5ae4b1ca` |
 
