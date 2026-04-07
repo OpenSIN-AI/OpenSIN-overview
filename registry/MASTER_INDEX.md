@@ -57,6 +57,12 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 | [A2A-SIN-Code-DataScience](https://github.com/OpenSIN-AI/A2A-SIN-Code-DataScience) | 🔒 Private | SIN A2A component: sin-code-datascience |
 | [A2A-SIN-Code-DevOps](https://github.com/OpenSIN-AI/A2A-SIN-Code-DevOps) | 🔒 Private | SIN A2A component: sin-code-devops |
 | [A2A-SIN-Code-GitLab-LogsCenter](https://github.com/OpenSIN-AI/A2A-SIN-Code-GitLab-LogsCenter) | 🔒 Private | Autonomous log analysis agent: monitors GitLab LogCenter repos, detects errors/bugs via pattern analysis, auto-creates GitHub issues, dispatches fixes to Team Coding |
+| [A2A-SIN-Code-Backend](https://github.com/OpenSIN-AI/A2A-SIN-Code-Backend) | 🔒 Private | Autonomous cloud coder for backend tasks (API, DB, business logic) |
+| [A2A-SIN-Code-Command](https://github.com/OpenSIN-AI/A2A-SIN-Code-Command) | 🔒 Private | Autonomous cloud coder for CLI command development |
+| [A2A-SIN-Code-Tool](https://github.com/OpenSIN-AI/A2A-SIN-Code-Tool) | 🔒 Private | Autonomous cloud coder for reusable utility functions |
+| [A2A-SIN-Code-Plugin](https://github.com/OpenSIN-AI/A2A-SIN-Code-Plugin) | 🔒 Private | Autonomous cloud coder for OpenCode plugins and MCP servers |
+| [A2A-SIN-Code-Fullstack](https://github.com/OpenSIN-AI/A2A-SIN-Code-Fullstack) | 🔒 Private | Autonomous cloud coder for full-stack web applications |
+| [A2A-SIN-Code-Frontend](https://github.com/OpenSIN-AI/A2A-SIN-Code-Frontend) | 🔒 Private | Autonomous cloud coder for frontend UI components |
 | [A2A-SIN-Coding-CEO](https://github.com/OpenSIN-AI/A2A-SIN-Coding-CEO) | 🔒 Private | SIN A2A component: sin-coding-ceo |
 | [A2A-SIN-Community](https://github.com/OpenSIN-AI/A2A-SIN-Community) | 🔒 Private | OpenSIN Marketing Agent for Community - Autonomous cold outreach, lead scraping, and engagement |
 | [A2A-SIN-Compliance](https://github.com/OpenSIN-AI/A2A-SIN-Compliance) | 🔒 Private | SIN A2A component: A2A-SIN-Compliance |
@@ -223,3 +229,9 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 | [Skill-SIN-Enterprise-Deep-Debug](https://github.com/OpenSIN-AI/Skill-SIN-Enterprise-Deep-Debug) | 🔒 Private | OpenCode skill SSOT: enterprise-deep-debug |
 | [Template-A2A-SIN-TelegramBot](https://github.com/OpenSIN-AI/Template-A2A-SIN-TelegramBot) | 🔒 Private | Telegram bot template for A2A agents — standardized Telegram integration blueprint. |
 | [cloud-backend](https://github.com/OpenSIN-AI/cloud-backend) | 🔒 Private | Hier liegt der Geldverdiener! Dieses Repo bleibt Privat. Es enthält die proprietäre Logik, das Stripe-Billing, die OAuth-Authentifizierung und die API für die Premium-Dienste. Niemand außer uns sieht diesen Code. |
+| a2a-sin-code-plugin | Cloud Coder Agent (plugin) | Team - Coder | SIN-Zeus | [http://92.5.60.87:7860](http://92.5.60.87:7860) | [https://a2a.delqhi.com/agents/sin-code-plugin](https://a2a.delqhi.com/agents/sin-code-plugin) | active | OCI VM (cpu-basic) | `sin.code.plugin.*` | 2026-04-07 |
+| a2a-sin-code-command | Cloud Coder Agent (command) | Team - Coder | SIN-Zeus | [http://92.5.60.87:7861](http://92.5.60.87:7861) | [https://a2a.delqhi.com/agents/sin-code-command](https://a2a.delqhi.com/agents/sin-code-command) | active | OCI VM (cpu-basic) | `sin.code.command.*` | 2026-04-07 |
+| a2a-sin-code-tool | Cloud Coder Agent (tool) | Team - Coder | SIN-Zeus | [http://92.5.60.87:7862](http://92.5.60.87:7862) | [https://a2a.delqhi.com/agents/sin-code-tool](https://a2a.delqhi.com/agents/sin-code-tool) | active | OCI VM (cpu-basic) | `sin.code.tool.*` | 2026-04-07 |
+| a2a-sin-code-backend | Cloud Coder Agent (backend) | Team - Coder | SIN-Zeus | [http://92.5.60.87:7863](http://92.5.60.87:7863) | [https://a2a.delqhi.com/agents/sin-code-backend](https://a2a.delqhi.com/agents/sin-code-backend) | active | OCI VM (cpu-basic) | `sin.code.backend.*` | 2026-04-07 |
+| a2a-sin-code-fullstack | Cloud Coder Agent (fullstack) | Team - Coder | SIN-Zeus | [http://92.5.60.87:7864](http://92.5.60.87:7864) | [https://a2a.delqhi.com/agents/sin-code-fullstack](https://a2a.delqhi.com/agents/sin-code-fullstack) | active | OCI VM (cpu-basic) | `sin.code.fullstack.*` | 2026-04-07 |
+| a2a-sin-code-frontend | Cloud Coder Agent (frontend) | Team - Coder | SIN-Zeus | [http://92.5.60.87:7865](http://92.5.60.87:7865) | [https://a2a.delqhi.com/agents/sin-code-frontend](https://a2a.delqhi.com/agents/sin-code-frontend) | active | OCI VM (cpu-basic) | `sin.code.frontend.*` | 2026-04-07 |
