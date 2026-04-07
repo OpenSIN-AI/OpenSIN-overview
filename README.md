@@ -11,7 +11,7 @@
 | Domain | Repo | Zweck | Sichtbarkeit |
 |--------|------|-------|-------------|
 | [opensin.ai](https://opensin.ai) | [website-opensin.ai](https://github.com/OpenSIN-AI/website-opensin.ai) | Open-Source Landing Page & Produktvorstellung | 🔒 Privat |
-| [chat.opensin.ai](https://chat.opensin.ai) | [OpenSIN-WebApp](https://github.com/OpenSIN-AI/OpenSIN-WebApp) | **User WebApp mit Login** — Dashboard, Agenten-Steuerung, Fleet-Management (gekoppelt an OpenSIN-backend) | 🔒 Privat |
+| [chat.opensin.ai](https://chat.opensin.ai) | [OpenSIN-WebApp](https://github.com/OpenSIN-AI/OpenSIN-WebApp) | **User WebApp mit Login** — Dashboard, Agenten-Steuerung, Fleet-Management (Vercel ✅ deployed) | 🔒 Privat |
 | [my.opensin.ai](https://my.opensin.ai) | [website-my.opensin.ai](https://github.com/OpenSIN-AI/website-my.opensin.ai) | Premium Abo-Modell: User-Login, Cloud-Agenten, Billing, API-Keys | 🔒 Privat |
 | [docs.opensin.ai](https://docs.opensin.ai) | [OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation) | Offizielle Benutzer-Dokumentation (VitePress) | 🌍 Public |
 | [blog.opensin.ai](https://blog.opensin.ai) | [Biz-SIN-Blog-Posts](https://github.com/OpenSIN-AI/Biz-SIN-Blog-Posts) | OpenSIN-AI Blog & Marketing | 🌍 Public |
@@ -25,7 +25,7 @@
 |------|-------|
 | [OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | Autonomes CLI + SDK (`@opensin/sdk`) — Agent Loop, Tool System, Model Routing, Memory, Safety, A2A Transport Layer |
 | [OpenSIN-backend](https://github.com/OpenSIN-AI/OpenSIN-backend) | Closed Source Backend — A2A Fleet Control Plane, n8n-Routing, Agenten-Orchestrierung, API für OpenSIN-WebApp |
-| [OpenSIN-WebApp](https://github.com/OpenSIN-AI/OpenSIN-WebApp) | User WebApp (Next.js, Vercel) — Login, Dashboard, Agenten-Steuerung, Fleet-Management (gekoppelt an OpenSIN-backend) |
+| [OpenSIN-WebApp](https://github.com/OpenSIN-AI/OpenSIN-WebApp) | User WebApp (Next.js, Vercel ✅) — Login, Dashboard, Agenten-Steuerung (gekoppelt an OpenSIN-backend) |
 
 ---
 
