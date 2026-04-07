@@ -155,6 +155,34 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 | [Template-SIN-Team](https://github.com/OpenSIN-AI/Template-SIN-Team) | 🔒 Private | Canonical template for SIN A2A Team Manager agents |
 | [Template-SIN-Worker](https://github.com/OpenSIN-AI/Template-SIN-Worker) | 🔒 Private | Worker process template for A2A agent execution — standardized worker blueprint. |
 
+## 🚨 CI/CD MANDAT: n8n + sin-github-action (NIEMALS normale GitHub Actions!)
+
+> **ABSOLUTES VERBOT**: GitHub Actions Paid Runner = Billing blockiert. Alle Repos MÜSSEN diese CI/CD Infrastruktur nutzen!
+
+| Komponente | Repo/Ort | Zweck |
+|-----------|---------|-------|
+| **[sin-github-action](https://github.com/OpenSIN-AI/sin-github-action)** | 🌍 Public | Composite GitHub Action (curl only, ~2s) — sendet Webhook an n8n |
+| **n8n Workflow `cx2UwQYwBPKucckV`** | OCI VM `92.5.60.87:5678` | Webhook Receiver → dispatcht an CI Runner |
+| **opensin-ci-runner.py** | `/home/ubuntu/opensin-ci-runner.py` (OCI) | Python HTTP Server — führt git clone, npm build, test aus |
+| **systemd: opensin-ci-runner** | OCI VM | Hält CI Runner am Leben (Port 3456) |
+
+**Webhook URL:** `http://92.5.60.87:5678/webhook/opensin-ci`
+**n8n API Key:** `n8n_api_69175bcabef4b10d619b43598cd557a92ee38aac5ae4b1ca`
+
+**Setup (3 Schritte):**
+```bash
+# 1. Secret setzen
+gh secret set N8N_CI_WEBHOOK_URL --repo OpenSIN-AI/<REPO> --body "http://92.5.60.87:5678/webhook/opensin-ci"
+
+# 2. ci.yml → verwendet OpenSIN-AI/sin-github-action@main mit timeout-minutes: 2
+
+# 3. Vollständige Doku: docs.opensin.ai/best-practices/ci-cd-n8n
+```
+
+**⚠️ n8n Webhook Registrierung:** Nach Neustart des n8n Containers muss der Workflow aktiv sein. n8n 2.12 lädt Webhooks nur beim Startup. Wenn Webhook 404: `docker restart n8n-n8n-1` auf OCI VM.
+
+---
+
 ## 🏗️ 6. Core Infrastructure & Engines
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
@@ -229,9 +257,9 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 | [Skill-SIN-Enterprise-Deep-Debug](https://github.com/OpenSIN-AI/Skill-SIN-Enterprise-Deep-Debug) | 🔒 Private | OpenCode skill SSOT: enterprise-deep-debug |
 | [Template-A2A-SIN-TelegramBot](https://github.com/OpenSIN-AI/Template-A2A-SIN-TelegramBot) | 🔒 Private | Telegram bot template for A2A agents — standardized Telegram integration blueprint. |
 | [cloud-backend](https://github.com/OpenSIN-AI/cloud-backend) | 🔒 Private | Hier liegt der Geldverdiener! Dieses Repo bleibt Privat. Es enthält die proprietäre Logik, das Stripe-Billing, die OAuth-Authentifizierung und die API für die Premium-Dienste. Niemand außer uns sieht diesen Code. |
-| a2a-sin-code-plugin | Cloud Coder Agent (plugin) | Team - Coder | SIN-Zeus | [http://92.5.60.87:7860](http://92.5.60.87:7860) | [https://a2a.delqhi.com/agents/sin-code-plugin](https://a2a.delqhi.com/agents/sin-code-plugin) | active | OCI VM (cpu-basic) | `sin.code.plugin.*` | 2026-04-07 |
-| a2a-sin-code-command | Cloud Coder Agent (command) | Team - Coder | SIN-Zeus | [http://92.5.60.87:7861](http://92.5.60.87:7861) | [https://a2a.delqhi.com/agents/sin-code-command](https://a2a.delqhi.com/agents/sin-code-command) | active | OCI VM (cpu-basic) | `sin.code.command.*` | 2026-04-07 |
-| a2a-sin-code-tool | Cloud Coder Agent (tool) | Team - Coder | SIN-Zeus | [http://92.5.60.87:7862](http://92.5.60.87:7862) | [https://a2a.delqhi.com/agents/sin-code-tool](https://a2a.delqhi.com/agents/sin-code-tool) | active | OCI VM (cpu-basic) | `sin.code.tool.*` | 2026-04-07 |
-| a2a-sin-code-backend | Cloud Coder Agent (backend) | Team - Coder | SIN-Zeus | [http://92.5.60.87:7863](http://92.5.60.87:7863) | [https://a2a.delqhi.com/agents/sin-code-backend](https://a2a.delqhi.com/agents/sin-code-backend) | active | OCI VM (cpu-basic) | `sin.code.backend.*` | 2026-04-07 |
-| a2a-sin-code-fullstack | Cloud Coder Agent (fullstack) | Team - Coder | SIN-Zeus | [http://92.5.60.87:7864](http://92.5.60.87:7864) | [https://a2a.delqhi.com/agents/sin-code-fullstack](https://a2a.delqhi.com/agents/sin-code-fullstack) | active | OCI VM (cpu-basic) | `sin.code.fullstack.*` | 2026-04-07 |
-| a2a-sin-code-frontend | Cloud Coder Agent (frontend) | Team - Coder | SIN-Zeus | [http://92.5.60.87:7865](http://92.5.60.87:7865) | [https://a2a.delqhi.com/agents/sin-code-frontend](https://a2a.delqhi.com/agents/sin-code-frontend) | active | OCI VM (cpu-basic) | `sin.code.frontend.*` | 2026-04-07 |
+| a2a-sin-code-plugin | Cloud Coder Agent (plugin) | Team - Coder | SIN-Zeus | [https://OpenJerro-a2a-sin-code-plugin.hf.space](https://OpenJerro-a2a-sin-code-plugin.hf.space) | [https://a2a.delqhi.com/agents/sin-code-plugin](https://a2a.delqhi.com/agents/sin-code-plugin) | active | Hugging Face Space (cpu-basic) | `sin.code.plugin.*` | 2026-04-07 |
+| a2a-sin-code-command | Cloud Coder Agent (command) | Team - Coder | SIN-Zeus | [https://OpenJerro-a2a-sin-code-command.hf.space](https://OpenJerro-a2a-sin-code-command.hf.space) | [https://a2a.delqhi.com/agents/sin-code-command](https://a2a.delqhi.com/agents/sin-code-command) | active | Hugging Face Space (cpu-basic) | `sin.code.command.*` | 2026-04-07 |
+| a2a-sin-code-tool | Cloud Coder Agent (tool) | Team - Coder | SIN-Zeus | [https://OpenJerro-a2a-sin-code-tool.hf.space](https://OpenJerro-a2a-sin-code-tool.hf.space) | [https://a2a.delqhi.com/agents/sin-code-tool](https://a2a.delqhi.com/agents/sin-code-tool) | active | Hugging Face Space (cpu-basic) | `sin.code.tool.*` | 2026-04-07 |
+| a2a-sin-code-backend | Cloud Coder Agent (backend) | Team - Coder | SIN-Zeus | [https://OpenJerro-a2a-sin-code-backend.hf.space](https://OpenJerro-a2a-sin-code-backend.hf.space) | [https://a2a.delqhi.com/agents/sin-code-backend](https://a2a.delqhi.com/agents/sin-code-backend) | active | Hugging Face Space (cpu-basic) | `sin.code.backend.*` | 2026-04-07 |
+| a2a-sin-code-fullstack | Cloud Coder Agent (fullstack) | Team - Coder | SIN-Zeus | [https://OpenJerro-a2a-sin-code-fullstack.hf.space](https://OpenJerro-a2a-sin-code-fullstack.hf.space) | [https://a2a.delqhi.com/agents/sin-code-fullstack](https://a2a.delqhi.com/agents/sin-code-fullstack) | active | Hugging Face Space (cpu-basic) | `sin.code.fullstack.*` | 2026-04-07 |
+| a2a-sin-code-frontend | Cloud Coder Agent (frontend) | Team - Coder | SIN-Zeus | [https://OpenJerro-a2a-sin-code-frontend.hf.space](https://OpenJerro-a2a-sin-code-frontend.hf.space) | [https://a2a.delqhi.com/agents/sin-code-frontend](https://a2a.delqhi.com/agents/sin-code-frontend) | active | Hugging Face Space (cpu-basic) | `sin.code.frontend.*` | 2026-04-07 |
