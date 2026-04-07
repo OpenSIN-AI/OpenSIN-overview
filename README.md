@@ -191,6 +191,7 @@ jobs:
 | [Core-SIN-Control-Plane](https://github.com/OpenSIN-AI/Core-SIN-Control-Plane) | Doctor/Preflight/Eval Layer |
 | [Infra-SIN-Docker-Empire](https://github.com/OpenSIN-AI/Infra-SIN-Docker-Empire) | 26-Container Docker Infrastruktur |
 | [Infra-SIN-Dev-Setup](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup) | Development Environment Setup |
+| [OpenSIN-onboarding](https://github.com/OpenSIN-AI/OpenSIN-onboarding) | Autonomous 6-phase onboarding — GCP, Passwordmanager, Chrome Extension, Platform Accounts |
 | [cloud-backend](https://github.com/OpenSIN-AI/cloud-backend) | 🔒 Proprietär: Stripe, OAuth, Premium-API |
 
 ---

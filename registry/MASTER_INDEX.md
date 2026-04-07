@@ -203,6 +203,7 @@ gh secret set N8N_CI_WEBHOOK_URL --repo OpenSIN-AI/<REPO> --body "http://92.5.60
 | [Infra-SIN-Doc-Templates](https://github.com/OpenSIN-AI/Infra-SIN-Doc-Templates) | 🌍 Public | OpenSIN Documentation Templates - 453K auto-generated templates for consistent documentation structures |
 | [Infra-SIN-Docker-Empire](https://github.com/OpenSIN-AI/Infra-SIN-Docker-Empire) | 🔒 Private | SIN-Solver Docker Infrastructure - 26 Container Empire |
 | [Infra-SIN-Docs-Standard](https://github.com/OpenSIN-AI/Infra-SIN-Docs-Standard) | 🔒 Private | Global Development Documentation Standard — Templates, guidelines, and best practices for all OpenSIN-AI repositories. |
+| [OpenSIN-onboarding](https://github.com/OpenSIN-AI/OpenSIN-onboarding) | 🌍 Public | Autonomous 6-phase onboarding for new OpenSIN users — bootstraps GCP, Passwordmanager, Chrome Extension, and platform accounts fully autonomously. |
 
 ## 💼 8. Business & Operations (Biz-SIN-*)
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
