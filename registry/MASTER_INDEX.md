@@ -154,6 +154,9 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 |------------|-------------|-------------------|
 | [Core-SIN-Control-Plane](https://github.com/OpenSIN-AI/Core-SIN-Control-Plane) | 🔒 Private | Shared Doctor/Preflight/Eval layer for SIN-Solver |
 | [OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | 🔒 Private | The autonomous OpenSIN-Code CLI |
+| [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | 🌍 Public | **NEU April 2026** — AI Coding Assistant in Rust (70 Dateien, 34.601 Zeilen, 9 Crates) |
+| [opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code) | 🌍 Public | **NEU April 2026** — Python Agent Development Platform (100 Dateien, 2.386 Zeilen, 26 Subsysteme) |
+| [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | 🌍 Public | **NEU April 2026** — Plugin Ecosystem & GitHub Automation (182 Dateien, 87.247 Zeilen, 14 Plugins) |
 | [OpenSIN-backend](https://github.com/OpenSIN-AI/OpenSIN-backend) | 🔒 Private | OpenSIN backend and A2A fleet control plane |
 | [OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation) | 🌍 Public | Official documentation for OpenSIN - docs.opensin.ai |
 | [OpenSIN-overview](https://github.com/OpenSIN-AI/OpenSIN-overview) | 🌍 Public | The Ultimate Single Source of Truth for the OpenSIN-AI organization (Rules, Teams, Agents, MCPs) |
