@@ -2,7 +2,7 @@
 
 > **The Ultimate Single Source of Truth für die OpenSIN-AI Organisation**
 >
-> 📊 **162 Repositories** | **17 Teams** | **92 Worker** | **3 Templates** | **5 Plugins/Skills** | **6 Websites**
+> 📊 **162 Repositories** | **17 Teams** | **92 Worker** | **4 Templates** | **19 Plugins/Skills** | **6 Websites**
 
 ---
 
@@ -23,7 +23,7 @@
 
 | Repo | Zweck |
 |------|-------|
-| [OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | Autonomes CLI + SDK (`@opensin/sdk`) — Agent Loop, Tool System, Model Routing, Memory, Safety, A2A Transport Layer |
+| [OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | Autonomes CLI + SDK (`@opensin/sdk`) — Agent Loop, Tool System, Model Routing, Memory, Safety, A2A Transport Layer + Rust Engine (71 Dateien, 37.7K Zeilen) |
 | [OpenSIN-backend](https://github.com/OpenSIN-AI/OpenSIN-backend) | Closed Source Backend — A2A Fleet Control Plane, n8n-Routing, Agenten-Orchestrierung, API für OpenSIN-WebApp |
 | [OpenSIN-WebApp](https://github.com/OpenSIN-AI/OpenSIN-WebApp) | User WebApp (Next.js, Vercel ✅) — Login, Dashboard, Agenten-Steuerung (gekoppelt an OpenSIN-backend) |
 
@@ -80,6 +80,27 @@
 
 ## 🔌 PLUGINS & SKILLS
 
+### OpenSIN-Code Plugins (14 migriert)
+
+| Plugin | Dateien | Zweck |
+|--------|---------|-------|
+| [sin-code-review](https://github.com/OpenSIN-AI/OpenSIN-Code/tree/main/plugins/sin-code-review) | 6 | Automatisierte Code-Reviews mit Multi-Agent-System |
+| [sin-commit-commands](https://github.com/OpenSIN-AI/OpenSIN-Code/tree/main/plugins/sin-commit-commands) | 10 | Git-Workflow-Befehle (Commit, Push, PR) |
+| [sin-feature-dev](https://github.com/OpenSIN-AI/OpenSIN-Code/tree/main/plugins/sin-feature-dev) | 12 | Feature-Entwicklung mit spezialisierten Agenten |
+| [sin-frontend-design](https://github.com/OpenSIN-AI/OpenSIN-Code/tree/main/plugins/sin-frontend-design) | 6 | UI/UX-Implementierung und Design-Skill |
+| [sin-security-guidance](https://github.com/OpenSIN-AI/OpenSIN-Code/tree/main/plugins/sin-security-guidance) | 6 | Security-Reminder-Hook |
+| [sin-hookify](https://github.com/OpenSIN-AI/OpenSIN-Code/tree/main/plugins/sin-hookify) | 48 | Regelbasierte Hook-Erstellung (größtes Plugin) |
+| [sin-explanatory-mode](https://github.com/OpenSIN-AI/OpenSIN-Code/tree/main/plugins/sin-explanatory-mode) | 8 | Erklärt Implementierungsentscheidungen |
+| [sin-learning-mode](https://github.com/OpenSIN-AI/OpenSIN-Code/tree/main/plugins/sin-learning-mode) | 8 | Interaktiver Lernmodus |
+| [sin-model-migration](https://github.com/OpenSIN-AI/OpenSIN-Code/tree/main/plugins/sin-model-migration) | 10 | Migration zwischen Sin-Modellen |
+| [sin-agent-sdk-dev](https://github.com/OpenSIN-AI/OpenSIN-Code/tree/main/plugins/sin-agent-sdk-dev) | 10 | SDK-Entwicklung für Agenten |
+| [sin-plugin-dev](https://github.com/OpenSIN-AI/OpenSIN-Code/tree/main/plugins/sin-plugin-dev) | 116 | Plugin-Entwicklungs-Toolkit (7 Skills, 100+ Docs) |
+| [sin-pr-review](https://github.com/OpenSIN-AI/OpenSIN-Code/tree/main/plugins/sin-pr-review) | 18 | PR-Review-Toolkit (6 Agenten) |
+| [sin-loop](https://github.com/OpenSIN-AI/OpenSIN-Code/tree/main/plugins/sin-loop) | 16 | Selbst-referenzielle Entwicklungsloops |
+| [sin-ralph](https://github.com/OpenSIN-AI/OpenSIN-Code/tree/main/plugins/sin-ralph) | 7 | Ralph-Loop-Technik |
+
+### Externe Plugins & Skills
+
 | Repo | Zweck |
 |------|-------|
 | [Plugin-SIN-Biometrics](https://github.com/OpenSIN-AI/Plugin-SIN-Biometrics) | Governance, Policy Enforcement, Supervisor für OpenCode |
@@ -109,6 +130,7 @@
 |------|-------|
 | [OpenSIN-overview](https://github.com/OpenSIN-AI/OpenSIN-overview) | **SSOT**: rules.md, MASTER_INDEX.md, Registry aller 162 Repos |
 | [OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation) | Offizielle Doku (VitePress) — docs.opensin.ai |
+| [OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | Core Engine Doku: [OpenSIN Code](https://docs.opensin.ai/docs/guide/opensin-code), [Rust Engine](https://docs.opensin.ai/docs/guide/opensin-code-rust-engine), [Plugins](https://docs.opensin.ai/docs/plugins/opensin-code-plugins) |
 
 ---
 
