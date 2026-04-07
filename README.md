@@ -42,14 +42,28 @@
 | [Team-SIN-Community](https://github.com/OpenSIN-AI/Team-SIN-Community) | 4 | Discord, WhatsApp, Telegram, YouTube Community |
 | [Team-SIN-Forum](https://github.com/OpenSIN-AI/Team-SIN-Forum) | 9 | Reddit, HackerNews, StackOverflow, Quora, DevTo, etc. |
 | [Team-SIN-Google](https://github.com/OpenSIN-AI/Team-SIN-Google) | 3 | Google-Apps, Google-Chat, Opal |
-| [Team-SIN-Infrastructure](https://github.com/OpenSIN-AI/Team-SIN-Infrastructure) | 8 | Authenticator, Terminal, Storage, Supabase, N8N, CI-CD, etc. |
+| [Team-SIN-Infrastructure](https://github.com/OpenSIN-AI/Team-SIN-Infrastructure) | 15 | Authenticator, Terminal, Storage, Supabase, N8N, CI-CD, etc. |
 | [Team-SIN-Legal](https://github.com/OpenSIN-AI/Team-SIN-Legal) | 8 | ClaimWriter, Patents, Damages, Compliance, Contract, etc. |
 | [Team-SIN-Media-ComfyUI](https://github.com/OpenSIN-AI/Team-SIN-Media-ComfyUI) | 3 | ImageGen, VideoGen, Workflow |
 | [Team-SIN-Media-Music](https://github.com/OpenSIN-AI/Team-SIN-Media-Music) | 6 | Beats, Producer, Singer, Songwriter, Videogen, Community |
 | [Team-SIN-Messaging](https://github.com/OpenSIN-AI/Team-SIN-Messaging) | 19 | WhatsApp, Telegram, Signal, Discord, iMessage, etc. |
 | [Team-SIN-Microsoft](https://github.com/OpenSIN-AI/Team-SIN-Microsoft) | 9 | 365, Teams, Outlook, OneDrive, Excel, Word, PowerPoint, etc. |
 | [Team-SIN-Research](https://github.com/OpenSIN-AI/Team-SIN-Research) | 1 | Deep-Research |
-| [Team-SIN-Social](https://github.com/OpenSIN-AI/Team-SIN-Social) | 17 | TikTok, Instagram, X, LinkedIn, Facebook, YouTube, etc. |
+| [Team-SIN-Social](https://github.com/OpenSIN-AI/Team-SIN-Social) | 19 | TikTok, Instagram, X, LinkedIn, Facebook, YouTube, etc. |
+
+---
+
+## 🔌 MCP SERVER
+
+| Repo | Zweck |
+|------|-------|
+| [MCP-SIN-chrome-extension](https://github.com/OpenSIN-AI/MCP-SIN-chrome-extension) | Chrome Extension MCP - Browser Automation |
+| [MCP-SIN-computer-use](https://github.com/OpenSIN-AI/MCP-SIN-computer-use) | Computer Use MCP - Desktop Control |
+| [MCP-SIN-in-chrome](https://github.com/OpenSIN-AI/MCP-SIN-in-chrome) | In-Chrome MCP - Tab/Content Access |
+| [MCP-SIN-mcp-gateway](https://github.com/OpenSIN-AI/MCP-SIN-mcp-gateway) | MCP Gateway - Central Routing |
+| [MCP-SIN-memory](https://github.com/OpenSIN-AI/MCP-SIN-memory) | Memory MCP - Persistent Storage |
+| [MCP-SIN-platform-auth](https://github.com/OpenSIN-AI/MCP-SIN-platform-auth) | Platform Auth - OAuth/SSO |
+| [MCP-SIN-usebrowser](https://github.com/OpenSIN-AI/MCP-SIN-usebrowser) | UseBrowser - Web Automation |
 
 ---
 
@@ -60,6 +74,7 @@
 | [Template-SIN-Agent](https://github.com/OpenSIN-AI/Template-SIN-Agent) | Standard-Blueprint für neue A2A-Agenten (mit A2A Transport Layer) |
 | [Template-SIN-Team](https://github.com/OpenSIN-AI/Template-SIN-Team) | Team-Manager Blueprint (Delegation, Lexicon RAG, Retry, Telegram) |
 | [Template-SIN-Worker](https://github.com/OpenSIN-AI/Template-SIN-Worker) | Worker-Prozess Blueprint |
+| [Template-SIN-Agent-Worker](https://github.com/OpenSIN-AI/Template-SIN-Agent-Worker) | Agent Worker Template |
 
 ---
 
