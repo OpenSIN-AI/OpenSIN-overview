@@ -7,6 +7,8 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 ---
 
 ## 👑 1. Team Orchestrators (Die Gehirne)
+| [Team-SIN-FlowFactory](https://github.com/OpenSIN-AI/Team-SIN-FlowFactory) | 🌐 Public | The MCP Factory Team. Beinhaltet A2A-SIN-Medusa für autonome Tool-Synthese. |
+
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
 | [Team-SIN-Apple](https://github.com/OpenSIN-AI/Team-SIN-Apple) | 🔒 Private | Keine Beschreibung hinterlegt. |
@@ -269,3 +271,13 @@ gh secret set N8N_CI_WEBHOOK_URL --repo OpenSIN-AI/<REPO> --body "http://92.5.60
 - **Central HF Pinger:** n8n workflow pings ALL Hugging Face Spaces every 45 minutes to prevent sleep-mode.
 - **Coverage:** 20+ Agents including Prolific Bridge, Auth, Stripe, and Frontend Fleet.
 - **Documentation:** [HF Keep-Alive Guide](https://docs.opensin.ai/best-practices/hf-fleet-keepalive)
+
+## 🧠 Software 3.0: OpenSIN-Neural-Bus
+| Repository | Sichtbarkeit | Beschreibung/Zweck |
+|------------|-------------|-------------------|
+| [OpenSIN-Neural-Bus](https://github.com/OpenSIN-AI/OpenSIN-Neural-Bus) | 🌐 Public | Das Event-Driven Nervensystem für OpenSIN-AI. Ersetzt starre n8n-Workflows durch eine selbstreplizierende, selbstfinanzierende (Sovereign Automaton) P2P Swarm Intelligence. |
+
+## 🐍 A2A-SIN-Medusa (Self-Extender Agent)
+| Repository | Team | Rolle |
+|------------|------|-------|
+| [A2A-SIN-Medusa](https://github.com/OpenSIN-AI/A2A-SIN-Medusa) | Team-SIN-FlowFactory | Autonome MCP-Generierung (The Capability Gap Filler). Baut Tools selbstständig, testet sie und injiziert sie ins OpenSIN-Ökosystem. |
