@@ -264,3 +264,8 @@ gh secret set N8N_CI_WEBHOOK_URL --repo OpenSIN-AI/<REPO> --body "http://92.5.60
 | a2a-sin-code-backend | Cloud Coder Agent (backend) | Team - Coder | SIN-Zeus | [https://a2a-sin-code-backend.hf.space](https://a2a-sin-code-backend.hf.space) | [https://a2a.delqhi.com/agents/sin-code-backend](https://a2a.delqhi.com/agents/sin-code-backend) | active | Hugging Face Space (cpu-basic) | `sin.code.backend.*` | 2026-04-08 (deploy) |
 | a2a-sin-code-fullstack | Cloud Coder Agent (fullstack) | Team - Coder | SIN-Zeus | [https://a2a-sin-code-fullstack.hf.space](https://a2a-sin-code-fullstack.hf.space) | [https://a2a.delqhi.com/agents/sin-code-fullstack](https://a2a.delqhi.com/agents/sin-code-fullstack) | active | Hugging Face Space (cpu-basic) | `sin.code.fullstack.*` | 2026-04-08 (deploy) |
 | a2a-sin-code-frontend | Cloud Coder Agent (frontend) | Team - Coder | SIN-Zeus | [https://a2a-sin-code-frontend.hf.space](https://a2a-sin-code-frontend.hf.space) | [https://a2a.delqhi.com/agents/sin-code-frontend](https://a2a.delqhi.com/agents/sin-code-frontend) | active | Hugging Face Space (cpu-basic) | `sin.code.frontend.*` | 2026-04-08 (deploy) |
+
+## 🔋 Fleet Reliability (Keep-Alive)
+- **Central HF Pinger:** n8n workflow pings ALL Hugging Face Spaces every 45 minutes to prevent sleep-mode.
+- **Coverage:** 20+ Agents including Prolific Bridge, Auth, Stripe, and Frontend Fleet.
+- **Documentation:** [HF Keep-Alive Guide](https://docs.opensin.ai/best-practices/hf-fleet-keepalive)
