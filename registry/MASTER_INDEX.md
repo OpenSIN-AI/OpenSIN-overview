@@ -198,6 +198,11 @@ gh secret set N8N_CI_WEBHOOK_URL --repo OpenSIN-AI/<REPO> --body "http://92.5.60
 | [OpenSIN-overview](https://github.com/OpenSIN-AI/OpenSIN-overview) | 🌍 Public | The Ultimate Single Source of Truth for the OpenSIN-AI organization (Rules, Teams, Agents, MCPs) |
 | [OpenSIN](https://github.com/OpenSIN-AI/OpenSIN) | 🌍 Public | OpenSIN Core — 310+ packages across 25+ domains. The most comprehensive open-source AI agent system in the world. |
 
+### OpenSIN-AI Agent Roadmap
+- Feature spec: [OpenSIN-overview/docs/opensin-ai-agent-feature-spec.md](../docs/opensin-ai-agent-feature-spec.md)
+- Public comparison: [OpenSIN-documentation/docs/guide/opensin-ai-agent-features.md](https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/guide/opensin-ai-agent-features.md)
+- Verified runtime layer: Heartbeat, Cron, Failover, Approval Hooks, Unified Orchestrator, CLI-agent policy routing
+
 ## 🏭 7. IT-Infrastruktur & DevOps (Infra-SIN-*)
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
