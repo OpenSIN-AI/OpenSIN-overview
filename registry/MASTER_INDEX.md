@@ -216,6 +216,7 @@ gh secret set N8N_CI_WEBHOOK_URL --repo OpenSIN-AI/<REPO> --body "http://92.5.60
 | [Biz-SIN-Jobs](https://github.com/OpenSIN-AI/Biz-SIN-Jobs) | 🔒 Private | Job board and career opportunities at OpenSIN-AI. |
 | [Biz-SIN-Ledger](https://github.com/OpenSIN-AI/Biz-SIN-Ledger) | 🌍 Public | Live autonomous logbook and activity showcase of the OpenSIN 24/7 A2A Agent Fleet. |
 | [Biz-SIN-Marketing](https://github.com/OpenSIN-AI/Biz-SIN-Marketing) | 🔒 Private | Marketing & release strategy for OpenSIN (open-source) and MyOpenSIN (subscription). Launch hub, community discussions, and execution playbooks. |
+| [OpenSIN-Bridge](https://github.com/OpenSIN-AI/OpenSIN-Bridge) | 🔒 Private | Thin-client SaaS browser bridge for OpenSIN. Stripe + Supabase + Cloudflare Workers keep the intelligence server-side while the extension stays lightweight and hard to clone. |
 | [Biz-SIN-Patents](https://github.com/OpenSIN-AI/Biz-SIN-Patents) | 🔒 Private | Patent portfolio and intellectual property management for OpenSIN technology. |
 
 ## 🌐 9. Websites, Showcases & Frontends
@@ -275,9 +276,9 @@ gh secret set N8N_CI_WEBHOOK_URL --repo OpenSIN-AI/<REPO> --body "http://92.5.60
 ## 🧠 Software 3.0: OpenSIN-Neural-Bus
 | Repository | Sichtbarkeit | Beschreibung/Zweck |
 |------------|-------------|-------------------|
-| [OpenSIN-Neural-Bus](https://github.com/OpenSIN-AI/OpenSIN-Neural-Bus) | 🌐 Public | Das Event-Driven Nervensystem für OpenSIN-AI. Ersetzt starre n8n-Workflows durch eine selbstreplizierende, selbstfinanzierende (Sovereign Automaton) P2P Swarm Intelligence. |
+| [OpenSIN-Neural-Bus](https://github.com/OpenSIN-AI/OpenSIN-Neural-Bus) | 🌐 Public | Das Event-Driven Nervensystem für OpenSIN-AI. Live auf OCI `92.5.60.87` mit NATS JetStream, Redis und pgvector; ersetzt starre n8n-Workflows durch eine selbstreplizierende, selbstfinanzierende (Sovereign Automaton) P2P Swarm Intelligence. |
 
 ## 🐍 A2A-SIN-Medusa (Self-Extender Agent)
 | Repository | Team | Rolle |
 |------------|------|-------|
-| [A2A-SIN-Medusa](https://github.com/OpenSIN-AI/A2A-SIN-Medusa) | Team-SIN-FlowFactory | Autonome MCP-Generierung (The Capability Gap Filler). Baut Tools selbstständig, testet sie und injiziert sie ins OpenSIN-Ökosystem. |
+| [A2A-SIN-Medusa](https://github.com/OpenSIN-AI/A2A-SIN-Medusa) | Team-SIN-FlowFactory | Autonome MCP-Generierung (The Capability Gap Filler). Lauscht live auf dem Neural-Bus (`opensin.capability.gap`), baut Tools selbstständig, testet sie, speichert Lernlektionen in Ouroboros DNA und injiziert neue Fähigkeiten ins OpenSIN-Ökosystem. |

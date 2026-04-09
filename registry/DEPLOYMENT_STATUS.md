@@ -73,3 +73,9 @@
 ---
 **Deployment completed:** 2026-04-08 05:55 UTC  
 **Fleet status:** All 6 agents operational and ready to work.
+
+## Ecosystem Updates (2026-04-09)
+
+- **OpenSIN-Neural-Bus:** Live on OCI `92.5.60.87` with NATS JetStream, Redis, and pgvector.
+- **A2A-SIN-Medusa:** PR #3 open — NATS event mesh + Ouroboros memory integration.
+- **OpenSIN-Bridge:** PR #7 (Supabase auth schema) and PR #8 (Stripe checkout + webhooks) open.
