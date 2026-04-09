@@ -230,4 +230,48 @@ jobs:
 
 ---
 
-*Zuletzt aktualisiert: 2026-04-07 | OpenSIN-AI CEO Audit*
+## 🚀 OPENSIN-AI AGENT ROADMAP (vs. OpenClaw / Gemini / Claude Code)
+
+> **Ziel:** OpenSIN-AI Agent muss alle Wettbewerber übertreffen.
+
+### Feature-Parität & Differentiatoren
+
+| Feature | OpenSIN-AI | OpenClaw | Gemini Agent | Claude Code |
+|---------|:---------:|:--------:|:------------:|:-----------:|
+| Open Source + Self-Hosted | ✅ | ✅ | ❌ | ❌ |
+| 24/7 Autonomous (Heartbeat+Cron) | ✅ | ✅ | ❌ | ✅ (3d) |
+| Multi-Model + Failover | ✅ | ✅ | ❌ | ❌ |
+| Multi-Channel (19+ Platformen) | ✅ | ✅ | ❌ | ✅ (2) |
+| Subagent Fleet (92+ Workers) | ✅ | ✅ | ❌ | ✅ (3) |
+| External Harness (ACP) | ✅ | ✅ | ❌ | ❌ |
+| Google Workspace Deep | ✅ | ✅ | ✅ | ❌ |
+| Apple Ecosystem (12 Agents) | ✅ | ❌ | ❌ | ❌ |
+| Agent SDK | ✅ | ❌ | ❌ | ✅ |
+| Persistent Memory (Wiki+Journals) | ✅ | ✅ | ❌ | ✅ |
+| Webhook + Cron + Heartbeat | ✅ | ✅ | ❌ | ❌ |
+| Unified Agent Orchestrator | ✅ | ✅ | ❌ | ❌ |
+| Approval Hooks | ✅ | ✅ | ❌ | ❌ |
+| Session Branching | 🔲 | ✅ | ❌ | ❌ |
+| Canvas/A2UI | 🔲 | ✅ | ❌ | ❌ |
+| Voice Interaction | ✅ (Siri) | ✅ | ✅ | ❌ |
+
+### Vollständige Spezifikation
+→ [docs/opensin-ai-agent-feature-spec.md](./docs/opensin-ai-agent-feature-spec.md)
+
+### Implementierungs-Roadmap
+- **Sprint 1:** Heartbeat, Multi-Model Router, Approval Hooks, Cron Scheduler, Unified Orchestrator
+- **Sprint 2:** Messaging API, Memory Wiki, Remote Control, Subagent Spawning
+- **Sprint 3-4:** ACP Harness, Session Branching, Audit Logging
+- **Sprint 5-6:** Canvas/A2UI, Voice, Google Workspace Deep
+
+### Sprint 1 Verifiziert
+- `HeartbeatSystem` koordiniert autonome Check-ins, Task-Queue-Polling und Graceful Shutdown.
+- `FailoverRouter` routet zwischen OpenAI OCI, Antigravity und NIM mit Health-basierter Fallback-Kette.
+- `CronScheduler` plant und führt wiederkehrende Aufgaben aus.
+- `ApprovalHooks` erzwingt riskobasierte Freigaben für destruktive, Netzwerk-, Finanz- und Auth-Operationen.
+- `AgentOrchestrator` verbindet alle vier Systeme mit `AgentLoop`, `LoopMode`, `SmartModelRouter` und `PermissionEvaluator`.
+- `CLIAgent` nutzt den Orchestrator jetzt für Modellrouting und Policy-Prüfung.
+
+---
+
+*Zuletzt aktualisiert: 2026-04-09 | OpenSIN-AI CEO Audit*
