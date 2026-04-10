@@ -86,6 +86,17 @@ jobs:
 
 ---
 
+## 🚨 MANDATES & DIRECTIVES
+
+| Mandate | Status | Description |
+|---------|--------|-------------|
+| **Hacker Bypass** | ✅ Active | No-Wall policy for technical barriers (5-Layer stack) |
+| **CI/CD Mandate** | ✅ Active | Exclusive use of n8n + OCI for builds |
+| **Fleet Sync** | ✅ Active | Mandatory `sin-sync` for global config parity |
+| **Visual Evidence** | ✅ Active | Mandatory screenshots/videos in all reports/issues |
+
+---
+
 ## 🏗️ CORE ENGINE
 
 | Repo | Zweck |
