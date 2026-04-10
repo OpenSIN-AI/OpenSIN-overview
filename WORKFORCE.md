@@ -1,0 +1,1 @@
+- **A2A-SIN-Worker-heypiggy**: Passive income agent for heypiggy.com
