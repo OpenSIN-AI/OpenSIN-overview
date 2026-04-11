@@ -6,26 +6,6 @@
 
 ---
 
-## 🚀 Antigravity Rotator 2.0 (God-Level)
-The [Antigravity Rotator](https://github.com/Delqhi/antigravity-rotator) has been fully upgraded to **2.0.0 (God-Level)**.
-It has surpassed Claude Code across 12 massive architectural phases:
-1. **Enhanced Intelligence & Quality**: AST-based analysis, error-pattern registries.
-2. **Dev Tools**: Live-collaboration, test-generation, semantic diffs.
-3. **Ops Tools**: Profiling, security scanning, multi-repo workspaces.
-4. **Safety & Memory**: Policy guards, knowledge triples, provider aliases.
-5. **Routing & Workflows**: Taskboards, SearXNG search, cron allowlists, failover routing.
-6. **Subagent Manager**: `Popen`-based parallel thread delegation.
-7. **Autonomous PRs**: End-to-end AI review and CI/CD watcher.
-8. **Cross-Repo Intelligence**: Multi-workspace dependency graphs.
-9. **Marketplace & Monetization**: SQLite-backed agent registry, billing, and pricing engines.
-10. **Multi-Cloud Orchestration**: Cost-first scheduling across OCI, HF, and Cloudflare with Haversine failover.
-11. **Telegram Brain**: Closed-loop Global Fleet Self-Healing via Telegram API.
-12. **Idle Monetization Engine**: Autonomous Bug Bounty, Upwork, and Survey hunting.
-
-*178/178 unit tests passing across the fleet. Check the `OpenSIN-documentation` for the full specs.*
-
----
-
 ## 🚨 CI/CD MANDAT — ABSOLUTES VERBOT FÜR NORMALE GITHUB ACTIONS
 
 > **NIEMALS normale GitHub Actions Runner von GitHub nutzen! NIEMALS!**
@@ -226,7 +206,6 @@ jobs:
 | [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | **NEU** — [OpenSIN-AI CLI Doku](https://docs.opensin.ai/docs/guide/opensin-ai-cli) |
 | [opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code) | **NEU** — [OpenSIN-AI Code Doku](https://docs.opensin.ai/docs/guide/opensin-ai-code) |
 | [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | **NEU** — [OpenSIN-AI Platform Doku](https://docs.opensin.ai/docs/guide/opensin-ai-platform) |
-| [Antigravity Rotator 2.0](https://github.com/Delqhi/antigravity-rotator) | 12-Phase God-Level Upgrade Roadmap + Marketplace + Multi-Cloud + Self-Healing + Idle Monetization |
 
 ---
 
