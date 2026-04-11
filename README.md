@@ -226,6 +226,7 @@ jobs:
 | [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | **NEU** — [OpenSIN-AI CLI Doku](https://docs.opensin.ai/docs/guide/opensin-ai-cli) |
 | [opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code) | **NEU** — [OpenSIN-AI Code Doku](https://docs.opensin.ai/docs/guide/opensin-ai-code) |
 | [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | **NEU** — [OpenSIN-AI Platform Doku](https://docs.opensin.ai/docs/guide/opensin-ai-platform) |
+| [Antigravity Rotator 2.0](https://github.com/Delqhi/antigravity-rotator) | 12-Phase God-Level Upgrade Roadmap + Marketplace + Multi-Cloud + Self-Healing + Idle Monetization |
 
 ---
 
