@@ -135,6 +135,7 @@ jobs:
 | [MCP-SIN-memory](https://github.com/OpenSIN-AI/MCP-SIN-memory) | Memory MCP - Persistent Storage |
 | [MCP-SIN-platform-auth](https://github.com/OpenSIN-AI/MCP-SIN-platform-auth) | Platform Auth - OAuth/SSO |
 | [MCP-SIN-usebrowser](https://github.com/OpenSIN-AI/MCP-SIN-usebrowser) | UseBrowser - Web Automation |
+| [Simone-MCP](https://github.com/OpenSIN-AI/Simone-MCP) | Semantic Code Intelligence MCP — Symbol-Navigation, Referenzen, strukturelle Edits, hybrides Memory (PFLICHT für alle Agenten) |
 
 ---
 
@@ -227,6 +228,7 @@ jobs:
 3. **Wähle dein Team:** → Siehe Team-Orchestratoren oben
 4. **Erstelle deinen Agenten:** → Nutze `Template-SIN-Agent` als Blueprint
 5. **Sync die Flotte:** → Führe `sin-sync` nach jeder Config-Änderung aus
+6. **Aktiviere Simone MCP + PCPM:** → Simone MCP für semantische Code-Navigation, PCPM für Cross-Session-Memory — beide sind Pflicht für jeden Agenten
 
 ---
 
