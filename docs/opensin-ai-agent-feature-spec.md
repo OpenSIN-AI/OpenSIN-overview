@@ -26,9 +26,9 @@ OpenSIN-AI Agent is the autonomous AI agent system at the core of the OpenSIN ec
 | Voice Interaction | ✅ (Siri + Apple agents) | ✅ (Voice Wake + Talk Mode) | ✅ (Gemini Live) | ❌ |
 | Google Workspace | ✅ (A2A-SIN-Google-Apps) | ✅ (Google Workspace plugin) | ✅ (Native deep integration) | ❌ |
 | Browser Automation | ✅ (webauto-nodriver-mcp) | ✅ (Computer Use) | ✅ (Gemini native) | ✅ (Computer Use) |
-| Session Branching | 🔲 (TODO) | ✅ (Branch + Compaction) | ❌ | ❌ |
-| Canvas/A2UI | 🔲 (TODO) | ✅ (A2UI interactive HTML) | ❌ | ❌ |
-| Plugin Approval Hooks | 🔲 (TODO) | ✅ (requireApproval) | ❌ | ❌ |
+| Session Branching | ✅ | ✅ (Branch + Compaction) | ❌ | ❌ |
+| Canvas/A2UI | ✅ | ✅ (A2UI interactive HTML) | ❌ | ❌ |
+| Plugin Approval Hooks | ✅ | ✅ (requireApproval) | ❌ | ❌ |
 
 **Legend:** ✅ Implemented | 🔲 Planned/TODO | ❌ Not available
 
@@ -187,16 +187,16 @@ OpenSIN-AI Agent is the autonomous AI agent system at the core of the OpenSIN ec
 - [ ] Implement Channel-Based Remote Control (Telegram first)
 - [ ] Build generic subagent spawning API
 - [ ] Create progress tracking system for subagents
-- [ ] Implement approval hooks framework
+- [x] Implement approval hooks framework
 
 ### Sprint 3 (Week 5-6): Orchestration
 - [ ] Implement external harness control (opencode CLI)
-- [ ] Build session branching & compaction
+- [x] Build session branching & compaction
 - [ ] Create ACP-style harness management
 - [ ] Implement audit logging system
 
 ### Sprint 4 (Week 7-8): Differentiation
-- [ ] Build Canvas/A2UI interactive workspace
+- [x] Build Canvas/A2UI interactive workspace
 - [ ] Implement voice interaction pipeline
 - [ ] Extend Google Workspace integration (Gmail, Calendar, Slides)
 - [ ] Cross-app workflow automation

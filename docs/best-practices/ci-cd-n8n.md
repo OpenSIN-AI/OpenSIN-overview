@@ -245,8 +245,8 @@ gh api -X POST repos/OpenSIN-AI/<REPO>/statuses/<SHA> \
 ## Operator Checklist
 
 - [ ] N8N_CI_WEBHOOK_URL Secret in jedem Repo gesetzt
-- [ ] `.github/workflows/ci.yml` entspricht exakt dem obigen Template
-- [ ] Workflow-ID in allen Docs ist `VhDVux7dSCoQdkOP`
+- [x] `.github/workflows/ci.yml` entspricht exakt dem obigen Template
+- [x] Workflow-ID in allen Docs ist `VhDVux7dSCoQdkOP`
 - [ ] OCI VM: `opensin-ci-runner.service` aktiv und gesund
 - [ ] Zwei Runner in GitHub Org sichtbar (`oci-a1flex-arm64`, `oci-a1flex-arm64-2`)
 - [ ] `/opt/turbo-cache` existiert und ist beschreibbar
