@@ -1,0 +1,22 @@
+name: CI → n8n
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  statuses: write
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: OpenSIN-AI/sin-github-action@main
+        with:
+          n8n_webhook_url: ${{ secrets.N8N_CI_WEBHOOK_URL }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          pipeline: all
