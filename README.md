@@ -2,7 +2,7 @@
 
 > **The Ultimate Single Source of Truth für die OpenSIN-AI Organisation**
 >
-> 📊 **165 Repositories** | **17 Teams** | **92 Worker** | **4 Templates** | **19 Plugins/Skills** | **6 Websites**
+> 📊 **165 Repositories** | **17 Teams** | **92 Worker** | **4 Templates** | **20 Plugins/Skills** | **6 Websites**
 
 ---
 
@@ -178,6 +178,8 @@ jobs:
 | [Plugin-SIN-Biometrics](https://github.com/OpenSIN-AI/Plugin-SIN-Biometrics) | Governance, Policy Enforcement, Supervisor für OpenCode |
 | [Plugin-SIN-Swarm](https://github.com/OpenSIN-AI/Plugin-SIN-Swarm) | Subagent-Workflow mit tmux, Parallel Fan-Out, MAX-Mode |
 | [Skill-SIN-Agent-Forge](https://github.com/OpenSIN-AI/Skill-SIN-Agent-Forge) | OpenCode Skill: A2A-Agenten erschaffen |
+| [Skill-SIN-Create-Flow](https://github.com/Delqhi/upgraded-opencode-stack/tree/main/skills/create-flow) | OpenCode Skill: Flow-Building mit Screenshot+Vision+Brain-Artefakten; Snapshot wird kanonisch aus `SIN-InkogniFlow` gespiegelt und per Guard gegen Drift abgesichert |
+| [SIN-InkogniFlow](https://github.com/OpenSIN-AI/SIN-InkogniFlow) | Kanonisches Runtime-Repo für alle `create-flow`-basierten Flows; neue Flow-Implementierungen dürfen davon nicht abweichen |
 | [Skill-SIN-Create-TelegramBot](https://github.com/OpenSIN-AI/Skill-SIN-Create-TelegramBot) | OpenCode Skill: Telegram-Bot Setup |
 | [Skill-SIN-Enterprise-Deep-Debug](https://github.com/OpenSIN-AI/Skill-SIN-Enterprise-Deep-Debug) | OpenCode Skill: Strukturiertes Debugging |
 
@@ -253,8 +255,8 @@ jobs:
 | Webhook + Cron + Heartbeat | ✅ | ✅ | ❌ | ❌ |
 | Unified Agent Orchestrator | ✅ | ✅ | ❌ | ❌ |
 | Approval Hooks | ✅ | ✅ | ❌ | ❌ |
-| Session Branching | 🔲 | ✅ | ❌ | ❌ |
-| Canvas/A2UI | 🔲 | ✅ | ❌ | ❌ |
+| Session Branching | ✅ | ✅ | ❌ | ❌ |
+| Canvas/A2UI | ✅ | ✅ | ❌ | ❌ |
 | Voice Interaction | ✅ (Siri) | ✅ | ✅ | ❌ |
 
 ### Vollständige Spezifikation

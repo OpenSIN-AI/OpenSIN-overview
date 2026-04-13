@@ -164,7 +164,7 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 | Komponente | Repo/Ort | Zweck |
 |-----------|---------|-------|
 | **[sin-github-action](https://github.com/OpenSIN-AI/sin-github-action)** | 🌍 Public | Composite GitHub Action (curl only, ~2s) — sendet Webhook an n8n |
-| **n8n Workflow `cx2UwQYwBPKucckV`** | OCI VM `92.5.60.87:5678` | Webhook Receiver → dispatcht an CI Runner |
+| **n8n Workflow `VhDVux7dSCoQdkOP`** | OCI VM `92.5.60.87:5678` | Webhook Receiver → dispatcht an CI Runner |
 | **opensin-ci-runner.py** | `/home/ubuntu/opensin-ci-runner.py` (OCI) | Python HTTP Server — führt git clone, npm build, test aus |
 | **systemd: opensin-ci-runner** | OCI VM | Hält CI Runner am Leben (Port 3456) |
 
@@ -262,6 +262,8 @@ gh secret set N8N_CI_WEBHOOK_URL --repo OpenSIN-AI/<REPO> --body "http://92.5.60
 | [Plugin-SIN-Biometrics](https://github.com/OpenSIN-AI/Plugin-SIN-Biometrics) | 🌍 Public | OpenCode plugin for bootstrapping and operating the BIOMETRICS control plane. Adds governance, policy enforcement, and supervisor capabilities to OpenCode workflows. |
 | [Plugin-SIN-Swarm](https://github.com/OpenSIN-AI/Plugin-SIN-Swarm) | 🌍 Public | OpenSIN subagent workflow plugin for OpenCode with tmux side-by-side sessions, parallel fan-out, messaging, and MAX-mode git worktrees. |
 | [Skill-SIN-Agent-Forge](https://github.com/OpenSIN-AI/Skill-SIN-Agent-Forge) | 🔒 Private | OpenCode skill SSOT: sin-a2a-agent-forge |
+| [Skill-SIN-Create-Flow](https://github.com/Delqhi/upgraded-opencode-stack/tree/main/skills/create-flow) | 🔒 Private | OpenCode skill SSOT snapshot: create-flow; wird kanonisch aus SIN-InkogniFlow gespiegelt und per Guard gegen Drift abgesichert |
+| [SIN-InkogniFlow](https://github.com/OpenSIN-AI/SIN-InkogniFlow) | 🔒 Private | Kanonisches Runtime-Repo für create-flow. Agenten dürfen keine abweichenden Flow-Runtimes neben dieser Basis aufbauen. |
 | [Skill-SIN-Create-TelegramBot](https://github.com/OpenSIN-AI/Skill-SIN-Create-TelegramBot) | 🔒 Private | OpenCode skill SSOT: create-telegrambot |
 | [Skill-SIN-Enterprise-Deep-Debug](https://github.com/OpenSIN-AI/Skill-SIN-Enterprise-Deep-Debug) | 🔒 Private | OpenCode skill SSOT: enterprise-deep-debug |
 | [Template-A2A-SIN-TelegramBot](https://github.com/OpenSIN-AI/Template-A2A-SIN-TelegramBot) | 🔒 Private | Telegram bot template for A2A agents — standardized Telegram integration blueprint. |
