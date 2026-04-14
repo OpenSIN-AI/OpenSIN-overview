@@ -333,3 +333,9 @@ Bei grossen Codebases (100k+ Zeilen, 1000+ Dateien) MUESSEN Agenten **5-10 paral
 ---
 
 *Zuletzt aktualisiert: 2026-04-09 | OpenSIN-AI CEO Audit*
+
+
+## 🤖 Agent Configuration (A2A v5)
+
+New agents are configured via the `/create-a2a-sin-agent` skill. 
+Documentation: [How to Configure Agents](https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/guide/how-to-configure-agents.md)
