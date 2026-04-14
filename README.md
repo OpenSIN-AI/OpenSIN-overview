@@ -227,6 +227,18 @@ Bei grossen Codebases (100k+ Zeilen, 1000+ Dateien) MUESSEN Agenten **5-10 paral
 
 ---
 
+## ☁️ CLOUD STORAGE
+
+> **GitLab Storage ist tot!** GitLab hat unser Konto gesperrt. Ab sofort Box.com (10 GB free) + Google Drive (15 GB free).
+
+| Provider | Storage | Purpose | Link |
+|----------|---------|---------|------|
+| **Box.com Public** | 10 GB | Logos, Bilder, Docs — öffentlich | [Link](https://app.box.com/s/1st624o9eb5xdistusew5w0erb8offc7) |
+| **Box.com Cache** | 10 GB | Logs, Cache, Temp Files | [Link](https://app.box.com/s/9s5htoefw1ux9ajaqj656v9a02h7z7x1) |
+| **Google Drive** | 15 GB | User-Daten, Backup | [Link](https://drive.google.com) |
+
+→ [Vollständige Box Storage Doku](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup/blob/main/box-storage.md)
+
 ## 🛠️ INFRA & TOOLS
 
 | Repo | Zweck |
@@ -235,8 +247,8 @@ Bei grossen Codebases (100k+ Zeilen, 1000+ Dateien) MUESSEN Agenten **5-10 paral
 | [CLI-SIN-Repo-Sync](https://github.com/OpenSIN-AI/CLI-SIN-Repo-Sync) | Repository Synchronisation |
 | [Core-SIN-Control-Plane](https://github.com/OpenSIN-AI/Core-SIN-Control-Plane) | Doctor/Preflight/Eval Layer |
 | [Infra-SIN-Docker-Empire](https://github.com/OpenSIN-AI/Infra-SIN-Docker-Empire) | 26-Container Docker Infrastruktur |
-| [Infra-SIN-Dev-Setup](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup) | Development Environment Setup |
-| [OpenSIN-onboarding](https://github.com/OpenSIN-AI/OpenSIN-onboarding) | Autonomous 6-phase onboarding — GCP, Passwordmanager, Chrome Extension, Platform Accounts |
+| [Infra-SIN-Dev-Setup](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup) | Development Environment Setup + Box Storage Guide |
+| [OpenSIN-onboarding](https://github.com/OpenSIN-AI/OpenSIN-onboarding) | Autonomous 6-phase onboarding — GCP, Passwordmanager, Chrome Extension, Box/Drive Setup |
 | [cloud-backend](https://github.com/OpenSIN-AI/cloud-backend) | 🔒 Proprietär: Stripe, OAuth, Premium-API |
 
 ---
