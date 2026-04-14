@@ -1,0 +1,12 @@
+{
+  "projectId": "OpenSIN-overview",
+  "goalId": "ssot-fleet-overview",
+  "goalDescription": "Complete SSOT for all 165+ repos, 17 teams, 92 workers",
+  "plan": "v2 — 3/3 steps completed",
+  "knowledge": {
+    "rules": ["Images MUST be opened in macOS Preview.app (PRIORITY -4.5)", "Auto-sync after every chat turn (PRIORITY -4.0)"],
+    "facts": ["OpenSIN-overview is the SSOT for all 165+ repos, 17 teams, 92 workers in the OpenSIN-AI organization"],
+    "solutions": ["Added global-brain, Neural-Bus, sin-brain MCP, Preview MCP to README MCP/Infra/Doku sections"],
+    "forbidden": ["Listing repos without checking if they exist", "Hardcoding repo counts without verification"]
+  }
+}

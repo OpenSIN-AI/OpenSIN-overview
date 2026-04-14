@@ -1,0 +1,13 @@
+{
+  "planId": "opensin-overview-v2",
+  "projectId": "OpenSIN-overview",
+  "goalId": "ssot-fleet-overview",
+  "goalDescription": "Complete SSOT for all 165+ repos, 17 teams, 92 workers",
+  "version": 2,
+  "createdAt": "2026-04-13T17:00:00Z",
+  "steps": [
+    {"id": "step-1", "title": "Update README.md with global-brain and Neural-Bus entries", "status": "completed"},
+    {"id": "step-2", "title": "Add sin-brain MCP + Preview MCP to MCP Server section", "status": "completed"},
+    {"id": "step-3", "title": "Add .pcpm knowledge base", "status": "completed"}
+  ]
+}
