@@ -12,8 +12,8 @@ This repository is part of the OpenSIN-AI ecosystem.
 ```bash
 git clone https://github.com/OpenSIN-AI/$(basename "$PWD")
 cd $(basename "$PWD")
-npm install
-npm start
+bun install
+bun start
 ```
 
 ## Contributing
