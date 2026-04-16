@@ -2,7 +2,7 @@
 
 > **The Ultimate Single Source of Truth für die OpenSIN-AI Organisation**
 >
-> 📊 **165 Repositories** | **17 Teams** | **92 Worker** | **4 Templates** | **19 Plugins/Skills** | **6 Websites**
+> 📊 **195 Repositories** | **17 Teams** | **149 Worker** | **4 Templates** | **44 Skills** | **6 Websites**
 
 > [!IMPORTANT]
 > **SSOT:** Die kanonische OpenCode-Konfiguration liegt unter [Delqhi/upgraded-opencode-stack](https://github.com/Delqhi/upgraded-opencode-stack) (v2.2.1, 44 Skills, 27 MCPs, 5 Provider).

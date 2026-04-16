@@ -13,7 +13,7 @@ This repository is part of the OpenSIN-AI ecosystem.
 git clone https://github.com/OpenSIN-AI/$(basename "$PWD")
 cd $(basename "$PWD")
 bun install
-bun start
+bun run start
 ```
 
 ## Contributing

@@ -36,7 +36,7 @@ n8n @ http://92.5.60.87:5678  (n8n.delqhi.com)
      │ HTTP Request Node → 172.18.0.1:3456/run
      ▼
 opensin-ci-runner.py (systemd service auf OCI VM)
-     │ git clone → npm ci → npm run build → npm test
+     │ git clone → bun install → bun run build → bun test
      ▼
 GitHub Commit Status API ✅ / ❌
 ```
@@ -100,7 +100,7 @@ Der Push triggert automatisch:
 2. `sin-github-action` setzt Commit-Status auf `pending`
 3. POST an n8n Webhook `http://92.5.60.87:5678/webhook/opensin-ci`
 4. n8n leitet weiter an CI Runner (Port 3456 auf OCI Host)
-5. CI Runner klont Repo, führt `npm run build` + `npm test` aus
+5. CI Runner klont Repo, führt `bun run build` + `bun test` aus
 6. GitHub Commit-Status wird auf `success` ✅ oder `failure` ❌ gesetzt
 
 ---
@@ -112,9 +112,9 @@ Der `pipeline` Input in der Action steuert, was gebaut wird:
 | Wert | Was läuft |
 |------|-----------|
 | `all` | build + test (Standard) |
-| `build` | Nur `npm run build` |
-| `test` | Nur `npm test` |
-| `lint` | Nur `npm run lint` |
+| `build` | Nur `bun run build` |
+| `test` | Nur `bun test` |
+| `lint` | Nur `bun run lint` |
 
 ---
 
@@ -209,7 +209,7 @@ Beide haben die Labels `self-hosted,linux,arm64,oci`. Dies erlaubt bis zu **zwei
 Ein gemeinsamer Cache unter `/opt/turbo-cache` beschleunigt wiederholte Builds. Die CI Runner führen aus:
 
 ```bash
-npm run build -- --remote-cache=file:///opt/turbo-cache
+bun run build -- --remote-cache=file:///opt/turbo-cache
 ```
 
 ---
