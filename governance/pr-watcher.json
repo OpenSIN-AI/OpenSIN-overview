@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "repo": "OpenSIN-overview",
+  "org": "OpenSIN-AI",
+  "watcher": {
+    "type": "gh-cli-cron",
+    "script": "scripts/watch-pr-feedback.sh",
+    "fallback": "manual-gh-review"
+  },
+  "reviewChecklist": [
+    "Linked issue or tracker exists",
+    "Governance files remain present",
+    "Markdown and JSON artifacts are valid",
+    "No secrets or credentials were introduced",
+    "Registry and SSOT links remain internally consistent"
+  ],
+  "stopConditions": [
+    "Missing governance artifact",
+    "Invalid JSON in governance or registry files",
+    "Secret material detected in diff"
+  ]
+}

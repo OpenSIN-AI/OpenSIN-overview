@@ -1,9 +1,18 @@
 {
-  "version": "1.0",
+  "version": "1.0.0",
   "repo": "OpenSIN-overview",
+  "org": "OpenSIN-AI",
   "rules": {
     "require-pr-watcher": true,
     "require-visual-evidence": true,
-    "fail-closed": true
+    "fail-closed": true,
+    "require-inbound-intake-artifacts": true
+  },
+  "artifacts": {
+    "platformRegistry": "platforms/registry.json",
+    "inboundWorkflow": "n8n-workflows/inbound-intake.json",
+    "watcherScript": "scripts/watch-pr-feedback.sh",
+    "opsGuide": "docs/03_ops/inbound-intake.md",
+    "watcherConfig": "governance/pr-watcher.json"
   }
 }
