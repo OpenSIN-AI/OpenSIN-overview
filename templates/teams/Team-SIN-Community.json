@@ -1,0 +1,43 @@
+{
+  "$schema_version": "1.0.0",
+  "id": "Team-SIN-Community",
+  "name": "Community Team",
+  "slug": "community",
+  "tier": "marketplace",
+  "status": "beta",
+  "tagline": "Run a healthy community across Discord, Reddit, and your own forum.",
+  "marketing": {
+    "summary": "Community moderation, engagement, and growth across the channels people actually use: Discord servers, Reddit subs, and in-house communities. Handles moderation queues, engagement nudges, FAQ autoresponses, and event coordination.",
+    "bullets": [
+      "Discord server moderation + engagement automation",
+      "Reddit subreddit management and cross-posting",
+      "Community health reports and early-warning signals",
+      "Event coordination with auto-reminders",
+      "Onboarding DMs and FAQ autoresponses"
+    ]
+  },
+  "agents": [
+    {"id": "A2A-SIN-Community", "role": "primary", "summary": "Cross-platform community orchestration."},
+    {"id": "A2A-SIN-Discord", "role": "primary", "summary": "Discord server ops and engagement."},
+    {"id": "A2A-SIN-Reddit", "role": "supporting", "summary": "Subreddit moderation and posting."}
+  ],
+  "pricing": {
+    "model": "monthly-addon",
+    "monthly_addon_eur": 9
+  },
+  "permissions": [
+    "read:user-memory",
+    "write:user-memory",
+    "net:external-http",
+    "net:cloud-apis"
+  ],
+  "budgets": {
+    "default_monthly_usd_cap": 15,
+    "per_run_usd_cap": 1
+  },
+  "provenance": {
+    "decided_in": "OpenSIN-overview#35",
+    "decided_at": "2026-04-18",
+    "owner_team": "OpenSIN-AI/community"
+  }
+}

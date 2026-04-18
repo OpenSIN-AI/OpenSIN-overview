@@ -1,0 +1,50 @@
+{
+  "$schema_version": "1.0.0",
+  "id": "Team-SIN-Social",
+  "name": "Social Team",
+  "slug": "social",
+  "tier": "marketplace",
+  "status": "beta",
+  "tagline": "Grow on Instagram, LinkedIn, TikTok, ProductHunt and the creator web.",
+  "marketing": {
+    "summary": "Content + distribution squad for creators, founders, and brands. Drafts for Instagram, LinkedIn, TikTok and creator-web surfaces (DevTo, Medium, Paragraph, IndieHackers, Nostr), launches on ProductHunt, and repurposes long-form into clips and threads.",
+    "bullets": [
+      "Instagram, LinkedIn and TikTok scheduling + drafting",
+      "ProductHunt launch choreography",
+      "DevTo / Medium / Paragraph / IndieHackers cross-posting",
+      "Nostr for the decentralised-web crowd",
+      "Long-form to short-form repurposing",
+      "Tone + brand-voice memory via PCPM"
+    ]
+  },
+  "agents": [
+    {"id": "A2A-SIN-Instagram", "role": "primary", "summary": "Instagram scheduling + Reels."},
+    {"id": "A2A-SIN-LinkedIn", "role": "primary", "summary": "LinkedIn posts + articles."},
+    {"id": "A2A-SIN-TikTok", "role": "primary", "summary": "TikTok posting + trend tracking."},
+    {"id": "A2A-SIN-ProductHunt", "role": "supporting", "summary": "ProductHunt launch orchestration."},
+    {"id": "A2A-SIN-DevTo", "role": "supporting", "summary": "DevTo cross-posting."},
+    {"id": "A2A-SIN-Medium", "role": "supporting", "summary": "Medium publications."},
+    {"id": "A2A-SIN-Paragraph", "role": "supporting", "summary": "Paragraph newsletter."},
+    {"id": "A2A-SIN-IndieHackers", "role": "supporting", "summary": "IndieHackers posting."},
+    {"id": "A2A-SIN-Nostr", "role": "supporting", "summary": "Nostr relays + posting."}
+  ],
+  "pricing": {
+    "model": "monthly-addon",
+    "monthly_addon_eur": 14
+  },
+  "permissions": [
+    "read:user-memory",
+    "write:user-memory",
+    "net:external-http",
+    "net:cloud-apis"
+  ],
+  "budgets": {
+    "default_monthly_usd_cap": 25,
+    "per_run_usd_cap": 1
+  },
+  "provenance": {
+    "decided_in": "OpenSIN-overview#35",
+    "decided_at": "2026-04-18",
+    "owner_team": "OpenSIN-AI/social"
+  }
+}

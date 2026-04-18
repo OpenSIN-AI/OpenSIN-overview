@@ -1,0 +1,43 @@
+{
+  "$schema_version": "1.0.0",
+  "id": "Team-SIN-Research",
+  "name": "Research Team",
+  "slug": "research",
+  "tier": "marketplace",
+  "status": "beta",
+  "tagline": "Deep research, summarisation, and distributed-cognition experiments.",
+  "marketing": {
+    "summary": "A research squad for people whose job is thinking. Runs multi-source deep research, produces high-quality summaries, and experiments with distributed-cognition (Mindrift) workflows for teams that want their research done collaboratively across agents.",
+    "bullets": [
+      "Multi-source deep research with citation discipline",
+      "Executive-grade summaries with verification trail",
+      "Distributed cognition across multiple agents (Mindrift)",
+      "Topic tracking with daily/weekly digests",
+      "Exports to Google Docs, Notion, or plain markdown"
+    ]
+  },
+  "agents": [
+    {"id": "A2A-SIN-Research", "role": "primary", "summary": "Multi-source deep research."},
+    {"id": "A2A-SIN-Summary", "role": "primary", "summary": "Summarisation with verification."},
+    {"id": "A2A-SIN-Mindrift", "role": "supporting", "summary": "Distributed-cognition experimentation."}
+  ],
+  "pricing": {
+    "model": "monthly-addon",
+    "monthly_addon_eur": 19
+  },
+  "permissions": [
+    "read:user-memory",
+    "write:user-memory",
+    "net:external-http",
+    "spend:llm-budget"
+  ],
+  "budgets": {
+    "default_monthly_usd_cap": 40,
+    "per_run_usd_cap": 2
+  },
+  "provenance": {
+    "decided_in": "OpenSIN-overview#35",
+    "decided_at": "2026-04-18",
+    "owner_team": "OpenSIN-AI/research"
+  }
+}

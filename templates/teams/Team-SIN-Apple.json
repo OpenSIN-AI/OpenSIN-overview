@@ -1,0 +1,54 @@
+{
+  "$schema_version": "1.0.0",
+  "id": "Team-SIN-Apple",
+  "name": "Apple Team",
+  "slug": "apple",
+  "tier": "marketplace",
+  "status": "beta",
+  "tagline": "Deep Apple-ecosystem automation: Shortcuts, Mail, Calendar, Notes, and device control.",
+  "marketing": {
+    "summary": "Turns your Mac and iPhone into first-class agent surfaces. Drives Apple Shortcuts, manages Mail and Calendar, captures to Notes and Reminders, and even pilots system settings and Safari. Best-in-class for users who live on Apple hardware.",
+    "bullets": [
+      "One-command Apple Shortcuts execution from any agent",
+      "Mail triage, Calendar scheduling and Contacts sync",
+      "Notes, Reminders and Notifications capture + retrieval",
+      "Photos and Files discovery across iCloud",
+      "Safari/WebKit automation for read-later and research",
+      "FaceTime call setup and SystemSettings toggles"
+    ]
+  },
+  "agents": [
+    {"id": "A2A-SIN-Apple-Shortcuts", "role": "primary", "summary": "Entry point — any Shortcut becomes an agent tool."},
+    {"id": "A2A-SIN-Apple-Mail", "role": "primary", "summary": "Mail triage, drafting, search."},
+    {"id": "A2A-SIN-Apple-Calendar-Contacts", "role": "primary", "summary": "Calendar scheduling + Contacts lookup."},
+    {"id": "A2A-SIN-Apple-Notes", "role": "supporting", "summary": "Capture + search across Apple Notes."},
+    {"id": "A2A-SIN-Apple-Reminders", "role": "supporting", "summary": "Task capture with location/time triggers."},
+    {"id": "A2A-SIN-Apple-Notifications", "role": "supporting", "summary": "Notification stream read/dismiss."},
+    {"id": "A2A-SIN-Apple-Mobile", "role": "supporting", "summary": "iPhone automation surface."},
+    {"id": "A2A-SIN-Apple-DeviceControl", "role": "supporting", "summary": "Device-level control primitives."},
+    {"id": "A2A-SIN-Apple-SystemSettings", "role": "supporting", "summary": "Toggle system settings programmatically."},
+    {"id": "A2A-SIN-Apple-Safari-WebKit", "role": "supporting", "summary": "Safari/WebKit browsing and reading."},
+    {"id": "A2A-SIN-Apple-Photos-Files", "role": "supporting", "summary": "Photos + Files search and staging."},
+    {"id": "A2A-SIN-Apple-FaceTime", "role": "optional", "summary": "Programmatic FaceTime call setup."}
+  ],
+  "pricing": {
+    "model": "monthly-addon",
+    "monthly_addon_eur": 9
+  },
+  "permissions": [
+    "read:user-memory",
+    "write:user-memory",
+    "net:external-http",
+    "filesystem:user-workspace",
+    "shell:user-workspace"
+  ],
+  "budgets": {
+    "default_monthly_usd_cap": 20,
+    "per_run_usd_cap": 1
+  },
+  "provenance": {
+    "decided_in": "OpenSIN-overview#35",
+    "decided_at": "2026-04-18",
+    "owner_team": "OpenSIN-AI/apple"
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/OpenSIN-AI/OpenSIN-overview/blob/main/schemas/team.schema.json",
+  "title": "OpenSIN Team Manifest",
+  "description": "Metadata manifest for a Team-SIN-* marketplace bundle. One file per Team-SIN-* repo. Aggregated into oh-my-sin.json for the marketplace frontend. Decided in Wave 4 — Option A.",
+  "type": "object",
+  "required": ["$schema_version", "id", "name", "slug", "tier", "status", "marketing", "agents", "pricing"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema_version": {
+      "type": "string",
+      "const": "1.0.0",
+      "description": "Manifest format version. Bump requires updating this schema."
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^Team-SIN-[A-Za-z][A-Za-z0-9-]*$",
+      "description": "Canonical repo name. Must match the GitHub repo under OpenSIN-AI/."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 60,
+      "description": "Display name in the marketplace card."
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{2,40}$",
+      "description": "URL slug for my.opensin.ai/marketplace/<slug>."
+    },
+    "tier": {
+      "type": "string",
+      "enum": ["marketplace", "core-included", "enterprise"],
+      "description": "marketplace = paid add-on Mini-Abo. core-included = shipped free in every Pro plan. enterprise = contact-sales only."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["stable", "beta", "alpha", "coming-soon", "deprecated"],
+      "description": "Lifecycle stage. Drives marketplace UI badges and whether the team is listable."
+    },
+    "tagline": {
+      "type": "string",
+      "maxLength": 140,
+      "description": "One-line pitch shown on the marketplace card."
+    },
+    "marketing": {
+      "type": "object",
+      "required": ["summary", "bullets"],
+      "additionalProperties": false,
+      "properties": {
+        "summary": {
+          "type": "string",
+          "minLength": 40,
+          "maxLength": 600,
+          "description": "Paragraph-length description for the product page."
+        },
+        "bullets": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 8,
+          "items": {"type": "string", "maxLength": 180},
+          "description": "Feature bullets for the product page."
+        },
+        "screenshot": {
+          "type": "string",
+          "description": "Relative path inside the Team-SIN-* repo, e.g. assets/screenshot.png. Optional."
+        },
+        "demo_video": {
+          "type": "string",
+          "format": "uri",
+          "description": "YouTube/Loom demo URL. Optional."
+        }
+      }
+    },
+    "agents": {
+      "type": "array",
+      "minItems": 0,
+      "description": "A2A-SIN-* agent repos that belong to this team. Source of truth for which capabilities the buyer unlocks. Empty only when status=coming-soon.",
+      "items": {
+        "type": "object",
+        "required": ["id", "role"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^A2A-SIN-[A-Za-z][A-Za-z0-9-]*$",
+            "description": "Canonical A2A-SIN-* repo name. Must exist and not be archived."
+          },
+          "role": {
+            "type": "string",
+            "enum": ["primary", "supporting", "optional"],
+            "description": "primary = flagship capability. supporting = required co-agent. optional = extra capability the user can toggle."
+          },
+          "summary": {
+            "type": "string",
+            "maxLength": 180,
+            "description": "One-line role inside this team (not the agent's general purpose)."
+          }
+        }
+      }
+    },
+    "pricing": {
+      "type": "object",
+      "required": ["model"],
+      "additionalProperties": false,
+      "properties": {
+        "model": {
+          "type": "string",
+          "enum": ["free-with-pro", "monthly-addon", "metered", "enterprise-quote"],
+          "description": "free-with-pro = unlocked for any Pro tier. monthly-addon = flat Mini-Abo. metered = usage-priced. enterprise-quote = contact sales."
+        },
+        "monthly_addon_eur": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 999,
+          "description": "Price for model=monthly-addon. Ignored otherwise."
+        },
+        "metered_unit": {
+          "type": "string",
+          "description": "e.g. \"per 1k tokens\", \"per run\". For model=metered."
+        },
+        "metered_unit_price_eur": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Price per metered_unit."
+        },
+        "stripe_product_id": {
+          "type": "string",
+          "pattern": "^prod_[A-Za-z0-9]+$",
+          "description": "Stripe product id created for this team. Optional during beta."
+        }
+      }
+    },
+    "permissions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "read:user-memory",
+          "write:user-memory",
+          "net:external-http",
+          "net:cloud-apis",
+          "spend:llm-budget",
+          "spend:user-managed-credentials",
+          "filesystem:user-workspace",
+          "shell:user-workspace"
+        ]
+      },
+      "description": "Capabilities the team's agents require. Shown on the purchase page for transparency."
+    },
+    "budgets": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "default_monthly_usd_cap": {"type": "number", "minimum": 0},
+        "per_run_usd_cap": {"type": "number", "minimum": 0}
+      },
+      "description": "Recommended default spend limits; user can override in chat.opensin.ai."
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["decided_in", "decided_at"],
+      "additionalProperties": false,
+      "properties": {
+        "decided_in": {"type": "string", "description": "PR or doc anchor that locked this team's definition."},
+        "decided_at": {"type": "string", "format": "date"},
+        "owner_team": {"type": "string", "description": "GitHub team handle owning the manifest."}
+      }
+    }
+  }
+}

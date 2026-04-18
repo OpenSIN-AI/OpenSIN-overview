@@ -41,7 +41,9 @@ rules.
 ### OpenSIN-backend — A2A fleet control plane
 - **URL:** https://github.com/OpenSIN-AI/OpenSIN-backend
 - **Domain prefix:** none
-- **Owns:** the runtime control plane that orchestrates the agent fleet at runtime.
+- **Owns:** the runtime control plane that orchestrates the agent fleet at runtime. Includes agent registry, routing, rate-limits, permission gating, and the tenant dispatcher for `chat.opensin.ai`.
+- **Absorbs:** `Core-SIN-Control-Plane` (Wave 4, 2026-04-18). `Core-SIN-Control-Plane` was a newer parallel attempt at the same role; decision was made to merge its content here (older repo name wins because of external dependencies) and archive `Core-SIN-Control-Plane` with a redirect README. Migration tracked in the Wave-4 follow-up issues.
+- **Not:** a UI. Any HTTP endpoint lives here, but the only renderers of its output are `OpenSIN-WebApp` (chat.opensin.ai) and `website-my.opensin.ai` (marketplace + checkout).
 
 ### Team-SIN-Code-Core — Coding-team monorepo
 - **URL:** https://github.com/OpenSIN-AI/Team-SIN-Code-Core
@@ -51,7 +53,8 @@ rules.
   - `agents/coding-ceo/` — the Coding-CEO agent (was `A2A-SIN-Coding-CEO`, archived)
   - `agents/code-ai/` — the Code-AI agent (was `A2A-SIN-Code-AI`, archived)
   - `packages/shared-helpers/` — `@opensin/shared-helpers` workspace package
-- **Do not:** spin up a new repo for future coding-team agents (`code-devops`, `code-datascience`, ...). Add them as new folders under `agents/`.
+  - `team.json` (synced from [`OpenSIN-overview/templates/teams/Team-SIN-Code-Core.json`](https://github.com/OpenSIN-AI/OpenSIN-overview/blob/main/templates/teams/Team-SIN-Code-Core.json)) — marketplace manifest, tier `core-included`
+- **Do not:** spin up a new repo for future coding-team agents (`code-devops`, `code-datascience`, ...). Add them as new folders under `agents/`. **Do not edit `team.json` here directly** — it is overwritten by `push-team-manifests.js` from OpenSIN-overview.
 
 ### Template-SIN-Agent — Agent blueprint
 - **URL:** https://github.com/OpenSIN-AI/Template-SIN-Agent (was `Template-A2A-SIN-Agent`)

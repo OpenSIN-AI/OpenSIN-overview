@@ -1,0 +1,44 @@
+{
+  "$schema_version": "1.0.0",
+  "id": "Team-SIN-Code-Frontend",
+  "name": "Code Frontend Team",
+  "slug": "code-frontend",
+  "tier": "marketplace",
+  "status": "alpha",
+  "tagline": "Frontend-focused coding team — React, Next.js, design-system work.",
+  "marketing": {
+    "summary": "Coding team focused on frontend engineering: Next.js App Router, React component libraries, design-system refactors, responsive layouts and accessibility. Pairs naturally with Team-SIN-Code-Backend for full-stack work.",
+    "bullets": [
+      "Next.js App Router + server components",
+      "Component-library authoring and refactoring",
+      "Design-system token + theme migrations",
+      "Responsive layouts and a11y hardening",
+      "E2E test authoring (Playwright)"
+    ]
+  },
+  "agents": [
+    {"id": "A2A-SIN-Code-DataScience", "role": "supporting", "summary": "For data-heavy frontend work (charts, tables)."},
+    {"id": "A2A-SIN-Code-Frontend", "role": "optional", "summary": "Dedicated frontend agent (currently scaffold — see SCAFFOLD_AUDIT.md)."}
+  ],
+  "pricing": {
+    "model": "monthly-addon",
+    "monthly_addon_eur": 14
+  },
+  "permissions": [
+    "read:user-memory",
+    "write:user-memory",
+    "net:external-http",
+    "filesystem:user-workspace",
+    "shell:user-workspace",
+    "spend:llm-budget"
+  ],
+  "budgets": {
+    "default_monthly_usd_cap": 40,
+    "per_run_usd_cap": 3
+  },
+  "provenance": {
+    "decided_in": "OpenSIN-overview#35",
+    "decided_at": "2026-04-18",
+    "owner_team": "OpenSIN-AI/code-core"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "$schema_version": "1.0.0",
+  "id": "Team-SIN-Code-Core",
+  "name": "Code Core Team",
+  "slug": "code-core",
+  "tier": "core-included",
+  "status": "stable",
+  "tagline": "The default coding squad included in every Pro plan.",
+  "marketing": {
+    "summary": "Shipped with every OpenSIN Pro plan at no extra cost. The Code Core Team handles day-to-day engineering work: data science notebooks, DevOps runbooks, GitLab repository operations, and log-centre investigations. This is the team you should not have to think about — it just works.",
+    "bullets": [
+      "Data science notebooks with pandas/NumPy conventions",
+      "DevOps runbooks for container, deploy and rollback",
+      "GitLab repository operations: MRs, pipelines, registries",
+      "Log-centre investigations across Sentry / Loki / Datadog",
+      "Included free with Pro — no marketplace purchase needed"
+    ]
+  },
+  "agents": [
+    {"id": "A2A-SIN-Code-DataScience", "role": "primary", "summary": "Pandas/NumPy/Jupyter data work."},
+    {"id": "A2A-SIN-Code-DevOps", "role": "primary", "summary": "Containers, deploys, rollbacks, IaC."},
+    {"id": "A2A-SIN-Code-GitLab-LogsCenter", "role": "primary", "summary": "GitLab ops + log-centre triage."}
+  ],
+  "pricing": {
+    "model": "free-with-pro"
+  },
+  "permissions": [
+    "read:user-memory",
+    "write:user-memory",
+    "net:external-http",
+    "net:cloud-apis",
+    "filesystem:user-workspace",
+    "shell:user-workspace",
+    "spend:llm-budget"
+  ],
+  "budgets": {
+    "default_monthly_usd_cap": 60,
+    "per_run_usd_cap": 5
+  },
+  "provenance": {
+    "decided_in": "OpenSIN-overview#35",
+    "decided_at": "2026-04-18",
+    "owner_team": "OpenSIN-AI/code-core"
+  }
+}

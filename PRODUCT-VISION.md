@@ -56,9 +56,7 @@ Drei Tiers. Jedes Tier hat einen klaren URL, einen klaren Kunden, eine klare Val
 
 ## UI-Schichtung (4 Oberflächen, 4 Rollen)
 
-Das ist die **Entscheidung**, die nach [STATE-OF-THE-UNION.md § 1](./STATE-OF-THE-UNION.md#1-rollen-overlap-zwischen-myopensinai-und-opensin-webapp) getroffen werden muss.
-
-**Empfohlene Trennung (strikt durchgezogen):**
+> **Status:** DECIDED 2026-04-18 (Wave 4). Diese Trennung ist jetzt bindend. Jede Änderung, die sie verwischt, ist ein Rollback.
 
 | Repo | Domain | Rolle | Auth | Payment |
 |---|---|---|---|---|
@@ -81,15 +79,17 @@ Das ist die **Entscheidung**, die nach [STATE-OF-THE-UNION.md § 1](./STATE-OF-T
 
 ---
 
-## Marketplace — der Entscheidungspunkt
+## Marketplace — entschieden: Option A (Metadata-Manifeste)
 
-**Frage:** Sind `Team-SIN-*` Repos Code-Pakete oder Metadata-Manifeste?
+> **Status:** DECIDED 2026-04-18 (Wave 4). `Team-SIN-*` sind Metadata-Manifeste, keine Code-Pakete. Schema: [`schemas/team.schema.json`](./schemas/team.schema.json). Reference-Manifeste: [`templates/teams/`](./templates/teams/).
+
+**Frage (beantwortet):** Sind `Team-SIN-*` Repos Code-Pakete oder Metadata-Manifeste?
 
 **Evidenz (siehe [STATE-OF-THE-UNION.md § Team-SIN-*](./STATE-OF-THE-UNION.md#team-sin-----17-team-repos)):** Alle 17 sind 26-35 kb groß. Das ist zu wenig für echten Code, zu viel für reine Metadata.
 
 **Zwei valide Architekturen — eine muss gewählt werden:**
 
-### Option A — Teams sind Metadata-Manifeste (empfohlen)
+### Option A — Teams sind Metadata-Manifeste (GEWÄHLT)
 
 - Jedes `Team-SIN-*`-Repo enthält nur `team.json`, `README.md`, `pricing.json`, ggf. Marketing-Assets (screenshots, demo-gif)
 - Die **Agenten selbst** liegen in `A2A-SIN-*` Repos (was sie schon tun)
@@ -111,17 +111,15 @@ Das ist die **Entscheidung**, die nach [STATE-OF-THE-UNION.md § 1](./STATE-OF-T
 
 **Nachteile:** Teams duplizieren was A2A-Agenten schon tun. Wartungsaufwand explodiert.
 
-### Empfehlung: **Option A**
+### Entscheidung: **Option A**
 
 Option A passt zum OSS-Versprechen (Code ist offen, Komposition ist kommerziell), ist schneller iterierbar, und erklärt die heutige Repo-Größe besser.
 
-**Konsequenz:**
+**Umgesetzt in Wave 4:**
 
-1. Schema für `team.json` definieren (agents-list, pricing, permissions, default-budget)
-2. Canonical location entscheiden:
-   - **Empfohlen:** das schon-existierende `oh-my-sin.json` in `Infra-SIN-OpenCode-Stack` ist die SSOT-Registry aller Teams. Die 17 `Team-SIN-*` Repos werden zu "Marketing-Shells" (1-Page-README + pricing.json), die ihre Agent-Liste aus `oh-my-sin.json` referenzieren.
-   - **Alternative:** einzelne `team.json` pro Team-Repo, aggregiert in `oh-my-sin.json` via CI.
-3. Marketplace-Frontend (in `website-my.opensin.ai/marketplace/`) rendert aus der Registry.
+1. Schema für `team.json` definiert → [`schemas/team.schema.json`](./schemas/team.schema.json)
+2. Canonical Location: **pro-Repo `team.json`**, aggregiert in `oh-my-sin.json` via CI im `Infra-SIN-OpenCode-Stack`. Die Pro-Repo-Datei ist Source-of-Truth für das einzelne Team (Marketing-Copy, Pricing, Agent-Liste); `oh-my-sin.json` ist die aggregierte Registry, die das Marketplace-Frontend konsumiert.
+3. Marketplace-Frontend (in `website-my.opensin.ai/marketplace/`) rendert aus `oh-my-sin.json`.
 
 ---
 
@@ -180,18 +178,52 @@ Jede Entscheidung die dem Dreier-Tier-Modell (OSS / Pro / Marketplace) widerspri
 
 ---
 
-## Offene strategische Entscheidungen (Prio-1)
+## Getroffene Entscheidungen (Wave 4, 2026-04-18)
 
-Diese 5 müssen vor der nächsten Marketing-Push-Welle geklärt sein:
+Alle 5 Prio-1-Entscheidungen aus der ersten Vision-Version sind jetzt fix. Jede hat ein Artefakt im Repo:
 
-1. **UI-Schichtung final festnageln** (oben skizziert, braucht Approval) — blockt Marketplace-Release
-2. **Marketplace-Mechanik final festnageln** (Option A vs B oben, empfohlen: A) — blockt Team-SIN-* Cleanup
-3. **`OpenSIN-backend` vs `Core-SIN-Control-Plane`** — zwei "Control Planes", Naming muss disambiguiert werden
-4. **Team-SIN-Code-Core Größe** — 57 kb nach Wave-1-Konsolidierung ist verdächtig. Prüfen ob die Absorption Code verloren hat
-5. **Tote + Scaffold-Repos** — 4 null-kb + 6 9-kb + 17 Team-Scaffolds. Audit-Skript bauen, dann entscheiden
+### 1. UI-Schichtung — DECIDED
+**Entscheidung:** Die 4-Rollen-Tabelle in § UI-Schichtung oben ist bindend.
+- `opensin.ai` = OSS-Marketing (unauthenticated, keine Stripe)
+- `my.opensin.ai` = Paid-Marketing + Marketplace-Katalog + Stripe Checkout (unauthenticated)
+- `chat.opensin.ai` = Authenticated App + Stripe Customer Portal
+- `docs.opensin.ai` = Docs
 
-Jede dieser 5 Entscheidungen ist ein "1-Doc + 1-PR"-Umfang, nicht "1-Sprint". In 5-6 Tagen konzentrierter Arbeit durch.
+**Artefakte:** Diese Datei (§ UI-Schichtung). Follow-up: READMEs auf `website-my.opensin.ai` und `OpenSIN-WebApp` deep-linken hierher (Tracking-Issues offen).
+
+### 2. Marketplace-Mechanik — DECIDED: Option A
+**Entscheidung:** `Team-SIN-*` sind Metadata-Manifeste. `team.json` pro Repo, aggregiert in `oh-my-sin.json` (SSOT) in `Infra-SIN-OpenCode-Stack`.
+
+**Artefakte:**
+- JSON Schema: [`schemas/team.schema.json`](./schemas/team.schema.json)
+- Schema-Doku: [`schemas/README.md`](./schemas/README.md)
+- Gold-Standard-Referenz: [`templates/teams/Team-SIN-Commerce.json`](./templates/teams/Team-SIN-Commerce.json)
+- Alle 17 Team-Manifeste: [`templates/teams/`](./templates/teams/)
+- Migration-Script: [`scripts/push-team-manifests.js`](./scripts/push-team-manifests.js) — pushed `team.json` + README-Header in alle 17 `Team-SIN-*` Repos
+
+### 3. `OpenSIN-backend` vs `Core-SIN-Control-Plane` — DECIDED: Merge
+**Entscheidung:** `Core-SIN-Control-Plane` (neuer) wird in `OpenSIN-backend` (älter, behält Namen wegen externer Abhängigkeiten) absorbiert. Nach Migration wird `Core-SIN-Control-Plane` archiviert mit Redirect-README.
+
+**Artefakte:** 
+- Canonical-Map-Update in [`docs/CANONICAL-REPOS.md`](./docs/CANONICAL-REPOS.md)
+- Migration-Tracking-Issue in `OpenSIN-backend` (Reference-Kommit in diesem PR)
+- Archive-Prep-Tracking-Issue in `Core-SIN-Control-Plane`
+
+### 4. `Team-SIN-Code-Core` Integrität — CHECKED
+**Befund:** Nach dem Audit (siehe [`registry/SCAFFOLD_AUDIT.md`](./registry/SCAFFOLD_AUDIT.md)) ist `Team-SIN-Code-Core` tatsächlich nur ein Scaffold, nicht ein kaputtes Merge-Resultat. Die Wave-1-Absorption schuf die Monorepo-Struktur, füllte sie aber nicht. Die echten Coding-Agenten leben in `A2A-SIN-Code-DataScience`, `A2A-SIN-Code-DevOps`, `A2A-SIN-Code-GitLab-LogsCenter`.
+
+**Entscheidung:** `Team-SIN-Code-Core` wird in Option A normalisiert — wird zu reinem `team.json`-Repo wie die anderen 16. Die `packages/shared-helpers/`-Struktur bleibt als Legacy, aber die Team-Semantik ist jetzt die Manifest-Datei.
+
+### 5. Scaffold + Dead Repo Audit — DONE
+**Artefakte:**
+- Audit-Script: [`scripts/audit-repos.js`](./scripts/audit-repos.js)
+- Audit-Ergebnis: [`registry/SCAFFOLD_AUDIT.md`](./registry/SCAFFOLD_AUDIT.md)
+
+**Klassifikation (aus Live-Audit):**
+- **4 confirmed dead** (0 kb, werden in Wave 4 archiviert): `A2A-SIN-Facebook`, `A2A-SIN-Mattermost`, `A2A-SIN-RocketChat`, `A2A-SIN-Slack`
+- **6 scaffold** (9 kb, identische Python-Shells): `A2A-SIN-Code-Backend`, `-Command`, `-Frontend`, `-Fullstack`, `-Plugin`, `-Tool` — bleiben vorerst offen (Coding-Team-Roadmap entscheidet später)
+- **17 team-scaffolds** (26-57 kb): werden durch Option-A-Migration in Manifest-Repos umgewandelt (Commit in diesem PR)
 
 ---
 
-Nach dieser Schicht wird die Org kohärent — und dann kann OpenSIN-AI ehrlich gegen Manus, OpenCode und Google Agents antreten. Vorher ist es ein Repo-Friedhof mit einem guten Kern.
+Nach Wave 4 ist die Org kohärent. Jeder Commit, jeder Agent, jeder User hat einen klaren Tier + eine klare Rolle. Ab hier kann OpenSIN-AI ehrlich gegen Manus, OpenCode und Google Agents antreten.
