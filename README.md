@@ -150,7 +150,6 @@ Bei grossen Codebases (100k+ Zeilen, 1000+ Dateien) MUESSEN Agenten **5-10 paral
 | [OpenSIN](https://github.com/OpenSIN-AI/OpenSIN) | Free/Open-Source Core Engine — Python (QueryEngine, Hooks, Tools, MCP, Sandbox, Memory, A2A) |
 | [OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | Autonomes CLI + SDK (`@opensin/sdk`) — Agent Loop, Tool System, Model Routing, Memory, Safety, A2A Transport Layer + Rust Engine (71 Dateien, 37.7K Zeilen) |
 | [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | **NEU (April 2026)** — AI Coding Assistant in Rust (70 Dateien, 34.601 Zeilen, 9 Crates) |
-| [opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code) | **NEU (April 2026)** — Python Agent Development Platform (100 Dateien, 2.386 Zeilen, 26 Subsysteme) |
 | [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | **NEU (April 2026)** — Plugin Ecosystem & GitHub Automation (182 Dateien, 87.247 Zeilen, 14 Plugins) |
 | [OpenSIN-backend](https://github.com/OpenSIN-AI/OpenSIN-backend) | Closed Source Backend — A2A Fleet Control Plane, n8n-Routing, Agenten-Orchestrierung, API für OpenSIN-WebApp |
 | [OpenSIN-WebApp](https://github.com/OpenSIN-AI/OpenSIN-WebApp) | User WebApp (Next.js, Vercel ✅) — Login, Dashboard, Agenten-Steuerung (gekoppelt an OpenSIN-backend) |
@@ -253,6 +252,8 @@ Bei grossen Codebases (100k+ Zeilen, 1000+ Dateien) MUESSEN Agenten **5-10 paral
 → [Vollständige Box Storage Doku](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup/blob/main/box-storage.md)
 
 ## 🛠️ INFRA & TOOLS
+> **Note:** As of April 2026, `OpenSIN-onboarding` has been consolidated into `Infra-SIN-Dev-Setup/user-onboarding/`. See [docs/CANONICAL-REPOS.md](./docs/CANONICAL-REPOS.md) for the complete archival map.
+
 
 | Repo | Zweck |
 |------|-------|
@@ -261,7 +262,6 @@ Bei grossen Codebases (100k+ Zeilen, 1000+ Dateien) MUESSEN Agenten **5-10 paral
 | [Core-SIN-Control-Plane](https://github.com/OpenSIN-AI/Core-SIN-Control-Plane) | Doctor/Preflight/Eval Layer |
 | [Infra-SIN-Docker-Empire](https://github.com/OpenSIN-AI/Infra-SIN-Docker-Empire) | 26-Container Docker Infrastruktur |
 | [Infra-SIN-Dev-Setup](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup) | Development Environment Setup + Box Storage Guide |
-| [OpenSIN-onboarding](https://github.com/OpenSIN-AI/OpenSIN-onboarding) | Autonomous 6-phase onboarding — GCP, Passwordmanager, Chrome Extension, Box/Drive Setup |
 | [cloud-backend](https://github.com/OpenSIN-AI/cloud-backend) | 🔒 Proprietär: Stripe, OAuth, Premium-API |
 
 ---
@@ -274,7 +274,6 @@ Bei grossen Codebases (100k+ Zeilen, 1000+ Dateien) MUESSEN Agenten **5-10 paral
 | [OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation) | Offizielle Doku (VitePress) — docs.opensin.ai |
 | [OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | Core Engine Doku: [OpenSIN Code](https://docs.opensin.ai/docs/guide/opensin-code), [Rust Engine](https://docs.opensin.ai/docs/guide/opensin-code-rust-engine), [Plugins](https://docs.opensin.ai/docs/plugins/opensin-code-plugins) |
 | [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | **NEU** — [OpenSIN-AI CLI Doku](https://docs.opensin.ai/docs/guide/opensin-ai-cli) |
-| [opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code) | **NEU** — [OpenSIN-AI Code Doku](https://docs.opensin.ai/docs/guide/opensin-ai-code) |
 | [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | **NEU** — [OpenSIN-AI Platform Doku](https://docs.opensin.ai/docs/guide/opensin-ai-platform) |
 
 ---

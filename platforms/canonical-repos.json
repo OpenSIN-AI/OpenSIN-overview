@@ -1,0 +1,57 @@
+{
+  "version": "2.0.0",
+  "updated": "2026-04-18",
+  "description": "Canonical repo registry for OpenSIN-AI. Mirrors docs/CANONICAL-REPOS.md in machine-readable form. For the full 188-repo inventory see registry/MASTER_INDEX.md.",
+  "schema": {
+    "canonical_repos": "Production-owning repos, grouped by domain",
+    "archived": "Repos consolidated into canonical targets; read-only",
+    "external_ssot": "Repos outside OpenSIN-AI that are declared SSOT by OpenSIN-AI repos"
+  },
+  "canonical_repos": {
+    "core_platform": [
+      { "repo": "OpenSIN-AI/OpenSIN", "language": "python", "role": "python_kernel", "packages": ["opensin_core", "opensin_cli", "opensin_api", "opensin_sdk", "opensin_agent_platform"] }
+    ],
+    "autonomous_coding": [
+      { "repo": "OpenSIN-AI/OpenSIN-Code",      "language": "typescript", "role": "autonomous_cli" },
+      { "repo": "OpenSIN-AI/OpenSIN-backend",   "language": "typescript", "role": "a2a_control_plane" },
+      { "repo": "OpenSIN-AI/Team-SIN-Code-Core","language": "typescript", "role": "coding_team_monorepo", "agents": ["coding-ceo", "code-ai"] },
+      { "repo": "OpenSIN-AI/Template-SIN-Agent","language": "typescript", "role": "agent_blueprint" }
+    ],
+    "web_surface": [
+      { "repo": "OpenSIN-AI/website-opensin.ai",    "language": "typescript", "role": "oss_marketing",    "deployed_at": "opensin.ai" },
+      { "repo": "OpenSIN-AI/website-my.opensin.ai", "language": "typescript", "role": "paid_marketing",   "deployed_at": "my.opensin.ai" },
+      { "repo": "OpenSIN-AI/OpenSIN-WebApp",        "language": "typescript", "role": "auth_dashboard",   "deployed_at": "chat.opensin.ai", "package": "opensin-chat" }
+    ],
+    "documentation": [
+      { "repo": "OpenSIN-AI/OpenSIN-documentation", "role": "public_docs", "deployed_at": "docs.opensin.ai" }
+    ],
+    "infrastructure": [
+      { "repo": "OpenSIN-AI/Infra-SIN-Dev-Setup", "role": "dev_and_user_onboarding", "subdirs": ["user-onboarding"] }
+    ],
+    "business": [
+      { "repo": "OpenSIN-AI/Biz-SIN-Marketing", "role": "launch_hub_and_content" }
+    ],
+    "meta": [
+      { "repo": "OpenSIN-AI/OpenSIN-overview", "role": "organizational_ssot" }
+    ]
+  },
+  "archived": [
+    { "repo": "OpenSIN-AI/A2A-SIN-Coding-CEO", "replaced_by": "OpenSIN-AI/Team-SIN-Code-Core/agents/coding-ceo/", "archived_at": "2026-04-18" },
+    { "repo": "OpenSIN-AI/A2A-SIN-Code-AI",    "replaced_by": "OpenSIN-AI/Team-SIN-Code-Core/agents/code-ai/",    "archived_at": "2026-04-18" },
+    { "repo": "OpenSIN-AI/opensin-ai-code",    "replaced_by": "OpenSIN-AI/OpenSIN/opensin_agent_platform/",       "archived_at": "2026-04-18" },
+    { "repo": "OpenSIN-AI/OpenSIN-onboarding", "replaced_by": "OpenSIN-AI/Infra-SIN-Dev-Setup/user-onboarding/",  "archived_at": "2026-04-18" }
+  ],
+  "external_ssot": [
+    { "repo": "Delqhi/upgraded-opencode-stack", "role": "opencode_config_ssot",   "declared_by": ["OpenSIN", "OpenSIN-Code", "OpenSIN-WebApp", "website-opensin.ai", "website-my.opensin.ai", "Template-SIN-Agent", "Biz-SIN-Marketing"], "transfer_status": "pending", "target": "OpenSIN-AI/Infra-SIN-OpenCode-Stack" },
+    { "repo": "Delqhi/global-brain",            "role": "pcpm_v4_daemon",         "declared_by": ["multiple A2A-SIN-* agents"], "transfer_status": "pending", "target": "OpenSIN-AI/Infra-SIN-Global-Brain" }
+  ],
+  "naming_convention": {
+    "flagship_no_prefix": ["OpenSIN", "OpenSIN-Code", "OpenSIN-backend", "OpenSIN-WebApp", "OpenSIN-overview", "OpenSIN-documentation", "website-opensin.ai", "website-my.opensin.ai"],
+    "domain_prefixes": {
+      "Team-SIN-*":     "Team monorepos of sub-agents",
+      "Infra-SIN-*":    "Infrastructure, setup, tooling, CI",
+      "Biz-SIN-*":      "Business/marketing/sales content",
+      "Template-SIN-*": "Templates / blueprints"
+    }
+  }
+}
