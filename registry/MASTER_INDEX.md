@@ -1,9 +1,9 @@
-# 📚 THE ULTIMATE MASTER INDEX (187 REPOS)
+# 📚 THE ULTIMATE MASTER INDEX (203 REPOS)
 
-**LAST UPDATED:** 2026-04-17 03:00 UTC
-**TOTAL REPOSITORIES:** 188 (42 public, 146 private)
+**LAST UPDATED:** 2026-04-18 00:00 UTC
+**TOTAL REPOSITORIES:** 203 (50 public, 153 private, 20 archived)
 
-Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organisation. **Jedes** der 187 Repositories ist hier kategorisiert und logisch in die Architektur integriert.
+Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organisation. **Jedes** der 203 Repositories ist hier kategorisiert und logisch in die Architektur integriert. Neu hinzugekommene oder noch nicht final einsortierte Repositories stehen temporär im Abschnitt `100. Pending Classification`.
 
 ---
 
@@ -245,6 +245,7 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 
 | Repository | Visibility | Description |
 |------------|-------------|-------------|
+| [OpenSIN-Skills](https://github.com/OpenSIN-AI/OpenSIN-Skills) | 🌐 Public | The world's largest open-source AI agent skill library — 280+ skills across 9 knowledge domains + 46 operational actions. Built on alirezarezvani/claude-skills + OpenSIN-AI. |
 | [Skill-SIN-Agent-Forge](https://github.com/OpenSIN-AI/Skill-SIN-Agent-Forge) | 🔒 Private | OpenCode skill SSOT: sin-a2a-agent-forge |
 | [Skill-SIN-Create-TelegramBot](https://github.com/OpenSIN-AI/Skill-SIN-Create-TelegramBot) | 🔒 Private | OpenCode skill SSOT: create-telegrambot |
 | [Skill-SIN-Enterprise-Deep-Debug](https://github.com/OpenSIN-AI/Skill-SIN-Enterprise-Deep-Debug) | 🔒 Private | OpenCode skill SSOT: enterprise-deep-debug |
@@ -303,3 +304,22 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 | [opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code) | 🌐 Public | OpenSIN-AI opensin-ai-code |
 | [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | 🌐 Public | OpenSIN-AI opensin-ai-platform |
 
+
+## 🧩 100. Pending Classification
+
+| Repository | Visibility | Description |
+|------------|-------------|-------------|
+| [A2A-SIN-Code-Backend](https://github.com/OpenSIN-AI/A2A-SIN-Code-Backend) | 🔒 Private | A2A Cloud Coder Agent — Backend APIs, databases, and business logic |
+| [A2A-SIN-Code-Command](https://github.com/OpenSIN-AI/A2A-SIN-Code-Command) | 🔒 Private | A2A Cloud Coder Agent — CLI commands and terminal tools |
+| [A2A-SIN-Code-Frontend](https://github.com/OpenSIN-AI/A2A-SIN-Code-Frontend) | 🔒 Private | A2A Cloud Coder Agent — Frontend UI components and user interfaces |
+| [A2A-SIN-Code-Fullstack](https://github.com/OpenSIN-AI/A2A-SIN-Code-Fullstack) | 🔒 Private | A2A Cloud Coder Agent — Full-stack web applications |
+| [A2A-SIN-Code-Plugin](https://github.com/OpenSIN-AI/A2A-SIN-Code-Plugin) | 🔒 Private | A2A Cloud Coder Agent — OpenCode plugins and MCP servers |
+| [A2A-SIN-Code-Tool](https://github.com/OpenSIN-AI/A2A-SIN-Code-Tool) | 🔒 Private | A2A Cloud Coder Agent — Reusable utility functions and libraries |
+| [A2A-SIN-Facebook](https://github.com/OpenSIN-AI/A2A-SIN-Facebook) | 🌐 Public | OpenSIN AI Agent for A2A-SIN-Facebook platform integration |
+| [A2A-SIN-Mattermost](https://github.com/OpenSIN-AI/A2A-SIN-Mattermost) | 🌐 Public | OpenSIN AI Agent for A2A-SIN-Mattermost platform integration |
+| [A2A-SIN-MiroFish](https://github.com/OpenSIN-AI/A2A-SIN-MiroFish) | 🔒 Private | A2A-SIN-MiroFish — Swarm Intelligence Prediction Engine by OpenSIN-AI. Multi-agent simulation with independent personalities, GraphRAG memory, and social evolution. |
+| [A2A-SIN-RocketChat](https://github.com/OpenSIN-AI/A2A-SIN-RocketChat) | 🌐 Public | OpenSIN AI Agent for A2A-SIN-RocketChat platform integration |
+| [A2A-SIN-Slack](https://github.com/OpenSIN-AI/A2A-SIN-Slack) | 🌐 Public | OpenSIN AI Agent for A2A-SIN-Slack platform integration |
+| [ai-agent-system](https://github.com/OpenSIN-AI/ai-agent-system) | 🔒 Private | Keine Beschreibung |
+| [opensin_api](https://github.com/OpenSIN-AI/opensin_api) | 🌐 Public | Standalone API package for OpenSIN AI Agent Framework |
+| [opensin_sdk](https://github.com/OpenSIN-AI/opensin_sdk) | 🌐 Public | Standalone SDK package for OpenSIN AI Agent Framework |
