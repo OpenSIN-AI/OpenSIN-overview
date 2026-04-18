@@ -2,77 +2,95 @@
 
 ## Problem
 
-The OpenSIN-AI organization had accumulated multiple repos that all claimed
-to be "the coding / agent platform." Concretely:
+The OpenSIN-AI organization had accumulated duplicated, ambiguously-owned, and
+wrongly-located repos across four distinct failure modes:
 
-- Three repos for the coding-team agents (`Team-SIN-Code-Core`,
-  `A2A-SIN-Coding-CEO`, `A2A-SIN-Code-AI`) that only differed in the
-  model name in `agent.json` and shared a `workspace:*` dependency that
-  could never resolve across repo boundaries.
-- A separate `opensin-ai-code` Python repo that duplicated the ground
-  already covered by `OpenSIN/opensin_core` / `opensin_cli` / `opensin_sdk`,
-  and which advertised a `pip install opensin-ai-code` path that never
-  actually worked (no `pyproject.toml`).
+1. **Split siblings:** three near-identical repos for the coding-team agents that were designed for a pnpm workspace but lived in separate repositories, so the `workspace:*` dependencies could never resolve.
+2. **Duplicated Python platforms:** a standalone `opensin-ai-code` repo claimed to be "the Python Agent Development Platform" while the `OpenSIN` monolith already shipped `opensin_core` / `opensin_cli` / `opensin_api` / `opensin_sdk`.
+3. **Split setup repos:** `Infra-SIN-Dev-Setup` (developer environment) and `OpenSIN-onboarding` (end-user first-run) owned the same domain with different audiences.
+4. **Ambiguous web surface + stale marketing copy:** `OpenSIN-WebApp` had no GitHub description and was easily confused with `website-my.opensin.ai`. `Biz-SIN-Marketing` advertised hard-coded counts ("372 Packages · 620 Agent Teams · 79 Blog Posts") that contradicted `OpenSIN`'s own description ("310+ packages") and were internally inconsistent.
 
-Result: new contributors (human and agent) could not tell where new code
-should go, and cross-repo workspace dependencies were fundamentally broken.
+## Wave 1 — agent and platform merges
 
-## Actions taken
-
-### 1. Coding-team monorepo
+### 1.1 Coding-team monorepo
 Merged into `OpenSIN-AI/Team-SIN-Code-Core`:
 - `A2A-SIN-Coding-CEO` → `agents/coding-ceo/`
 - `A2A-SIN-Code-AI` → `agents/code-ai/`
 
-Added `pnpm-workspace.yaml`, `packages/shared-helpers/` (the previously
-missing workspace:* target), and `start:coding-ceo` / `start:code-ai`
-scripts in the root `package.json`.
+Added `pnpm-workspace.yaml`, `packages/shared-helpers/` (previously-missing `workspace:*` target), and `start:coding-ceo` / `start:code-ai` scripts.
 
-PR: https://github.com/OpenSIN-AI/Team-SIN-Code-Core/pull/2
+**PR:** https://github.com/OpenSIN-AI/Team-SIN-Code-Core/pull/2 — merged.
 
-### 2. Python platform merge
-Merged `opensin-ai-code` into `OpenSIN` as `opensin_agent_platform/`.
-Folder is preserved as reference material with a follow-up rationalization
-plan documented in its README. Not yet wired into the production build.
+### 1.2 Python platform merge
+Merged `opensin-ai-code` → `OpenSIN/opensin_agent_platform/`. Preserved source tree; rationalization plan documented in the new folder's README. Not yet wired into production build.
 
-PR: https://github.com/OpenSIN-AI/OpenSIN/pull/1720
+**PR:** https://github.com/OpenSIN-AI/OpenSIN/pull/1720 — merged.
 
-### 3. Onboarding SSOT
-Sharpened `OpenSIN-overview` with:
-- `START-HERE.md` — 60-second onboarding for humans and agents
-- `docs/CANONICAL-REPOS.md` — authoritative repo-ownership map
-- This report
+### 1.3 Initial onboarding SSOT
+Added to `OpenSIN-overview`:
+- `START-HERE.md`
+- `docs/CANONICAL-REPOS.md` (initial version)
+- `docs/CONSOLIDATION-2026-04.md`
 
-### 4. Archival
-After the two PRs above merge, the following repos are archived with a
-redirect README:
-- `OpenSIN-AI/A2A-SIN-Coding-CEO`
-- `OpenSIN-AI/A2A-SIN-Code-AI`
-- `OpenSIN-AI/opensin-ai-code`
+**PR:** https://github.com/OpenSIN-AI/OpenSIN-overview/pull/29 — merged.
+
+### 1.4 Wave 1 archival
+- `OpenSIN-AI/A2A-SIN-Coding-CEO` — archived with redirect README.
+- `OpenSIN-AI/A2A-SIN-Code-AI` — archived with redirect README.
+- `OpenSIN-AI/opensin-ai-code` — archived with redirect README.
+
+## Wave 2 — setup merge + surface cleanup
+
+### 2.1 Setup merge
+Merged `OpenSIN-onboarding` → `Infra-SIN-Dev-Setup/user-onboarding/`. New top-level README splits developer vs. end-user paths.
+
+**PR:** https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup/pull/34
+
+**Redirect PR:** https://github.com/OpenSIN-AI/OpenSIN-onboarding/pull/5
+
+### 2.2 OpenSIN-WebApp clarification
+- Added `Related repos` table to README distinguishing the three web properties (`chat.opensin.ai`, `my.opensin.ai`, `opensin.ai`).
+- Fixed `Delhi/upgraded-opencode-stack` typo → `Delqhi/...`.
+- Set GitHub repo description and homepage (was blank).
+
+**PR:** https://github.com/OpenSIN-AI/OpenSIN-WebApp/pull/13
+
+### 2.3 Marketing factual correction
+- Blog-post badge 79 → 89 (actual disk count).
+- Replaced hard-coded "372 Packages · 620 Agent Teams" with a qualitative claim + pointer to `OpenSIN-overview/registry/` as the future SSOT for numbers.
+- Quick Links: `OpenSIN-Code` is the Autonomous CLI, not a VS Code Extension.
+
+**PR:** https://github.com/OpenSIN-AI/Biz-SIN-Marketing/pull/60
+
+### 2.4 Canonical map expansion
+- `docs/CANONICAL-REPOS.md` expanded from 6 entries (wave 1) to ~14 entries covering: Python kernel, coding surface, web surface (3), documentation, infra (merged), marketing, templates, org meta, external SSOT.
+- Added explicit **Naming convention** section documenting the two schemes (flagship vs. domain-prefix) and when to use each.
+- Added a **repo-proposal gate** — four questions that must be answered before creating any new `OpenSIN-AI/*` repo.
+- `START-HERE.md` updated to match the expanded map, with a Delqhi SSOT callout.
+
+**This PR** — https://github.com/OpenSIN-AI/OpenSIN-overview/pull/<this>
+
+### 2.5 Wave 2 archival
+- `OpenSIN-AI/OpenSIN-onboarding` — archived with redirect README.
 
 ## Result
 
-From 9 confusing repos with overlapping claims to 4 code repos + 2 meta
-repos with clearly separated ownership:
-
 | Before | After |
 |---|---|
-| OpenSIN | OpenSIN (unchanged role) |
-| OpenSIN-Code | OpenSIN-Code (unchanged role) |
-| OpenSIN-backend | OpenSIN-backend (unchanged role) |
-| Team-SIN-Code-Core | Team-SIN-Code-Core (now monorepo) |
-| A2A-SIN-Coding-CEO | archived → `Team-SIN-Code-Core/agents/coding-ceo` |
-| A2A-SIN-Code-AI | archived → `Team-SIN-Code-Core/agents/code-ai` |
-| opensin-ai-code | archived → `OpenSIN/opensin_agent_platform` |
-| OpenSIN-overview | OpenSIN-overview (now with START-HERE.md) |
-| OpenSIN-documentation | OpenSIN-documentation (unchanged role) |
+| 9 overlapping code repos | 4 code repos + clearly-split web surface (3) + infra (1) + template (1) + marketing (1) + 2 meta = 12 distinct, non-overlapping repos |
+| 4 archived Wave-1+2 | `A2A-SIN-Coding-CEO`, `A2A-SIN-Code-AI`, `opensin-ai-code`, `OpenSIN-onboarding` |
 
 ## Follow-ups
 
-1. Diff `OpenSIN/opensin_agent_platform/` against `OpenSIN/opensin_core/`
-   (both have `hooks`, `plugins`, `skills` modules). Port any genuinely
-   useful logic into `opensin_core` and retire the folder.
-2. Extend `Team-SIN-Code-Core` with `agents/code-devops/` and
-   `agents/code-datascience/` instead of creating new repos for them.
-3. Run `discover-agents.js` and `registry/MASTER_INDEX.md` regeneration
-   so the indexes reflect the new layout.
+### Governance
+1. **Transfer `Delqhi/upgraded-opencode-stack` and `Delqhi/global-brain` to OpenSIN-AI.** Six+ repos declare these as SSOT in their READMEs. They must live under the same governance as the repos that depend on them.
+
+### Rationalization
+2. Diff `OpenSIN/opensin_agent_platform/` against `OpenSIN/opensin_core/` (both have `hooks`, `plugins`, `skills`). Port genuinely useful logic into `opensin_core` and retire the folder.
+
+### Content
+3. Regenerate `OpenSIN-overview/registry/MASTER_INDEX.md` and `platforms/registry.json` to reflect post-wave-2 layout.
+4. Run a link-fixer across all README files: find every reference to the archived repos (`A2A-SIN-Coding-CEO`, `A2A-SIN-Code-AI`, `opensin-ai-code`, `OpenSIN-onboarding`) and replace with the canonical target from `docs/CANONICAL-REPOS.md`.
+
+### Expansion
+5. When adding `Team-SIN-Google`, `Team-SIN-BugBounty`, etc. — they go as folders under the existing `Team-SIN-*` monorepo that owns their domain, NOT as standalone repos. See the repo-proposal gate in `docs/CANONICAL-REPOS.md`.
