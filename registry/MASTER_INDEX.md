@@ -1,7 +1,9 @@
 # 📚 THE ULTIMATE MASTER INDEX (187 REPOS)
 
-**LAST UPDATED:** 2026-04-17 03:00 UTC
+**LAST UPDATED:** 2026-04-18 (post-wave-2 consolidation)
 **TOTAL REPOSITORIES:** 188 (42 public, 146 private)
+
+> **Archival note:** 4 repos were consolidated into canonical monorepos in April 2026 and are marked `ARCHIVED` below. See [docs/CANONICAL-REPOS.md](../docs/CANONICAL-REPOS.md) for the canonical ownership map.
 
 Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organisation. **Jedes** der 187 Repositories ist hier kategorisiert und logisch in die Architektur integriert.
 
@@ -103,11 +105,11 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 | [A2A-SIN-CI-CD](https://github.com/OpenSIN-AI/A2A-SIN-CI-CD) | 🔒 Private | SIN A2A component: CI/CD pipeline integration — automated build and deploy. |
 | [A2A-SIN-Chatroom](https://github.com/OpenSIN-AI/A2A-SIN-Chatroom) | 🌐 Public | SIN A2A component: Chatroom integration — multi-platform chat management. |
 | [A2A-SIN-ClaimWriter](https://github.com/OpenSIN-AI/A2A-SIN-ClaimWriter) | 🔒 Private | SIN A2A component: A2A-SIN-ClaimWriter |
-| [A2A-SIN-Code-AI](https://github.com/OpenSIN-AI/A2A-SIN-Code-AI) | 🔒 Private | SIN A2A component: sin-code-ai |
+| [A2A-SIN-Code-AI](https://github.com/OpenSIN-AI/A2A-SIN-Code-AI) | 🔒 Private | ⚠️ **ARCHIVED 2026-04** → consolidated into `Team-SIN-Code-Core/agents/code-ai/` |
 | [A2A-SIN-Code-DataScience](https://github.com/OpenSIN-AI/A2A-SIN-Code-DataScience) | 🔒 Private | SIN A2A component: sin-code-datascience |
 | [A2A-SIN-Code-DevOps](https://github.com/OpenSIN-AI/A2A-SIN-Code-DevOps) | 🔒 Private | SIN A2A component: sin-code-devops |
 | [A2A-SIN-Code-GitLab-LogsCenter](https://github.com/OpenSIN-AI/A2A-SIN-Code-GitLab-LogsCenter) | 🔒 Private | Autonomous log analysis agent: monitors GitLab LogCenter repos, detects errors/bugs via pattern analysis, auto-creates GitHub issues, dispatches fixes to Team Coding |
-| [A2A-SIN-Coding-CEO](https://github.com/OpenSIN-AI/A2A-SIN-Coding-CEO) | 🔒 Private | SIN A2A component: sin-coding-ceo |
+| [A2A-SIN-Coding-CEO](https://github.com/OpenSIN-AI/A2A-SIN-Coding-CEO) | 🔒 Private | ⚠️ **ARCHIVED 2026-04** → consolidated into `Team-SIN-Code-Core/agents/coding-ceo/` |
 | [A2A-SIN-Community](https://github.com/OpenSIN-AI/A2A-SIN-Community) | 🔒 Private | OpenSIN Marketing Agent for Community - Autonomous cold outreach, lead scraping, and engagement |
 | [A2A-SIN-Compliance](https://github.com/OpenSIN-AI/A2A-SIN-Compliance) | 🔒 Private | SIN A2A component: A2A-SIN-Compliance |
 | [A2A-SIN-Contract](https://github.com/OpenSIN-AI/A2A-SIN-Contract) | 🔒 Private | SIN A2A component: A2A-SIN-Contract |
@@ -294,12 +296,11 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 | [OpenSIN](https://github.com/OpenSIN-AI/OpenSIN) | 🌐 Public | OpenSIN Core — 310+ packages across 25+ domains. The most comprehensive open-source AI agent system in the world. |
 | [OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation) | 🌐 Public | Official documentation for OpenSIN - docs.opensin.ai |
 | [OpenSIN-github-apps](https://github.com/OpenSIN-AI/OpenSIN-github-apps) | 🔒 Private | Central registry, documentation, and routing configurations for all OpenSIN-AI GitHub Apps |
-| [OpenSIN-onboarding](https://github.com/OpenSIN-AI/OpenSIN-onboarding) | 🌐 Public | Autonomous first-run onboarding for OpenSIN — sets up Passwordmanager, Google Cloud Secrets, Chrome Extension, API keys, and platform accounts with zero manual intervention |
+| [OpenSIN-onboarding](https://github.com/OpenSIN-AI/OpenSIN-onboarding) | 🌐 Public | ⚠️ **ARCHIVED 2026-04** → consolidated into `Infra-SIN-Dev-Setup/user-onboarding/` |
 | [OpenSIN-overview](https://github.com/OpenSIN-AI/OpenSIN-overview) | 🌐 Public | The Ultimate Single Source of Truth for the OpenSIN-AI organization (Rules, Teams, Agents, MCPs) |
 | [SIN-InkogniFlow](https://github.com/OpenSIN-AI/SIN-InkogniFlow) | 🔒 Private | Cloneable flow-builder repo with sin-flow and sin-flowd |
 | [awesome-opensin](https://github.com/OpenSIN-AI/awesome-opensin) | 🌐 Public | A curated list of awesome plugins, themes, agents, projects, and resources for https://opencode.ai |
 | [documentation](https://github.com/OpenSIN-AI/documentation) | 🔒 Private | ⚠️ ARCHIVED — All docs migrated to github.com/OpenSIN-AI/OpenSIN-documentation |
 | [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | 🌐 Public | OpenSIN-AI opensin-ai-cli |
-| [opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code) | 🌐 Public | OpenSIN-AI opensin-ai-code |
+| [opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code) | 🌐 Public | ⚠️ **ARCHIVED 2026-04** → consolidated into `OpenSIN/opensin_agent_platform/` |
 | [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | 🌐 Public | OpenSIN-AI opensin-ai-platform |
-
