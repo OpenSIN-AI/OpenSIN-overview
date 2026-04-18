@@ -1,3 +1,12 @@
+> ## NEU HIER? → **[START-HERE.md](./START-HERE.md)**
+>
+> **In 60 Sekunden handlungsfähig** — für menschliche Entwickler UND AI-Agenten.
+>
+> Konsolidierung April 2026 (9 → 4 Code-Repos): [docs/CONSOLIDATION-2026-04.md](./docs/CONSOLIDATION-2026-04.md)
+> Kanonische Repo-Zuordnung: [docs/CANONICAL-REPOS.md](./docs/CANONICAL-REPOS.md)
+
+---
+
 # 🦅 OPENSIN-AI: KOMPAKT-ÜBERSICHT
 
 > **The Ultimate Single Source of Truth für die OpenSIN-AI Organisation**
