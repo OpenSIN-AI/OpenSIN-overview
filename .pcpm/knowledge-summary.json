@@ -1,0 +1,16 @@
+{
+  "global": {
+    "rules": [
+      {"id": "rule-preview-mandatory", "text": "Images MUST be opened in macOS Preview.app — never tell users to check /tmp", "priority": -4.5},
+      {"id": "rule-sin-brain-auto-sync", "text": "Auto-sync after every chat turn via sync-chat-turn hook", "priority": -4.0}
+    ]
+  },
+  "project": {
+    "facts": [
+      {"id": "fact-overview-ssot", "text": "OpenSIN-overview is the SSOT for all 165+ repos, 17 teams, 92 workers in the OpenSIN-AI organization", "discoveredAt": "2026-04-13"}
+    ],
+    "solutions": [
+      {"id": "sol-overview-updated", "text": "Added global-brain, OpenSIN-Neural-Bus, sin-brain MCP, Preview MCP to README.md MCP Server, Infra, and Doku sections", "createdAt": "2026-04-13"}
+    ]
+  }
+}

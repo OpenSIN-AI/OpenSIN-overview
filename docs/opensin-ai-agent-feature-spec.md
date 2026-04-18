@@ -21,7 +21,7 @@ OpenSIN-AI Agent is the autonomous AI agent system at the core of the OpenSIN ec
 | Subagent Spawning | ✅ (A2A Fleet + opencode) | ✅ (Subagent Progress) | ❌ | ✅ (Task tool, 3 types) |
 | External Harness Control | ✅ (opencode CLI + A2A) | ✅ (ACP: Claude Code/Codex/Gemini CLI) | ❌ | ❌ |
 | Persistent Memory | ✅ (MCP-SIN-memory + Supabase) | ✅ (Memory Wiki + SOUL.md) | ❌ | ✅ (CLAUDE.md + auto-memory) |
-| Agent SDK | ✅ (opensin-ai-code Python) | ❌ | ❌ | ✅ (Python/TypeScript) |
+| Agent SDK | ✅ (`opensin_sdk` in `OpenSIN`) | ❌ | ❌ | ✅ (Python/TypeScript) |
 | Webhook Triggers | ✅ (n8n + A2A webhooks) | ✅ (Built-in webhook server) | ❌ | ❌ |
 | Voice Interaction | ✅ (Siri + Apple agents) | ✅ (Voice Wake + Talk Mode) | ✅ (Gemini Live) | ❌ |
 | Google Workspace | ✅ (A2A-SIN-Google-Apps) | ✅ (Google Workspace plugin) | ✅ (Native deep integration) | ❌ |
@@ -38,7 +38,7 @@ OpenSIN-AI Agent is the autonomous AI agent system at the core of the OpenSIN ec
 
 ### Phase 1: Core Agent Loop (P0 — Foundation)
 
-#### 2.1 Autonomous Agent Loop (`opensin-ai-cli` / `OpenSIN-Code`)
+#### 2.1 Autonomous Agent Loop (`OpenSIN-Code`)
 - **What:** A persistent agent loop that runs 24/7, processes tasks from queues, and executes them autonomously
 - **Competitor Parity:** OpenClaw Heartbeat, Claude Code /loop, Gemini Scheduled Actions
 - **Implementation:**
@@ -47,7 +47,7 @@ OpenSIN-AI Agent is the autonomous AI agent system at the core of the OpenSIN ec
   - Cron scheduler: Native cron-like scheduling for recurring tasks (daily summaries, weekly reports)
   - Graceful shutdown: Checkpoint state on SIGTERM, resume on restart
   - Timeout management: Max execution time per task, auto-escalation on timeout
-- **Target Repo:** `opensin-ai-cli` (Rust) + `OpenSIN-Code` (SDK)
+- **Target Repo:** `OpenSIN-Code` (Rust Engine + SDK) — note: `opensin-ai-cli` is rationalization-pending, see [FOLLOWUPS.md § R1](./FOLLOWUPS.md#r1-opensin-ai-cli--opensin-code)
 
 #### 2.2 Multi-Model Router
 - **What:** Intelligent model routing with failover chains, cost optimization, and task-based model selection
@@ -160,7 +160,7 @@ OpenSIN-AI Agent is the autonomous AI agent system at the core of the OpenSIN ec
   - Talk mode: Continuous voice conversation
   - Speech-to-text: Whisper API or local model
   - Text-to-speech: Response narration
-- **Target Repo:** `opensin-ai-cli` + `A2A-SIN-Apple-Shortcuts`
+- **Target Repo:** `OpenSIN-Code` + `A2A-SIN-Apple-Shortcuts`
 
 #### 2.12 Google Workspace Deep Integration
 - **What:** Native deep integration with Gmail, Drive, Calendar, Docs, Sheets, Slides
@@ -178,7 +178,7 @@ OpenSIN-AI Agent is the autonomous AI agent system at the core of the OpenSIN ec
 ## 3. Implementation Roadmap
 
 ### Sprint 1 (Week 1-2): Foundation
-- [ ] Implement heartbeat system in `opensin-ai-cli`
+- [ ] Implement heartbeat system in `OpenSIN-Code`
 - [ ] Extend multi-model router with failover chains
 - [ ] Create unified messaging API in `OpenSIN-backend`
 - [ ] Extend `MCP-SIN-memory` with wiki-style storage

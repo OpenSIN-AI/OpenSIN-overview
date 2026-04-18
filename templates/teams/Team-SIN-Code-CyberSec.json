@@ -1,0 +1,60 @@
+{
+  "$schema_version": "1.0.0",
+  "id": "Team-SIN-Code-CyberSec",
+  "name": "CyberSec Team",
+  "slug": "cybersec",
+  "tier": "marketplace",
+  "status": "beta",
+  "tagline": "Offensive and defensive security squad: red-team, audit, forensics, malware, web, cloud.",
+  "marketing": {
+    "summary": "A 16-agent security squad covering the full stack — red-team playbooks, audit pipelines, forensics, crypto, malware analysis, fuzzing, mobile, IoT, network, cloud, web, social engineering, and automated recon. Runs inside your chat.opensin.ai tenant with explicit permission gates.",
+    "bullets": [
+      "Red-team assistant for adversarial simulation",
+      "Audit pipelines with automated reporting",
+      "Forensics, malware triage and crypto review",
+      "Web, cloud, mobile, IoT, network coverage",
+      "Recon, fuzzing and exploit research workflows",
+      "Explicit per-run permission gates — nothing runs without opt-in"
+    ]
+  },
+  "agents": [
+    {"id": "A2A-SIN-Security-AI", "role": "primary", "summary": "ML-driven anomaly + triage."},
+    {"id": "A2A-SIN-Security-Audit", "role": "primary", "summary": "Audit pipelines with reporting."},
+    {"id": "A2A-SIN-Security-RedTeam", "role": "primary", "summary": "Adversarial simulation playbooks."},
+    {"id": "A2A-SIN-Security-Auth", "role": "supporting", "summary": "AuthN/AuthZ review."},
+    {"id": "A2A-SIN-Security-Cloud", "role": "supporting", "summary": "Cloud posture + IAM review."},
+    {"id": "A2A-SIN-Security-Crypto", "role": "supporting", "summary": "Crypto primitives + key management review."},
+    {"id": "A2A-SIN-Security-Exploit", "role": "supporting", "summary": "Exploit research and reproduction."},
+    {"id": "A2A-SIN-Security-Forensics", "role": "supporting", "summary": "Disk / memory / network forensics."},
+    {"id": "A2A-SIN-Security-Fuzz", "role": "supporting", "summary": "Fuzz harness generation + triage."},
+    {"id": "A2A-SIN-Security-IoT", "role": "supporting", "summary": "IoT firmware + protocol review."},
+    {"id": "A2A-SIN-Security-Malware", "role": "supporting", "summary": "Malware static + dynamic analysis."},
+    {"id": "A2A-SIN-Security-Mobile", "role": "supporting", "summary": "Mobile app security (iOS/Android)."},
+    {"id": "A2A-SIN-Security-Network", "role": "supporting", "summary": "Network security + pcap triage."},
+    {"id": "A2A-SIN-Security-Recon", "role": "supporting", "summary": "External recon + asset discovery."},
+    {"id": "A2A-SIN-Security-Social", "role": "supporting", "summary": "Social-engineering assessment."},
+    {"id": "A2A-SIN-Security-Web", "role": "supporting", "summary": "Web app security (OWASP-focused)."}
+  ],
+  "pricing": {
+    "model": "monthly-addon",
+    "monthly_addon_eur": 29
+  },
+  "permissions": [
+    "read:user-memory",
+    "write:user-memory",
+    "net:external-http",
+    "net:cloud-apis",
+    "filesystem:user-workspace",
+    "shell:user-workspace",
+    "spend:llm-budget"
+  ],
+  "budgets": {
+    "default_monthly_usd_cap": 80,
+    "per_run_usd_cap": 3
+  },
+  "provenance": {
+    "decided_in": "OpenSIN-overview#35",
+    "decided_at": "2026-04-18",
+    "owner_team": "OpenSIN-AI/cybersec"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "$schema_version": "1.0.0",
+  "id": "Team-SIN-Microsoft",
+  "name": "Microsoft Team",
+  "slug": "microsoft",
+  "tier": "marketplace",
+  "status": "alpha",
+  "tagline": "Microsoft Teams automation — the start of full Microsoft 365 coverage.",
+  "marketing": {
+    "summary": "Currently ships Microsoft Teams automation — channels, meetings, chat. Roadmap covers Outlook, Word, Excel, PowerPoint, OneDrive, SharePoint and Power Automate. Priced as a growing bundle — buyers today lock in the Teams agent and get future M365 agents added automatically.",
+    "bullets": [
+      "Microsoft Teams channels, meetings and chat ops",
+      "Outlook calendar + mail (roadmap)",
+      "Excel / Word / PowerPoint generation (roadmap)",
+      "SharePoint and OneDrive content ops (roadmap)",
+      "Power Automate flow authoring (roadmap)"
+    ]
+  },
+  "agents": [
+    {"id": "A2A-SIN-Teams", "role": "primary", "summary": "Microsoft Teams channels, meetings, chat."}
+  ],
+  "pricing": {
+    "model": "monthly-addon",
+    "monthly_addon_eur": 9
+  },
+  "permissions": [
+    "read:user-memory",
+    "write:user-memory",
+    "net:external-http",
+    "net:cloud-apis"
+  ],
+  "budgets": {
+    "default_monthly_usd_cap": 20,
+    "per_run_usd_cap": 1
+  },
+  "provenance": {
+    "decided_in": "OpenSIN-overview#35",
+    "decided_at": "2026-04-18",
+    "owner_team": "OpenSIN-AI/microsoft"
+  }
+}

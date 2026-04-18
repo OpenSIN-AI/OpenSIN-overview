@@ -1,0 +1,48 @@
+{
+  "$schema_version": "1.0.0",
+  "id": "Team-SIN-Infrastructure",
+  "name": "Infrastructure Team",
+  "slug": "infrastructure",
+  "tier": "marketplace",
+  "status": "beta",
+  "tagline": "CI/CD, n8n workflows, storage, and GitHub Actions — your infra on autopilot.",
+  "marketing": {
+    "summary": "Keeps your pipelines, workflows, and storage healthy. Fixes red CI, writes n8n workflows, triages GitHub Actions failures, and manages object storage across providers. The team your ops channel has always wanted.",
+    "bullets": [
+      "CI/CD pipeline healing and flake detection",
+      "n8n workflow authoring and debugging",
+      "GitHub Actions failure triage + fixes",
+      "Object storage management across providers (Box + generic)",
+      "Opal workflow automation integration"
+    ]
+  },
+  "agents": [
+    {"id": "A2A-SIN-CI-CD", "role": "primary", "summary": "CI/CD pipelines across Jenkins/GH/GitLab/CircleCI."},
+    {"id": "A2A-SIN-Github-Action", "role": "primary", "summary": "GitHub Actions failure triage + fixes."},
+    {"id": "A2A-SIN-N8N", "role": "primary", "summary": "n8n workflow authoring + debugging."},
+    {"id": "A2A-SIN-Storage", "role": "supporting", "summary": "Generic object-storage operations."},
+    {"id": "A2A-SIN-Box-Storage", "role": "supporting", "summary": "Box-specific storage operations."},
+    {"id": "A2A-SIN-Opal", "role": "supporting", "summary": "Opal workflow automation."}
+  ],
+  "pricing": {
+    "model": "monthly-addon",
+    "monthly_addon_eur": 14
+  },
+  "permissions": [
+    "read:user-memory",
+    "write:user-memory",
+    "net:external-http",
+    "net:cloud-apis",
+    "filesystem:user-workspace",
+    "shell:user-workspace"
+  ],
+  "budgets": {
+    "default_monthly_usd_cap": 30,
+    "per_run_usd_cap": 2
+  },
+  "provenance": {
+    "decided_in": "OpenSIN-overview#35",
+    "decided_at": "2026-04-18",
+    "owner_team": "OpenSIN-AI/infrastructure"
+  }
+}

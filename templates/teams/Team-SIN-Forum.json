@@ -1,0 +1,44 @@
+{
+  "$schema_version": "1.0.0",
+  "id": "Team-SIN-Forum",
+  "name": "Forum Team",
+  "slug": "forum",
+  "tier": "marketplace",
+  "status": "beta",
+  "tagline": "Be smart about Hacker News, Lobsters, Stack Overflow, Quora and Slashdot.",
+  "marketing": {
+    "summary": "Monitors, engages with, and harvests signal from the forums engineers and thinkers actually use. Surfaces trending threads to your inbox, drafts high-signal replies, and answers developer questions on Stack Overflow when your product is mentioned.",
+    "bullets": [
+      "Hacker News and Lobsters trend detection",
+      "Stack Overflow monitoring + developer-support drafts",
+      "Quora and Slashdot engagement",
+      "Auto-digests of threads relevant to your product",
+      "Plagiarism-aware original-reply drafting"
+    ]
+  },
+  "agents": [
+    {"id": "A2A-SIN-HackerNews", "role": "primary", "summary": "HN front-page + comments monitoring."},
+    {"id": "A2A-SIN-Lobsters", "role": "primary", "summary": "Lobsters trending + tag filters."},
+    {"id": "A2A-SIN-StackOverflow", "role": "primary", "summary": "SO question discovery + reply drafting."},
+    {"id": "A2A-SIN-Quora", "role": "supporting", "summary": "Quora topic tracking + drafts."},
+    {"id": "A2A-SIN-Slashdot", "role": "supporting", "summary": "Slashdot monitoring."}
+  ],
+  "pricing": {
+    "model": "monthly-addon",
+    "monthly_addon_eur": 9
+  },
+  "permissions": [
+    "read:user-memory",
+    "write:user-memory",
+    "net:external-http"
+  ],
+  "budgets": {
+    "default_monthly_usd_cap": 15,
+    "per_run_usd_cap": 1
+  },
+  "provenance": {
+    "decided_in": "OpenSIN-overview#35",
+    "decided_at": "2026-04-18",
+    "owner_team": "OpenSIN-AI/forum"
+  }
+}
