@@ -1,11 +1,11 @@
-# 📚 THE ULTIMATE MASTER INDEX (187 REPOS)
+# 📚 THE ULTIMATE MASTER INDEX (188 REPOS)
 
-**LAST UPDATED:** 2026-04-18 (post-wave-2 consolidation)
+**LAST UPDATED:** 2026-04-18 (post-wave-3 consolidation)
 **TOTAL REPOSITORIES:** 188 (42 public, 146 private)
 
-> **Archival note:** 4 repos were consolidated into canonical monorepos in April 2026 and are marked `ARCHIVED` below. See [docs/CANONICAL-REPOS.md](../docs/CANONICAL-REPOS.md) for the canonical ownership map.
+> **Archival note:** 4 repos were consolidated into canonical monorepos in April 2026 (Waves 1–2) and are marked `ARCHIVED` below. Two SSOT infra repos were transferred from `Delqhi/*` into `OpenSIN-AI/Infra-SIN-*` in Wave 2.5. Two remaining in-org duplicates (`opensin-ai-cli`, `opensin-ai-platform`) are flagged **Rationalization pending** in Wave 3. See [docs/CANONICAL-REPOS.md](../docs/CANONICAL-REPOS.md) and [docs/FOLLOWUPS.md](../docs/FOLLOWUPS.md) for the canonical ownership map and open work.
 
-Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organisation. **Jedes** der 187 Repositories ist hier kategorisiert und logisch in die Architektur integriert.
+Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organisation. **Jedes** der 188 Repositories ist hier kategorisiert und logisch in die Architektur integriert.
 
 ---
 
@@ -237,10 +237,12 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 
 | Repository | Visibility | Description |
 |------------|-------------|-------------|
-| [Infra-SIN-Dev-Setup](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup) | 🌐 Public | Development Environment Setup |
+| [Infra-SIN-Dev-Setup](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup) | 🌐 Public | Development Environment Setup + end-user first-run at `user-onboarding/` (absorbed archived `OpenSIN-onboarding`) |
 | [Infra-SIN-Doc-Templates](https://github.com/OpenSIN-AI/Infra-SIN-Doc-Templates) | 🌐 Public | OpenSIN Documentation Templates - 453K auto-generated templates for consistent documentation structures |
 | [Infra-SIN-Docker-Empire](https://github.com/OpenSIN-AI/Infra-SIN-Docker-Empire) | 🔒 Private | SIN-Solver Docker Infrastructure - 26 Container Empire |
 | [Infra-SIN-Docs-Standard](https://github.com/OpenSIN-AI/Infra-SIN-Docs-Standard) | 🔒 Private | Global Development Documentation Standard — Templates, guidelines, and best practices for all OpenSIN-AI repositories. |
+| [Infra-SIN-Global-Brain](https://github.com/OpenSIN-AI/Infra-SIN-Global-Brain) | 🔒 Private | PCPM v4 daemon — persistent agent memory. Transferred from `Delqhi/global-brain` 2026-04-18. Declared SSOT by A2A-SIN-* agents. |
+| [Infra-SIN-OpenCode-Stack](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack) | 🔒 Private | Canonical OpenCode configuration (v2.2.1, 44 skills, 27 MCPs, 5 providers). Transferred from `Delqhi/upgraded-opencode-stack` 2026-04-18. `sin-sync` target. |
 
 
 ## 📚 12. Skills
@@ -301,6 +303,6 @@ Dieses Dokument ist das vollständige, lückenlose Inventar der OpenSIN-AI Organ
 | [SIN-InkogniFlow](https://github.com/OpenSIN-AI/SIN-InkogniFlow) | 🔒 Private | Cloneable flow-builder repo with sin-flow and sin-flowd |
 | [awesome-opensin](https://github.com/OpenSIN-AI/awesome-opensin) | 🌐 Public | A curated list of awesome plugins, themes, agents, projects, and resources for https://opencode.ai |
 | [documentation](https://github.com/OpenSIN-AI/documentation) | 🔒 Private | ⚠️ ARCHIVED — All docs migrated to github.com/OpenSIN-AI/OpenSIN-documentation |
-| [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | 🌐 Public | OpenSIN-AI opensin-ai-cli |
+| [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | 🌐 Public | ⚠️ **Rationalization pending** — overlaps with `OpenSIN-Code`. Do not extend. See [docs/FOLLOWUPS.md § R1](../docs/FOLLOWUPS.md#r1-opensin-ai-cli--opensin-code) |
 | [opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code) | 🌐 Public | ⚠️ **ARCHIVED 2026-04** → consolidated into `OpenSIN/opensin_agent_platform/` |
-| [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | 🌐 Public | OpenSIN-AI opensin-ai-platform |
+| [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | 🌐 Public | ⚠️ **Rationalization pending** — overlaps with `OpenSIN/opensin_agent_platform/`. Do not extend. See [docs/FOLLOWUPS.md § R2](../docs/FOLLOWUPS.md#r2-opensin-ai-platform--opensin) |

@@ -110,5 +110,67 @@ Transferred the two external SSOT repos from `Delqhi` (personal account) to `Ope
 - The transfer fixes the governance gap called out in `docs/CANONICAL-REPOS.md § 8` — the section is rewritten to reflect the new home in this PR.
 
 **Follow-ups:**
-1. Link-sweep: update all repo READMEs that reference the old `Delqhi/...` paths to the new canonical paths (GitHub redirects cover us for now, but we don't want permanent indirection).
+1. Link-sweep: update all repo READMEs that reference the old `Delqhi/...` paths to the new canonical paths (GitHub redirects cover us for now, but we don't want permanent indirection). → tracked as [FOLLOWUPS.md § L1](./FOLLOWUPS.md#l1-delqhi--opensin-ai-link-sweep-across-other-repos).
 2. Verify `sin-sync` tooling works with the new repo names or uses the GitHub redirect transparently.
+
+## Wave 3 — Finalize consolidation (this PR, 2026-04-18)
+
+Closes the remaining Wave-2.5 inconsistencies inside `OpenSIN-overview` and categorizes the last two in-org duplicate repos.
+
+### 3.1 Internal Delqhi-link cleanup
+Every remaining `Delqhi/upgraded-opencode-stack` and `Delqhi/global-brain` reference inside `OpenSIN-overview` has been rewritten to the canonical `OpenSIN-AI/Infra-SIN-*` path, with a one-line note where the legacy path still matters (for people searching for the old name):
+
+- `README.md` — agent config table (6 rows) now points to `Infra-SIN-OpenCode-Stack`
+- `START-HERE.md` — section title "Externe SSOT (noch in @Delqhi...)" rewritten to "Infrastruktur-SSOT (seit 2026-04-18 in-Org)" with redirect hint
+- `BOUNDARIES.md` — canonical-ownership table updated; stale `ai-agent-system` entry replaced with `OpenSIN-backend`; `Infra-SIN-Global-Brain` added
+- `governance/BOUNDARY-ROLE-RULES.md` — matching update for rule list
+- `platforms/canonical-repos.json` — full rewrite (v3.0.0): moved the two SSOT entries out of `external_ssot` into a new `infrastructure_ssot` section under `canonical_repos`, marked `transferred_at: 2026-04-18`, recorded `legacy_path` for searchability, and emptied `external_ssot`
+
+### 3.2 Orphan-repo classification
+`OpenSIN-AI/opensin-ai-cli` (Rust coding CLI) and `OpenSIN-AI/opensin-ai-platform` (plugin ecosystem) were listed as "NEU April 2026" in the README but were not in the canonical map. Both overlap with existing canonical repos:
+
+- `opensin-ai-cli` ⟷ `OpenSIN-Code` (TS autonomous CLI + Rust engine)
+- `opensin-ai-platform` ⟷ `OpenSIN/opensin_agent_platform/` (plugin ecosystem)
+
+Instead of silently accepting them, Wave 3 flags both as **"Rationalization pending — do not extend"** in:
+
+- `README.md` (Core Engine + Doku & SSOT sections)
+- `registry/MASTER_INDEX.md § 99`
+- `docs/CANONICAL-REPOS.md § 9` (new section)
+- `platforms/canonical-repos.json` (new `rationalization_pending` array)
+
+Each has a decision ticket in `docs/FOLLOWUPS.md § R1` and `§ R2`.
+
+### 3.3 Secondary fixes
+- `README.md` — fixed the accidental duplicate `chat.opensin.ai` row where `OpenSIN-backend` was also claimed to serve that domain (corrected: backend is the internal API consumed by `OpenSIN-WebApp`).
+- `README.md` — `OpenSIN-overview` SSOT entry "Registry aller 165 Repos" → "MASTER_INDEX.md (188 Repos)".
+- `registry/MASTER_INDEX.md` — header count 187 vs 188 inconsistency fixed; `Infra-SIN-OpenCode-Stack` and `Infra-SIN-Global-Brain` added to § 11 Infrastructure.
+- `docs/opensin-ai-agent-feature-spec.md` — 5 references to the now-flagged `opensin-ai-cli` and 1 reference to the archived `opensin-ai-code` rewritten to canonical `OpenSIN-Code` / `opensin_sdk`.
+
+### 3.4 New artifact: `docs/FOLLOWUPS.md`
+Central, stable-anchor tracker for all open consolidation work:
+
+- `R1` — `opensin-ai-cli` vs `OpenSIN-Code` decision
+- `R2` — `opensin-ai-platform` vs `OpenSIN` decision
+- `R3` — `opensin_agent_platform/` vs `opensin_core/` internal diff (Wave-1 carry-over)
+- `L1` — Delqhi → OpenSIN-AI link sweep across consumer repos
+- `L2` — Archived-repo link sweep across consumer repos
+- `C1` — `OpenSIN-WebApp` registry description refresh
+- `C2` — `DEPLOYMENT_STATUS.md` freshness check
+
+Every ticket has a stable `#anchor` so other docs deep-link to it.
+
+## End state after Wave 3
+
+| Category | Count | Notes |
+|---|---|---|
+| Canonical code repos | 4 | `OpenSIN`, `OpenSIN-Code`, `OpenSIN-backend`, `Team-SIN-Code-Core` |
+| Canonical web surfaces | 3 | `website-opensin.ai`, `website-my.opensin.ai`, `OpenSIN-WebApp` |
+| Canonical meta / docs | 2 | `OpenSIN-overview`, `OpenSIN-documentation` |
+| Canonical infra | 3 | `Infra-SIN-Dev-Setup`, `Infra-SIN-OpenCode-Stack`, `Infra-SIN-Global-Brain` |
+| Canonical templates | 1 | `Template-SIN-Agent` |
+| Canonical business | 1 | `Biz-SIN-Marketing` |
+| Wave 1/2 archived | 4 | `A2A-SIN-Coding-CEO`, `A2A-SIN-Code-AI`, `opensin-ai-code`, `OpenSIN-onboarding` |
+| Rationalization pending | 2 | `opensin-ai-cli`, `opensin-ai-platform` (flagged, not extended) |
+
+Every ambiguously-owned repo now has exactly one of three states: **canonical**, **archived**, or **rationalization-pending with an open decision ticket**. Agents opening PRs can read `CANONICAL-REPOS.md` and `FOLLOWUPS.md` and know where their change belongs without asking.

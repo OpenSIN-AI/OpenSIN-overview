@@ -17,9 +17,10 @@ Short version:
 | Org map, registry index, cross-repo governance overview | `OpenSIN-overview` |
 | Runtime core / engine | `OpenSIN` |
 | Official documentation body | `OpenSIN-documentation` |
-| OpenCode config / skills / plugins | `upgraded-opencode-stack` |
-| Product web app | `OpenSIN-WebApp` |
-| Internal ops control plane | `ai-agent-system` |
+| OpenCode config / skills / plugins | `OpenSIN-AI/Infra-SIN-OpenCode-Stack` |
+| Persistent agent memory (PCPM v4) | `OpenSIN-AI/Infra-SIN-Global-Brain` |
+| Product web app | `OpenSIN-AI/OpenSIN-WebApp` |
+| A2A fleet control plane | `OpenSIN-AI/OpenSIN-backend` |
 
 ---
 

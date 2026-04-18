@@ -34,7 +34,7 @@ Lies in dieser Reihenfolge:
 3. **`platforms/registry.json`** — structured repo list.
 4. **`AGENTS.md`** + **`governance/BOUNDARY-ROLE-RULES.md`** — rules you must follow.
 
-Vor jedem Task: `discover-agents.js` ausführen (Routing-Regeln siehe `opencode.json` bei `OpenSIN-AI/Infra-SIN-OpenCode-Stack` — which is the external SSOT for OpenCode config; see CANONICAL-REPOS.md § 8).
+Vor jedem Task: `discover-agents.js` ausführen (Routing-Regeln siehe `opencode.json` bei [`OpenSIN-AI/Infra-SIN-OpenCode-Stack`](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack) — in-org SSOT für OpenCode config; see CANONICAL-REPOS.md § 8).
 
 ---
 
@@ -80,11 +80,13 @@ Vor jedem Task: `discover-agents.js` ausführen (Routing-Regeln siehe `opencode.
 | [OpenSIN-overview](https://github.com/OpenSIN-AI/OpenSIN-overview) | **Dieses Repo** — SSOT für alle Org-Repos, Onboarding, Governance |
 | [OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation) | `docs.opensin.ai` — end-user documentation |
 
-### Externe SSOT (noch in @Delqhi — sollten transferiert werden)
-| Repo | Rolle |
-|---|---|
-| [OpenSIN-AI/Infra-SIN-OpenCode-Stack](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack) | Kanonische OpenCode-Konfiguration (sin-sync Target) |
-| [OpenSIN-AI/Infra-SIN-Global-Brain](https://github.com/OpenSIN-AI/Infra-SIN-Global-Brain) | PCPM v4 daemon (persistent agent memory) |
+### Infrastruktur-SSOT (seit 2026-04-18 in-Org)
+> Diese beiden Repos waren bis April 2026 unter `Delqhi/...` — sie wurden transferiert und umbenannt. GitHub leitet die alten URLs weiter, aber alle neuen Links und Tools müssen die kanonischen `OpenSIN-AI/Infra-SIN-*` Pfade nutzen.
+
+| Repo | Rolle | Legacy-Pfad (Redirect) |
+|---|---|---|
+| [OpenSIN-AI/Infra-SIN-OpenCode-Stack](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack) | Kanonische OpenCode-Konfiguration (sin-sync Target) | `Delqhi/upgraded-opencode-stack` |
+| [OpenSIN-AI/Infra-SIN-Global-Brain](https://github.com/OpenSIN-AI/Infra-SIN-Global-Brain) | PCPM v4 daemon (persistent agent memory) | `Delqhi/global-brain` |
 
 ---
 
@@ -101,6 +103,7 @@ Diese Repos sind **read-only** und wurden in andere Repos konsolidiert.
 | `OpenSIN-onboarding` | → `Infra-SIN-Dev-Setup/user-onboarding/` |
 
 Details: [docs/CONSOLIDATION-2026-04.md](./docs/CONSOLIDATION-2026-04.md)
+Open rationalization work: [docs/FOLLOWUPS.md](./docs/FOLLOWUPS.md) — check before opening PRs against `opensin-ai-cli` or `opensin-ai-platform`.
 
 ---
 
