@@ -1,0 +1,44 @@
+{
+  "$schema_version": "1.0.0",
+  "id": "Team-SIN-Media-ComfyUI",
+  "name": "Media (ComfyUI) Team",
+  "slug": "media-comfyui",
+  "tier": "marketplace",
+  "status": "beta",
+  "tagline": "Pro-grade image and video pipelines powered by ComfyUI.",
+  "marketing": {
+    "summary": "Production-grade generative media: builds, tunes, and runs ComfyUI pipelines for images and short-form video. Ships with curated workflows for thumbnails, UGC, ads, storyboards, and post-processing. Compute-heavy — runs on your own GPU or on a managed Cloud-GPU backend.",
+    "bullets": [
+      "Curated ComfyUI workflows for thumbnails, UGC, ads",
+      "Custom pipeline authoring from natural-language brief",
+      "Batch generation with consistent character/brand locking",
+      "LoRA + ControlNet orchestration",
+      "Cloud-GPU or bring-your-own-GPU"
+    ]
+  },
+  "agents": [
+    {"id": "A2A-SIN-MiroFish", "role": "primary", "summary": "ComfyUI pipeline authoring, running and tuning."}
+  ],
+  "pricing": {
+    "model": "monthly-addon",
+    "monthly_addon_eur": 19
+  },
+  "permissions": [
+    "read:user-memory",
+    "write:user-memory",
+    "net:external-http",
+    "net:cloud-apis",
+    "filesystem:user-workspace",
+    "shell:user-workspace",
+    "spend:llm-budget"
+  ],
+  "budgets": {
+    "default_monthly_usd_cap": 50,
+    "per_run_usd_cap": 5
+  },
+  "provenance": {
+    "decided_in": "OpenSIN-overview#35",
+    "decided_at": "2026-04-18",
+    "owner_team": "OpenSIN-AI/media"
+  }
+}

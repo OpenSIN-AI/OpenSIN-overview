@@ -1,7 +1,8 @@
 # Canonical Repos — Authoritative Map
 
-> **State:** 2026-04-18, post-consolidation wave 2.
+> **State:** 2026-04-18, post-consolidation wave 3.
 > If you open a PR against a repo marked `ARCHIVED` below, it will not be reviewed.
+> If you open a PR against a repo marked `RATIONALIZATION PENDING` (§ 9), check [FOLLOWUPS.md](./FOLLOWUPS.md) first — the target of your change may be somewhere else.
 
 This document is the **single source of truth** for which repository in the
 `OpenSIN-AI` organization (and a small number of external repos) owns which
@@ -40,7 +41,9 @@ rules.
 ### OpenSIN-backend — A2A fleet control plane
 - **URL:** https://github.com/OpenSIN-AI/OpenSIN-backend
 - **Domain prefix:** none
-- **Owns:** the runtime control plane that orchestrates the agent fleet at runtime.
+- **Owns:** the runtime control plane that orchestrates the agent fleet at runtime. Includes agent registry, routing, rate-limits, permission gating, and the tenant dispatcher for `chat.opensin.ai`.
+- **Absorbs:** `Core-SIN-Control-Plane` (Wave 4, 2026-04-18). `Core-SIN-Control-Plane` was a newer parallel attempt at the same role; decision was made to merge its content here (older repo name wins because of external dependencies) and archive `Core-SIN-Control-Plane` with a redirect README. Migration tracked in the Wave-4 follow-up issues.
+- **Not:** a UI. Any HTTP endpoint lives here, but the only renderers of its output are `OpenSIN-WebApp` (chat.opensin.ai) and `website-my.opensin.ai` (marketplace + checkout).
 
 ### Team-SIN-Code-Core — Coding-team monorepo
 - **URL:** https://github.com/OpenSIN-AI/Team-SIN-Code-Core
@@ -50,7 +53,8 @@ rules.
   - `agents/coding-ceo/` — the Coding-CEO agent (was `A2A-SIN-Coding-CEO`, archived)
   - `agents/code-ai/` — the Code-AI agent (was `A2A-SIN-Code-AI`, archived)
   - `packages/shared-helpers/` — `@opensin/shared-helpers` workspace package
-- **Do not:** spin up a new repo for future coding-team agents (`code-devops`, `code-datascience`, ...). Add them as new folders under `agents/`.
+  - `team.json` (synced from [`OpenSIN-overview/templates/teams/Team-SIN-Code-Core.json`](https://github.com/OpenSIN-AI/OpenSIN-overview/blob/main/templates/teams/Team-SIN-Code-Core.json)) — marketplace manifest, tier `core-included`
+- **Do not:** spin up a new repo for future coding-team agents (`code-devops`, `code-datascience`, ...). Add them as new folders under `agents/`. **Do not edit `team.json` here directly** — it is overwritten by `push-team-manifests.js` from OpenSIN-overview.
 
 ### Template-SIN-Agent — Agent blueprint
 - **URL:** https://github.com/OpenSIN-AI/Template-SIN-Agent (was `Template-A2A-SIN-Agent`)
@@ -117,21 +121,36 @@ Three repos for three distinct properties. Do not confuse them.
 
 ---
 
-## 8. Infrastructure SSOT (formerly external — now in-org)
+## 8. Infrastructure SSOT
 
-Two infrastructure repos that are declared SSOT by many other repos across the org. As of 2026-04-18 both were transferred from the personal `Delqhi` account to `OpenSIN-AI` and renamed per the `Infra-SIN-*` convention, so they now inherit org-level branch protection, team reviews, and audit logs.
+Two infrastructure repos that are declared SSOT by many other repos across the org. Both live under `OpenSIN-AI/Infra-SIN-*` since the Wave-2.5 transfer (2026-04-18) and inherit org-level branch protection, team reviews, and audit logs.
 
 ### OpenSIN-AI/Infra-SIN-OpenCode-Stack
 - **URL:** https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack
-- **Legacy path (redirects):** `Delqhi/upgraded-opencode-stack`
-- **Role:** canonical OpenCode configuration (v2.2.1, 44 skills, 27 MCPs, 5 providers) consumed via `sin-sync` by: OpenSIN, OpenSIN-Code, OpenSIN-WebApp, website-opensin.ai, website-my.opensin.ai, Template-SIN-Agent, Biz-SIN-Marketing.
+- **Legacy path (GitHub redirect):** `Delqhi/upgraded-opencode-stack`
+- **Role:** canonical OpenCode configuration (v2.2.1, 44 skills, 27 MCPs, 5 providers) consumed via `sin-sync` by: `OpenSIN`, `OpenSIN-Code`, `OpenSIN-WebApp`, `website-opensin.ai`, `website-my.opensin.ai`, `Template-SIN-Agent`, `Biz-SIN-Marketing`.
+- **Do not:** commit OpenCode config changes anywhere else.
 
 ### OpenSIN-AI/Infra-SIN-Global-Brain
 - **URL:** https://github.com/OpenSIN-AI/Infra-SIN-Global-Brain
-- **Legacy path (redirects):** `Delqhi/global-brain`
+- **Legacy path (GitHub redirect):** `Delqhi/global-brain`
 - **Role:** Persistent Code Plan Memory (PCPM v4) daemon. Referenced by all `A2A-SIN-*` agents across the org.
+- **Do not:** fork PCPM logic into individual agent repos.
 
-GitHub redirects the old `Delqhi/...` URLs, so any `sin-sync` tooling or older README link continues to resolve. A follow-up link-sweep will update all references to the canonical `OpenSIN-AI/Infra-SIN-*` paths.
+GitHub redirects the old `Delqhi/...` URLs, but all new links, CI jobs, and `sin-sync` configs must use the canonical `OpenSIN-AI/Infra-SIN-*` paths. Outstanding link-sweep work across other repos is tracked in [FOLLOWUPS.md § L1](./FOLLOWUPS.md#l1-delqhi--opensin-ai-link-sweep-across-other-repos).
+
+---
+
+## 9. Rationalization-pending repos (Wave 3)
+
+Two repos remain in the org that are **not** canonical owners of their domain — they duplicate existing canonical repos. They stay accessible (GitHub does not auto-archive them) but new features must **not** be added. Each has a decision ticket in [FOLLOWUPS.md](./FOLLOWUPS.md).
+
+| Repo | Overlaps with | Decision ticket |
+|---|---|---|
+| [`OpenSIN-AI/opensin-ai-cli`](https://github.com/OpenSIN-AI/opensin-ai-cli) | `OpenSIN-Code` (autonomous coding CLI, has its own Rust engine) | [FOLLOWUPS.md § R1](./FOLLOWUPS.md#r1-opensin-ai-cli--opensin-code) |
+| [`OpenSIN-AI/opensin-ai-platform`](https://github.com/OpenSIN-AI/opensin-ai-platform) | `OpenSIN/opensin_agent_platform/` (plugin ecosystem) | [FOLLOWUPS.md § R2](./FOLLOWUPS.md#r2-opensin-ai-platform--opensin) |
+
+Additionally, the absorbed folder `OpenSIN/opensin_agent_platform/` needs to be diffed against `OpenSIN/opensin_core/` (both have `hooks`, `plugins`, `skills`) and rationalized — see [FOLLOWUPS.md § R3](./FOLLOWUPS.md#r3-opensin_agent_platform--opensin_core-diff).
 
 ---
 

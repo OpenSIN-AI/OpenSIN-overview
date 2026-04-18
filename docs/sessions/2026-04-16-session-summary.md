@@ -1,5 +1,8 @@
 # Session Summary — 2026-04-16
 
+> **Historical note (2026-04-18):** This file references `Delqhi/upgraded-opencode-stack` and `Delqhi/global-brain` as they existed on 2026-04-16. Both were transferred into `OpenSIN-AI/Infra-SIN-OpenCode-Stack` and `OpenSIN-AI/Infra-SIN-Global-Brain` on 2026-04-18 (Wave 2.5). The references below are preserved as a historical snapshot. For current canonical paths see [docs/CANONICAL-REPOS.md § 8](../CANONICAL-REPOS.md#8-infrastructure-ssot).
+
+
 ## Ziel
 Dokumentation verbessern, falsche Zahlen in README-Files korrigieren, Chrome Password Manager Integration finden und alles im Global Brain speichern.
 

@@ -1,0 +1,47 @@
+{
+  "$schema_version": "1.0.0",
+  "id": "Team-SIN-Commerce",
+  "name": "Commerce Team",
+  "slug": "commerce",
+  "tier": "marketplace",
+  "status": "beta",
+  "tagline": "E-commerce automation across Stripe, TikTok Shop, and fulfilment.",
+  "marketing": {
+    "summary": "Runs your online shop end-to-end: takes payments via Stripe, pushes inventory and orders to TikTok Shop and Medusa storefronts, reconciles shop finance, and routes logistics. Built for solo founders and small teams who want to sell without being shop-admins.",
+    "bullets": [
+      "Stripe payments, invoices and refunds without writing code",
+      "TikTok Shop inventory + order sync",
+      "Medusa storefront management",
+      "Shop finance reconciliation and VAT-ready reporting",
+      "Shipping label + logistics routing with Shop-Logistic",
+      "Daily commerce brief delivered into chat.opensin.ai"
+    ]
+  },
+  "agents": [
+    {"id": "A2A-SIN-Stripe", "role": "primary", "summary": "Payments, subscriptions, refunds and Stripe Connect flows."},
+    {"id": "A2A-SIN-TikTok-Shop", "role": "primary", "summary": "TikTok Shop catalogue, orders and creator programme."},
+    {"id": "A2A-SIN-Medusa", "role": "supporting", "summary": "Headless commerce storefront operations."},
+    {"id": "A2A-SIN-Shop-Finance", "role": "supporting", "summary": "Reconciliation, VAT/GST, daily P&L."},
+    {"id": "A2A-SIN-Shop-Logistic", "role": "supporting", "summary": "Shipping, label creation, tracking updates."}
+  ],
+  "pricing": {
+    "model": "monthly-addon",
+    "monthly_addon_eur": 19
+  },
+  "permissions": [
+    "read:user-memory",
+    "write:user-memory",
+    "net:external-http",
+    "net:cloud-apis",
+    "spend:user-managed-credentials"
+  ],
+  "budgets": {
+    "default_monthly_usd_cap": 40,
+    "per_run_usd_cap": 2
+  },
+  "provenance": {
+    "decided_in": "OpenSIN-overview#35",
+    "decided_at": "2026-04-18",
+    "owner_team": "OpenSIN-AI/commerce"
+  }
+}

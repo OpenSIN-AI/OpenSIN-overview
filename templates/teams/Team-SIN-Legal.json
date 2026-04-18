@@ -1,0 +1,49 @@
+{
+  "$schema_version": "1.0.0",
+  "id": "Team-SIN-Legal",
+  "name": "Legal Team",
+  "slug": "legal",
+  "tier": "marketplace",
+  "status": "beta",
+  "tagline": "Contracts, compliance, patents, tax, damages — legal ops for builders.",
+  "marketing": {
+    "summary": "Legal ops squad for startup founders and small practices. Drafts and reviews contracts, triages compliance obligations, handles patent discovery, computes damage models, organises evidence, and prepares tax filings. Not legal advice — but a force multiplier for whoever gives it.",
+    "bullets": [
+      "Contract drafting and clause-by-clause review",
+      "Compliance obligation tracking (GDPR/CCPA/SOC2/HIPAA)",
+      "Patent and prior-art search",
+      "Evidence organisation and chain-of-custody hygiene",
+      "Damages modelling and scenario reports",
+      "Tax filing preparation and bookkeeping bridges",
+      "Claim writing for small-claims and regulatory filings"
+    ]
+  },
+  "agents": [
+    {"id": "A2A-SIN-Compliance", "role": "primary", "summary": "Compliance framework tracking."},
+    {"id": "A2A-SIN-Contract", "role": "primary", "summary": "Contract drafting + redlines."},
+    {"id": "A2A-SIN-ClaimWriter", "role": "primary", "summary": "Structured claim writing."},
+    {"id": "A2A-SIN-Damages", "role": "supporting", "summary": "Damages modelling."},
+    {"id": "A2A-SIN-Evidence", "role": "supporting", "summary": "Evidence organisation."},
+    {"id": "A2A-SIN-Patents", "role": "supporting", "summary": "Patent + prior-art search."},
+    {"id": "A2A-SIN-Tax", "role": "supporting", "summary": "Tax filing prep + bookkeeping."}
+  ],
+  "pricing": {
+    "model": "monthly-addon",
+    "monthly_addon_eur": 29
+  },
+  "permissions": [
+    "read:user-memory",
+    "write:user-memory",
+    "net:external-http",
+    "filesystem:user-workspace"
+  ],
+  "budgets": {
+    "default_monthly_usd_cap": 40,
+    "per_run_usd_cap": 2
+  },
+  "provenance": {
+    "decided_in": "OpenSIN-overview#35",
+    "decided_at": "2026-04-18",
+    "owner_team": "OpenSIN-AI/legal"
+  }
+}
