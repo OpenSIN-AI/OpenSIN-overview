@@ -110,6 +110,57 @@ When all tickets here are `DONE`, delete this file.
 
 ---
 
+## Wave 4 tickets (2026-04-18)
+
+### CP1: Merge `Core-SIN-Control-Plane` into `OpenSIN-backend`
+
+- **Status:** `OPEN`.
+- **Decision (Wave 4):** `Core-SIN-Control-Plane` is absorbed into `OpenSIN-backend`. Older canonical name wins due to external dependencies already pointing to `OpenSIN-backend`.
+- **What:**
+  1. File-by-file diff of `Core-SIN-Control-Plane` against `OpenSIN-backend`.
+  2. Port unique code/tests/docs into `OpenSIN-backend` under a preserved top-level folder (e.g. `control_plane/`) so git history is traceable.
+  3. Tag last pre-archive commit on `Core-SIN-Control-Plane` (`v-archived-2026-04-18`).
+  4. Replace `Core-SIN-Control-Plane/README.md` with a redirect banner pointing at `OpenSIN-backend`.
+  5. Archive `Core-SIN-Control-Plane` on GitHub.
+- **Owner:** `OpenSIN-backend` maintainers.
+
+### S1: Archive 4 confirmed-dead A2A repos
+
+- **Status:** `OPEN` — executed in Wave 4 alongside this doc commit.
+- **Repos to archive (0 kb, never initialized):**
+  - `A2A-SIN-Facebook`
+  - `A2A-SIN-Mattermost`
+  - `A2A-SIN-RocketChat`
+  - `A2A-SIN-Slack`
+- **Pre-archive step:** Push a `README.md` with an "ARCHIVED — never implemented" banner so the reason is visible after archive.
+- **Post-archive:** Update `registry/MASTER_INDEX.md` and `platforms/registry.json` to mark them archived.
+
+### S2: Decide fate of 6 `A2A-SIN-Code-*` scaffolds
+
+- **Status:** `OPEN` — kept alive for now.
+- **Repos (9 kb, identical Python scaffolds):** `A2A-SIN-Code-Backend`, `-Command`, `-Frontend`, `-Fullstack`, `-Plugin`, `-Tool`.
+- **Decision needed:** Owning team (`Team-SIN-Code-Core`) decides per-repo whether to promote (implement) or archive (dead). Should happen together with R1 resolution (`opensin-ai-cli` fate).
+- **How to decide:** if R1 merges `opensin-ai-cli` into `OpenSIN-Code`, likely all 6 become redundant → archive. If R1 keeps them split, map each of the 6 to a specific sub-capability of the Rust engine and implement.
+
+### M1: Team-manifest pushes into 17 `Team-SIN-*` repos
+
+- **Status:** `DONE — 2026-04-18` via `scripts/push-team-manifests.js`.
+- **What:** Each of the 17 `Team-SIN-*` repos received a PR adding `team.json` synced from this repo's `templates/teams/*.json` and a README banner. No manual editing of `team.json` in the downstream repos — the overview repo is SSOT.
+- **SSOT:** `templates/teams/` in this repo.
+- **Aggregator:** The same script regenerates `oh-my-sin.json` in `Infra-SIN-OpenCode-Stack` nightly via GH Action.
+- **Validation:** `scripts/validate-team-manifests.js` runs in CI on every PR touching `templates/teams/` or `schemas/team.schema.json`.
+
+### M2: Build `oh-my-sin.json` aggregator GitHub Action
+
+- **Status:** `OPEN` (local script exists, CI workflow not yet).
+- **What:** GH Actions workflow in `Infra-SIN-OpenCode-Stack` that:
+  1. Fetches all `team.json` from the 17 `Team-SIN-*` repos (or from this repo's `templates/teams/` if we canonicalize there).
+  2. Aggregates into `oh-my-sin.json`.
+  3. Commits.
+- **Recommendation:** SSOT is `OpenSIN-overview/templates/teams/` (not the downstream repos). Aggregator reads from here. Downstream `team.json` files are read-only mirrors for humans browsing individual Team-SIN-* repos.
+
+---
+
 ## How to close a ticket
 
 1. Do the work.

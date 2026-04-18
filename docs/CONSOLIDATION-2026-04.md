@@ -174,3 +174,48 @@ Every ticket has a stable `#anchor` so other docs deep-link to it.
 | Rationalization pending | 2 | `opensin-ai-cli`, `opensin-ai-platform` (flagged, not extended) |
 
 Every ambiguously-owned repo now has exactly one of three states: **canonical**, **archived**, or **rationalization-pending with an open decision ticket**. Agents opening PRs can read `CANONICAL-REPOS.md` and `FOLLOWUPS.md` and know where their change belongs without asking.
+
+## Wave 4 — Execute the 5 strategic decisions (2026-04-18)
+
+Wave 3 identified 5 Prio-1 decisions that needed to be made before the next marketing push. Wave 4 made all 5 and shipped the artifacts.
+
+### Decisions made
+
+| # | Topic | Decision |
+|---|---|---|
+| 1 | UI-layer role conflict | Strict 4-surface separation: `opensin.ai` / `my.opensin.ai` / `chat.opensin.ai` / `docs.opensin.ai` — see `PRODUCT-VISION.md § UI-Schichtung` |
+| 2 | Marketplace mechanic | **Option A** — `Team-SIN-*` are metadata manifests. Schema + 17 manifests shipped. |
+| 3 | `OpenSIN-backend` vs `Core-SIN-Control-Plane` | Merge into `OpenSIN-backend`. `Core-SIN-Control-Plane` → archived with redirect after migration (§ CP1). |
+| 4 | `Team-SIN-Code-Core` integrity | Audit-confirmed scaffold (not a broken merge). Normalized into Option A like the other 16 teams. |
+| 5 | Scaffold + dead repo audit | Audit script shipped; 4 dead repos archived; 6 `A2A-SIN-Code-*` kept open pending R1 decision (§ S2). |
+
+### New artifacts
+
+- `PRODUCT-VISION.md` — all 5 topics bumped from "proposed" to "DECIDED"
+- `schemas/team.schema.json` — JSON Schema (Draft 2020-12, full property coverage)
+- `schemas/README.md` — schema usage + aggregator contract
+- `templates/teams/*.json` — all 17 team manifests (Team-SIN-Commerce = gold-standard reference)
+- `templates/teams/README.md` — per-team template directory guide
+- `scripts/audit-repos.js` — classifier (alive / active / scaffold / dead / archived) with `gh repo list` input
+- `scripts/validate-team-manifests.js` — Ajv validation against the schema (CI-ready)
+- `scripts/push-team-manifests.js` — pushes `team.json` + README banner into each downstream `Team-SIN-*` repo
+- `registry/SCAFFOLD_AUDIT.md` — generated audit snapshot (2026-04-18)
+
+### Archived in Wave 4
+
+- `A2A-SIN-Facebook` — 0 kb, never implemented
+- `A2A-SIN-Mattermost` — 0 kb, never implemented
+- `A2A-SIN-RocketChat` — 0 kb, never implemented
+- `A2A-SIN-Slack` — 0 kb, never implemented
+
+### Still open after Wave 4 (small-scope tickets)
+
+- `CP1` — actual code-level merge of `Core-SIN-Control-Plane` → `OpenSIN-backend`
+- `S2` — per-repo decision on 6 `A2A-SIN-Code-*` scaffolds (tied to R1)
+- `M1` — team-manifest downstream-push to 17 `Team-SIN-*` repos (DONE via script)
+- `M2` — `oh-my-sin.json` aggregator GH Action in `Infra-SIN-OpenCode-Stack`
+- Old R1/R2/R3/L1/L2/C1/C2/D1 still stand, but now each has a smaller scope because the strategic questions around them are answered.
+
+### End state after Wave 4
+
+The organization has a coherent topology: 1 product vision, 3 product tiers, 4 UI surfaces, 4 canonical code repos, 3 infra repos, 17 marketplace teams (all with manifests), ~80 active agents, 8 archived repos, 2 rationalization-pending repos with decision tickets. Anyone can read `START-HERE` → `PRODUCT-VISION` → `STATE-OF-THE-UNION` → `CANONICAL-REPOS` in 15 minutes and be fully oriented.
