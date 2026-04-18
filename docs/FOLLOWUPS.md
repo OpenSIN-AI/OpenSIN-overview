@@ -114,7 +114,10 @@ When all tickets here are `DONE`, delete this file.
 
 ### CP1: Merge `Core-SIN-Control-Plane` into `OpenSIN-backend`
 
-- **Status:** `OPEN`.
+- **Status:** `OPEN` — tracking issues filed.
+- **Tracking issues:**
+  - Migration target: [`OpenSIN-backend#1171`](https://github.com/OpenSIN-AI/OpenSIN-backend/issues/1171)
+  - Archive prep (source): [`Core-SIN-Control-Plane#17`](https://github.com/OpenSIN-AI/Core-SIN-Control-Plane/issues/17)
 - **Decision (Wave 4):** `Core-SIN-Control-Plane` is absorbed into `OpenSIN-backend`. Older canonical name wins due to external dependencies already pointing to `OpenSIN-backend`.
 - **What:**
   1. File-by-file diff of `Core-SIN-Control-Plane` against `OpenSIN-backend`.
@@ -126,14 +129,14 @@ When all tickets here are `DONE`, delete this file.
 
 ### S1: Archive 4 confirmed-dead A2A repos
 
-- **Status:** `OPEN` — executed in Wave 4 alongside this doc commit.
-- **Repos to archive (0 kb, never initialized):**
-  - `A2A-SIN-Facebook`
-  - `A2A-SIN-Mattermost`
-  - `A2A-SIN-RocketChat`
-  - `A2A-SIN-Slack`
-- **Pre-archive step:** Push a `README.md` with an "ARCHIVED — never implemented" banner so the reason is visible after archive.
-- **Post-archive:** Update `registry/MASTER_INDEX.md` and `platforms/registry.json` to mark them archived.
+- **Status:** `DONE — 2026-04-18`.
+- **Archived:**
+  - [`A2A-SIN-Facebook`](https://github.com/OpenSIN-AI/A2A-SIN-Facebook)
+  - [`A2A-SIN-Mattermost`](https://github.com/OpenSIN-AI/A2A-SIN-Mattermost)
+  - [`A2A-SIN-RocketChat`](https://github.com/OpenSIN-AI/A2A-SIN-RocketChat)
+  - [`A2A-SIN-Slack`](https://github.com/OpenSIN-AI/A2A-SIN-Slack)
+- **What was done:** Each received an "ARCHIVED — never implemented" banner README pointing at `OpenSIN-overview` for the RFC flow, then was set to archived (read-only) on GitHub. Reversible via `gh repo unarchive` if a real implementation ever materialises.
+- **Remaining clean-up (small):** `registry/MASTER_INDEX.md` and `platforms/registry.json` should mark these as archived next time the registry regenerator runs (folds into § C1).
 
 ### S2: Decide fate of 6 `A2A-SIN-Code-*` scaffolds
 
