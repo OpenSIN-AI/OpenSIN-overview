@@ -11,6 +11,9 @@ When all tickets here are `DONE`, delete this file.
 ### R1: `opensin-ai-cli` vs `OpenSIN-Code`
 
 - **Status:** `OPEN` — do not extend either side until decided.
+- **Tracking issues:**
+  - Decision: [`OpenSIN-Code#1116`](https://github.com/OpenSIN-AI/OpenSIN-Code/issues/1116)
+  - Banner: [`opensin-ai-cli#7`](https://github.com/OpenSIN-AI/opensin-ai-cli/issues/7)
 - **What:** `OpenSIN-AI/opensin-ai-cli` is a 70-file / 34.6k-line Rust coding CLI, 9 crates. `OpenSIN-AI/OpenSIN-Code` is the canonical autonomous TypeScript CLI and also ships a Rust engine (71 files / 37.7k lines).
 - **Problem:** Two Rust coding CLIs in the same org. Only one should exist.
 - **Decision needed:**
@@ -22,6 +25,9 @@ When all tickets here are `DONE`, delete this file.
 ### R2: `opensin-ai-platform` vs `OpenSIN`
 
 - **Status:** `OPEN` — do not extend either side until decided.
+- **Tracking issues:**
+  - Decision: [`OpenSIN#1723`](https://github.com/OpenSIN-AI/OpenSIN/issues/1723)
+  - Banner: [`opensin-ai-platform#6`](https://github.com/OpenSIN-AI/opensin-ai-platform/issues/6)
 - **What:** `OpenSIN-AI/opensin-ai-platform` is a 182-file / 87k-line plugin ecosystem with 14 plugins. `OpenSIN/opensin_agent_platform/` was absorbed from the archived `opensin-ai-code` in Wave 1.
 - **Problem:** Two "platform" repos claim the plugin-ecosystem role.
 - **Decision needed:**
@@ -33,6 +39,7 @@ When all tickets here are `DONE`, delete this file.
 ### R3: `opensin_agent_platform/` vs `opensin_core/` diff
 
 - **Status:** `OPEN` — Wave-1 absorbed `opensin-ai-code` → `OpenSIN/opensin_agent_platform/` but did NOT wire it into the build.
+- **Tracking issue:** [`OpenSIN#1722`](https://github.com/OpenSIN-AI/OpenSIN/issues/1722)
 - **What:** Both directories contain `hooks`, `plugins`, `skills` subtrees.
 - **Decision needed:**
   1. Diff the two directories by subsystem.
@@ -49,6 +56,10 @@ When all tickets here are `DONE`, delete this file.
 ### L1: `Delqhi/*` → `OpenSIN-AI/Infra-SIN-*` link sweep across other repos
 
 - **Status:** `IN PROGRESS` — `OpenSIN-overview` itself is clean after Wave 3. Other repos still have stale refs.
+- **Tracking issues:**
+  - `OpenSIN-backend`: [`#1170`](https://github.com/OpenSIN-AI/OpenSIN-backend/issues/1170) (combined L1+L2)
+  - `Template-SIN-Agent`: [`#156`](https://github.com/OpenSIN-AI/Template-SIN-Agent/issues/156) (template bake-in, prevents regression)
+- **Reality check (2026-04-18 `gh search code`):** actual stale-ref surface across the org is small — 2 hits for `Delqhi/upgraded-opencode-stack` and 0 for `Delqhi/global-brain` outside the meta-repo. The earlier "7 consumer repos affected" claim was based on planning assumptions, not live data. Individual per-repo tickets will be filed on-demand if `gh search code` turns up more hits.
 - **What:** The 2026-04-18 transfer renamed the two SSOT repos. GitHub redirects old URLs, but hard-coded refs in configs, CI jobs, READMEs, and docstrings should be updated to the canonical path.
 - **Known stale refs outside this repo:**
   - `OpenSIN`, `OpenSIN-Code`, `OpenSIN-WebApp`, `website-opensin.ai`, `website-my.opensin.ai`, `Template-SIN-Agent`, `Biz-SIN-Marketing` — all declare `Delqhi/upgraded-opencode-stack` as `sin-sync` target.
@@ -65,6 +76,9 @@ When all tickets here are `DONE`, delete this file.
 ### L2: Archived-repo reference sweep
 
 - **Status:** `OPEN`.
+- **Tracking issues:**
+  - `OpenSIN-backend`: [`#1170`](https://github.com/OpenSIN-AI/OpenSIN-backend/issues/1170) (combined L1+L2)
+  - `Core-SIN-Control-Plane`: [`#16`](https://github.com/OpenSIN-AI/Core-SIN-Control-Plane/issues/16)
 - **What:** Ensure no active repo still links to any of the 4 Wave-1/2 archived repos:
   - `A2A-SIN-Coding-CEO`, `A2A-SIN-Code-AI`, `opensin-ai-code`, `OpenSIN-onboarding`
 - **How:** Run `gh search code 'A2A-SIN-Coding-CEO OR A2A-SIN-Code-AI OR opensin-ai-code OR OpenSIN-onboarding' --owner OpenSIN-AI` and replace each hit with the canonical target from `docs/CANONICAL-REPOS.md § Archived repos`.
@@ -76,11 +90,23 @@ When all tickets here are `DONE`, delete this file.
 ### C1: Consumer-side description refresh for `OpenSIN-WebApp`
 
 - **Status:** `OPEN`.
+- **Tracking issue:** [`OpenSIN-overview#34`](https://github.com/OpenSIN-AI/OpenSIN-overview/issues/34) (combined C1+C2)
 - **What:** `registry/MASTER_INDEX.md § 7` still says `OpenSIN-WebApp → Keine Beschreibung`. Wave 2 set the GitHub description; next registry regeneration should pick it up automatically. Either regenerate or hand-patch.
 
 ### C2: `DEPLOYMENT_STATUS.md` freshness
 
 - **Status:** `OPEN` — file is from 2026-04-16 and reports all 6 HF spaces as `503`. That may or may not still be true. Verify and refresh, or add an `OUTDATED` banner on top.
+- **Tracking issue:** [`OpenSIN-overview#34`](https://github.com/OpenSIN-AI/OpenSIN-overview/issues/34) (combined C1+C2)
+
+---
+
+## Docs-site ticket
+
+### D1: Publish "April 2026 Consolidation" page on `docs.opensin.ai`
+
+- **Status:** `OPEN`.
+- **Tracking issue:** [`OpenSIN-documentation#134`](https://github.com/OpenSIN-AI/OpenSIN-documentation/issues/134)
+- **What:** Public-facing Docusaurus page summarising the consolidation and deep-linking into this repo's SSOT docs. Required so external contributors land on a stable URL instead of bouncing around redirects.
 
 ---
 
