@@ -129,7 +129,9 @@ Der `pipeline` Input in der Action steuert, was gebaut wird:
 ### n8n API Key (für Verwaltung)
 
 ```bash
-N8N_KEY="n8n_api_69175bcabef4b10d619b43598cd557a92ee38aac5ae4b1ca"
+# Niemals Klartext-Secrets committen.
+# Den API-Key aus GitHub Secrets, OCI-Env oder einem Secret Store laden.
+N8N_KEY="${N8N_API_KEY:?set-in-secret-store}"
 N8N_URL="http://92.5.60.87:5678"
 
 # Workflow Status prüfen

@@ -2,11 +2,12 @@
 
 > **The Ultimate Single Source of Truth für die OpenSIN-AI Organisation**
 >
-> 📊 **195 Repositories** | **17 Teams** | **149 Worker** | **4 Templates** | **44 Skills** | **6 Websites**
+> 📊 **203 Repositories** | **17 Teams** | **149 Worker** | **5 Templates** | **44 Skills** | **6 Websites**
 
 > [!IMPORTANT]
 > **SSOT:** Die kanonische OpenCode-Konfiguration liegt unter [Delqhi/upgraded-opencode-stack](https://github.com/Delqhi/upgraded-opencode-stack) (v2.2.1, 44 Skills, 27 MCPs, 5 Provider).
 > Nach jeder Änderung an `opencode.json` MUSS `sin-sync` ausgeführt werden.
+> Live Org-Stand (2026-04-18): **203 Repositories** · **50 public** · **153 private** · **20 archived**.
 
 ---
 
@@ -29,7 +30,7 @@ GitHub Push → sin-github-action (~2s, curl only) → n8n Webhook → OCI CI Ru
 | **GitHub Action** | [sin-github-action](https://github.com/OpenSIN-AI/sin-github-action) — Composite Action (nur curl, ~2s) |
 | **n8n Workflow** | ID `VhDVux7dSCoQdkOP` auf `http://92.5.60.87:5678/webhook/opensin-ci` |
 | **CI Runner** | `opensin-ci-runner.py` als systemd Service auf OCI VM (`ubuntu@92.5.60.87:3456`) |
-| **n8n API Key** | `n8n_api_69175bcabef4b10d619b43598cd557a92ee38aac5ae4b1ca` |
+| **n8n API Key** | 🚫 Niemals im Repo speichern — nur als OCI / GitHub Secret rotieren und referenzieren |
 
 ### Setup für jedes neue Repo (3 Schritte)
 
@@ -261,7 +262,7 @@ Bei grossen Codebases (100k+ Zeilen, 1000+ Dateien) MUESSEN Agenten **5-10 paral
 
 | Repo | Zweck |
 |------|-------|
-| [OpenSIN-overview](https://github.com/OpenSIN-AI/OpenSIN-overview) | **SSOT**: rules.md, MASTER_INDEX.md, Registry aller 165 Repos |
+| [OpenSIN-overview](https://github.com/OpenSIN-AI/OpenSIN-overview) | **SSOT**: rules.md, MASTER_INDEX.md, Registry aller 203 Repos |
 | [OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation) | Offizielle Doku (VitePress) — docs.opensin.ai |
 | [OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | Core Engine Doku: [OpenSIN Code](https://docs.opensin.ai/docs/guide/opensin-code), [Rust Engine](https://docs.opensin.ai/docs/guide/opensin-code-rust-engine), [Plugins](https://docs.opensin.ai/docs/plugins/opensin-code-plugins) |
 | [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | **NEU** — [OpenSIN-AI CLI Doku](https://docs.opensin.ai/docs/guide/opensin-ai-cli) |
@@ -336,7 +337,7 @@ Bei grossen Codebases (100k+ Zeilen, 1000+ Dateien) MUESSEN Agenten **5-10 paral
 
 ---
 
-*Zuletzt aktualisiert: 2026-04-09 | OpenSIN-AI CEO Audit*
+*Zuletzt aktualisiert: 2026-04-18 | OpenSIN-AI CEO Audit*
 
 
 ## 🤖 Agent Configuration (A2A v5)
