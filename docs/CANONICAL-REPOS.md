@@ -117,24 +117,21 @@ Three repos for three distinct properties. Do not confuse them.
 
 ---
 
-## 8. External SSOT dependencies
+## 8. Infrastructure SSOT (formerly external — now in-org)
 
-These repos live in **@Delqhi (personal org)** but are declared as SSOT by
-at least six OpenSIN-AI repos in their own READMEs. The current arrangement
-is fragile — any change to these repos affects the org without going
-through OpenSIN-AI governance.
+Two infrastructure repos that are declared SSOT by many other repos across the org. As of 2026-04-18 both were transferred from the personal `Delqhi` account to `OpenSIN-AI` and renamed per the `Infra-SIN-*` convention, so they now inherit org-level branch protection, team reviews, and audit logs.
 
-### Delqhi/upgraded-opencode-stack
-- **URL:** https://github.com/Delqhi/upgraded-opencode-stack
-- **Role:** canonical OpenCode configuration consumed via `sin-sync` by OpenSIN, OpenSIN-Code, OpenSIN-WebApp, website-opensin.ai, website-my.opensin.ai, Template-SIN-Agent, Biz-SIN-Marketing, OpenSIN-onboarding (archived).
-- **Risk:** not in the OpenSIN-AI organization. One personal account owns it.
-- **Recommendation:** transfer to `OpenSIN-AI/Infra-SIN-OpenCode-Stack` so governance, branch protection, and team reviews apply. Until transferred, treat it as read-only from the OpenSIN-AI side.
+### OpenSIN-AI/Infra-SIN-OpenCode-Stack
+- **URL:** https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack
+- **Legacy path (redirects):** `Delqhi/upgraded-opencode-stack`
+- **Role:** canonical OpenCode configuration (v2.2.1, 44 skills, 27 MCPs, 5 providers) consumed via `sin-sync` by: OpenSIN, OpenSIN-Code, OpenSIN-WebApp, website-opensin.ai, website-my.opensin.ai, Template-SIN-Agent, Biz-SIN-Marketing.
 
-### Delqhi/global-brain
-- **URL:** https://github.com/Delqhi/global-brain
-- **Role:** Persistent Code Plan Memory (PCPM v3/v4) daemon. Referenced by agents across the org.
-- **Risk:** same as above.
-- **Recommendation:** transfer to `OpenSIN-AI/Infra-SIN-Global-Brain`.
+### OpenSIN-AI/Infra-SIN-Global-Brain
+- **URL:** https://github.com/OpenSIN-AI/Infra-SIN-Global-Brain
+- **Legacy path (redirects):** `Delqhi/global-brain`
+- **Role:** Persistent Code Plan Memory (PCPM v4) daemon. Referenced by all `A2A-SIN-*` agents across the org.
+
+GitHub redirects the old `Delqhi/...` URLs, so any `sin-sync` tooling or older README link continues to resolve. A follow-up link-sweep will update all references to the canonical `OpenSIN-AI/Infra-SIN-*` paths.
 
 ---
 

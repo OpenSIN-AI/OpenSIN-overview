@@ -83,7 +83,7 @@ Merged `OpenSIN-onboarding` → `Infra-SIN-Dev-Setup/user-onboarding/`. New top-
 ## Follow-ups
 
 ### Governance
-1. **Transfer `Delqhi/upgraded-opencode-stack` and `Delqhi/global-brain` to OpenSIN-AI.** Six+ repos declare these as SSOT in their READMEs. They must live under the same governance as the repos that depend on them.
+1. **Transfer `OpenSIN-AI/Infra-SIN-OpenCode-Stack` and `OpenSIN-AI/Infra-SIN-Global-Brain` to OpenSIN-AI.** Six+ repos declare these as SSOT in their READMEs. They must live under the same governance as the repos that depend on them.
 
 ### Rationalization
 2. Diff `OpenSIN/opensin_agent_platform/` against `OpenSIN/opensin_core/` (both have `hooks`, `plugins`, `skills`). Port genuinely useful logic into `opensin_core` and retire the folder.
@@ -94,3 +94,21 @@ Merged `OpenSIN-onboarding` → `Infra-SIN-Dev-Setup/user-onboarding/`. New top-
 
 ### Expansion
 5. When adding `Team-SIN-Google`, `Team-SIN-BugBounty`, etc. — they go as folders under the existing `Team-SIN-*` monorepo that owns their domain, NOT as standalone repos. See the repo-proposal gate in `docs/CANONICAL-REPOS.md`.
+
+## Wave 2.5 — Governance transfer (completed 2026-04-18)
+
+Transferred the two external SSOT repos from `Delqhi` (personal account) to `OpenSIN-AI` (organization) and renamed them per the canonical `Infra-SIN-*` convention:
+
+| Before | After |
+|---|---|
+| `Delqhi/upgraded-opencode-stack` | `OpenSIN-AI/Infra-SIN-OpenCode-Stack` |
+| `Delqhi/global-brain`            | `OpenSIN-AI/Infra-SIN-Global-Brain` |
+
+**Impact:**
+- Both repos now live under the organization's governance: branch protection, team reviews, audit log.
+- GitHub automatically redirects the old URLs, so `sin-sync` references and the 6+ repo READMEs that cited the old paths continue to work during the transition. They will be updated to the canonical path in a follow-up link-sweep.
+- The transfer fixes the governance gap called out in `docs/CANONICAL-REPOS.md § 8` — the section is rewritten to reflect the new home in this PR.
+
+**Follow-ups:**
+1. Link-sweep: update all repo READMEs that reference the old `Delqhi/...` paths to the new canonical paths (GitHub redirects cover us for now, but we don't want permanent indirection).
+2. Verify `sin-sync` tooling works with the new repo names or uses the GitHub redirect transparently.
