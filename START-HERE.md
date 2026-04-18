@@ -2,8 +2,14 @@
 
 > **Wer das hier liest — Mensch oder Agent — ist in unter 60 Sekunden handlungsfähig.**
 
-You just landed in the OpenSIN-AI organization (195 repos, 17 teams, 149 workers).
+You just landed in the OpenSIN-AI organization (200 repos, 17 teams, 109 A2A agents, 7 business repos).
 Read this file first. Then [`docs/CANONICAL-REPOS.md`](./docs/CANONICAL-REPOS.md). Then you're working.
+
+> **Neu: Produktverständnis vor Code.** Bevor du irgendwas tust, lies:
+> 1. **[PRODUCT-VISION.md](./PRODUCT-VISION.md)** — das 3-Tier-Modell (OpenSIN Free / My.OpenSIN Pro / Marketplace), kompetitive Positionierung, das **eine Ziel** (5 Min).
+> 2. **[STATE-OF-THE-UNION.md](./STATE-OF-THE-UNION.md)** — ehrlicher Lagebericht, was existiert, was läuft, was tot ist (5 Min).
+>
+> Ohne diese zwei Dokumente weißt du nicht wofür du arbeitest. Mit ihnen weißt du es in 10 Minuten.
 
 ---
 
@@ -11,10 +17,12 @@ Read this file first. Then [`docs/CANONICAL-REPOS.md`](./docs/CANONICAL-REPOS.md
 
 Lies in dieser Reihenfolge:
 
-1. **[docs/CANONICAL-REPOS.md](./docs/CANONICAL-REPOS.md)** — authoritative map of which repo owns what. **Niemals einen PR öffnen, ohne vorher diese Datei gelesen zu haben.**
-2. **[README.md](./README.md)** — full ecosystem overview (teams, workers, standards, CI).
-3. **[AGENTS.md](./AGENTS.md)** — development guidelines.
-4. **[governance/BOUNDARY-ROLE-RULES.md](./governance/BOUNDARY-ROLE-RULES.md)** — what each repo must *not* be.
+1. **[PRODUCT-VISION.md](./PRODUCT-VISION.md)** — das 3-Tier-Produktmodell. Was wir bauen und warum.
+2. **[STATE-OF-THE-UNION.md](./STATE-OF-THE-UNION.md)** — was heute wirklich existiert (nicht was die Docs behaupten).
+3. **[docs/CANONICAL-REPOS.md](./docs/CANONICAL-REPOS.md)** — authoritative map of which repo owns what. **Niemals einen PR öffnen, ohne vorher diese Datei gelesen zu haben.**
+4. **[README.md](./README.md)** — full ecosystem overview (teams, workers, standards, CI).
+5. **[AGENTS.md](./AGENTS.md)** — development guidelines.
+6. **[governance/BOUNDARY-ROLE-RULES.md](./governance/BOUNDARY-ROLE-RULES.md)** — what each repo must *not* be.
 
 Setup in drei Befehlen:
 ```bash
@@ -29,10 +37,12 @@ gh repo clone OpenSIN-AI/OpenSIN               # Python-Kernel
 
 Lies in dieser Reihenfolge:
 
-1. **`docs/CANONICAL-REPOS.md`** — Pflichtlektüre. Niemals in archivierten Repos arbeiten.
-2. **`registry/MASTER_INDEX.md`** — the machine-readable index of all repos.
-3. **`platforms/registry.json`** — structured repo list.
-4. **`AGENTS.md`** + **`governance/BOUNDARY-ROLE-RULES.md`** — rules you must follow.
+1. **`PRODUCT-VISION.md`** — dein Kontext. Du arbeitest für eins der drei Tiers, wisse welches.
+2. **`STATE-OF-THE-UNION.md`** — falls du eine Aufgabe in einem bestimmten Repo kriegst, prüfe erst ob das Repo laut diesem Doc `alive`, `scaffold` oder `dead` ist. Nie an einem `dead`-Repo arbeiten.
+3. **`docs/CANONICAL-REPOS.md`** — Pflichtlektüre. Niemals in archivierten Repos arbeiten.
+4. **`registry/MASTER_INDEX.md`** — the machine-readable index of all repos.
+5. **`platforms/registry.json`** — structured repo list.
+6. **`AGENTS.md`** + **`governance/BOUNDARY-ROLE-RULES.md`** — rules you must follow.
 
 Vor jedem Task: `discover-agents.js` ausführen (Routing-Regeln siehe `opencode.json` bei [`OpenSIN-AI/Infra-SIN-OpenCode-Stack`](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack) — in-org SSOT für OpenCode config; see CANONICAL-REPOS.md § 8).
 
