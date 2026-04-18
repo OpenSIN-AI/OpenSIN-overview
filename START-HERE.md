@@ -34,7 +34,7 @@ Lies in dieser Reihenfolge:
 3. **`platforms/registry.json`** — structured repo list.
 4. **`AGENTS.md`** + **`governance/BOUNDARY-ROLE-RULES.md`** — rules you must follow.
 
-Vor jedem Task: `discover-agents.js` ausführen (Routing-Regeln siehe `opencode.json` bei `Delqhi/upgraded-opencode-stack` — which is the external SSOT for OpenCode config; see CANONICAL-REPOS.md § 8).
+Vor jedem Task: `discover-agents.js` ausführen (Routing-Regeln siehe `opencode.json` bei `OpenSIN-AI/Infra-SIN-OpenCode-Stack` — which is the external SSOT for OpenCode config; see CANONICAL-REPOS.md § 8).
 
 ---
 
@@ -83,8 +83,8 @@ Vor jedem Task: `discover-agents.js` ausführen (Routing-Regeln siehe `opencode.
 ### Externe SSOT (noch in @Delqhi — sollten transferiert werden)
 | Repo | Rolle |
 |---|---|
-| [Delqhi/upgraded-opencode-stack](https://github.com/Delqhi/upgraded-opencode-stack) | Kanonische OpenCode-Konfiguration (sin-sync Target) |
-| [Delqhi/global-brain](https://github.com/Delqhi/global-brain) | PCPM v4 daemon (persistent agent memory) |
+| [OpenSIN-AI/Infra-SIN-OpenCode-Stack](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack) | Kanonische OpenCode-Konfiguration (sin-sync Target) |
+| [OpenSIN-AI/Infra-SIN-Global-Brain](https://github.com/OpenSIN-AI/Infra-SIN-Global-Brain) | PCPM v4 daemon (persistent agent memory) |
 
 ---
 

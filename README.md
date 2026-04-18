@@ -14,7 +14,7 @@
 > 📊 **195 Repositories** | **17 Teams** | **149 Worker** | **4 Templates** | **44 Skills** | **6 Websites**
 
 > [!IMPORTANT]
-> **SSOT:** Die kanonische OpenCode-Konfiguration liegt unter [Delqhi/upgraded-opencode-stack](https://github.com/Delqhi/upgraded-opencode-stack) (v2.2.1, 44 Skills, 27 MCPs, 5 Provider).
+> **SSOT:** Die kanonische OpenCode-Konfiguration liegt unter [OpenSIN-AI/Infra-SIN-OpenCode-Stack](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack) (v2.2.1, 44 Skills, 27 MCPs, 5 Provider).
 > Nach jeder Änderung an `opencode.json` MUSS `sin-sync` ausgeführt werden.
 
 ---
