@@ -17,7 +17,7 @@
 
 ## Kind of change
 
-- [ ] Governance rule, boundary, or canonical-ownership change (needs §3.2 review per [GOVERNANCE.md](../blob/main/GOVERNANCE.md))
+- [ ] Governance rule, boundary, or canonical-ownership change (needs §3.2 review per [GOVERNANCE.md](../GOVERNANCE.md))
 - [ ] New or updated script under `scripts/`
 - [ ] New or updated schema under `schemas/`
 - [ ] New or updated registry / platforms / team manifest
@@ -25,7 +25,7 @@
 - [ ] CI / workflow (under `.github/workflows/` or `governance/workflows-proposed/`)
 - [ ] Chore (editor config, gitignore, tooling) — low risk
 
-## Boundary check (required — see [BOUNDARIES.md](../blob/main/BOUNDARIES.md))
+## Boundary check (required — see [BOUNDARIES.md](../BOUNDARIES.md))
 
 ### Surface type
 
@@ -65,13 +65,13 @@
 ## Launch-week flag
 
 - [ ] This PR should merge AFTER 2026-04-23 (non-launch-critical)
-- [ ] This PR is launch-critical and MUST merge by T-1 (2026-04-22) — specify gate ID from [LAUNCH-CHECKLIST.md](../blob/main/LAUNCH-CHECKLIST.md):
+- [ ] This PR is launch-critical and MUST merge by T-1 (2026-04-22) — specify gate ID from [LAUNCH-CHECKLIST.md](../LAUNCH-CHECKLIST.md):
 
 <!-- e.g. "Gate G7 (HF Spaces)" or "Tag 2 / DOC-2" -->
 
 ## Checklist
 
-- [ ] I read [`CONTRIBUTING.md`](../blob/main/CONTRIBUTING.md), [`BOUNDARIES.md`](../blob/main/BOUNDARIES.md), and [`GOVERNANCE.md`](../blob/main/GOVERNANCE.md).
-- [ ] I followed the boundary rules. If unsure I opened a [Boundary issue](../issues/new?template=boundary-violation.yml) first.
+- [ ] I read [`CONTRIBUTING.md`](../CONTRIBUTING.md), [`BOUNDARIES.md`](../BOUNDARIES.md), and [`GOVERNANCE.md`](../GOVERNANCE.md).
+- [ ] I followed the boundary rules. If unsure I opened a Boundary issue first (`.github/ISSUE_TEMPLATE/boundary-violation.yml`).
 - [ ] I added / updated documentation for every new user-facing behaviour.
 - [ ] I did NOT commit secrets, tokens, personal data, or customer data. Scripts read from env vars, not hardcoded values.

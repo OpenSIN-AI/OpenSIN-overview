@@ -15,6 +15,7 @@
 #   bash scripts/prelaunch-sweep.sh                # fail-fast, pretty
 #   bash scripts/prelaunch-sweep.sh --continue     # run all steps, report at end
 #   bash scripts/prelaunch-sweep.sh --ci           # non-interactive, no TTY colours
+#   bash scripts/prelaunch-sweep.sh --skip-remote  # no network probes (HF + web)
 #
 # Exit code 0 if all green. 1 if any gate fails. 2 on usage error.
 
@@ -22,11 +23,13 @@ set -o pipefail
 
 CONTINUE=0
 CI=0
+SKIP_REMOTE=0
 for arg in "$@"; do
   case "$arg" in
-    --continue) CONTINUE=1 ;;
-    --ci)       CI=1 ;;
-    -h|--help)  sed -n '2,18p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    --continue)             CONTINUE=1 ;;
+    --ci)                   CI=1 ;;
+    --skip-remote|--offline) SKIP_REMOTE=1 ;;
+    -h|--help)              sed -n '2,19p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
     *) echo "unknown flag: $arg" >&2; exit 2 ;;
   esac
 done
@@ -112,10 +115,18 @@ check_aggregator_deterministic() {
 }
 
 check_hf_spaces() {
+  if [[ "$SKIP_REMOTE" -eq 1 ]]; then
+    printf '  %bskip%b: --skip-remote set\n' "$C_WARN" "$C_R"
+    return 0
+  fi
   bash scripts/check-hf-spaces.sh --quiet
 }
 
 check_web_surfaces() {
+  if [[ "$SKIP_REMOTE" -eq 1 ]]; then
+    printf '  %bskip%b: --skip-remote set\n' "$C_WARN" "$C_R"
+    return 0
+  fi
   bash scripts/check-web-surfaces.sh
 }
 
