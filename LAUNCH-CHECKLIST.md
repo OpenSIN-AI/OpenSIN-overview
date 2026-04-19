@@ -4,7 +4,9 @@
 > **Scope:** Alle 3 Tiers gleichzeitig gehen live (OpenSIN OSS / My.OpenSIN Pro / Marketplace).
 > **Dieses Dokument:** Einziger Wahrheitsort für "ist der Launch möglich". Jeden Morgen 09:00 UTC in der Org-All-Hands durchgehen. Keine Entscheidung fliegt hier rein ohne Commit-Link oder Tracking-Issue.
 >
-> **Quellen:** [STATE-OF-THE-UNION.md](./STATE-OF-THE-UNION.md) (Ist-Zustand) · [PRODUCT-VISION.md](./PRODUCT-VISION.md) (Soll-Zustand) · [docs/FOLLOWUPS.md](./docs/FOLLOWUPS.md) (offene Entscheidungen).
+> **Live-Dashboard:** [`overview#47 — T-0 Launch Day Command Center`](https://github.com/OpenSIN-AI/OpenSIN-overview/issues/47) ist der Ort, an dem der `launch-status.yml`-Cron alle 30 Minuten postet. Alle Maintainer beobachten dieses eine Issue während der Launch-Woche.
+>
+> **Quellen:** [STATE-OF-THE-UNION.md](./STATE-OF-THE-UNION.md) (Ist-Zustand) · [PRODUCT-VISION.md](./PRODUCT-VISION.md) (Soll-Zustand) · [docs/T-0-RUNBOOK.md](./docs/T-0-RUNBOOK.md) (Stunde-für-Stunde am Launch-Tag) · [docs/POST-LAUNCH-WEEK1.md](./docs/POST-LAUNCH-WEEK1.md) (Tag-für-Tag nach dem Launch) · [docs/FOLLOWUPS.md](./docs/FOLLOWUPS.md) (offene Entscheidungen).
 
 ---
 
@@ -47,6 +49,18 @@ Der Launch geht nur, wenn **alle** folgenden Kriterien am T-0 09:00 UTC grün si
 
 **Nicht launch-kritisch, dürfen rot bleiben:** R1, R2, L2, S2, C1, C2, CP1. Alle tracking-relevant, aber blockieren keinen User. In Wave 5 aufräumen.
 
+**Per-Repo Launch-Gate Tickets (Quelle für den Go/No-Go-Status):**
+
+| Repo | Gate-Issue | Tier |
+|---|---|---|
+| `Infra-SIN-OpenCode-Stack` | [#49 HF-1](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack/issues/49) | alle (upstream) |
+| `OpenSIN-WebApp` | [#14](https://github.com/OpenSIN-AI/OpenSIN-WebApp/issues/14) | 2 |
+| `OpenSIN-backend` | [#1172](https://github.com/OpenSIN-AI/OpenSIN-backend/issues/1172), [#1117](https://github.com/OpenSIN-AI/OpenSIN-backend/issues/1117) | 2/3 |
+| `OpenSIN-Code` | [#81](https://github.com/OpenSIN-AI/OpenSIN-Code/issues/81) | 1 |
+| `website-opensin.ai` | [#128](https://github.com/OpenSIN-AI/website-opensin.ai/issues/128) | 1 |
+| `website-my.opensin.ai` | tracked via [`overview#41`](https://github.com/OpenSIN-AI/OpenSIN-overview/issues/41) | 2/3 |
+| `OpenSIN-overview` (meta) | [#10 HF-reopen](https://github.com/OpenSIN-AI/OpenSIN-overview/issues/10), [#47 Command Center](https://github.com/OpenSIN-AI/OpenSIN-overview/issues/47) | alle |
+
 ---
 
 ## 2. Tag-für-Tag Plan
@@ -59,7 +73,7 @@ Jeder Tag hat drei Phasen: **09:00 Standup · 13:00 Mid-day Checkin · 18:00 EOD
 
 | ID | Owner | Was | Definition of Done |
 |---|---|---|---|
-| HF-1 | `OpenSIN-backend` maintainers | **#1 Priority.** HF-Token rotieren, alle 6 `a2a-sin-code-*` Spaces via HF-API restarten, GitHub-Action mit 12h-cron landen (Template in [`registry/DEPLOYMENT_STATUS.md`](./registry/DEPLOYMENT_STATUS.md)) | `curl https://opensin-ai-a2a-sin-code-plugin.hf.space/health` → 200 für alle 6. Cron-Workflow sichtbar im `Infra-SIN-OpenCode-Stack` GH-Actions-Tab. |
+| HF-1 | `Infra-SIN-OpenCode-Stack` maintainers | **#1 Priority.** HF-Token rotieren, alle 6 `a2a-sin-code-*` Spaces via HF-API restarten, Keep-Alive-Workflow aus [`templates/workflows/hf-keep-alive.yml`](./templates/workflows/hf-keep-alive.yml) landen. Tracked in [`Infra-SIN-OpenCode-Stack#49`](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack/issues/49). | `curl https://opensin-ai-a2a-sin-code-plugin.hf.space/health` → 200 für alle 6 über 10 Min. Keep-Alive-Action sichtbar grün im `Infra-SIN-OpenCode-Stack` GH-Actions-Tab. |
 | HF-2 | `OpenSIN-backend` maintainers | Launch-Monitor: Uptime-Check auf alle 6 Spaces + `chat.opensin.ai` + `my.opensin.ai` + `opensin.ai` + `docs.opensin.ai`. Empfehlung: UptimeRobot Free oder BetterStack. | 10 Monitore live, Slack-Alert-Channel `#launch-alerts` verbunden. |
 | INFRA-1 | `Infra-SIN-Dev-Setup` | Stripe-Test-Mode Keys in allen 4 Web-Repos als ENV konfigurieren (`STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`, `STRIPE_WEBHOOK_SECRET`) | `echo $STRIPE_SECRET_KEY` in Vercel für jedes Project liefert einen `sk_test_*`-Wert. |
 | INFRA-2 | `Infra-SIN-Dev-Setup` | Supabase Projekte für Staging + Prod aufsetzen, RLS-Policies aus `OpenSIN-WebApp` anwenden | Supabase-Auth mit Testaccount geht durch, `users` Table hat RLS `auth.uid() = id` policy. |
