@@ -17,7 +17,11 @@
     ]
   },
   "agents": [
-    {"id": "A2A-SIN-Teams", "role": "primary", "summary": "Microsoft Teams channels, meetings, chat."}
+    {
+      "id": "A2A-SIN-Teams",
+      "role": "primary",
+      "summary": "Microsoft Teams channels, meetings, chat."
+    }
   ],
   "pricing": {
     "model": "monthly-addon",
@@ -36,6 +40,6 @@
   "provenance": {
     "decided_in": "OpenSIN-overview#35",
     "decided_at": "2026-04-18",
-    "owner_team": "OpenSIN-AI/microsoft"
+    "owner_team": "OpenSIN-AI/core-team"
   }
 }

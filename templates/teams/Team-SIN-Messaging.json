@@ -18,18 +18,66 @@
     ]
   },
   "agents": [
-    {"id": "A2A-SIN-Telegram", "role": "primary", "summary": "Telegram DMs, groups, channels, bots."},
-    {"id": "A2A-SIN-Beeper", "role": "primary", "summary": "Beeper aggregation layer across networks."},
-    {"id": "A2A-SIN-Signal", "role": "supporting", "summary": "Signal messaging."},
-    {"id": "A2A-SIN-Matrix", "role": "supporting", "summary": "Matrix rooms + bots."},
-    {"id": "A2A-SIN-WeChat", "role": "supporting", "summary": "WeChat chats + Official Accounts."},
-    {"id": "A2A-SIN-LINE", "role": "supporting", "summary": "LINE messaging."},
-    {"id": "A2A-SIN-Feishu", "role": "supporting", "summary": "Feishu / Lark workplace chat."},
-    {"id": "A2A-SIN-BlueBubbles", "role": "supporting", "summary": "iMessage via BlueBubbles bridge."},
-    {"id": "A2A-SIN-Chatroom", "role": "supporting", "summary": "Generic chatroom protocol adapter."},
-    {"id": "A2A-SIN-IRC", "role": "supporting", "summary": "IRC channel operations."},
-    {"id": "A2A-SIN-Email", "role": "supporting", "summary": "Email as a messaging channel."},
-    {"id": "A2A-SIN-SMS", "role": "supporting", "summary": "SMS send/receive via Twilio-like backends."}
+    {
+      "id": "A2A-SIN-Telegram",
+      "role": "primary",
+      "summary": "Telegram DMs, groups, channels, bots."
+    },
+    {
+      "id": "A2A-SIN-Beeper",
+      "role": "primary",
+      "summary": "Beeper aggregation layer across networks."
+    },
+    {
+      "id": "A2A-SIN-Signal",
+      "role": "supporting",
+      "summary": "Signal messaging."
+    },
+    {
+      "id": "A2A-SIN-Matrix",
+      "role": "supporting",
+      "summary": "Matrix rooms + bots."
+    },
+    {
+      "id": "A2A-SIN-WeChat",
+      "role": "supporting",
+      "summary": "WeChat chats + Official Accounts."
+    },
+    {
+      "id": "A2A-SIN-LINE",
+      "role": "supporting",
+      "summary": "LINE messaging."
+    },
+    {
+      "id": "A2A-SIN-Feishu",
+      "role": "supporting",
+      "summary": "Feishu / Lark workplace chat."
+    },
+    {
+      "id": "A2A-SIN-BlueBubbles",
+      "role": "supporting",
+      "summary": "iMessage via BlueBubbles bridge."
+    },
+    {
+      "id": "A2A-SIN-Chatroom",
+      "role": "supporting",
+      "summary": "Generic chatroom protocol adapter."
+    },
+    {
+      "id": "A2A-SIN-IRC",
+      "role": "supporting",
+      "summary": "IRC channel operations."
+    },
+    {
+      "id": "A2A-SIN-Email",
+      "role": "supporting",
+      "summary": "Email as a messaging channel."
+    },
+    {
+      "id": "A2A-SIN-SMS",
+      "role": "supporting",
+      "summary": "SMS send/receive via Twilio-like backends."
+    }
   ],
   "pricing": {
     "model": "monthly-addon",
@@ -48,6 +96,6 @@
   "provenance": {
     "decided_in": "OpenSIN-overview#35",
     "decided_at": "2026-04-18",
-    "owner_team": "OpenSIN-AI/messaging"
+    "owner_team": "OpenSIN-AI/core-team"
   }
 }

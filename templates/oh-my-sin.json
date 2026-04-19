@@ -1,6 +1,6 @@
 {
   "$schema_version": "1.0.0",
-  "generated_at": "2026-04-19T13:56:23.001Z",
+  "generated_at": "2026-04-19T18:29:58.046Z",
   "generator": "OpenSIN-overview/scripts/build-oh-my-sin.js",
   "org": "OpenSIN-AI",
   "ssot": {
@@ -14,15 +14,16 @@
       "core-included": 1
     },
     "by_status": {
-      "coming-soon": 11,
-      "beta": 5,
-      "alpha": 1
+      "beta": 12,
+      "alpha": 3,
+      "stable": 1,
+      "coming-soon": 1
     },
-    "listable": 6,
+    "listable": 16,
     "agents_referenced": 87,
     "agents_total": 89,
-    "agents_live": 17,
-    "agents_phantom": 72,
+    "agents_live": 89,
+    "agents_phantom": 0,
     "repo_catalog_available": true
   },
   "tiers": {
@@ -56,10 +57,10 @@
       "name": "Apple Team",
       "tagline": "Deep Apple-ecosystem automation: Shortcuts, Mail, Calendar, Notes, and device control.",
       "tier": "marketplace",
-      "status": "coming-soon",
-      "status_label": "Coming soon",
+      "status": "beta",
+      "status_label": "Beta",
       "status_declared": "beta",
-      "status_coerced_reason": "all-agents-phantom",
+      "status_coerced_reason": null,
       "pricing": {
         "model": "monthly-addon",
         "monthly_addon_eur": 9
@@ -70,78 +71,78 @@
           "id": "A2A-SIN-Apple-Shortcuts",
           "role": "primary",
           "summary": "Entry point — any Shortcut becomes an agent tool.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Apple-Mail",
           "role": "primary",
           "summary": "Mail triage, drafting, search.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Apple-Calendar-Contacts",
           "role": "primary",
           "summary": "Calendar scheduling + Contacts lookup.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Apple-Notes",
           "role": "supporting",
           "summary": "Capture + search across Apple Notes.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Apple-Reminders",
           "role": "supporting",
           "summary": "Task capture with location/time triggers.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Apple-Notifications",
           "role": "supporting",
           "summary": "Notification stream read/dismiss.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Apple-Mobile",
           "role": "supporting",
           "summary": "iPhone automation surface.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Apple-DeviceControl",
           "role": "supporting",
           "summary": "Device-level control primitives.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Apple-SystemSettings",
           "role": "supporting",
           "summary": "Toggle system settings programmatically.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Apple-Safari-WebKit",
           "role": "supporting",
           "summary": "Safari/WebKit browsing and reading.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Apple-Photos-Files",
           "role": "supporting",
           "summary": "Photos + Files search and staging.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Apple-FaceTime",
           "role": "optional",
           "summary": "Programmatic FaceTime call setup.",
-          "repo_exists": false
+          "repo_exists": true
         }
       ],
       "agent_count": 12,
-      "live_agent_count": 0,
-      "phantom_agent_count": 12,
+      "live_agent_count": 12,
+      "phantom_agent_count": 0,
       "primary_agents": [
         "A2A-SIN-Apple-Shortcuts",
         "A2A-SIN-Apple-Mail",
@@ -174,7 +175,7 @@
       "provenance": {
         "decided_in": "OpenSIN-overview#35",
         "decided_at": "2026-04-18",
-        "owner_team": "OpenSIN-AI/apple"
+        "owner_team": "OpenSIN-AI/core-team"
       },
       "links": {
         "repo": "https://github.com/OpenSIN-AI/Team-SIN-Apple",
@@ -188,10 +189,10 @@
       "name": "Code Backend Team",
       "tagline": "Backend-focused coding team — APIs, services, infra glue.",
       "tier": "marketplace",
-      "status": "coming-soon",
-      "status_label": "Coming soon",
+      "status": "alpha",
+      "status_label": "Alpha",
       "status_declared": "alpha",
-      "status_coerced_reason": "all-agents-phantom",
+      "status_coerced_reason": null,
       "pricing": {
         "model": "monthly-addon",
         "monthly_addon_eur": 14
@@ -202,18 +203,18 @@
           "id": "A2A-SIN-Code-DevOps",
           "role": "supporting",
           "summary": "Shared with Code-Core for deploy handoffs.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Code-Backend",
           "role": "optional",
           "summary": "Dedicated backend agent (currently scaffold — see SCAFFOLD_AUDIT.md).",
-          "repo_exists": false
+          "repo_exists": true
         }
       ],
       "agent_count": 2,
-      "live_agent_count": 0,
-      "phantom_agent_count": 2,
+      "live_agent_count": 2,
+      "phantom_agent_count": 0,
       "primary_agents": [],
       "permissions": [
         "read:user-memory",
@@ -243,7 +244,7 @@
       "provenance": {
         "decided_in": "OpenSIN-overview#35",
         "decided_at": "2026-04-18",
-        "owner_team": "OpenSIN-AI/code-core"
+        "owner_team": "OpenSIN-AI/core-team"
       },
       "links": {
         "repo": "https://github.com/OpenSIN-AI/Team-SIN-Code-Backend",
@@ -257,10 +258,10 @@
       "name": "Code Core Team",
       "tagline": "The default coding squad included in every Pro plan.",
       "tier": "core-included",
-      "status": "coming-soon",
-      "status_label": "Coming soon",
+      "status": "stable",
+      "status_label": "Stable",
       "status_declared": "stable",
-      "status_coerced_reason": "all-agents-phantom",
+      "status_coerced_reason": null,
       "pricing": {
         "model": "free-with-pro"
       },
@@ -270,24 +271,24 @@
           "id": "A2A-SIN-Code-DataScience",
           "role": "primary",
           "summary": "Pandas/NumPy/Jupyter data work.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Code-DevOps",
           "role": "primary",
           "summary": "Containers, deploys, rollbacks, IaC.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Code-GitLab-LogsCenter",
           "role": "primary",
           "summary": "GitLab ops + log-centre triage.",
-          "repo_exists": false
+          "repo_exists": true
         }
       ],
       "agent_count": 3,
-      "live_agent_count": 0,
-      "phantom_agent_count": 3,
+      "live_agent_count": 3,
+      "phantom_agent_count": 0,
       "primary_agents": [
         "A2A-SIN-Code-DataScience",
         "A2A-SIN-Code-DevOps",
@@ -321,7 +322,7 @@
       "provenance": {
         "decided_in": "OpenSIN-overview#35",
         "decided_at": "2026-04-18",
-        "owner_team": "OpenSIN-AI/code-core"
+        "owner_team": "OpenSIN-AI/core-team"
       },
       "links": {
         "repo": "https://github.com/OpenSIN-AI/Team-SIN-Code-Core",
@@ -335,10 +336,10 @@
       "name": "CyberSec Team",
       "tagline": "Offensive and defensive security squad: red-team, audit, forensics, malware, web, cloud.",
       "tier": "marketplace",
-      "status": "coming-soon",
-      "status_label": "Coming soon",
+      "status": "beta",
+      "status_label": "Beta",
       "status_declared": "beta",
-      "status_coerced_reason": "all-agents-phantom",
+      "status_coerced_reason": null,
       "pricing": {
         "model": "monthly-addon",
         "monthly_addon_eur": 29
@@ -349,102 +350,102 @@
           "id": "A2A-SIN-Security-AI",
           "role": "primary",
           "summary": "ML-driven anomaly + triage.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Security-Audit",
           "role": "primary",
           "summary": "Audit pipelines with reporting.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Security-RedTeam",
           "role": "primary",
           "summary": "Adversarial simulation playbooks.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Security-Auth",
           "role": "supporting",
           "summary": "AuthN/AuthZ review.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Security-Cloud",
           "role": "supporting",
           "summary": "Cloud posture + IAM review.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Security-Crypto",
           "role": "supporting",
           "summary": "Crypto primitives + key management review.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Security-Exploit",
           "role": "supporting",
           "summary": "Exploit research and reproduction.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Security-Forensics",
           "role": "supporting",
           "summary": "Disk / memory / network forensics.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Security-Fuzz",
           "role": "supporting",
           "summary": "Fuzz harness generation + triage.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Security-IoT",
           "role": "supporting",
           "summary": "IoT firmware + protocol review.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Security-Malware",
           "role": "supporting",
           "summary": "Malware static + dynamic analysis.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Security-Mobile",
           "role": "supporting",
           "summary": "Mobile app security (iOS/Android).",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Security-Network",
           "role": "supporting",
           "summary": "Network security + pcap triage.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Security-Recon",
           "role": "supporting",
           "summary": "External recon + asset discovery.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Security-Social",
           "role": "supporting",
           "summary": "Social-engineering assessment.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Security-Web",
           "role": "supporting",
           "summary": "Web app security (OWASP-focused).",
-          "repo_exists": false
+          "repo_exists": true
         }
       ],
       "agent_count": 16,
-      "live_agent_count": 0,
-      "phantom_agent_count": 16,
+      "live_agent_count": 16,
+      "phantom_agent_count": 0,
       "primary_agents": [
         "A2A-SIN-Security-AI",
         "A2A-SIN-Security-Audit",
@@ -479,7 +480,7 @@
       "provenance": {
         "decided_in": "OpenSIN-overview#35",
         "decided_at": "2026-04-18",
-        "owner_team": "OpenSIN-AI/cybersec"
+        "owner_team": "OpenSIN-AI/core-team"
       },
       "links": {
         "repo": "https://github.com/OpenSIN-AI/Team-SIN-Code-CyberSec",
@@ -493,10 +494,10 @@
       "name": "Code Frontend Team",
       "tagline": "Frontend-focused coding team — React, Next.js, design-system work.",
       "tier": "marketplace",
-      "status": "coming-soon",
-      "status_label": "Coming soon",
+      "status": "alpha",
+      "status_label": "Alpha",
       "status_declared": "alpha",
-      "status_coerced_reason": "all-agents-phantom",
+      "status_coerced_reason": null,
       "pricing": {
         "model": "monthly-addon",
         "monthly_addon_eur": 14
@@ -507,18 +508,18 @@
           "id": "A2A-SIN-Code-DataScience",
           "role": "supporting",
           "summary": "For data-heavy frontend work (charts, tables).",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Code-Frontend",
           "role": "optional",
           "summary": "Dedicated frontend agent (currently scaffold — see SCAFFOLD_AUDIT.md).",
-          "repo_exists": false
+          "repo_exists": true
         }
       ],
       "agent_count": 2,
-      "live_agent_count": 0,
-      "phantom_agent_count": 2,
+      "live_agent_count": 2,
+      "phantom_agent_count": 0,
       "primary_agents": [],
       "permissions": [
         "read:user-memory",
@@ -547,7 +548,7 @@
       "provenance": {
         "decided_in": "OpenSIN-overview#35",
         "decided_at": "2026-04-18",
-        "owner_team": "OpenSIN-AI/code-core"
+        "owner_team": "OpenSIN-AI/core-team"
       },
       "links": {
         "repo": "https://github.com/OpenSIN-AI/Team-SIN-Code-Frontend",
@@ -581,7 +582,7 @@
           "id": "A2A-SIN-TikTok-Shop",
           "role": "primary",
           "summary": "TikTok Shop catalogue, orders and creator programme.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Medusa",
@@ -593,18 +594,18 @@
           "id": "A2A-SIN-Shop-Finance",
           "role": "supporting",
           "summary": "Reconciliation, VAT/GST, daily P&L.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Shop-Logistic",
           "role": "supporting",
           "summary": "Shipping, label creation, tracking updates.",
-          "repo_exists": false
+          "repo_exists": true
         }
       ],
       "agent_count": 5,
-      "live_agent_count": 2,
-      "phantom_agent_count": 3,
+      "live_agent_count": 5,
+      "phantom_agent_count": 0,
       "primary_agents": [
         "A2A-SIN-Stripe",
         "A2A-SIN-TikTok-Shop"
@@ -636,7 +637,7 @@
       "provenance": {
         "decided_in": "OpenSIN-overview#35",
         "decided_at": "2026-04-18",
-        "owner_team": "OpenSIN-AI/commerce"
+        "owner_team": "OpenSIN-AI/core-team"
       },
       "links": {
         "repo": "https://github.com/OpenSIN-AI/Team-SIN-Commerce",
@@ -650,10 +651,10 @@
       "name": "Community Team",
       "tagline": "Run a healthy community across Discord, Reddit, and your own forum.",
       "tier": "marketplace",
-      "status": "coming-soon",
-      "status_label": "Coming soon",
+      "status": "beta",
+      "status_label": "Beta",
       "status_declared": "beta",
-      "status_coerced_reason": "all-agents-phantom",
+      "status_coerced_reason": null,
       "pricing": {
         "model": "monthly-addon",
         "monthly_addon_eur": 9
@@ -664,24 +665,24 @@
           "id": "A2A-SIN-Community",
           "role": "primary",
           "summary": "Cross-platform community orchestration.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Discord",
           "role": "primary",
           "summary": "Discord server ops and engagement.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Reddit",
           "role": "supporting",
           "summary": "Subreddit moderation and posting.",
-          "repo_exists": false
+          "repo_exists": true
         }
       ],
       "agent_count": 3,
-      "live_agent_count": 0,
-      "phantom_agent_count": 3,
+      "live_agent_count": 3,
+      "phantom_agent_count": 0,
       "primary_agents": [
         "A2A-SIN-Community",
         "A2A-SIN-Discord"
@@ -711,7 +712,7 @@
       "provenance": {
         "decided_in": "OpenSIN-overview#35",
         "decided_at": "2026-04-18",
-        "owner_team": "OpenSIN-AI/community"
+        "owner_team": "OpenSIN-AI/core-team"
       },
       "links": {
         "repo": "https://github.com/OpenSIN-AI/Team-SIN-Community",
@@ -725,10 +726,10 @@
       "name": "Forum Team",
       "tagline": "Be smart about Hacker News, Lobsters, Stack Overflow, Quora and Slashdot.",
       "tier": "marketplace",
-      "status": "coming-soon",
-      "status_label": "Coming soon",
+      "status": "beta",
+      "status_label": "Beta",
       "status_declared": "beta",
-      "status_coerced_reason": "all-agents-phantom",
+      "status_coerced_reason": null,
       "pricing": {
         "model": "monthly-addon",
         "monthly_addon_eur": 9
@@ -739,36 +740,36 @@
           "id": "A2A-SIN-HackerNews",
           "role": "primary",
           "summary": "HN front-page + comments monitoring.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Lobsters",
           "role": "primary",
           "summary": "Lobsters trending + tag filters.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-StackOverflow",
           "role": "primary",
           "summary": "SO question discovery + reply drafting.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Quora",
           "role": "supporting",
           "summary": "Quora topic tracking + drafts.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Slashdot",
           "role": "supporting",
           "summary": "Slashdot monitoring.",
-          "repo_exists": false
+          "repo_exists": true
         }
       ],
       "agent_count": 5,
-      "live_agent_count": 0,
-      "phantom_agent_count": 5,
+      "live_agent_count": 5,
+      "phantom_agent_count": 0,
       "primary_agents": [
         "A2A-SIN-HackerNews",
         "A2A-SIN-Lobsters",
@@ -798,7 +799,7 @@
       "provenance": {
         "decided_in": "OpenSIN-overview#35",
         "decided_at": "2026-04-18",
-        "owner_team": "OpenSIN-AI/forum"
+        "owner_team": "OpenSIN-AI/core-team"
       },
       "links": {
         "repo": "https://github.com/OpenSIN-AI/Team-SIN-Forum",
@@ -826,7 +827,7 @@
           "id": "A2A-SIN-Google-Apps",
           "role": "primary",
           "summary": "Google Workspace apps (Docs/Sheets/Slides/Gmail/Drive/Calendar).",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Google-Chat",
@@ -836,8 +837,8 @@
         }
       ],
       "agent_count": 2,
-      "live_agent_count": 1,
-      "phantom_agent_count": 1,
+      "live_agent_count": 2,
+      "phantom_agent_count": 0,
       "primary_agents": [
         "A2A-SIN-Google-Apps"
       ],
@@ -866,7 +867,7 @@
       "provenance": {
         "decided_in": "OpenSIN-overview#35",
         "decided_at": "2026-04-18",
-        "owner_team": "OpenSIN-AI/google"
+        "owner_team": "OpenSIN-AI/core-team"
       },
       "links": {
         "repo": "https://github.com/OpenSIN-AI/Team-SIN-Google",
@@ -894,25 +895,25 @@
           "id": "A2A-SIN-CI-CD",
           "role": "primary",
           "summary": "CI/CD pipelines across Jenkins/GH/GitLab/CircleCI.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Github-Action",
           "role": "primary",
           "summary": "GitHub Actions failure triage + fixes.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-N8N",
           "role": "primary",
           "summary": "n8n workflow authoring + debugging.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Storage",
           "role": "supporting",
           "summary": "Generic object-storage operations.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Box-Storage",
@@ -924,12 +925,12 @@
           "id": "A2A-SIN-Opal",
           "role": "supporting",
           "summary": "Opal workflow automation.",
-          "repo_exists": false
+          "repo_exists": true
         }
       ],
       "agent_count": 6,
-      "live_agent_count": 1,
-      "phantom_agent_count": 5,
+      "live_agent_count": 6,
+      "phantom_agent_count": 0,
       "primary_agents": [
         "A2A-SIN-CI-CD",
         "A2A-SIN-Github-Action",
@@ -962,7 +963,7 @@
       "provenance": {
         "decided_in": "OpenSIN-overview#35",
         "decided_at": "2026-04-18",
-        "owner_team": "OpenSIN-AI/infrastructure"
+        "owner_team": "OpenSIN-AI/core-team"
       },
       "links": {
         "repo": "https://github.com/OpenSIN-AI/Team-SIN-Infrastructure",
@@ -976,10 +977,10 @@
       "name": "Legal Team",
       "tagline": "Contracts, compliance, patents, tax, damages — legal ops for builders.",
       "tier": "marketplace",
-      "status": "coming-soon",
-      "status_label": "Coming soon",
+      "status": "beta",
+      "status_label": "Beta",
       "status_declared": "beta",
-      "status_coerced_reason": "all-agents-phantom",
+      "status_coerced_reason": null,
       "pricing": {
         "model": "monthly-addon",
         "monthly_addon_eur": 29
@@ -990,48 +991,48 @@
           "id": "A2A-SIN-Compliance",
           "role": "primary",
           "summary": "Compliance framework tracking.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Contract",
           "role": "primary",
           "summary": "Contract drafting + redlines.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-ClaimWriter",
           "role": "primary",
           "summary": "Structured claim writing.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Damages",
           "role": "supporting",
           "summary": "Damages modelling.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Evidence",
           "role": "supporting",
           "summary": "Evidence organisation.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Patents",
           "role": "supporting",
           "summary": "Patent + prior-art search.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Tax",
           "role": "supporting",
           "summary": "Tax filing prep + bookkeeping.",
-          "repo_exists": false
+          "repo_exists": true
         }
       ],
       "agent_count": 7,
-      "live_agent_count": 0,
-      "phantom_agent_count": 7,
+      "live_agent_count": 7,
+      "phantom_agent_count": 0,
       "primary_agents": [
         "A2A-SIN-Compliance",
         "A2A-SIN-Contract",
@@ -1064,7 +1065,7 @@
       "provenance": {
         "decided_in": "OpenSIN-overview#35",
         "decided_at": "2026-04-18",
-        "owner_team": "OpenSIN-AI/legal"
+        "owner_team": "OpenSIN-AI/core-team"
       },
       "links": {
         "repo": "https://github.com/OpenSIN-AI/Team-SIN-Legal",
@@ -1078,10 +1079,10 @@
       "name": "Media (ComfyUI) Team",
       "tagline": "Pro-grade image and video pipelines powered by ComfyUI.",
       "tier": "marketplace",
-      "status": "coming-soon",
-      "status_label": "Coming soon",
+      "status": "beta",
+      "status_label": "Beta",
       "status_declared": "beta",
-      "status_coerced_reason": "all-agents-phantom",
+      "status_coerced_reason": null,
       "pricing": {
         "model": "monthly-addon",
         "monthly_addon_eur": 19
@@ -1092,12 +1093,12 @@
           "id": "A2A-SIN-MiroFish",
           "role": "primary",
           "summary": "ComfyUI pipeline authoring, running and tuning.",
-          "repo_exists": false
+          "repo_exists": true
         }
       ],
       "agent_count": 1,
-      "live_agent_count": 0,
-      "phantom_agent_count": 1,
+      "live_agent_count": 1,
+      "phantom_agent_count": 0,
       "primary_agents": [
         "A2A-SIN-MiroFish"
       ],
@@ -1129,7 +1130,7 @@
       "provenance": {
         "decided_in": "OpenSIN-overview#35",
         "decided_at": "2026-04-18",
-        "owner_team": "OpenSIN-AI/media"
+        "owner_team": "OpenSIN-AI/core-team"
       },
       "links": {
         "repo": "https://github.com/OpenSIN-AI/Team-SIN-Media-ComfyUI",
@@ -1182,7 +1183,7 @@
       "provenance": {
         "decided_in": "OpenSIN-overview#35",
         "decided_at": "2026-04-18",
-        "owner_team": "OpenSIN-AI/media"
+        "owner_team": "OpenSIN-AI/core-team"
       },
       "links": {
         "repo": "https://github.com/OpenSIN-AI/Team-SIN-Media-Music",
@@ -1210,7 +1211,7 @@
           "id": "A2A-SIN-Telegram",
           "role": "primary",
           "summary": "Telegram DMs, groups, channels, bots.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Beeper",
@@ -1280,8 +1281,8 @@
         }
       ],
       "agent_count": 12,
-      "live_agent_count": 11,
-      "phantom_agent_count": 1,
+      "live_agent_count": 12,
+      "phantom_agent_count": 0,
       "primary_agents": [
         "A2A-SIN-Telegram",
         "A2A-SIN-Beeper"
@@ -1312,7 +1313,7 @@
       "provenance": {
         "decided_in": "OpenSIN-overview#35",
         "decided_at": "2026-04-18",
-        "owner_team": "OpenSIN-AI/messaging"
+        "owner_team": "OpenSIN-AI/core-team"
       },
       "links": {
         "repo": "https://github.com/OpenSIN-AI/Team-SIN-Messaging",
@@ -1374,7 +1375,7 @@
       "provenance": {
         "decided_in": "OpenSIN-overview#35",
         "decided_at": "2026-04-18",
-        "owner_team": "OpenSIN-AI/microsoft"
+        "owner_team": "OpenSIN-AI/core-team"
       },
       "links": {
         "repo": "https://github.com/OpenSIN-AI/Team-SIN-Microsoft",
@@ -1388,10 +1389,10 @@
       "name": "Research Team",
       "tagline": "Deep research, summarisation, and distributed-cognition experiments.",
       "tier": "marketplace",
-      "status": "coming-soon",
-      "status_label": "Coming soon",
+      "status": "beta",
+      "status_label": "Beta",
       "status_declared": "beta",
-      "status_coerced_reason": "all-agents-phantom",
+      "status_coerced_reason": null,
       "pricing": {
         "model": "monthly-addon",
         "monthly_addon_eur": 19
@@ -1402,24 +1403,24 @@
           "id": "A2A-SIN-Research",
           "role": "primary",
           "summary": "Multi-source deep research.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Summary",
           "role": "primary",
           "summary": "Summarisation with verification.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Mindrift",
           "role": "supporting",
           "summary": "Distributed-cognition experimentation.",
-          "repo_exists": false
+          "repo_exists": true
         }
       ],
       "agent_count": 3,
-      "live_agent_count": 0,
-      "phantom_agent_count": 3,
+      "live_agent_count": 3,
+      "phantom_agent_count": 0,
       "primary_agents": [
         "A2A-SIN-Research",
         "A2A-SIN-Summary"
@@ -1449,7 +1450,7 @@
       "provenance": {
         "decided_in": "OpenSIN-overview#35",
         "decided_at": "2026-04-18",
-        "owner_team": "OpenSIN-AI/research"
+        "owner_team": "OpenSIN-AI/core-team"
       },
       "links": {
         "repo": "https://github.com/OpenSIN-AI/Team-SIN-Research",
@@ -1477,49 +1478,49 @@
           "id": "A2A-SIN-Instagram",
           "role": "primary",
           "summary": "Instagram scheduling + Reels.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-LinkedIn",
           "role": "primary",
           "summary": "LinkedIn posts + articles.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-TikTok",
           "role": "primary",
           "summary": "TikTok posting + trend tracking.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-ProductHunt",
           "role": "supporting",
           "summary": "ProductHunt launch orchestration.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-DevTo",
           "role": "supporting",
           "summary": "DevTo cross-posting.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Medium",
           "role": "supporting",
           "summary": "Medium publications.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Paragraph",
           "role": "supporting",
           "summary": "Paragraph newsletter.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-IndieHackers",
           "role": "supporting",
           "summary": "IndieHackers posting.",
-          "repo_exists": false
+          "repo_exists": true
         },
         {
           "id": "A2A-SIN-Nostr",
@@ -1529,8 +1530,8 @@
         }
       ],
       "agent_count": 9,
-      "live_agent_count": 1,
-      "phantom_agent_count": 8,
+      "live_agent_count": 9,
+      "phantom_agent_count": 0,
       "primary_agents": [
         "A2A-SIN-Instagram",
         "A2A-SIN-LinkedIn",
@@ -1562,7 +1563,7 @@
       "provenance": {
         "decided_in": "OpenSIN-overview#35",
         "decided_at": "2026-04-18",
-        "owner_team": "OpenSIN-AI/social"
+        "owner_team": "OpenSIN-AI/core-team"
       },
       "links": {
         "repo": "https://github.com/OpenSIN-AI/Team-SIN-Social",

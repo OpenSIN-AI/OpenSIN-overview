@@ -18,15 +18,51 @@
     ]
   },
   "agents": [
-    {"id": "A2A-SIN-Instagram", "role": "primary", "summary": "Instagram scheduling + Reels."},
-    {"id": "A2A-SIN-LinkedIn", "role": "primary", "summary": "LinkedIn posts + articles."},
-    {"id": "A2A-SIN-TikTok", "role": "primary", "summary": "TikTok posting + trend tracking."},
-    {"id": "A2A-SIN-ProductHunt", "role": "supporting", "summary": "ProductHunt launch orchestration."},
-    {"id": "A2A-SIN-DevTo", "role": "supporting", "summary": "DevTo cross-posting."},
-    {"id": "A2A-SIN-Medium", "role": "supporting", "summary": "Medium publications."},
-    {"id": "A2A-SIN-Paragraph", "role": "supporting", "summary": "Paragraph newsletter."},
-    {"id": "A2A-SIN-IndieHackers", "role": "supporting", "summary": "IndieHackers posting."},
-    {"id": "A2A-SIN-Nostr", "role": "supporting", "summary": "Nostr relays + posting."}
+    {
+      "id": "A2A-SIN-Instagram",
+      "role": "primary",
+      "summary": "Instagram scheduling + Reels."
+    },
+    {
+      "id": "A2A-SIN-LinkedIn",
+      "role": "primary",
+      "summary": "LinkedIn posts + articles."
+    },
+    {
+      "id": "A2A-SIN-TikTok",
+      "role": "primary",
+      "summary": "TikTok posting + trend tracking."
+    },
+    {
+      "id": "A2A-SIN-ProductHunt",
+      "role": "supporting",
+      "summary": "ProductHunt launch orchestration."
+    },
+    {
+      "id": "A2A-SIN-DevTo",
+      "role": "supporting",
+      "summary": "DevTo cross-posting."
+    },
+    {
+      "id": "A2A-SIN-Medium",
+      "role": "supporting",
+      "summary": "Medium publications."
+    },
+    {
+      "id": "A2A-SIN-Paragraph",
+      "role": "supporting",
+      "summary": "Paragraph newsletter."
+    },
+    {
+      "id": "A2A-SIN-IndieHackers",
+      "role": "supporting",
+      "summary": "IndieHackers posting."
+    },
+    {
+      "id": "A2A-SIN-Nostr",
+      "role": "supporting",
+      "summary": "Nostr relays + posting."
+    }
   ],
   "pricing": {
     "model": "monthly-addon",
@@ -45,6 +81,6 @@
   "provenance": {
     "decided_in": "OpenSIN-overview#35",
     "decided_at": "2026-04-18",
-    "owner_team": "OpenSIN-AI/social"
+    "owner_team": "OpenSIN-AI/core-team"
   }
 }

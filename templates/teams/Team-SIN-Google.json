@@ -17,8 +17,16 @@
     ]
   },
   "agents": [
-    {"id": "A2A-SIN-Google-Apps", "role": "primary", "summary": "Google Workspace apps (Docs/Sheets/Slides/Gmail/Drive/Calendar)."},
-    {"id": "A2A-SIN-Google-Chat", "role": "supporting", "summary": "Google Chat spaces and direct messages."}
+    {
+      "id": "A2A-SIN-Google-Apps",
+      "role": "primary",
+      "summary": "Google Workspace apps (Docs/Sheets/Slides/Gmail/Drive/Calendar)."
+    },
+    {
+      "id": "A2A-SIN-Google-Chat",
+      "role": "supporting",
+      "summary": "Google Chat spaces and direct messages."
+    }
   ],
   "pricing": {
     "model": "monthly-addon",
@@ -37,6 +45,6 @@
   "provenance": {
     "decided_in": "OpenSIN-overview#35",
     "decided_at": "2026-04-18",
-    "owner_team": "OpenSIN-AI/google"
+    "owner_team": "OpenSIN-AI/core-team"
   }
 }

@@ -17,9 +17,21 @@
     ]
   },
   "agents": [
-    {"id": "A2A-SIN-Research", "role": "primary", "summary": "Multi-source deep research."},
-    {"id": "A2A-SIN-Summary", "role": "primary", "summary": "Summarisation with verification."},
-    {"id": "A2A-SIN-Mindrift", "role": "supporting", "summary": "Distributed-cognition experimentation."}
+    {
+      "id": "A2A-SIN-Research",
+      "role": "primary",
+      "summary": "Multi-source deep research."
+    },
+    {
+      "id": "A2A-SIN-Summary",
+      "role": "primary",
+      "summary": "Summarisation with verification."
+    },
+    {
+      "id": "A2A-SIN-Mindrift",
+      "role": "supporting",
+      "summary": "Distributed-cognition experimentation."
+    }
   ],
   "pricing": {
     "model": "monthly-addon",
@@ -38,6 +50,6 @@
   "provenance": {
     "decided_in": "OpenSIN-overview#35",
     "decided_at": "2026-04-18",
-    "owner_team": "OpenSIN-AI/research"
+    "owner_team": "OpenSIN-AI/core-team"
   }
 }

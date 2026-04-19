@@ -17,7 +17,7 @@ git commit -m "chore(ci): install governance workflows"
 git push
 ```
 
-After push, check the **Actions** tab on GitHub — you should see 5 new workflows
+After push, check the **Actions** tab on GitHub — you should see 6 new workflows
 appear and the first scheduled runs will fire within the hour.
 
 ## What gets installed
@@ -29,6 +29,7 @@ appear and the first scheduled runs will fire within the hour.
 | `validate-docs.yml` | Run link-validator + team-manifest-validator on every PR. Fails red if anything is broken. | Pull request into `main` |
 | `launch-status.yml` | Run `scripts/launch-status.js` and publish the Go/No-Go dashboard to a tracking issue. Every 30 min during launch week. | Cron + manual dispatch |
 | `oh-my-sin-build.yml` | Regenerate `templates/oh-my-sin.json` from the 17 team manifests and commit the diff. Keeps the marketplace aggregator fresh. | Nightly cron (03:00 UTC) + on manifest/schema changes + manual dispatch |
+| `reality-check.yml` | Refuse PRs whose docs reference non-existent repos or non-existent GitHub Teams. Pairs with `scripts/reality-check.js` + `scripts/validate-codeowners.js`. **Added after the 2026-04-19 canon-drift incident — non-negotiable.** Requires `GITHUB_TOKEN` (or `ORG_READ_TOKEN`) with org-private-repo visibility to avoid the anonymous-API false-positive class. | Pull request into `main`, push to `main`, daily cron, manual dispatch |
 
 ## Prerequisites
 
