@@ -3,9 +3,10 @@
 > **Stand:** 2026-04-19 (T-4 vor Launch).
 > Alle Zahlen in diesem Dokument sind **reproduzierbar** aus `templates/teams/*.json` und der authentifizierten GitHub-Org-Liste. Reproduziere sie selbst:
 > ```bash
-> npm run audit:workforce   # ruft scripts/check-workforce.js und scripts/reality-check.js
+> GITHUB_TOKEN=<pat> npm run validate   # ruft validate-links, validate-team-manifests,
+>                                       # check-workforce, reality-check, validate-codeowners
 > ```
-> CI schlägt auf Drift fehl — siehe [`.github/workflows/canon-drift.yml`](./.github/workflows/canon-drift.yml).
+> CI schlägt auf Drift fehl — siehe [`governance/workflows-proposed/reality-check.yml`](./governance/workflows-proposed/reality-check.yml) (staged; bedarf einmaligem Admin-`install.sh` um in `.github/workflows/` zu landen).
 >
 > **Revision history:** Diese Datei wurde am 2026-04-19 vollständig neu geschrieben, nachdem die vorherige Revision auf einem **anonymen** GitHub-API-Audit beruhte und alle privaten Repos fälschlich als "nicht existent" meldete. Diagnose und Methode: [`docs/REALITY-CHECK-2026-04-19.md`](./docs/REALITY-CHECK-2026-04-19.md).
 
@@ -165,7 +166,7 @@ Mit 2 Owner:innen tragen Einzelpersonen mehrere Surfaces. **Die finale Zuordnung
 1. **Pick a team.** If none fits, open a [Feature Request](./.github/ISSUE_TEMPLATE/feature-request.yml) proposing a new team. Budget reviewed by `@OpenSIN-AI/core-team`.
 2. **Scaffold the worker repo** from [`OpenSIN-AI/Template-SIN-Agent`](https://github.com/OpenSIN-AI/Template-SIN-Agent). Das Template liefert: A2A-Handler, HF-Space Config, health check, structured logging, release workflow, `agent.json`, `A2A-CARD.md`.
 3. **Register the worker** in der Team-`team.json` unter `agents[]` oder `workers[]`. Der nächste Aggregator-Run (`scripts/build-oh-my-sin.js`) picked ihn automatisch; `check-workforce.js` verifiziert dass die ID auf einen live Repo resolvt.
-4. **Nightly GH Action** in [`.github/workflows/canon-drift.yml`](./.github/workflows/canon-drift.yml) rebuild't `templates/oh-my-sin.json` und publishes an die drei Konsumenten: Marketplace UI, Chat-Entitlements, `Infra-SIN-OpenCode-Stack` mirror. Schema → [`schemas/oh-my-sin.schema.json`](./schemas/oh-my-sin.schema.json).
+4. **Nightly GH Action** in [`governance/workflows-proposed/oh-my-sin-build.yml`](./governance/workflows-proposed/oh-my-sin-build.yml) rebuild't `templates/oh-my-sin.json` und publishes an die drei Konsumenten: Marketplace UI, Chat-Entitlements, `Infra-SIN-OpenCode-Stack` mirror. Schema → [`schemas/oh-my-sin.schema.json`](./schemas/oh-my-sin.schema.json). Drift-Gate (reality-check, codeowners, workforce) läuft bei jedem PR via [`governance/workflows-proposed/reality-check.yml`](./governance/workflows-proposed/reality-check.yml).
 
 ---
 
@@ -173,7 +174,7 @@ Mit 2 Owner:innen tragen Einzelpersonen mehrere Surfaces. **Die finale Zuordnung
 
 Die Aussage *"OpenSIN ist ein Agent OS, nicht eine Agent-App"* (siehe [`PRODUCT-VISION § Der Pitch in einem Satz`](./PRODUCT-VISION.md)) gilt nur, wenn diese Workforce real, addressierbar und organisiert ist. Dieses Dokument ist der Audit-Trail:
 
-- Jede Zahl ist reproduzierbar (`npm run audit:workforce`).
+- Jede Zahl ist reproduzierbar (`GITHUB_TOKEN=<pat> npm run validate`).
 - Jeder Agent ID resolvt zu einem live Repo (oder wird ehrlich als phantom markiert — derzeit 0).
 - Jedes Team resolvt zu einem Stripe-Produkt (oder trägt `coming-soon`).
 - Drift zwischen Manifest und Realität wird **am PR** gefangen, nicht im Production-Outage.
