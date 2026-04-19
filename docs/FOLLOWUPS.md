@@ -10,7 +10,7 @@ When all tickets here are `DONE`, delete this file.
 
 ### R1: `opensin-ai-cli` vs `OpenSIN-Code`
 
-- **Status:** `OPEN` — do not extend either side until decided.
+- **Status:**  — Merged into OpenSIN-Code (2026-04-19)
 - **Tracking issues:**
   - Decision: [`OpenSIN-Code#1116`](https://github.com/OpenSIN-AI/OpenSIN-Code/issues/1116)
   - Banner: [`opensin-ai-cli#7`](https://github.com/OpenSIN-AI/opensin-ai-cli/issues/7)
