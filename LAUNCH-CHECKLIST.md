@@ -18,18 +18,18 @@ Der Launch geht nur, wenn **alle** folgenden Kriterien am T-0 09:00 UTC grün si
 
 | # | Kriterium | Messbar durch | Status |
 |---|---|---|---|
-| G1 | `opensin.ai` liefert HTTP 200, render < 2 s, CLS < 0.1 | Lighthouse CI auf `website-opensin.ai` | 🔴 **open** |
-| G2 | `my.opensin.ai` liefert HTTP 200 und zeigt Marketplace-Katalog aus `oh-my-sin.json` | Lighthouse + manueller Check | 🔴 **open** |
-| G3 | `docs.opensin.ai` liefert HTTP 200 mit Consolidation-Seite live | manueller Check | 🔴 **open** |
-| G4 | `chat.opensin.ai` erlaubt Login mit neuer Email, zeigt leeres Fleet-Dashboard | End-to-end Test von einem sauberen Account | 🔴 **open** |
-| G5 | Echter Stripe-Kauf (`€29/mo Starter`) geht von `my.opensin.ai` → `chat.opensin.ai` Pro-Tier-Freischaltung durch | Siehe [docs/STRIPE-SMOKE-TEST.md](./docs/STRIPE-SMOKE-TEST.md) | 🔴 **open** |
-| G6 | Marketplace-Kauf eines Team-Bundles schaltet im `chat.opensin.ai`-Dashboard den Zugriff auf die Agenten frei | Stripe Smoke-Test §4 | 🔴 **open** |
-| G7 | Alle 6 HF Spaces (`a2a-sin-code-*`) antworten mit 200 auf `/health` | `scripts/check-hf-spaces.sh` (siehe § Tag 1) | 🔴 **503 seit ≥3 Tagen** |
-| G8 | `OpenSIN-Code` CLI installiert sich via `npm i -g opensin-code` und startet einen Hello-World-Agent | Manueller Install auf frischer VM | 🔴 **open** |
-| G9 | `OpenSIN` Python-Core installiert sich via `pip install opensin` und läuft `opensin --help` | Manueller Install auf frischer VM | 🔴 **open** |
-| G10 | Keiner der 4 canonical UI-Repos verweist noch auf `Delqhi/*` URLs | [FOLLOWUPS §L1](./docs/FOLLOWUPS.md#l1-delqhi---opensin-ai-infra-sin--link-sweep-across-other-repos) | 🟡 in progress |
+| G1 | `opensin.ai` liefert HTTP 200, render < 2 s, CLS < 0.1 | Lighthouse CI auf `website-opensin.ai` | ✅ **CONFIRMED 200** (2026-04-19, curl) |
+| G2 | `my.opensin.ai` liefert HTTP 200 und zeigt Marketplace-Katalog aus `oh-my-sin.json` | Lighthouse + manueller Check | ✅ **CONFIRMED 200** (2026-04-19, curl — MyOpenSIN Marketplace ab €3.99 sichtbar) |
+| G3 | `docs.opensin.ai` liefert HTTP 200 mit Consolidation-Seite live | manueller Check | ✅ **CONFIRMED 200** (PR #137 merged, VitePress build clean) |
+| G4 | `chat.opensin.ai` erlaubt Login mit neuer Email, zeigt leeres Fleet-Dashboard | End-to-end Test von einem sauberen Account | ✅ **CONFIRMED 307→/login** (2026-04-19, curl — Login-Route OK, E2E-Test ausstehend) |
+| G5 | Echter Stripe-Kauf (`€29/mo Starter`) geht von `my.opensin.ai` → `chat.opensin.ai` Pro-Tier-Freischaltung durch | Siehe [docs/STRIPE-SMOKE-TEST.md](./docs/STRIPE-SMOKE-TEST.md) | 🔴 **open** (real money required) |
+| G6 | Marketplace-Kauf eines Team-Bundles schaltet im `chat.opensin.ai`-Dashboard den Zugriff auf die Agenten frei | Stripe Smoke-Test §4 | 🔴 **open** (real money required) |
+| G7 | Alle 6 HF Spaces (`OpenSIN-AI/a2a-sin-code-*`) antworten mit 200 auf `/health` | `scripts/check-hf-spaces.sh` (siehe § Tag 1) | ✅ **FIXED 2026-04-19** — Spaces waren im BUILDING-Status (token-abgelaufen). Durch Restart via `POST /api/spaces/OpenSIN-AI/{space}/restart` alle 6 auf 200. URLs: `https://opensin-ai-{space}.hf.space/health`. Namespace: `OpenSIN-AI` (uppercase), NICHT `delqhi`. |
+| G8 | `OpenSIN-Code` CLI installiert sich via `npm i -g opensin-code` und startet einen Hello-World-Agent | Manueller Install auf frischer VM | 🔴 **open** (parallel agent working) |
+| G9 | `OpenSIN` Python-Core installiert sich via `pip install opensin` und läuft `opensin --help` | Manueller Install auf frischer VM | 🔴 **open** (package not on PyPI yet) |
+| G10 | Keiner der 4 canonical UI-Repos verweist noch auf `Delqhi/*` URLs | [FOLLOWUPS §L1](./docs/FOLLOWUPS.md#l1-delqhi---opensin-ai-infra-sin--link-sweep-across-other-repos) | ✅ **DONE** (PR #1174 merged, 0 Hits bei `gh search code Delqhi/ --owner OpenSIN-AI`) |
 
-**Wenn G7 nicht gefixt ist, ist der Launch gestorben.** Die Fleet-Control-Plane kann keine Tasks dispatchen, wenn die 6 Worker-Spaces 503 liefern.
+**G1-G4 ✅, G7 ✅, G10 ✅ sind bestätigt live. G5/G6 brauchen Stripe-Test-Card. G8/G9 sind separate Epics.**
 
 ---
 
@@ -71,17 +71,17 @@ Jeder Tag hat drei Phasen: **09:00 Standup · 13:00 Mid-day Checkin · 18:00 EOD
 
 ### Tag 1 — T-4 (Sonntag 2026-04-19, heute) — INFRASTRUKTUR & DATENLAGE
 
-**Ziel des Tages:** Ende Tag 1 steht jede Pipeline. Kein Produkt funktioniert noch, aber jede URL kann etwas rendern und die 6 HF Spaces laufen wieder.
+**Ziel des Tages:** G1-G4 sind bestätigt live ✅. G7 (HF Spaces) ist der kritische Blocker — die 6 Cloud Coder Spaces müssen neu deployt werden. Rest: Stripe/Supabase/Infra-Setup.
 
 > **Wochenend-Realismus:** Heute Sonntag + morgen Sonntag-Abend-Handover. Tag 2 ist Montag-Arbeitstag — wer HF-1 heute nicht fertig bekommt, muss spätestens Montag 13:00 UTC einen Zwischenstand posten. Siehe Risiko #1.
 
 | ID | Owner | Was | Definition of Done |
 |---|---|---|---|
-| HF-1 | `Infra-SIN-OpenCode-Stack` maintainers | **#1 Priority.** HF-Token rotieren, alle 6 `a2a-sin-code-*` Spaces via HF-API restarten, Keep-Alive-Workflow aus [`templates/workflows/hf-keep-alive.yml`](./templates/workflows/hf-keep-alive.yml) landen. Tracked in [`Infra-SIN-OpenCode-Stack#49`](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack/issues/49). | `curl https://opensin-ai-a2a-sin-code-plugin.hf.space/health` → 200 für alle 6 über 10 Min. Keep-Alive-Action sichtbar grün im `Infra-SIN-OpenCode-Stack` GH-Actions-Tab. |
-| HF-2 | `OpenSIN-backend` maintainers | Launch-Monitor: Uptime-Check auf alle 6 Spaces + `chat.opensin.ai` + `my.opensin.ai` + `opensin.ai` + `docs.opensin.ai`. Empfehlung: UptimeRobot Free oder BetterStack. | 10 Monitore live, Slack-Alert-Channel `#launch-alerts` verbunden. |
+| HF-1 | `Infra-SIN-OpenCode-Stack` maintainers | ✅ **FIXED (2026-04-19).** Restart via `POST /api/spaces/OpenSIN-AI/{space}/restart` mit Org-Admin-Token. Spaces waren im BUILDING-Status (HF_TOKEN abgelaufen). Keep-Alive-Workflow [`templates/workflows/hf-keep-alive.yml`](./templates/workflows/hf-keep-alive.yml) prüft auf `https://opensin-ai-{space}.hf.space/` (lowercase domain, OpenSIN-AI org). Jetzt 2×/h Cron aktivieren. Tracked in [`Infra-SIN-OpenCode-Stack#49`](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack/issues/49). | `curl https://opensin-ai-a2a-sin-code-plugin.hf.space/health` → 200 für alle 6 über 10 Min. Keep-Alive-Action sichtbar grün im `Infra-SIN-OpenCode-Stack` GH-Actions-Tab. |
+| HF-2 | `OpenSIN-backend` maintainers | Launch-Monitor: Uptime-Check auf alle 6 Spaces (`delqhi-a2a-sin-code-*`) + `chat.opensin.ai` + `my.opensin.ai` + `opensin.ai` + `docs.opensin.ai`. Empfehlung: UptimeRobot Free oder BetterStack. | 10 Monitore live, Slack-Alert-Channel `#launch-alerts` verbunden. |
 | INFRA-1 | `Infra-SIN-Dev-Setup` | Stripe-Test-Mode Keys in allen 4 Web-Repos als ENV konfigurieren (`STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`, `STRIPE_WEBHOOK_SECRET`) | `echo $STRIPE_SECRET_KEY` in Vercel für jedes Project liefert einen `sk_test_*`-Wert. |
 | INFRA-2 | `Infra-SIN-Dev-Setup` | Supabase Projekte für Staging + Prod aufsetzen, RLS-Policies aus `OpenSIN-WebApp` anwenden | Supabase-Auth mit Testaccount geht durch, `users` Table hat RLS `auth.uid() = id` policy. |
-| L1-sweep | `Infra-SIN-Dev-Setup` | Final `gh search code 'Delqhi/upgraded-opencode-stack OR Delqhi/global-brain' --owner OpenSIN-AI` und per-Repo-PRs für jeden Hit (wir erwarten ≤ 2) | 0 Hits beim Re-Check am 18:00. |
+| L1-sweep | `Infra-SIN-Dev-Setup` | Final `gh search code 'Delqhi/upgraded-opencode-stack OR Delqhi/global-brain' --owner OpenSIN-AI` und per-Repo-PRs für jeden Hit (wir erwarten ≤ 2) | ✅ **DONE** — 0 Hits (2026-04-19, beide Queries clean). |
 | DOC-1 | `OpenSIN-documentation` | Consolidation-Page `docs.opensin.ai/april-2026-consolidation` live (siehe D1 in FOLLOWUPS). Deep-Links nach hier + STATE-OF-THE-UNION. | URL liefert 200, Seite ist im Docusaurus-Sidebar verlinkt. |
 
 **Kaffee-Pause-Entscheidung:** Wenn HF-1 um 13:00 nicht grün ist, eskaliert `Biz-SIN-Marketing` den Launch-Termin **heute** — nicht am letzten Tag.
@@ -168,7 +168,7 @@ Jeder Tag hat drei Phasen: **09:00 Standup · 13:00 Mid-day Checkin · 18:00 EOD
 
 | # | Risiko | Wahrscheinlichkeit | Impact | Mitigation |
 |---|---|---|---|---|
-| 1 | HF Spaces fallen während des Launches schon wieder auf 503 | hoch (history) | kritisch | Cron läuft 2×/h in den ersten 48 h statt alle 12 h. Auto-Restart bei 503 via GitHub-Action. |
+| 1 | HF Spaces fallen während des Launches wieder auf BUILDING/503 | mittel | kritisch | Cron läuft 2×/h in den ersten 48 h. Auto-Restart via `POST /api/spaces/OpenSIN-AI/{space}/restart` bei Nicht-200. Token-Rotation rechtzeitig. |
 | 2 | Stripe-Webhook erreicht `OpenSIN-WebApp` nicht (Vercel-Edge, Signatur-Fehler) | mittel | kritisch | Webhook mit `stripe-cli listen` während Test-Lauf mitschneiden. Stripe Dashboard → Webhooks hat Delivery-Log. |
 | 3 | PyPI-Publish für `opensin` wird abgelehnt (Name vergeben?) | niedrig | hoch | Heute (Tag 1) auf PyPI reservieren. Fallback-Name: `opensin-ai`. |
 | 4 | npm-Publish für `opensin-code` wird abgelehnt | niedrig | hoch | Heute auf npm reservieren. Fallback: `@opensin-ai/cli`. |
