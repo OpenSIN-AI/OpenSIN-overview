@@ -1,0 +1,115 @@
+name: Launch-week incident
+description: Report an incident affecting the 2026-04-23 launch. Use during T-4 through T+7.
+title: "[INCIDENT] "
+labels: ["incident", "launch-2026-04-23"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template during launch week (T-4 → T+7). Outside launch week,
+        use a regular issue or open a bug in the specific repo.
+
+        **Severity guide**
+        - **SEV-1**: Users cannot reach opensin.ai, my.opensin.ai, or chat.opensin.ai. Payments broken. Data loss.
+        - **SEV-2**: Major feature broken for many users. Marketplace card missing. Agent fleet not starting.
+        - **SEV-3**: Minor UI glitch. Docs typo. One agent broken out of many.
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - SEV-1 — user-facing outage
+        - SEV-2 — major degradation
+        - SEV-3 — minor issue
+    validations:
+      required: true
+
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Affected surface
+      multiple: true
+      options:
+        - opensin.ai (marketing)
+        - my.opensin.ai (paid marketplace + dashboard)
+        - chat.opensin.ai (authenticated app)
+        - docs.opensin.ai
+        - Stripe checkout or webhook
+        - HuggingFace Spaces (A2A runtime)
+        - OpenSIN-backend (control plane)
+        - OpenSIN-Code (CLI)
+        - Supabase auth or database
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What is broken?
+      description: One paragraph. What users experience. What you see.
+      placeholder: "Stripe checkout returns 500 after clicking 'Subscribe' on the Commerce bundle. Error in console: `webhook signature invalid`."
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Go to https://my.opensin.ai/marketplace/commerce
+        2. Click "Subscribe"
+        3. Fill 4242 4242 4242 4242, any future date, 123
+        4. Observe 500 error
+    validations:
+      required: true
+
+  - type: input
+    id: first-seen
+    attributes:
+      label: First detected at (UTC)
+      placeholder: "2026-04-23T14:03Z"
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: User impact
+      description: How many users affected? Are we losing revenue right now?
+      placeholder: "All new signups on Tier-2 — blocks all revenue. 0 of last 12 checkout attempts succeeded (see Stripe dashboard)."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: rollback-eligible
+    attributes:
+      label: Rollback eligibility
+      description: Is this something we can roll back, or does it need a forward fix?
+      options:
+        - Rollback possible — last good deploy is known
+        - Forward fix only — rollback would lose user data
+        - Unknown — need investigation
+    validations:
+      required: true
+
+  - type: textarea
+    id: related
+    attributes:
+      label: Related tickets and PRs
+      placeholder: |
+        - STATE-OF-THE-UNION.md § CRITICAL block
+        - LAUNCH-CHECKLIST.md § Go/No-Go gate HF-1
+        - OpenSIN-backend#42 (CP1 merge)
+
+  - type: checkboxes
+    id: notified
+    attributes:
+      label: Notification checklist
+      options:
+        - label: Posted in #launch-war-room Slack channel
+        - label: Paged on-call via PagerDuty (SEV-1/SEV-2 only)
+        - label: Status page updated (status.opensin.ai)
+        - label: Customer email drafted (SEV-1 only)

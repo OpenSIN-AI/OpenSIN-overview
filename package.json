@@ -1,0 +1,25 @@
+{
+  "name": "opensin-overview",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Governance + registry repo for the OpenSIN-AI organisation. Scripts only — not a deployable app. Zero runtime dependencies on purpose.",
+  "type": "module",
+  "scripts": {
+    "regenerate": "node scripts/generate-master-index.js && node scripts/audit-repos.js && node scripts/build-oh-my-sin.js",
+    "audit": "node scripts/audit-repos.js",
+    "index": "node scripts/generate-master-index.js",
+    "build-marketplace": "node scripts/build-oh-my-sin.js",
+    "launch-status": "node scripts/launch-status.js",
+    "validate": "node scripts/validate-links.js && node scripts/validate-team-manifests.js",
+    "validate:links": "node scripts/validate-links.js",
+    "validate:manifests": "node scripts/validate-team-manifests.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpenSIN-AI/OpenSIN-overview"
+  }
+}

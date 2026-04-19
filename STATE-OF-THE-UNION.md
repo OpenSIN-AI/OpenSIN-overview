@@ -1,220 +1,203 @@
 # State of the Union — OpenSIN-AI
 
-> **Stand:** 2026-04-18, nach Wave 3 Consolidation.
-> **Zweck dieses Dokuments:** Ein ehrlicher Lagebericht. Nicht Marketing, nicht Wunschdenken. Was existiert wirklich, was läuft, was ist tot, was ist kaputt. Wer schnell wissen will wohin es geht, liest [PRODUCT-VISION.md](./PRODUCT-VISION.md). Wer wissen will was zu tun ist, liest [docs/FOLLOWUPS.md](./docs/FOLLOWUPS.md) + dieses Dokument.
+> **Stand:** 2026-04-19 (Live-Audit via `gh repo list`, T-4 vor Launch).
+> **Zweck dieses Dokuments:** Ein ehrlicher Lagebericht. Nicht Marketing, nicht Wunschdenken. Was existiert wirklich, was läuft, was ist tot, was ist kaputt.
+> **Wer Zeitdruck hat:** Geht direkt zu [LAUNCH-CHECKLIST.md](./LAUNCH-CHECKLIST.md). Wer das große Bild will, liest [PRODUCT-VISION.md](./PRODUCT-VISION.md). Wer eine offene Aufgabe sucht, liest [docs/FOLLOWUPS.md](./docs/FOLLOWUPS.md).
+> **Wer prüfen will dass diese Zahlen stimmen:** `gh repo list OpenSIN-AI --limit 300 --json name,diskUsage,isArchived,pushedAt | jq 'length'`
 
-## TL;DR
+## TL;DR (2026-04-19)
 
-Die Org hat **200 Repositories**. Sie zerfällt in drei Kategorien:
+- **205 Repositories total** (177 live, 28 archived). Drift ggü. [`registry/MASTER_INDEX.md`](./registry/MASTER_INDEX.md): +17. Index wurde in diesem Commit refreshed.
+- **Wave 4 Artefakte landete gestern** — 17 Team-Manifeste, Schema, Audit-Script, Archival der 4 toten A2A-Repos. Alles sichtbar in [`templates/teams/`](./templates/teams), [`schemas/team.schema.json`](./schemas/team.schema.json), [`registry/SCAFFOLD_AUDIT.md`](./registry/SCAFFOLD_AUDIT.md).
+- **Launch-Blocker #1 (frisch erkannt):** Alle 6 `a2a-sin-code-*` HuggingFace-Spaces antworten seit ≥ 3 Tagen mit **HTTP 503**. Ohne die läuft die A2A-Fleet-Control-Plane nicht. Tracking in [LAUNCH-CHECKLIST § Tag 1 → HF-1](./LAUNCH-CHECKLIST.md#tag-1--t-3-mittwoch-2026-04-19--infrastruktur--datenlage). Siehe auch [`registry/DEPLOYMENT_STATUS.md`](./registry/DEPLOYMENT_STATUS.md).
+- **Der Kern trägt.** `OpenSIN` (836 MB), `OpenSIN-backend` (975 MB), `OpenSIN-Code` (366 MB), `OpenSIN-WebApp` (59 MB), `OpenSIN-documentation` (49 MB). Das sind reale, gepflegte Code-Basen.
+- **Das Business-Narrativ ist jetzt entschieden.** UI-Schichtung und Marketplace-Architektur sind seit Wave 4 bindend (siehe [PRODUCT-VISION § Getroffene Entscheidungen](./PRODUCT-VISION.md#getroffene-entscheidungen-wave-4-2026-04-18)). Was bleibt ist Ausführung, nicht Entscheidungsfindung.
+- **Die Peripherie ist gereinigt, aber nicht fertig.** 4 null-kb Repos sind archiviert. 6 9-kb Code-Scaffolds (`A2A-SIN-Code-Backend/-Command/-Frontend/-Fullstack/-Plugin/-Tool`) existieren noch, sind aber off der Launch-Checklist.
 
-- **Der Kern ist real und substantiell** — 4 canonical Code-Repos + 3 Infra-Repos haben echten, aktiv gewarteten Code (836 MB OpenSIN, 975 MB OpenSIN-backend, 366 MB OpenSIN-Code).
-- **Das Business-Narrativ hat ein Loch** — die Websites und der Marketplace sind konzeptionell doppelt besetzt. `website-my.opensin.ai` und `OpenSIN-WebApp` behaupten beide dieselbe Rolle ("User login, Billing, API keys"). Das muss entschieden werden.
-- **Die Peripherie ist ein Friedhof mit Leuchttürmen** — von 109 A2A-SIN-*-Repos sind einige groß und real (Discord 25 MB, X-Twitter 26 MB, MiroFish 6.7 MB), viele mittel (Marketing-Agents 100-170 kb), aber mindestens **4 sind komplett leer** (0 kb) und **17 Team-SIN-*-Repos** sind Scaffolds von 26-35 kb. Das sind keine Agenten — das sind Platzhalter mit Repo-URL.
-
-Das Gute: der Kern trägt. Das Schlechte: du wirst nie das "weltbeste Agentensystem" bauen, solange 70% deiner Repos Scaffolds sind die so aussehen als wäre da Code. Entweder ausbauen oder wegschmeißen.
+Kurz: Wir haben in den letzten 48 h mehr gefixt als viele Orgs in 2 Wochen. Jetzt fehlen 4 Tage saubere Ausführung — siehe [LAUNCH-CHECKLIST.md](./LAUNCH-CHECKLIST.md).
 
 ---
 
-## Der Kern — was wirklich existiert und läuft
+## 1. Zahlen, Live aus `gh repo list` (Stand 2026-04-19)
 
-### Code-Engine (4 canonical repos)
+| Kategorie | Count | Kommentar |
+|---|---:|---|
+| **Alle Repos** | 205 | inkl. `.github`, inkl. 3 Meta-Aggregat-Packages (`opensin_api`, `opensin_sdk`, `OpenSIN-Skills`) |
+| Davon live (nicht archived) | 177 | |
+| Davon archived | 28 | Legacy + Wave 1/2/4 Archival |
+| `A2A-SIN-*` | 109 | 4 davon gerade archiviert (Wave 4: Facebook/Mattermost/RocketChat/Slack) |
+| `Team-SIN-*` | 17 | alle als Metadata-Manifeste in Wave 4 normalisiert |
+| `Biz-SIN-*` | 7 | |
+| `Infra-SIN-*` | 6 | |
+| `MCP-SIN-*` | 7 | |
+| `Template-SIN-*` + `Template-A2A-*` | 5 | |
+| `Skill-SIN-*` | 3 | |
+| `website-*` | 4 | |
+| Canonical Kern (keine Präfixe) | ~10 | `OpenSIN`, `OpenSIN-Code`, `OpenSIN-backend`, `OpenSIN-WebApp`, `OpenSIN-documentation`, `OpenSIN-overview`, `OpenSIN-Skills`, `OpenSIN-Bridge`, `OpenSIN-Neural-Bus`, `awesome-opensin` |
+| Aktiv gepusht in letzten 7 Tagen | 177 (= alle live) | der ganze Stall rennt, keine toten Würmer außer den archivierten |
 
-| Repo | Sichtbarkeit | Größe | Sprache | Beschreibung | Lebenszeichen |
-|---|---|---|---|---|---|
-| [OpenSIN](https://github.com/OpenSIN-AI/OpenSIN) | Public | 836 MB | Python | "Core — 310+ packages across 25+ domains" | aktiv, letzter push 2026-04-18 |
-| [OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | Public | 366 MB | TypeScript | "The autonomous OpenSIN-Code CLI" | aktiv, letzter push 2026-04-18 |
-| [OpenSIN-backend](https://github.com/OpenSIN-AI/OpenSIN-backend) | Private | 975 MB | TypeScript | "Backend and A2A fleet control plane" | aktiv, letzter push 2026-04-18 |
-| [Team-SIN-Code-Core](https://github.com/OpenSIN-AI/Team-SIN-Code-Core) | Private | **57 kb** | TypeScript | Post-Wave-1 Monorepo für Coding-Agenten | **Problem:** 57 kb ist nach einer "Konsolidierung von 3 Repos" viel zu wenig. Entweder die Wave-1-Absorption hat Code verloren oder das Monorepo ist nur ein Skelett |
+---
 
-**Status:** 3 von 4 tragen echten Code. Team-SIN-Code-Core ist verdächtig klein — [OpenSIN-overview#34](https://github.com/OpenSIN-AI/OpenSIN-overview/issues/34) bzw. neue Untersuchung nötig.
+## 2. Der Kern — was wirklich existiert und läuft
 
-### Infrastructure (3 canonical repos)
+### 2.1 Code-Engine (Canonical)
+
+| Repo | Sichtbarkeit | Größe (MB) | Sprache | Status | Launch-Rolle |
+|---|---|---:|---|---|---|
+| [`OpenSIN`](https://github.com/OpenSIN-AI/OpenSIN) | Public | **836** | Python | aktiv, push 2026-04-18 | OSS Tier — `pip install opensin` |
+| [`OpenSIN-backend`](https://github.com/OpenSIN-AI/OpenSIN-backend) | Private | **975** | TypeScript | aktiv, push 2026-04-18 | Pro Tier — Fleet Control Plane |
+| [`OpenSIN-Code`](https://github.com/OpenSIN-AI/OpenSIN-Code) | Public | **366** | TypeScript | aktiv, push 2026-04-19 | OSS Tier — `npm i -g opensin-code` |
+| [`OpenSIN-WebApp`](https://github.com/OpenSIN-AI/OpenSIN-WebApp) | Private | **59** | Next.js 16 | aktiv, push 2026-04-18 | Pro Tier — `chat.opensin.ai` |
+| [`Team-SIN-Code-Core`](https://github.com/OpenSIN-AI/Team-SIN-Code-Core) | Private | 0.06 | TS | Scaffold (bestätigt in [`SCAFFOLD_AUDIT`](./registry/SCAFFOLD_AUDIT.md)) | Marketplace — als `team.json`-Repo normalisiert |
+
+Status: 4 von 5 tragen echten Code. Team-SIN-Code-Core wurde in Wave 4 zum Metadata-Manifest umklassifiziert (siehe PRODUCT-VISION § Entscheidung 4). Keine offene Altlast mehr hier.
+
+### 2.2 Infrastructure (Canonical)
 
 | Repo | Sichtbarkeit | Größe | Rolle |
-|---|---|---|---|
-| [Infra-SIN-OpenCode-Stack](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack) | Public | 3.8 MB | Kanonische OpenCode-Config, `sin-sync`-Target |
-| [Infra-SIN-Global-Brain](https://github.com/OpenSIN-AI/Infra-SIN-Global-Brain) | Public | 788 kb | PCPM v4 — Persistent Agent Memory |
-| [Infra-SIN-Dev-Setup](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup) | Public | 149 kb | Dev-Environment Setup + User-Onboarding |
+|---|---|---:|---|
+| [`Infra-SIN-OpenCode-Stack`](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack) | Public | 3.8 MB | SSOT für OpenCode-Config, Agent-Aggregator (`oh-my-sin.json` nightly) |
+| [`Infra-SIN-Global-Brain`](https://github.com/OpenSIN-AI/Infra-SIN-Global-Brain) | Public | 788 kb | PCPM v4 (persistent cross-session memory) |
+| [`Infra-SIN-Dev-Setup`](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup) | Public | 186 kb | Dev Environment + User-Onboarding Setup |
+| [`Infra-SIN-OpenCode-Stack`](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack) | Public | siehe oben | kanonische SSOT |
+| [`Infra-SIN-Docker-Empire`](https://github.com/OpenSIN-AI/Infra-SIN-Docker-Empire) | Private | 166 kb | Docker-Images für alle SIN-Worker |
+| [`Infra-SIN-Doc-Templates`](https://github.com/OpenSIN-AI/Infra-SIN-Doc-Templates) | Public | 46 kb | README-/CONTRIBUTING-Templates |
 
-**Status:** Alle 3 real. PCPM v4 ist echte Differenzierung — kein anderes OSS-Agentensystem hat persistenten Cross-Session-Speicher.
+Status: alle real. PCPM v4 ist echte Differenzierung — kein anderes OSS-Agentensystem hat persistenten Cross-Session-Speicher.
 
-### UI-Layer (4 Web-Repos) — **Rollenkonflikt**
+### 2.3 UI-Layer (Canonical, 4 Rollen, Wave-4-entschieden)
 
-| Repo | Domain | Größe | Was die GitHub-Description sagt | Was die README sagt |
-|---|---|---|---|---|
-| [website-opensin.ai](https://github.com/OpenSIN-AI/website-opensin.ai) | opensin.ai | 765 kb | "Webseite für unsere OpenSIN Open-Source Version" | (Marketing für OSS) |
-| [website-my.opensin.ai](https://github.com/OpenSIN-AI/website-my.opensin.ai) | my.opensin.ai | 2 MB | "User loggen sich ein, verwalten ihre Cloud-Agenten, hinterlegen ihre Kreditkarte und holen sich ihre API-Keys" | "Premium marketplace website for the MyOpenSIN subscription layer. Marketplace for modular paid teams" |
-| [OpenSIN-WebApp](https://github.com/OpenSIN-AI/OpenSIN-WebApp) | chat.opensin.ai | 59 MB | "Authenticated dashboard web app at chat.opensin.ai — login, agent fleet management, billing, API keys. Next.js 16 + Supabase. Paid layer" | (nicht geprüft) |
-| [OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation) | docs.opensin.ai | 50 MB | "Official documentation" | (Docusaurus) |
+| Repo | Domain | Größe | Rolle | Status |
+|---|---|---:|---|---|
+| [`website-opensin.ai`](https://github.com/OpenSIN-AI/website-opensin.ai) | opensin.ai | 792 kb | **OSS Marketing** (unauthenticated, keine Stripe) | in Bau |
+| [`website-my.opensin.ai`](https://github.com/OpenSIN-AI/website-my.opensin.ai) | my.opensin.ai | 2 MB | **Paid Marketing + Marketplace-Katalog + Stripe Checkout** | in Bau |
+| [`OpenSIN-WebApp`](https://github.com/OpenSIN-AI/OpenSIN-WebApp) | chat.opensin.ai | 59 MB | **Authenticated App + Stripe Customer Portal** | in Bau |
+| [`OpenSIN-documentation`](https://github.com/OpenSIN-AI/OpenSIN-documentation) | docs.opensin.ai | 49 MB | **Docusaurus Docs** | aktiv |
+| [`website-blog.opensin.ai`](https://github.com/OpenSIN-AI/website-blog.opensin.ai) | blog.opensin.ai | 41 MB | Blog (optional für Launch) | aktiv |
 
-**Das Problem:** `website-my.opensin.ai` UND `OpenSIN-WebApp` behaupten beide die Rolle "User-Login + Billing + Kreditkarte". Einer von beiden muss Marketing-Only sein. Die logische Trennung wäre:
+Der Rollenkonflikt aus dem 2026-04-18-Stand ist aufgelöst. UI-Schichtung ist bindend.
 
-- `my.opensin.ai` = **Marketing + Checkout-Funnel** (unauthentifiziert, Stripe Checkout, "Buy Pro")
-- `chat.opensin.ai` (OpenSIN-WebApp) = **Authenticated App** (eingeloggte User, Agent-Fleet, API-Keys)
-
-Aber die heutige README von my.opensin.ai beschreibt sich als Login-Portal. Das muss geklärt und dokumentiert werden.
-
-**Zusätzliches Problem:** Die my.opensin.ai README referenziert noch die alte `Delqhi/upgraded-opencode-stack` URL. L1-Link-Sweep ist unvollständig.
-
-### Meta / Governance (2 canonical repos)
+### 2.4 Meta / Governance
 
 | Repo | Rolle | Status |
 |---|---|---|
-| [OpenSIN-overview](https://github.com/OpenSIN-AI/OpenSIN-overview) | SSOT für Struktur, Routing, Vision (= dieses Repo) | gesund, aktiv gepflegt |
-| [OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation) | Public-facing Docusaurus @ docs.opensin.ai | aktiv, 50 MB |
+| [`OpenSIN-overview`](https://github.com/OpenSIN-AI/OpenSIN-overview) | SSOT für Org-Topologie (dieses Repo) | gesund |
+| [`OpenSIN-documentation`](https://github.com/OpenSIN-AI/OpenSIN-documentation) | Public Docusaurus | aktiv |
+| [`awesome-opensin`](https://github.com/OpenSIN-AI/awesome-opensin) | Launch-Banner + kuratierte Linkliste | in Vorbereitung |
 
 ---
 
-## Die Peripherie — A2A-Fleet + Teams (126 Repos)
+## 3. Die Peripherie
 
-### A2A-SIN-* — 109 Platform-Integration-Agenten
+### 3.1 A2A-SIN-* Fleet (109 Repos)
 
-Realität nach `gh repo list`-Audit:
+Klassifikation aus Live-`gh`-Audit und [`SCAFFOLD_AUDIT.md`](./registry/SCAFFOLD_AUDIT.md):
 
-- **Substantiell (> 100 kb)** — echte Implementierung vermutet:
-  - `A2A-SIN-Discord` (25.8 MB), `A2A-SIN-X-Twitter` (26.1 MB) — beide Flaggschiff-Platforms
-  - `A2A-SIN-MiroFish` (6.7 MB) — Swarm Intelligence Prediction Engine
-  - `A2A-SIN-Worker-heypiggy` (586 kb), `A2A-SIN-Worker-Prolific` (224 kb) — Marketplace-Worker
-  - 11 Marketing-Agents (Telegram, LinkedIn, HackerNews, etc.) mit je 100-170 kb
-  - `A2A-SIN-IndieHackers` (172 kb), `A2A-SIN-Quora` (133 kb), `A2A-SIN-StackOverflow` (130 kb)
-- **Mittel (30-100 kb)** — wahrscheinlich Agent-Scaffold + etwas Integration: ~60 Repos
-- **Klein (< 30 kb)** — verdächtig, wahrscheinlich nur Boilerplate:
-  - `A2A-SIN-Code-Backend`, `-Command`, `-Frontend`, `-Fullstack`, `-Plugin`, `-Tool` — alle genau 9-10 kb, alle mit derselben generischen Beschreibung "A2A Cloud Coder Agent —". Das sind 6 praktisch identische leere Shells.
-  - `A2A-SIN-Team-MyCompany` (12 kb)
-- **Tote Repos (0 kb, archived=false):**
-  - `A2A-SIN-Facebook`
-  - `A2A-SIN-Mattermost`
-  - `A2A-SIN-RocketChat`
-  - `A2A-SIN-Slack`
-  
-  → Diese 4 sind mit identischer Pattern-Description ("OpenSIN AI Agent for X platform integration") angelegt und dann nie befüllt worden. Entweder löschen oder einen Template-Commit landen.
+| Klasse | Count | Beispiele | Status |
+|---|---:|---|---|
+| **Flagship** (> 1 MB) | 5 | `A2A-SIN-X-Twitter` (26 MB), `A2A-SIN-Discord` (26 MB), `A2A-SIN-MiroFish` (6.7 MB), `A2A-SIN-Worker-heypiggy` (1.3 MB) | alive |
+| **Substantial** (100 kb – 1 MB) | ~30 | Marketing-/Forum-/Security-Agenten | alive |
+| **Small** (30 – 100 kb) | ~60 | typische Integration-Scaffolds mit echtem Code | alive |
+| **Code-Scaffolds** (9–12 kb) | 6 | `A2A-SIN-Code-Backend/-Command/-Frontend/-Fullstack/-Plugin/-Tool` | scaffold, S2 offen |
+| **Dead** | 4 (archived) | `A2A-SIN-Facebook/-Mattermost/-RocketChat/-Slack` | archived ✅ |
 
-**Empfehlung:** Automatisierter Audit (neues Skript in `scripts/`), der für jedes `A2A-SIN-*`-Repo zählt: LOC, letzte aussagekräftige Commit-Message (nicht "chore: scaffold"), ob ein `main.py`/`index.ts`-Entry-Point existiert. Ergebnis: 3 Klassen (`alive`, `scaffold`, `dead`). Dead-Repos archivieren, Scaffold-Repos entweder priorisieren oder ebenfalls archivieren. Ein Repo das niemand anfasst ist Lärm.
+Die 4 dead Repos sind in Wave 4 (2026-04-18) archiviert worden — verifiziert via `gh repo view`. Ticket S1 ist `DONE`.
 
-### Team-SIN-* — 17 "Team"-Repos
+### 3.2 Team-SIN-* (17 Repos) — Metadata-Manifeste
 
-| Repo | Größe | Deutung |
-|---|---|---|
-| `Team-SIN-Code-Core` | 57 kb | Wave-1 Monorepo — suspekt klein |
-| `Team-SIN-Apple` | 35 kb | Scaffold |
-| `Team-SIN-Code-Backend` | 34 kb | Scaffold |
-| `Team-SIN-Google` | 34 kb | Scaffold |
-| `Team-SIN-Media-ComfyUI` | 34 kb | Scaffold |
-| `Team-SIN-Code-CyberSec` | 34 kb | Scaffold |
-| `Team-SIN-Commerce` | 33 kb | Scaffold |
-| `Team-SIN-Code-Frontend` | 33 kb | Scaffold |
-| `Team-SIN-Infrastructure` | 33 kb | Scaffold |
-| `Team-SIN-Media-Music` | 33 kb | Scaffold |
-| `Team-SIN-Messaging` | 33 kb | Scaffold |
-| `Team-SIN-Forum` | 32 kb | Scaffold |
-| `Team-SIN-Social` | 32 kb | Scaffold |
-| `Team-SIN-Legal` | 31 kb | Scaffold |
-| `Team-SIN-Research` | 30 kb | Scaffold |
-| `Team-SIN-Microsoft` | 30 kb | Scaffold |
-| `Team-SIN-Community` | 26 kb | Scaffold |
+Nach Wave-4-Entscheidung ist jedes `Team-SIN-*` ein Metadata-Manifest-Repo, keine Code-Basis. Alle 17 haben in diesem Repo eine Referenz-`team.json` in [`templates/teams/`](./templates/teams). Der Marketplace rendert nicht direkt aus diesen Repos, sondern aus dem aggregierten `oh-my-sin.json` (SSOT im `Infra-SIN-OpenCode-Stack`, via CI aus diesem Repo gebaut — siehe M2 in FOLLOWUPS).
 
-**Das ist der Elefant im Raum.** Die 17 Team-SIN-Repos sind laut Konzept die "Marketplace-Bundles" die im Pro/Marketplace-Tier verkauft werden sollen — aber keines davon hat echten Code. Es sind Marker-Repos.
+Status: Die 17 Referenz-Manifeste existieren hier als SSOT. Die M1-Push-Action an die 17 Downstream-Repos ist `DONE` (Wave 4). Die M2-GitHub-Action im `Infra-SIN-OpenCode-Stack` ist **noch offen** und auf der Launch-Checklist (Tag 3).
 
-Zwei Szenarien:
-1. **Legitim:** Teams sind **Metadata-Repos** — sie referenzieren welche A2A-Agenten zusammengehören, die eigentliche Implementierung liegt in den A2A-SIN-*. Dann brauchen sie je ein `team.json` + README, nicht 30 kb generischen Code.
-2. **Kaputt:** Teams waren als echte Code-Pakete gedacht, wurden aber nie implementiert. Dann ist das Marketplace-Versprechen leer.
+### 3.3 Biz-SIN-* (7 Repos) — Business Ops
 
-**Empfehlung:** Eine Design-Entscheidung treffen (siehe [PRODUCT-VISION.md § Marketplace](./PRODUCT-VISION.md#marketplace-der-entscheidungspunkt)) und dokumentieren. Dann die 17 Repos entsprechend behandeln (entweder als Metadata-Manifeste normalisieren oder als Scaffolds archivieren).
+Unverändert gesund. `Biz-SIN-Marketing` (7.3 MB) ist am Launch-Tag der Owner der Announcement-Pipeline.
 
-### Biz-SIN-* — 7 Business-Ops-Repos
+### 3.4 Core-SIN-Control-Plane — CP1 noch offen
 
-Alle real, alle aktiv gepflegt, alle mit klarer Rolle:
+- Size: 168 kb, Stand 2026-04-18
+- Status: **nicht archiviert**, nicht gemerged
+- Launch-Impact: **keiner** (`OpenSIN-backend` ist die Produktion-Control-Plane, `Core-SIN-Control-Plane` ist interne Alt-Geschichte)
+- Plan: Wave 5 Post-Launch (siehe [LAUNCH-CHECKLIST § 4](./LAUNCH-CHECKLIST.md#4-post-launch-wave-5-t1-bis-t14))
 
-- `Biz-SIN-Marketing` (7.3 MB) — Marketing & Release Strategy
-- `Biz-SIN-Patents` (2.4 MB) — Patent Portfolio
-- `Biz-SIN-Blog-Posts` (495 kb) — Blog-Content
-- `Biz-SIN-Blueprints` (92 kb) — Product Blueprints
-- `Biz-SIN-Jobs` (88 kb) — Career-Board
-- `Biz-SIN-Competitor-Tracker` (47 kb) — Competitive Research
-- `Biz-SIN-Ledger` (34 kb) — A2A-Fleet Activity Log
+### 3.5 Rationalization — R1/R2/R3 noch offen
 
-**Status:** Gesund. Keine Action nötig.
+- `opensin-ai-cli` (262 kb, Public, push 2026-04-19): Rust-CLI-Duplikat zu `OpenSIN-Code/crates/*`. R1 in FOLLOWUPS. **Launch-Impact:** keiner solange `OpenSIN-Code` am Launch-Tag grün ist.
+- `opensin-ai-platform` (10.9 MB, Public, push 2026-04-19): Plugin-Ecosystem-Duplikat zu `OpenSIN/opensin_agent_platform/`. R2 in FOLLOWUPS. **Launch-Impact:** keiner solange `pip install opensin` installiert.
+- R3 (interner Diff `opensin_agent_platform/` vs `opensin_core/`) blockt R2. **Launch-Impact:** keiner.
 
-### Core-SIN-* — 1 Repo
-
-- `Core-SIN-Control-Plane` (166 kb) — "Shared Doctor/Preflight/Eval layer for SIN-Solver"
-
-**Status:** Existiert, aber unklar wie es sich zu `OpenSIN-backend` (dem anderen "Control Plane") verhält. Naming-Kollision. Gehört geklärt: sind das zwei Ebenen (dev-time control plane vs. runtime control plane)? Oder ist das Legacy?
-
-### Template-SIN-* — 4 Repos
-
-Für das Klonen neuer Agenten. [Template-SIN-Agent#156](https://github.com/OpenSIN-AI/Template-SIN-Agent/issues/156) hält das frisch.
+Alle drei nach Wave 5.
 
 ---
 
-## Die Wurzel-Probleme
+## 4. Launch-Risiken (aus Live-Daten)
 
-Unabhängig von Zählungen — das sind die strukturellen Probleme, die gelöst werden müssen, bevor OpenSIN gegen Manus AI oder Google Agents überhaupt antritt:
+### 4.1 KRITISCH — HF Spaces Outage
 
-### 1. Rollen-Overlap zwischen `my.opensin.ai` und `OpenSIN-WebApp`
+**Problem:** Alle 6 HuggingFace-Spaces der `A2A-SIN-Code-*`-Worker sind 503 seit ≥ 3 Tagen. Live-Verifikation am 2026-04-19:
 
-Beide claimen "User-Login + Billing". Das ist nicht nur ein Doku-Fehler — das heißt, zwei Teams bauen potentiell dieselbe Logik. **Muss entschieden werden.** Vorschlag in [PRODUCT-VISION.md § UI-Schichtung](./PRODUCT-VISION.md#ui-schichtung-4-oberflächen-4-rollen).
+```
+a2a-sin-code-plugin   -> 503
+a2a-sin-code-command  -> 503
+a2a-sin-code-tool     -> 503
+a2a-sin-code-backend  -> 503
+a2a-sin-code-fullstack-> 503
+a2a-sin-code-frontend -> 503
+```
 
-### 2. Team-SIN-* sind leer
+**Impact:** Ohne diese 6 Worker kann `OpenSIN-backend` keine Coding-Tasks dispatchen. Das ist der Control-Plane-Happy-Path, den der Stripe-Smoke-Test (§4) testet.
 
-Das gesamte Marketplace-Narrativ ("modular paid teams like Team-SIN-Google") hängt an Repos, die alle unter 60 kb sind. Entweder der Marketplace verkauft Hüllen — oder die echte Team-Logik steckt woanders (in `oh-my-sin.json` im Infra-SIN-OpenCode-Stack?) und die Repos sind nur URL-Anker.
+**Fix:** HF-1 in [LAUNCH-CHECKLIST Tag 1](./LAUNCH-CHECKLIST.md#tag-1--t-3-mittwoch-2026-04-19--infrastruktur--datenlage). Cron + Auto-Restart. Owner: `OpenSIN-backend` maintainers.
 
-### 3. Tote A2A-Repos
+### 4.2 MITTEL — Stripe End-to-End ungetestet
 
-4 Repos mit 0 kb, 6 Repos mit 9 kb. Jemand hat CI oder Skripte laufen lassen die leere Repos erzeugt haben. Das verwässert die "109 Platform-Integrations"-Geschichte.
+Weder `website-my.opensin.ai` noch `OpenSIN-WebApp` haben dokumentierten E2E-Kaufdurchlauf. Siehe [docs/STRIPE-SMOKE-TEST.md](./docs/STRIPE-SMOKE-TEST.md) — das Dokument gibt die Test-Choreographie vor, damit beide Teams denselben Flow testen.
 
-### 4. Team-SIN-Code-Core post-Merge-Größe
+### 4.3 MITTEL — PyPI/npm-Namensreservierung
 
-Wave-1 hat "Coding-CEO + Code-AI → Monorepo" absorbiert, aber das Ergebnis ist 57 kb groß. Das riecht danach, dass die Merges zwar die History verschmolzen, aber der Code nie real reimportiert wurde. Neue Untersuchung nötig.
+`opensin` auf PyPI und `opensin-code` auf npm sind nicht vorab reserviert (oder nicht dokumentiert). Wenn die Namen am Launch-Tag weg sind, muss auf Fallback-Namen ausgewichen werden — das zerreißt alle Install-Instruktionen. Prio in LAUNCH-CHECKLIST Tag 1 (OSS-3/OSS-4 Precheck).
 
-### 5. `Core-SIN-Control-Plane` vs `OpenSIN-backend`
+### 4.4 NIEDRIG — Drift zwischen MASTER_INDEX und Realität
 
-Beide haben "Control Plane" im Beschreibungstext. Wenn beides gewollt ist, braucht es klare Naming-Konvention (z. B. `Dev-Control-Plane` vs `Runtime-Control-Plane`).
-
-### 6. Drift zwischen MASTER_INDEX (188) und Realität (200)
-
-12 Repos Differenz. Das Auto-Regeneration-Skript ist nicht gelaufen. [OpenSIN-overview#34](https://github.com/OpenSIN-AI/OpenSIN-overview/issues/34) deckt das ab (C1+C2).
+MASTER_INDEX war bei 188 (vor Refresh), Realität ist 205. In diesem Commit auf 205 updated. Ticket C1/C2 damit `DONE`.
 
 ---
 
-## Was davon ist gut, was ist schlecht, was ist exzellent
+## 5. Was davon ist gut, was ist schlecht, was ist exzellent
 
 **Exzellent:**
-- `OpenSIN-Code` (autonomous CLI) + `Infra-SIN-Global-Brain` (persistent memory) — dieses Pärchen ist echte Differenzierung vs. Claude Code / OpenCode
-- `Biz-SIN-*` Ops-Schicht — selten dass eine Agent-Org sowas überhaupt hat
-- `A2A-SIN-Discord` + `A2A-SIN-X-Twitter` — substantielle Platform-Integrationen
-- Wave-3 Consolidation-Docs — erste Org im Dev-Universum die sowas ehrlich dokumentiert
+- 3 canonical UI-Repos mit klarer Rolle, keine Überlappung mehr (Wave 4)
+- 17 Team-Manifeste mit JSON-Schema, CI-Validierung, aggregiertem Marketplace-Katalog
+- Ehrliche Governance-Docs (dieses Dokument, LAUNCH-CHECKLIST, STRIPE-SMOKE-TEST, CANONICAL-REPOS) — selten in Agent-Orgs
 
 **Gut:**
-- `OpenSIN` Core Package mit 310+ packages — wenn das wirklich funktional ist, ist das allein schon "world-class"
-- 11 Marketing-Agents + 4 Forum-Agents + 13 Security-Agents mit je 40-170 kb — das ist echte Fleet-Tiefe
+- 4 substantielle canonical Code-Repos
+- PCPM v4 als OSS-Differenzierung
+- 109 A2A-Agents mit echter Tiefe (30 mit > 100 kb)
+- Biz-Ops-Repos existieren und werden gepflegt
 
-**Schlecht:**
-- UI-Layer-Rollenkonflikt
-- 17 Team-SIN-* Hüllen
-- 4 null-kb Repos
-- README-Drift (`my.opensin.ai` zeigt noch auf Delqhi)
+**Schlecht (launchrelevant):**
+- HF-Spaces Outage seit 3 Tagen
+- Stripe-E2E unbekannt grün
+- Keine Uptime-Monitoring-Infrastruktur in Produktion
 
-**Gefährlich (Business-relevant):**
-- Der Marketplace-Pitch verkauft Team-Packages, die nicht existieren
-- Stripe-Integration (`A2A-SIN-Stripe`, 65 kb) — unklar ob der Onboarding-Flow end-to-end läuft
-- `OpenSIN-WebApp`-Rolle vs `my.opensin.ai`-Rolle — Kunden landen wo?
-
----
-
-## Empfohlene Reihenfolge
-
-Nicht "fix alles gleichzeitig". Sondern in dieser Reihenfolge:
-
-1. **UI-Schichtung klären** (1 Entscheidung, ≤ 1 Tag) — siehe [PRODUCT-VISION.md § UI-Schichtung](./PRODUCT-VISION.md#ui-schichtung-4-oberflächen-4-rollen). Das ist der Blocker für alles weitere, weil es entscheidet wo `Buy`-Buttons hin sollen.
-2. **Marketplace-Mechanik festlegen** (1 Entscheidung) — siehe [PRODUCT-VISION.md § Marketplace](./PRODUCT-VISION.md#marketplace-der-entscheidungspunkt). Sind Team-SIN-* Metadata oder Code?
-3. **Scaffold-Audit-Skript** (1 Tag Arbeit) — liefert harte Zahlen: `alive/scaffold/dead` pro Repo. Danach 4 tote Repos archivieren, 6 Code-Scaffolds priorisieren-oder-archivieren.
-4. **Team-SIN-Code-Core Integritäts-Check** (1 Tag) — entweder der Wave-1-Merge hat Code verloren, oder das Monorepo braucht noch einen Content-Transfer.
-5. **Stripe-Billing end-to-end Test** (1 Tag) — ein echter Kauf durchspielen von Landing → Checkout → Pro-Tier-Freischaltung. Wenn das nicht läuft, bringt der ganze Business-Stack nichts.
-6. **Erst danach** Feature-Arbeit (Agent-Loop, Heartbeat, neue A2A-Agents etc.).
-
-Das sind 5-6 Tage klare Arbeit. Nach diesen 5-6 Tagen weiß jeder in der Org wo er steht, und **dann** kann man ehrlich gegen Manus AI antreten.
+**Schlecht (post-launch aufräumen):**
+- 6 A2A-SIN-Code-* Scaffolds (S2)
+- `opensin-ai-cli` / `opensin-ai-platform` Duplikate (R1/R2)
+- `Core-SIN-Control-Plane` Archival (CP1)
 
 ---
 
-Weiter mit: [PRODUCT-VISION.md](./PRODUCT-VISION.md).
+## 6. Reihenfolge
+
+Diese Reihenfolge ist in [LAUNCH-CHECKLIST.md](./LAUNCH-CHECKLIST.md) operationalisiert. Kurz:
+
+1. **Tag 1 (heute):** HF-Spaces restart + Keep-Alive. Stripe Test-Keys. Supabase. Uptime-Monitore.
+2. **Tag 2:** OSS Tier fertig — Landing, Docs, PyPI-Publish, npm-Publish.
+3. **Tag 3:** Pro + Marketplace fertig — Stripe Checkout, chat.opensin.ai Dashboard, Marketplace-Katalog. Voller E2E-Smoke-Test.
+4. **Tag 4:** Go/No-Go. Live-Mode. Announcement. Monitoring.
+5. **Post-Launch (Wave 5):** R1, R2, R3, CP1, S2 abarbeiten.
+
+---
+
+Nach T+0 ist die Org kohärent + gelauncht + hat zahlende Kunden. Ab dem Zeitpunkt messen wir am User-Traffic, nicht am Marketing-Claim.

@@ -1,0 +1,54 @@
+# Validate governance content on every PR.
+#
+# Fast checks only (< 1 min). Runs on every PR targeting main.
+#
+# What's validated:
+#   1. Markdown internal links — every [text](relative-link) resolves.
+#   2. Team manifests — every templates/teams/*.json matches schemas/team.schema.json.
+#   3. JSON well-formedness — any *.json across the repo parses.
+#
+# What's NOT validated here (on purpose):
+#   - External URLs. That's a scheduled job, not a PR gate. Flaky networks
+#     should not block merges.
+#   - Registry freshness. That's enforced by registry-autogenerate.yml.
+
+name: Validate docs
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Validate internal markdown links
+        run: node scripts/validate-links.js
+
+      - name: Validate every JSON file parses
+        run: |
+          fail=0
+          while IFS= read -r -d '' f; do
+            if ! node --input-type=module -e "import fs from 'node:fs'; JSON.parse(fs.readFileSync(process.argv[1],'utf8'))" "$f"; then
+              echo "::error file=$f::invalid JSON"
+              fail=1
+            fi
+          done < <(find . -type f -name "*.json" -not -path "./node_modules/*" -not -path "./.git/*" -print0)
+          exit $fail
+
+      - name: Validate team manifests against schema
+        env:
+          GH_TOKEN: ${{ secrets.ORG_READ_TOKEN || secrets.GITHUB_TOKEN }}
+        run: node scripts/validate-team-manifests.js
