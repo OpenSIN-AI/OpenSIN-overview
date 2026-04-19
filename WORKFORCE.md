@@ -1,7 +1,7 @@
 # Workforce — OpenSIN-AI
 
-> **Stand:** 2026-04-19 (T-4 vor Launch). Auto-countable via [`scripts/generate-master-index.js`](./scripts/generate-master-index.js); the counts below are kept in sync with [`registry/MASTER_INDEX.md`](./registry/MASTER_INDEX.md).
-> **Scope of this document:** Who does what work inside the OpenSIN-AI org. Human maintainers + 17 Team Orchestrators + 149 agent workers + 109 A2A integrations, organized so you can answer "which agent owns this?" in under 30 seconds.
+> **Stand:** 2026-04-19 (T-4 vor Launch). All counts in this document are **derived live** from `templates/teams/*.json` and `registry/MASTER_INDEX.md` — see [`scripts/check-workforce.js`](./scripts/check-workforce.js). CI fails on drift.
+> **Scope of this document:** Who does what work inside the OpenSIN-AI org. Human maintainers + 17 Team Orchestrators + 89 registered agent workers + 103 `A2A-SIN-*` integration repos (14 still unregistered → tracked in [`docs/FOLLOWUPS.md`](./docs/FOLLOWUPS.md)), organized so you can answer "which agent owns this?" in under 30 seconds.
 
 ---
 
@@ -11,7 +11,7 @@
 |---|---:|---|---|
 | **Human maintainers** | handful | Own the canon-locked files, approve canon-lock PRs, run launch-week Go/No-Go | [`.github/CODEOWNERS`](./.github/CODEOWNERS) |
 | **Team orchestrators** (`Team-SIN-*`) | 17 | Each team is a **metadata manifest** describing a bundle of agent workers + pricing + permissions. Wave-4 decision: *Team-SIN-\* repos are manifests, not code packages.* | [`templates/teams/*.json`](./templates/teams/) |
-| **Agent workers + A2A integrations** | 149 workers spread across ~109 `A2A-SIN-*` repos | The actual units of work. Each worker has a narrow capability (e.g. "send Telegram message", "open Safari tab", "scrape a HackerNews thread"). | Per-team `team.json` + [`registry/MASTER_INDEX.md`](./registry/MASTER_INDEX.md) |
+| **Agent workers + A2A integrations** | **89** registered in team manifests, across **103** `A2A-SIN-*` repos (gap of 14 = unregistered scaffolds) | The actual units of work. Each worker has a narrow capability (e.g. "send Telegram message", "open Safari tab", "scrape a HackerNews thread"). | Per-team `team.json` + [`registry/MASTER_INDEX.md`](./registry/MASTER_INDEX.md) |
 
 ### How the three layers talk to each other
 
@@ -40,25 +40,25 @@ Each row is a Marketplace-buyable bundle. Pricing lives in the team's own `team.
 | Team | Workers | Focus | Repo |
 |---|---:|---|---|
 | Apple | 12 | macOS/iOS automation (Mail, Notes, Calendar, FaceTime, Safari, Shortcuts, …) | [`Team-SIN-Apple`](https://github.com/OpenSIN-AI/Team-SIN-Apple) |
-| Code-Backend | 3 | Server, OracleCloud, Password-Manager | [`Team-SIN-Code-Backend`](https://github.com/OpenSIN-AI/Team-SIN-Code-Backend) |
-| Code-Core | 4 | Coding-CEO, Code-AI, Code-DataScience, Code-DevOps | [`Team-SIN-Code-Core`](https://github.com/OpenSIN-AI/Team-SIN-Code-Core) |
-| Code-CyberSec | 19 | BugBounty, Cloudflare, 16× Security specialists | [`Team-SIN-Code-CyberSec`](https://github.com/OpenSIN-AI/Team-SIN-Code-CyberSec) |
-| Code-Frontend | 11 | Accessibility, App-Shell, Commerce-UI, Design-Systems, … | [`Team-SIN-Code-Frontend`](https://github.com/OpenSIN-AI/Team-SIN-Code-Frontend) |
-| Commerce | 4 | Shop-Finance, Shop-Logistic, TikTok-Shop, Stripe | [`Team-SIN-Commerce`](https://github.com/OpenSIN-AI/Team-SIN-Commerce) |
-| Community | 4 | Discord, WhatsApp, Telegram, YouTube community | [`Team-SIN-Community`](https://github.com/OpenSIN-AI/Team-SIN-Community) |
-| Forum | 9 | Reddit, HackerNews, StackOverflow, Quora, Dev.to, … | [`Team-SIN-Forum`](https://github.com/OpenSIN-AI/Team-SIN-Forum) |
-| Google | 3 | Google-Apps, Google-Chat, Opal | [`Team-SIN-Google`](https://github.com/OpenSIN-AI/Team-SIN-Google) |
-| Infrastructure | 15 | Authenticator, Terminal, Storage, Supabase, n8n, CI/CD, … | [`Team-SIN-Infrastructure`](https://github.com/OpenSIN-AI/Team-SIN-Infrastructure) |
-| Legal | 8 | ClaimWriter, Patents, Damages, Compliance, Contract, … | [`Team-SIN-Legal`](https://github.com/OpenSIN-AI/Team-SIN-Legal) |
-| Media-ComfyUI | 3 | ImageGen, VideoGen, Workflow | [`Team-SIN-Media-ComfyUI`](https://github.com/OpenSIN-AI/Team-SIN-Media-ComfyUI) |
-| Media-Music | 6 | Beats, Producer, Singer, Songwriter, Video-Gen, Community | [`Team-SIN-Media-Music`](https://github.com/OpenSIN-AI/Team-SIN-Media-Music) |
-| Messaging | 19 | WhatsApp, Telegram, Signal, Discord, iMessage, … | [`Team-SIN-Messaging`](https://github.com/OpenSIN-AI/Team-SIN-Messaging) |
-| Microsoft | 9 | 365, Teams, Outlook, OneDrive, Excel, Word, PowerPoint, … | [`Team-SIN-Microsoft`](https://github.com/OpenSIN-AI/Team-SIN-Microsoft) |
-| Research | 1 | Deep-Research | [`Team-SIN-Research`](https://github.com/OpenSIN-AI/Team-SIN-Research) |
-| Social | 19 | TikTok, Instagram, X, LinkedIn, Facebook, YouTube, … | [`Team-SIN-Social`](https://github.com/OpenSIN-AI/Team-SIN-Social) |
-| **Total** | **149** | | |
+| Code-Backend | 2 | Server, OracleCloud | [`Team-SIN-Code-Backend`](https://github.com/OpenSIN-AI/Team-SIN-Code-Backend) |
+| Code-Core | 3 | Code-DataScience, Code-DevOps, Code-GitLab-LogsCenter | [`Team-SIN-Code-Core`](https://github.com/OpenSIN-AI/Team-SIN-Code-Core) |
+| Code-CyberSec | 16 | BugBounty, Cloudflare, 14× Security specialists | [`Team-SIN-Code-CyberSec`](https://github.com/OpenSIN-AI/Team-SIN-Code-CyberSec) |
+| Code-Frontend | 2 | Accessibility, App-Shell *(scaffold — see FOLLOWUPS S1)* | [`Team-SIN-Code-Frontend`](https://github.com/OpenSIN-AI/Team-SIN-Code-Frontend) |
+| Commerce | 5 | Shop-Finance, Shop-Logistic, TikTok-Shop, Stripe, … | [`Team-SIN-Commerce`](https://github.com/OpenSIN-AI/Team-SIN-Commerce) |
+| Community | 3 | Discord-Community, WhatsApp-Community, YouTube-Community | [`Team-SIN-Community`](https://github.com/OpenSIN-AI/Team-SIN-Community) |
+| Forum | 5 | Reddit, HackerNews, StackOverflow, Dev.to, Quora | [`Team-SIN-Forum`](https://github.com/OpenSIN-AI/Team-SIN-Forum) |
+| Google | 2 | Google-Apps, Google-Chat | [`Team-SIN-Google`](https://github.com/OpenSIN-AI/Team-SIN-Google) |
+| Infrastructure | 6 | Authenticator, Terminal, Storage, Supabase, n8n, CI/CD | [`Team-SIN-Infrastructure`](https://github.com/OpenSIN-AI/Team-SIN-Infrastructure) |
+| Legal | 7 | ClaimWriter, Patents, Damages, Compliance, Contract, … | [`Team-SIN-Legal`](https://github.com/OpenSIN-AI/Team-SIN-Legal) |
+| Media-ComfyUI | 1 | Workflow *(scaffold — see FOLLOWUPS S1)* | [`Team-SIN-Media-ComfyUI`](https://github.com/OpenSIN-AI/Team-SIN-Media-ComfyUI) |
+| Media-Music | **0** | **Empty manifest — must be filled OR removed before launch (see [docs/FOLLOWUPS.md § S3](./docs/FOLLOWUPS.md))** | [`Team-SIN-Media-Music`](https://github.com/OpenSIN-AI/Team-SIN-Media-Music) |
+| Messaging | 12 | WhatsApp, Telegram, Signal, Discord, iMessage, … | [`Team-SIN-Messaging`](https://github.com/OpenSIN-AI/Team-SIN-Messaging) |
+| Microsoft | 1 | Microsoft-365 *(scaffold — see FOLLOWUPS S1)* | [`Team-SIN-Microsoft`](https://github.com/OpenSIN-AI/Team-SIN-Microsoft) |
+| Research | 3 | Deep-Research, … | [`Team-SIN-Research`](https://github.com/OpenSIN-AI/Team-SIN-Research) |
+| Social | 9 | TikTok, Instagram, X, LinkedIn, YouTube, … | [`Team-SIN-Social`](https://github.com/OpenSIN-AI/Team-SIN-Social) |
+| **Total** | **89** | | |
 
-> **Contract:** The numbers above are the `agents[].length` from each team's `team.json`. The schema enforces that every listed agent ID resolves to either a repo in `A2A-SIN-*` or to a worker inside `OpenSIN-Code`'s plugin tree. CI fails if an agent ID is unresolved.
+> **Contract:** The numbers above are the `agents[].length` from each team's `team.json`, recomputed by [`scripts/check-workforce.js`](./scripts/check-workforce.js). The schema enforces that every listed agent ID resolves to either a repo in `A2A-SIN-*` or to a worker inside `OpenSIN-Code`'s plugin tree. CI fails if an agent ID is unresolved **or** if this table drifts from the manifest data.
 
 ---
 

@@ -2,7 +2,7 @@
 
 > **Wer das hier liest — Mensch oder Agent — ist in unter 60 Sekunden handlungsfähig.**
 
-You just landed in the OpenSIN-AI organization: **205 repos, 17 teams, 149 agent workers, 7 business repos, 4 canonical websites**. The counts are live from `registry/MASTER_INDEX.md`; if they look different there, that file wins.
+You just landed in the OpenSIN-AI organization: **205 repos · 17 teams · 89 registered workers · 103 `A2A-SIN-*` repos · 7 business repos · 4 canonical websites**. The counts are live from [`registry/MASTER_INDEX.md`](./registry/MASTER_INDEX.md) and `templates/teams/*.json`; if they look different there, that file wins. CI runs [`scripts/check-workforce.js`](./scripts/check-workforce.js) on every PR and fails on drift.
 
 Read this file first. Then [`docs/CANONICAL-REPOS.md`](./docs/CANONICAL-REPOS.md). Then you're working.
 
@@ -27,7 +27,7 @@ Lies in dieser Reihenfolge:
 
 1. **[PRODUCT-VISION.md](./PRODUCT-VISION.md)** — das 3-Tier-Produktmodell. Was wir bauen und warum.
 2. **[STATE-OF-THE-UNION.md](./STATE-OF-THE-UNION.md)** — was heute wirklich existiert (nicht was die Docs behaupten).
-3. **[WORKFORCE.md](./WORKFORCE.md)** — die 3 Layer: Maintainer → 17 Teams → 149 Worker + 109 A2A-Integrations.
+3. **[WORKFORCE.md](./WORKFORCE.md)** — die 3 Layer: Maintainer → 17 Teams → 89 Worker (in 103 `A2A-SIN-*` Repos).
 4. **[BOUNDARIES.md](./BOUNDARIES.md)** + **[GOVERNANCE.md](./GOVERNANCE.md)** — was darf in dieses Repo, was nicht; wer entscheidet was.
 5. **[CONTRIBUTING.md](./CONTRIBUTING.md)** — Setup, Preflight (`npm run prelaunch:offline`), Commit-Konvention, PR-Flow.
 6. **[docs/CANONICAL-REPOS.md](./docs/CANONICAL-REPOS.md)** — authoritative map of which repo owns what. **Niemals einen PR öffnen, ohne vorher diese Datei gelesen zu haben.**

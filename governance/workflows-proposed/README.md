@@ -17,13 +17,14 @@ git commit -m "chore(ci): install governance workflows"
 git push
 ```
 
-After push, check the **Actions** tab on GitHub — you should see 3 new workflows
+After push, check the **Actions** tab on GitHub — you should see 5 new workflows
 appear and the first scheduled runs will fire within the hour.
 
 ## What gets installed
 
 | File | Purpose | Trigger |
 | ---- | ------- | ------- |
+| `secret-scan.yml` | Refuse PRs that introduce known-shape API keys, tokens, or internal IPs. Pairs with `scripts/scan-secrets.sh` and the `.husky/pre-commit` hook. **Added after the n8n key leak — non-negotiable.** | Pull request into `main`, push to `main`, manual dispatch |
 | `registry-autogenerate.yml` | Re-run `scripts/generate-master-index.js` with live org data, commit diff back to `main`. Prevents repo-count drift forever. | Daily cron (06:00 UTC) + manual dispatch |
 | `validate-docs.yml` | Run link-validator + team-manifest-validator on every PR. Fails red if anything is broken. | Pull request into `main` |
 | `launch-status.yml` | Run `scripts/launch-status.js` and publish the Go/No-Go dashboard to a tracking issue. Every 30 min during launch week. | Cron + manual dispatch |

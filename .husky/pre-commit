@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+# Pre-commit hook for OpenSIN-AI/OpenSIN-overview.
+#
+# Activate locally with one of:
+#   git config core.hooksPath .husky          # use the hooks shipped with the repo
+#   npx husky install                         # if you prefer the husky toolchain
+#
+# CI re-runs the same checks on every PR (governance/workflows-proposed/*.yml),
+# so this hook is a convenience, not a security boundary.
+
+set -e
+
+echo "[pre-commit] scan-secrets (staged files)"
+bash scripts/scan-secrets.sh --staged
+
+echo "[pre-commit] validate internal links"
+node scripts/validate-links.js
+
+echo "[pre-commit] check workforce drift"
+node scripts/check-workforce.js --quiet
+
+echo "[pre-commit] OK"
