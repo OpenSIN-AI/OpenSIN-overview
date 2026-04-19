@@ -1,5 +1,58 @@
 # Reality check — 2026-04-19
 
+## 0. Resolution (added 2026-04-19 19:00 UTC — authenticated re-run)
+
+> **The v1 of this diagnostic was based on an anonymous GitHub API view and was materially wrong.** The §§ below are preserved verbatim as an audit trail of the diagnostic path (hypotheses, evidence pattern, recommended re-runs). This § 0 is the **authoritative resolution**.
+>
+> Hypothesis C ("there's a private mirror we can't see") was correct. Run with a maintainer token (`gh api orgs/OpenSIN-AI/repos?type=all`) resolves every gate:
+
+| Metric | v1 doc (anon view) | v2 authenticated | Reality |
+|---|---:|---:|---|
+| Total repos | 55 | **205** | 150 repos were private (not missing) |
+| `A2A-SIN-*` live | 20 | **103** | ~5× the anon-view count |
+| `Team-SIN-*` | 0 | **17 live** | all team repos exist as real Node/TS services |
+| `OpenSIN-backend`, `OpenSIN-WebApp`, `website-*`, `Biz-SIN-*`, `Core-SIN-*`, `Template-SIN-*`, all 6 `A2A-SIN-Code-*` | "MISSING" | **all private + live** | none of them are fictional |
+| Phantom agent IDs (MAN-1) | 70 | **0** | every unique ID in `templates/teams/*.json` resolves to a live repo |
+
+**Corrected launch gate status** (supersedes § 2 below):
+
+| Gate | Target repo | Status 2026-04-19 |
+|---|---|---|
+| G1 `opensin.ai` | `website-opensin.ai` | live, private, pushed today |
+| G2 `my.opensin.ai` | `website-my.opensin.ai` | live, private, pushed today |
+| G3 `docs.opensin.ai` | `OpenSIN-documentation` | live public |
+| G4 `chat.opensin.ai` | `OpenSIN-WebApp` | live private (59 MB, pushed today) |
+| G5 Stripe E2E | WebApp + my.opensin.ai | both live |
+| G6 Marketplace purchase | same | both live |
+| G7 6× HF Spaces | 6× `A2A-SIN-Code-*` | all 6 repos exist private (verify HF Space status separately) |
+| G8 `npm i -g opensin-code` | `OpenSIN-Code` | live public |
+| G9 `pip install opensin` | `OpenSIN` | live public |
+| G10 zero `Delqhi/*` refs | org-wide | in progress (L1) |
+
+**None of the 10 gates is blocked by missing repos.** The real work for launch is deploy/smoke-test, not scaffold-from-nothing.
+
+**Updates to follow-up tickets:**
+
+- **MAN-1** ("70 phantom agents") — **CLOSE** as false-positive. Every manifest ID resolves to a live repo under authenticated access.
+- **MAN-2** ("orphan A2A repos") — **EXPAND from 7 → 16** with the new visibility (see [`WORKFORCE § 3.2`](../WORKFORCE.md)).
+- **MAN-3** (empty `Team-SIN-Media-Music.json`) — still valid.
+- **MAN-4** ("17 GitHub Teams don't exist") — still valid. `gh api orgs/OpenSIN-AI/teams` returns only `core-team` and `admin-team`; the domain-team slugs referenced in CODEOWNERS and manifests are inert. `.github/CODEOWNERS` was corrected on 2026-04-19 (`@OpenSIN-AI/core` → `@OpenSIN-AI/core-team`); the 17 domain-team slugs in `templates/teams/*.json` `review_teams[]` fields still need either (a) actual GitHub Teams created, or (b) normalization to `core-team`.
+- **MAN-5** ("Template-SIN-Agent missing") — **CLOSE**, repo exists.
+- **MAN-6** (per-surface DRI assignment) — still open; unchanged.
+- **MAN-7** (`check-state-of-the-union.js`) — still open and arguably more important now (the absence of this script was exactly what made the v1 diagnostic possible). See `scripts/reality-check.js` added in this PR as the first implementation.
+
+**Lesson for future audits:**
+
+> **Any OpenSIN-AI repo audit MUST use an authenticated `gh` session.** Running `gh auth status` to confirm a maintainer token is the mandatory step zero. The anonymous API view hides 73% of the org (150 of 205 repos) — which looks indistinguishably like "these repos don't exist" unless you know to check.
+
+The audit script added in this PR (`scripts/reality-check.js`) hard-errors if `GITHUB_TOKEN` is absent, to prevent this class of mistake from recurring.
+
+---
+
+## v1 diagnostic (preserved verbatim from the anonymous-view run) — DO NOT CITE FOR CURRENT FACTS
+
+The section below was written when the audit token only had public-repo visibility. It correctly formulated the right hypotheses (A/B/C) and correctly recommended re-running with a maintainer token — which resolved the question. Preserved as a record of the diagnostic method, not as current data.
+
 > **Scope:** This document is a live-audit diagnostic. It compares what the canon-locked docs (`STATE-OF-THE-UNION.md`, `START-HERE.md`, `LAUNCH-CHECKLIST.md`, `registry/MASTER_INDEX.md`) **claim** exists against what **actually** exists in `OpenSIN-AI/` today.
 >
 > **Finding:** Systematic drift. The docs describe a post-launch-shaped org; the actual org is roughly one-third of that. Several launch gates reference repos that do not exist.
