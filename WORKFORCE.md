@@ -1,7 +1,16 @@
 # Workforce — OpenSIN-AI
 
-> **Stand:** 2026-04-19 (T-4 vor Launch). All counts in this document are **derived live** from `templates/teams/*.json` and `registry/MASTER_INDEX.md` — see [`scripts/check-workforce.js`](./scripts/check-workforce.js). CI fails on drift.
-> **Scope of this document:** Who does what work inside the OpenSIN-AI org. Human maintainers + 17 Team Orchestrators + 89 registered agent workers + 103 `A2A-SIN-*` integration repos (14 still unregistered → tracked in [`docs/FOLLOWUPS.md`](./docs/FOLLOWUPS.md)), organized so you can answer "which agent owns this?" in under 30 seconds.
+> **Stand:** 2026-04-19 (T-4 vor Launch). All counts in this document are **derived live** from `templates/teams/*.json`, the GitHub org catalogue, and `registry/MASTER_INDEX.md`. See [`scripts/check-workforce.js`](./scripts/check-workforce.js) and `scripts/build-oh-my-sin.js`'s phantom-agent accounting. CI fails on drift.
+>
+> **Audit summary (run 2026-04-19):**
+> - **2** active org maintainers (`DaSINci`, `Delqhi`)
+> - **17** team manifests (teams live as manifest files in this repo; there are no `Team-SIN-*` GitHub repos)
+> - **89** agent-role assignments across the 17 manifests
+> - **87** unique agent IDs referenced
+> - **17** agent IDs with a live backing repo — these are the only agents the marketplace can actually sell on 2026-04-23
+> - **70** unique phantom agent IDs (manifest says "buy this" but no repo exists → launch blocker tracked as **MAN-1** in [`docs/FOLLOWUPS.md`](./docs/FOLLOWUPS.md))
+> - **24** live `A2A-SIN-*` repos in the org (55 repos total, 49 live, 6 archived)
+> - **7** live `A2A-SIN-*` repos not registered in any manifest (orphans → **MAN-2**)
 
 ---
 
@@ -9,9 +18,9 @@
 
 | Layer | Count | What they do | Canonical index |
 |---|---:|---|---|
-| **Human maintainers** | handful | Own the canon-locked files, approve canon-lock PRs, run launch-week Go/No-Go | [`.github/CODEOWNERS`](./.github/CODEOWNERS) |
-| **Team orchestrators** (`Team-SIN-*`) | 17 | Each team is a **metadata manifest** describing a bundle of agent workers + pricing + permissions. Wave-4 decision: *Team-SIN-\* repos are manifests, not code packages.* | [`templates/teams/*.json`](./templates/teams/) |
-| **Agent workers + A2A integrations** | **89** registered in team manifests, across **103** `A2A-SIN-*` repos (gap of 14 = unregistered scaffolds) | The actual units of work. Each worker has a narrow capability (e.g. "send Telegram message", "open Safari tab", "scrape a HackerNews thread"). | Per-team `team.json` + [`registry/MASTER_INDEX.md`](./registry/MASTER_INDEX.md) |
+| **Human maintainers** | **2** (`DaSINci`, `Delqhi`) | Own the canon-locked files, approve canon-lock PRs, run launch-week Go/No-Go. Every human workflow in [LAUNCH-CHECKLIST.md](./LAUNCH-CHECKLIST.md) must be executable by 2 people. | [`.github/CODEOWNERS`](./.github/CODEOWNERS) + [`GOVERNANCE.md`](./GOVERNANCE.md) |
+| **Team orchestrators** (`Team-SIN-*`) | 17 manifests | Each team is a **metadata manifest** describing a bundle of agent workers + pricing + permissions. Wave-4 decision: *teams are manifests, not code packages — no `Team-SIN-*` GitHub repo exists.* | [`templates/teams/*.json`](./templates/teams/) |
+| **Agent workers + A2A integrations** | **17 live / 70 phantom** (of 87 unique IDs) | The actual units of work. Each worker is a narrow capability (send a Telegram message, open a Safari tab, scrape a HN thread). Lives as an `A2A-SIN-*` repo on HuggingFace Spaces, **or** as a plugin inside `OpenSIN-Code`. | Per-team `team.json` + `templates/oh-my-sin.json` + [`registry/MASTER_INDEX.md`](./registry/MASTER_INDEX.md) |
 
 ### How the three layers talk to each other
 
@@ -22,8 +31,8 @@ user request
 OpenSIN-backend  (A2A Fleet Control Plane)
      │  dispatches to team orchestrator
      ▼
-Team-SIN-<Domain>  (team manifest → list of worker IDs)
-     │  fans out to workers
+Team-SIN-<Domain>  (team manifest → list of worker IDs, pricing, permissions)
+     │  fans out to live worker IDs only (phantom IDs hidden at aggregate time)
      ▼
 A2A-SIN-<Integration>  (HF Space or local worker)
      │  executes, returns A2A message
@@ -33,32 +42,51 @@ OpenSIN-WebApp  (chat.opensin.ai — user sees the result)
 
 ---
 
-## 2. The 17 Team Orchestrators (canonical bundles)
+## 2. The 17 Team Orchestrators
 
-Each row is a Marketplace-buyable bundle. Pricing lives in the team's own `team.json`; aggregated into `templates/oh-my-sin.json`.
+Each row is a Marketplace-buyable bundle. Columns:
 
-| Team | Workers | Focus | Repo |
-|---|---:|---|---|
-| Apple | 12 | macOS/iOS automation (Mail, Notes, Calendar, FaceTime, Safari, Shortcuts, …) | [`Team-SIN-Apple`](https://github.com/OpenSIN-AI/Team-SIN-Apple) |
-| Code-Backend | 2 | Server, OracleCloud | [`Team-SIN-Code-Backend`](https://github.com/OpenSIN-AI/Team-SIN-Code-Backend) |
-| Code-Core | 3 | Code-DataScience, Code-DevOps, Code-GitLab-LogsCenter | [`Team-SIN-Code-Core`](https://github.com/OpenSIN-AI/Team-SIN-Code-Core) |
-| Code-CyberSec | 16 | BugBounty, Cloudflare, 14× Security specialists | [`Team-SIN-Code-CyberSec`](https://github.com/OpenSIN-AI/Team-SIN-Code-CyberSec) |
-| Code-Frontend | 2 | Accessibility, App-Shell *(scaffold — see FOLLOWUPS S1)* | [`Team-SIN-Code-Frontend`](https://github.com/OpenSIN-AI/Team-SIN-Code-Frontend) |
-| Commerce | 5 | Shop-Finance, Shop-Logistic, TikTok-Shop, Stripe, … | [`Team-SIN-Commerce`](https://github.com/OpenSIN-AI/Team-SIN-Commerce) |
-| Community | 3 | Discord-Community, WhatsApp-Community, YouTube-Community | [`Team-SIN-Community`](https://github.com/OpenSIN-AI/Team-SIN-Community) |
-| Forum | 5 | Reddit, HackerNews, StackOverflow, Dev.to, Quora | [`Team-SIN-Forum`](https://github.com/OpenSIN-AI/Team-SIN-Forum) |
-| Google | 2 | Google-Apps, Google-Chat | [`Team-SIN-Google`](https://github.com/OpenSIN-AI/Team-SIN-Google) |
-| Infrastructure | 6 | Authenticator, Terminal, Storage, Supabase, n8n, CI/CD | [`Team-SIN-Infrastructure`](https://github.com/OpenSIN-AI/Team-SIN-Infrastructure) |
-| Legal | 7 | ClaimWriter, Patents, Damages, Compliance, Contract, … | [`Team-SIN-Legal`](https://github.com/OpenSIN-AI/Team-SIN-Legal) |
-| Media-ComfyUI | 1 | Workflow *(scaffold — see FOLLOWUPS S1)* | [`Team-SIN-Media-ComfyUI`](https://github.com/OpenSIN-AI/Team-SIN-Media-ComfyUI) |
-| Media-Music | **0** | **Empty manifest — must be filled OR removed before launch (see [docs/FOLLOWUPS.md § S3](./docs/FOLLOWUPS.md))** | [`Team-SIN-Media-Music`](https://github.com/OpenSIN-AI/Team-SIN-Media-Music) |
-| Messaging | 12 | WhatsApp, Telegram, Signal, Discord, iMessage, … | [`Team-SIN-Messaging`](https://github.com/OpenSIN-AI/Team-SIN-Messaging) |
-| Microsoft | 1 | Microsoft-365 *(scaffold — see FOLLOWUPS S1)* | [`Team-SIN-Microsoft`](https://github.com/OpenSIN-AI/Team-SIN-Microsoft) |
-| Research | 3 | Deep-Research, … | [`Team-SIN-Research`](https://github.com/OpenSIN-AI/Team-SIN-Research) |
-| Social | 9 | TikTok, Instagram, X, LinkedIn, YouTube, … | [`Team-SIN-Social`](https://github.com/OpenSIN-AI/Team-SIN-Social) |
-| **Total** | **89** | | |
+- **Assigned** — `agents[].length` from the team's `team.json` (role assignments, duplicates counted)
+- **Live** — subset whose backing `A2A-SIN-*` repo currently exists in the org (shippable on 2026-04-23)
+- **Phantom** — the rest (manifest lists the ID but no repo) → **these are hidden from the marketplace** by `build-oh-my-sin.js` coercing the team to `status: "coming-soon"` when every agent is a phantom
 
-> **Contract:** The numbers above are the `agents[].length` from each team's `team.json`, recomputed by [`scripts/check-workforce.js`](./scripts/check-workforce.js). The schema enforces that every listed agent ID resolves to either a repo in `A2A-SIN-*` or to a worker inside `OpenSIN-Code`'s plugin tree. CI fails if an agent ID is unresolved **or** if this table drifts from the manifest data.
+| Team | Assigned | Live | Phantom | Ship-ready? | Manifest |
+|---|---:|---:|---:|---|---|
+| Apple | 12 | 0 | 12 | coerced to coming-soon | [`templates/teams/Team-SIN-Apple.json`](./templates/teams/Team-SIN-Apple.json) |
+| Code-Backend | 2 | 0 | 2 | coerced to coming-soon | [`templates/teams/Team-SIN-Code-Backend.json`](./templates/teams/Team-SIN-Code-Backend.json) |
+| Code-Core | 3 | 0 | 3 | coerced to coming-soon | [`templates/teams/Team-SIN-Code-Core.json`](./templates/teams/Team-SIN-Code-Core.json) |
+| Code-CyberSec | 16 | 0 | 16 | coerced to coming-soon | [`templates/teams/Team-SIN-Code-CyberSec.json`](./templates/teams/Team-SIN-Code-CyberSec.json) |
+| Code-Frontend | 2 | 0 | 2 | coerced to coming-soon | [`templates/teams/Team-SIN-Code-Frontend.json`](./templates/teams/Team-SIN-Code-Frontend.json) |
+| Commerce | 5 | 1 | 4 | yes — Stripe live | [`templates/teams/Team-SIN-Commerce.json`](./templates/teams/Team-SIN-Commerce.json) |
+| Community | 3 | 0 | 3 | coerced to coming-soon | [`templates/teams/Team-SIN-Community.json`](./templates/teams/Team-SIN-Community.json) |
+| Forum | 5 | 0 | 5 | coerced to coming-soon | [`templates/teams/Team-SIN-Forum.json`](./templates/teams/Team-SIN-Forum.json) |
+| Google | 2 | 1 | 1 | yes — Google-Chat live | [`templates/teams/Team-SIN-Google.json`](./templates/teams/Team-SIN-Google.json) |
+| Infrastructure | 6 | 0 | 6 | coerced to coming-soon | [`templates/teams/Team-SIN-Infrastructure.json`](./templates/teams/Team-SIN-Infrastructure.json) |
+| Legal | 7 | 0 | 7 | coerced to coming-soon | [`templates/teams/Team-SIN-Legal.json`](./templates/teams/Team-SIN-Legal.json) |
+| Media-ComfyUI | 1 | 0 | 1 | coerced to coming-soon | [`templates/teams/Team-SIN-Media-ComfyUI.json`](./templates/teams/Team-SIN-Media-ComfyUI.json) |
+| Media-Music | 0 | 0 | 0 | **empty manifest — delete or fill (MAN-3)** | [`templates/teams/Team-SIN-Media-Music.json`](./templates/teams/Team-SIN-Media-Music.json) |
+| Messaging | 12 | 10 | 2 | yes — 10 live bridges | [`templates/teams/Team-SIN-Messaging.json`](./templates/teams/Team-SIN-Messaging.json) |
+| Microsoft | 1 | 1 | 0 | yes — Teams live | [`templates/teams/Team-SIN-Microsoft.json`](./templates/teams/Team-SIN-Microsoft.json) |
+| Research | 3 | 0 | 3 | coerced to coming-soon | [`templates/teams/Team-SIN-Research.json`](./templates/teams/Team-SIN-Research.json) |
+| Social | 9 | 0 | 9 | coerced to coming-soon | [`templates/teams/Team-SIN-Social.json`](./templates/teams/Team-SIN-Social.json) |
+| **Total** | **89** | **13 of 17 unique IDs; 4 teams ship-ready** | **70 unique phantoms** | | |
+
+> **Numbers sanity:** the `Live` column counts *live assignments per team* (can double-count an ID that's re-listed elsewhere), while "17 unique live agent IDs" is the de-duplicated count used for launch messaging. `scripts/build-oh-my-sin.js` emits both as `live_agent_count` per-team and `agents_live` in the root aggregate.
+>
+> **Contract:** [`scripts/check-workforce.js`](./scripts/check-workforce.js) recomputes the `Assigned` column and fails CI on drift; `build-oh-my-sin.js` recomputes `Live`/`Phantom` against the live GitHub catalogue and coerces any all-phantom team to `coming-soon` so the marketplace UI never renders a 404 buy-button.
+
+### Ship-ready surface (2026-04-23 T-0)
+
+Four teams have at least one live worker and will render on the marketplace on launch day with real buy-buttons:
+
+1. **Messaging** (10 live bridges: Beeper, BlueBubbles, Chatroom, IRC, LINE, Matrix, Nostr, Signal, SMS, WeChat) — the strongest launch surface
+2. **Commerce** (Stripe)
+3. **Google** (Google-Chat, with Feishu adjacent)
+4. **Microsoft** (Teams)
+
+Plus standalones: Email, Box-Storage, Medusa — not sold as a team bundle, sold as individual skills.
+
+Everything else (13 of 17 teams) ships as `coming-soon` on launch day. That is fine for a staged launch — see [LAUNCH-CHECKLIST § 3 Risiken](./LAUNCH-CHECKLIST.md) MAN-1 mitigation.
 
 ---
 
@@ -66,50 +94,55 @@ Each row is a Marketplace-buyable bundle. Pricing lives in the team's own `team.
 
 Every worker is one of:
 
-- **A2A-SIN-\*** repo — a HuggingFace Space (or local runner) exposing the A2A protocol at `/a2a/v1`. The fleet control plane dispatches tasks here.
+- **`A2A-SIN-*` repo** — a HuggingFace Space (or local runner) exposing the A2A protocol at `/a2a/v1`. Fleet control plane dispatches tasks here. **24 live** today.
 - **Plugin inside `OpenSIN-Code`** — an in-process capability bundled with the CLI, addressable via the same A2A envelope but over IPC.
 - **Skill inside `Infra-SIN-OpenCode-Stack`** — a stateless capability exposed to any OpenCode agent; routed via the MCP gateway.
 
-### Top-5 flagship workers (by repo size, evidence of depth)
+### All 17 live A2A repos (2026-04-19 snapshot)
 
-| Worker | Repo | Size | Purpose |
-|---|---|---:|---|
-| X/Twitter fleet agent | [`A2A-SIN-X-Twitter`](https://github.com/OpenSIN-AI/A2A-SIN-X-Twitter) | 26 MB | Full posting/DM/analytics pipeline |
-| Discord fleet agent | [`A2A-SIN-Discord`](https://github.com/OpenSIN-AI/A2A-SIN-Discord) | 26 MB | Multi-server moderation + announcements |
-| MiroFish (passive-income) | [`A2A-SIN-MiroFish`](https://github.com/OpenSIN-AI/A2A-SIN-MiroFish) | 6.7 MB | Autonomous passive-income workflows |
-| HeyPiggy (passive-income) | [`A2A-SIN-Worker-heypiggy`](https://github.com/OpenSIN-AI/A2A-SIN-Worker-heypiggy) | 1.3 MB | Autonomous passive-income workflows |
-| A2A Storage | [`A2A-SIN-Storage`](https://github.com/OpenSIN-AI/A2A-SIN-Storage) | ~100 kb | Cross-agent shared storage layer |
+```
+Messaging bridges:   Beeper, BlueBubbles, Chatroom, IRC, LINE, Matrix, Nostr, Signal, SMS, WeChat
+Cross-platform:      Email, Feishu, Google-Chat, Teams
+Commerce:            Medusa, Stripe
+Storage:             Box-Storage
+```
 
-Substantial workers (100 kb – 1 MB): ~30 repos. Small workers (30–100 kb): ~60 repos. Scaffolds (currently 6): the `A2A-SIN-Code-*` set, tracked as **S2** in `docs/FOLLOWUPS.md`. Dead/archived: 4 (Facebook, Mattermost, RocketChat, Slack).
+Source of truth: `gh repo list OpenSIN-AI --limit 400 | grep A2A-SIN-` **intersected with** agent IDs in `templates/teams/*.json`.
+
+### 7 orphans — live repos with no team assignment (MAN-2)
+
+Listed in the org but not registered to any team manifest: `A2A-SIN-Nintendo`, `A2A-SIN-PlayStation`, `A2A-SIN-WebChat`, `A2A-SIN-WhatsApp`, `A2A-SIN-Worker-heypiggy`, `A2A-SIN-Xbox`, `A2A-SIN-Zoom`. Either assign them pre-launch or they sit dark in the marketplace. Tracked as **MAN-2** in [`docs/FOLLOWUPS.md`](./docs/FOLLOWUPS.md).
 
 ---
 
-## 4. Human maintainers
+## 4. Human maintainers (the honest version)
 
-Lightweight, CODEOWNERS-driven. See [`.github/CODEOWNERS`](./.github/CODEOWNERS) for the authoritative list. Each canonical repo has a *single* maintainer-lead who owns launch-day ship/no-ship for their tier — see [LAUNCH-CHECKLIST § 5 Single Ownership Rule](./LAUNCH-CHECKLIST.md#5-single-ownership-rule).
+**The org has exactly 2 active members** (`DaSINci`, `Delqhi`). Every launch-week plan that says "all maintainers" resolves to those two people. This has two hard consequences:
 
-| Tier | Lead repo | Lead role |
-|---|---|---|
-| OSS | `OpenSIN` | Maintains `pip install opensin` and PyPI publish |
-| OSS | `OpenSIN-Code` | Maintains `npm i -g opensin-code` and npm publish |
-| Pro | `OpenSIN-WebApp` | Owns `chat.opensin.ai` uptime and Stripe customer portal |
-| Pro | `OpenSIN-backend` | Owns fleet control plane + HF Spaces health |
-| Marketplace | `website-my.opensin.ai` | Owns `my.opensin.ai` checkout + aggregator render |
-| Meta / governance | `OpenSIN-overview` | Owns canon-locked files and launch-week command center |
+1. **No concurrent pager rotation.** One person is primary; the other is secondary. A third failure mode is downtime. See [LAUNCH-CHECKLIST § 3 Risiken](./LAUNCH-CHECKLIST.md) MAINT-1.
+2. **CODEOWNERS team refs (`@OpenSIN-AI/core`) may be inert.** The v0 bot has no `admin:org` scope to verify GitHub Teams exist; if they don't, CODEOWNERS rules are silently ignored and branch-protection falls back to repo-admin approval. Before launch, verify each team in `.github/CODEOWNERS` with `gh api orgs/OpenSIN-AI/teams`. Tracked as **MAN-4**.
+
+### Canonical-repo leadership (single-owner rule)
+
+Each launchable surface needs exactly one DRI. With 2 maintainers, some people wear multiple hats — that is acknowledged, documented, not papered over. **The per-surface DRI assignments are not finalised** and must be pinned by the CTO in a PR before 2026-04-22 T-1 code-freeze. Tracked as **MAN-6** in [`docs/FOLLOWUPS.md`](./docs/FOLLOWUPS.md). Without this, the Pager-Rotation column in [LAUNCH-CHECKLIST § 2 Tag 5](./LAUNCH-CHECKLIST.md) has no one to page.
 
 ---
 
 ## 5. How a new worker joins the workforce
 
 1. Pick the team it belongs to. If none fits, open a [Feature Request](./.github/ISSUE_TEMPLATE/feature-request.yml) proposing a new team (rare — budget enforced by governance).
-2. Scaffold the worker repo from [`Template-SIN-Agent`](https://github.com/OpenSIN-AI/Template-SIN-Agent). The template gives you: A2A protocol handler, HF Space config, health check, structured logging, release workflow.
-3. Register the worker ID in the team's `team.json` in this repo under `templates/teams/<Team>.json` **and** in the team's own repo. CI will refuse a PR where the two drift.
-4. CI in `Infra-SIN-OpenCode-Stack` rebuilds `oh-my-sin.json` nightly and publishes it to the three consumers (marketplace UI, chat entitlements, Infra-SIN-OpenCode-Stack mirror). See [`schemas/oh-my-sin.schema.json`](./schemas/oh-my-sin.schema.json).
+2. Scaffold the worker repo from [`Template-SIN-Agent`](https://github.com/OpenSIN-AI/Template-SIN-Agent) *(if missing, tracked as MAN-5 — see FOLLOWUPS)*. The template ships: A2A protocol handler, HF Space config, health check, structured logging, release workflow.
+3. Register the worker ID in the team's `team.json` in this repo under `templates/teams/<Team>.json`. The next aggregator run picks it up automatically; the phantom-count goes down by one.
+4. The nightly GH Action in `governance/workflows-proposed/oh-my-sin-build.yml` rebuilds `templates/oh-my-sin.json` and publishes it to the three consumers (marketplace UI, chat entitlements, Infra-SIN-OpenCode-Stack mirror). See [`schemas/oh-my-sin.schema.json`](./schemas/oh-my-sin.schema.json).
 
 ---
 
 ## 6. Why this matters
 
-The claim "OpenSIN is an *Agent OS*, not an Agent App" (see [PRODUCT-VISION § Der Pitch in einem Satz](./PRODUCT-VISION.md#der-pitch-in-einem-satz)) only holds if this workforce is real, addressable, and organized. This document is the audit trail. Every count here is derivable from live repo data; every agent is resolvable to a repo; every team is resolvable to a Stripe product.
+The claim "OpenSIN is an *Agent OS*, not an Agent App" (see [PRODUCT-VISION § Der Pitch in einem Satz](./PRODUCT-VISION.md)) only holds if this workforce is real, addressable, and organized. This document is the audit trail:
 
-If you find a drift — a worker on the org page that has no repo, a team with unresolvable agent IDs, a count that does not match `registry/MASTER_INDEX.md` — file it as a [Bug Report](./.github/ISSUE_TEMPLATE/bug-report.yml) with the `workforce-drift` label. We treat those as canon bugs and fix them before launching.
+- Every count is derivable from live data (`templates/teams/*.json` + `gh repo list`).
+- Every agent is resolvable to a repo (or honestly marked phantom).
+- Every team is resolvable to a Stripe product (or honestly marked `coming-soon`).
+
+If you find a drift — a worker on the org page that has no repo, a team with unresolvable agent IDs, a count that does not match `registry/MASTER_INDEX.md`, a phantom agent rendering a buy-button — file it as a [Bug Report](./.github/ISSUE_TEMPLATE/bug-report.yml) with the `workforce-drift` label. We treat those as canon bugs and fix them before launching. The prelaunch sweep (`npm run prelaunch:offline`) runs `scripts/check-workforce.js` on every PR so this class of drift gets caught at review time.

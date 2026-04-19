@@ -55,5 +55,20 @@ The three change-categories that matter for downstream consumers:
 
 ### Fixed (correctness)
 
-- WORKFORCE.md previously claimed **149 workers** across the 17 teams. Real count from the manifests is **89**. Almost every per-team count was inflated. Recomputed all rows from `templates/teams/*.json`; `scripts/check-workforce.js` now fails the build on drift.
+- WORKFORCE.md previously claimed **149 workers** across the 17 teams. Real count from the manifests is **89** (role assignments, 87 unique IDs). Almost every per-team count was inflated. Recomputed all rows from `templates/teams/*.json`; `scripts/check-workforce.js` now fails the build on drift.
 - LAUNCH-CHECKLIST weekday labels were off by 3–4 days (Tag 1 said Wednesday, was Sunday; Tag 4 said Saturday, was Wednesday). All five day-blocks now carry the correct `(weekday YYYY-MM-DD)` label and T-count.
+
+### Discovered (open — CTO decision required)
+
+- **Canon-level doc-vs-reality drift.** Full diagnostic in [`docs/REALITY-CHECK-2026-04-19.md`](./docs/REALITY-CHECK-2026-04-19.md). Top-line:
+  - `STATE-OF-THE-UNION.md` claims **205 repos / 109 A2A / 17 Team-SIN / 6 Infra / 7 Biz**. Live `gh repo list OpenSIN-AI --limit 400` returns **55 repos / 24 A2A / 0 Team-SIN / 4 Infra / 4 Biz**. All 55 are PUBLIC; no private scope could be hiding anything.
+  - 7 of the 10 Go/No-Go gates in `LAUNCH-CHECKLIST.md` reference repos that do not exist (`OpenSIN-backend`, `OpenSIN-WebApp`, `website-opensin.ai`, `website-my.opensin.ai`, the 6 `A2A-SIN-Code-*` Spaces behind gate G7).
+  - Org has **2 active members** (`DaSINci`, `Delqhi`); every "Alle Maintainer" row in the checklist maps to 2 people.
+  - 70 of 87 unique agent IDs in the team manifests have no backing repo (phantom). Mitigated in `scripts/build-oh-my-sin.js` — see MAN-1 in FOLLOWUPS. The 17 live agents (primarily the Messaging bridges) are the only workers the marketplace can sell on 2026-04-23.
+- **Not silently rewritten:** `STATE-OF-THE-UNION.md`, `START-HERE.md`, `LAUNCH-CHECKLIST.md`, `registry/MASTER_INDEX.md` — all canon-locked. Per `GOVERNANCE § 3.2`, canon-lock edits need CTO approval. Changes to those docs are deferred until the CTO picks one of the three hypotheses in REALITY-CHECK § 5 (aspirational docs, silent drift, or hidden private mirror).
+- **New follow-ups tracked:** MAN-1 through MAN-7 in `docs/FOLLOWUPS.md`. MAN-1 (phantom agents) is mitigated in code; MAN-4 (CODEOWNERS team refs may be inert) and MAN-6 (DRI pinning for 2-person pager rotation) are pre-launch blockers that need CTO action by 2026-04-22.
+
+### Added (tooling)
+
+- **`scripts/build-oh-my-sin.js` phantom-agent awareness** — cross-references every agent ID against `gh repo list OpenSIN-AI`, annotates each entry with `repo_exists`, emits per-team `live_agent_count` / `phantom_agent_count`, and coerces all-phantom teams to `status: "coming-soon"` so the marketplace UI never renders a 404 buy-button. Prints `agents: total=N live=M phantom=K` at build time.
+- **`docs/REALITY-CHECK-2026-04-19.md`** — standalone audit diagnostic. Not canon-locked; updated per re-audit.
