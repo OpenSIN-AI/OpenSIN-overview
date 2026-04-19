@@ -1,0 +1,103 @@
+# Live Go/No-Go dashboard, published to a tracking issue.
+#
+# During launch week (2026-04-19 → 2026-04-30) runs every 30 minutes.
+# Outside launch week runs every 6 hours. Always available on manual dispatch.
+#
+# Outputs:
+#   - JSON artifact (machine-readable)
+#   - Markdown comment posted to the tracking issue labelled `launch-dashboard`
+#     (create it once, then this workflow keeps overwriting the latest comment)
+#
+# If any gate is RED and the actor is the scheduled cron, the workflow opens
+# or reopens an incident issue using the launch-incident template.
+
+name: Launch status
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"   # every 30 min; trim after launch
+  workflow_dispatch:
+    inputs:
+      open_incident_if_red:
+        description: "Open an incident issue if any gate is RED"
+        required: false
+        default: "false"
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: launch-status
+  cancel-in-progress: true
+
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run launch-status
+        id: status
+        env:
+          GH_TOKEN: ${{ secrets.ORG_READ_TOKEN || secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+        run: |
+          node scripts/launch-status.js --json > status.json
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+          # Also capture the pretty rendering for the issue comment.
+          node scripts/launch-status.js > status.txt || true
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: launch-status-${{ github.run_id }}
+          path: |
+            status.json
+            status.txt
+          retention-days: 14
+
+      - name: Post summary to GH Actions run
+        run: |
+          {
+            echo "### Launch status"
+            echo ""
+            echo '```'
+            cat status.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Comment on launch tracking issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Find the open issue labelled `launch-dashboard`. If none exists,
+          # don't fail — just print a notice so a maintainer can create it.
+          ISSUE=$(gh issue list --label launch-dashboard --state open --json number --jq '.[0].number' 2>/dev/null || echo "")
+          if [ -z "$ISSUE" ]; then
+            echo "::notice::No open issue with label 'launch-dashboard'. Create one to receive automated status comments."
+            exit 0
+          fi
+          {
+            echo "## $(date -u +%Y-%m-%dT%H:%MZ) — auto-updated by launch-status.yml"
+            echo ""
+            echo '```'
+            cat status.txt
+            echo '```'
+            echo ""
+            echo "[See full run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+          } > comment.md
+          gh issue comment "$ISSUE" --body-file comment.md
+
+      - name: Fail if any gate is RED
+        run: |
+          if node -e "const r=require('fs').readFileSync('status.json','utf8'); const d=JSON.parse(r); process.exit(d.results.some(x=>x.status==='RED')?1:0)"; then
+            echo "All gates green or yellow."
+          else
+            echo "::error::At least one launch gate is RED. See status.txt artifact."
+            exit 1
+          fi

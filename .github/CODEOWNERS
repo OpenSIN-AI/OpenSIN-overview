@@ -1,0 +1,59 @@
+# CODEOWNERS for OpenSIN-AI/OpenSIN-overview
+#
+# This file is the first-line review gate for governance changes.
+# Because OpenSIN-overview is the *governance index* (not a product repo),
+# every file here has organisational consequences if changed wrongly:
+#   - docs/ shapes how 205 repos are coordinated
+#   - registry/ is consumed by external sites (my.opensin.ai marketplace)
+#   - schemas/ is the contract every Team-SIN-* repo must satisfy
+#   - scripts/ regenerates the registry automatically
+#
+# Format: <pattern>   <owners>
+# Patterns match relative to the repo root; later rules override earlier ones.
+# See https://docs.github.com/en/repositories/managing-your-repositories-settings-and-features/customizing-your-repository/about-code-owners
+
+# ------------------------------------------------------------------ default
+# Anything without a more specific rule: the OpenSIN-AI core team.
+# NOTE: this team must exist in the GitHub org. If it doesn't, create it
+#       via Org Settings → Teams → New team → "core" (or rename below).
+*                                 @OpenSIN-AI/core
+
+# ------------------------------------------------------------------ charter + boundaries
+# Changing product direction or repo scope needs founder review.
+/PRODUCT-VISION.md                @OpenSIN-AI/core
+/STATE-OF-THE-UNION.md            @OpenSIN-AI/core
+/BOUNDARIES.md                    @OpenSIN-AI/core
+/AGENTS.md                        @OpenSIN-AI/core
+/START-HERE.md                    @OpenSIN-AI/core
+/LAUNCH-CHECKLIST.md              @OpenSIN-AI/core
+
+# ------------------------------------------------------------------ registry (external contract)
+# These files feed external sites — changing them without review can
+# break marketplace cards on my.opensin.ai.
+/registry/**                      @OpenSIN-AI/core
+
+# ------------------------------------------------------------------ schemas (contract)
+# Schema changes are breaking changes for every Team-SIN-* repo.
+/schemas/**                       @OpenSIN-AI/core
+
+# ------------------------------------------------------------------ scripts (automation)
+# Scripts regenerate the registry — breakage = dead dashboards.
+/scripts/**                       @OpenSIN-AI/core
+
+# ------------------------------------------------------------------ CI + automation
+/.github/workflows/**             @OpenSIN-AI/core
+/.github/CODEOWNERS               @OpenSIN-AI/core
+
+# ------------------------------------------------------------------ team manifests (marketplace catalog)
+# One Team-SIN-* manifest per marketplace bundle. Per Wave-4 Option A,
+# the team that owns the bundle reviews its own manifest.
+# Until those teams exist on GitHub, @OpenSIN-AI/core approves by default.
+/templates/teams/**               @OpenSIN-AI/core
+
+# ------------------------------------------------------------------ docs body
+/docs/**                          @OpenSIN-AI/core
+
+# ------------------------------------------------------------------ followups
+# FOLLOWUPS.md is the single source of truth for open governance tickets.
+# Only maintainers close tickets.
+/docs/FOLLOWUPS.md                @OpenSIN-AI/core
