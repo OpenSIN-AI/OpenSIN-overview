@@ -64,7 +64,7 @@ All community leaders are obligated to respect the privacy and security of the r
 If the incident happens inside a GitHub issue, PR, or discussion and you prefer not to email:
 
 1. Flag the content using GitHub's [report abuse](https://docs.github.com/en/communities/maintaining-your-safety-on-github/reporting-abuse-or-spam) flow, and
-2. Ping `@OpenSIN-AI/core` in a new private [security advisory](https://github.com/OpenSIN-AI/OpenSIN-overview/security/advisories/new) — we triage CoC reports through the same channel to keep audit trail in one place.
+2. Ping `@OpenSIN-AI/core-team` in a new private [security advisory](https://github.com/OpenSIN-AI/OpenSIN-overview/security/advisories/new) — we triage CoC reports through the same channel to keep audit trail in one place.
 
 ---
 

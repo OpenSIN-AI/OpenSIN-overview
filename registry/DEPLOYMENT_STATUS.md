@@ -161,12 +161,12 @@ Entscheidung trifft `OpenSIN-backend` maintainer nach Launch-Week-1.
 
 | Agent | Space | URL | Status am 2026-04-08 |
 |---|---|---|---|
-| plugin | `OpenSIN-AI/a2a-sin-code-plugin` | https://opensin-ai-a2a-sin-code-plugin.hf.space | ✅ 200 |
-| command | `OpenSIN-AI/a2a-sin-code-command` | https://opensin-ai-a2a-sin-code-command.hf.space | ✅ 200 |
-| tool | `OpenSIN-AI/a2a-sin-code-tool` | https://opensin-ai-a2a-sin-code-tool.hf.space | ✅ 200 |
-| backend | `OpenSIN-AI/a2a-sin-code-backend` | https://opensin-ai-a2a-sin-code-backend.hf.space | ✅ 200 |
-| fullstack | `OpenSIN-AI/a2a-sin-code-fullstack` | https://opensin-ai-a2a-sin-code-fullstack.hf.space | ✅ 200 |
-| frontend | `OpenSIN-AI/a2a-sin-code-frontend` | https://opensin-ai-a2a-sin-code-frontend.hf.space | ✅ 200 |
+| plugin | `OpenSIN-AI/A2A-SIN-Code-Plugin` | https://opensin-ai-a2a-sin-code-plugin.hf.space | 200 |
+| command | `OpenSIN-AI/A2A-SIN-Code-Command` | https://opensin-ai-a2a-sin-code-command.hf.space | 200 |
+| tool | `OpenSIN-AI/A2A-SIN-Code-Tool` | https://opensin-ai-a2a-sin-code-tool.hf.space | 200 |
+| backend | `OpenSIN-AI/A2A-SIN-Code-Backend` | https://opensin-ai-a2a-sin-code-backend.hf.space | 200 |
+| fullstack | `OpenSIN-AI/A2A-SIN-Code-Fullstack` | https://opensin-ai-a2a-sin-code-fullstack.hf.space | 200 |
+| frontend | `OpenSIN-AI/A2A-SIN-Code-Frontend` | https://opensin-ai-a2a-sin-code-frontend.hf.space | 200 |
 
 Zwischen 2026-04-08 und 2026-04-19 (heute): keine gesunde Gesundheitsmessung dokumentiert. Das muss sich ändern — siehe § 4.1 + § 4.2.
 

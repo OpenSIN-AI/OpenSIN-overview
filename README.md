@@ -150,7 +150,7 @@ Bei grossen Codebases (100k+ Zeilen, 1000+ Dateien) MUESSEN Agenten **5-10 paral
 | [MCP-SIN-memory](https://github.com/OpenSIN-AI/MCP-SIN-memory) | Memory MCP - Persistent Storage |
 | [MCP-SIN-platform-auth](https://github.com/OpenSIN-AI/MCP-SIN-platform-auth) | Platform Auth - OAuth/SSO |
 | [MCP-SIN-usebrowser](https://github.com/OpenSIN-AI/MCP-SIN-usebrowser) | UseBrowser - Web Automation |
-| [Simone-MCP](https://github.com/OpenSIN-AI/Simone-MCP) | Semantic Code Intelligence MCP — Symbol-Navigation, Referenzen, strukturelle Edits, hybrides Memory (PFLICHT für alle Agenten) |
+| [Simone-MCP](https://github.com/Delqhi/Simone-MCP) | Semantic Code Intelligence MCP — Symbol-Navigation, Referenzen, strukturelle Edits, hybrides Memory (PFLICHT für alle Agenten). Liegt noch unter `Delqhi/` — Transfer in die Org ist als **MAN-6** in [docs/FOLLOWUPS.md](./docs/FOLLOWUPS.md) getrackt. |
 
 ---
 
