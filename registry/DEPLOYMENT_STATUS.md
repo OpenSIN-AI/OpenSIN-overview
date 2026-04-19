@@ -1,14 +1,13 @@
 # Cloud Coder Agents — Deployment Status
 
-**Stand:** 2026-04-19 (live `curl`-verifiziert)
+**Stand:** 2026-04-19 (live `curl` + 10-Minuten-Fenster verifiziert)
 **Organisation:** OpenSIN-AI
-**Overall Status:** 🚨 **CRITICAL — 24/24 Endpoints liefern HTTP 503**
-**Tage in Outage:** ≥ 3 (letzte dokumentierte 200-Response 2026-04-08, 12 Tage)
-**Launch-Impact:** BLOCKER (G7 in [LAUNCH-CHECKLIST](../LAUNCH-CHECKLIST.md#0-gono-go-kriterien)).
+**Overall Status:** ✅ **RECOVERED — 6/6 Spaces healthy, keep-alive active**
+**Launch-Impact:** mitigated (HF-1 resolved on 2026-04-19)
 
 ---
 
-## 1. Live Health Check (2026-04-19)
+## 1. Live Health Check (2026-04-19 recovery verification)
 
 ```bash
 # Script zum Reproduzieren:
@@ -21,32 +20,45 @@ for s in a2a-sin-code-plugin a2a-sin-code-command a2a-sin-code-tool \
 done
 ```
 
-| Space | `/health` | `/` | `/a2a/v1` | `/.well-known/agent-card.json` |
+| Space | `/health` | `/` | `POST /a2a/v1` | `/.well-known/agent-card.json` |
 |---|:---:|:---:|:---:|:---:|
-| `a2a-sin-code-plugin` | 🚨 503 | 🚨 503 | 🚨 503 | 🚨 503 |
-| `a2a-sin-code-command` | 🚨 503 | 🚨 503 | 🚨 503 | 🚨 503 |
-| `a2a-sin-code-tool` | 🚨 503 | 🚨 503 | 🚨 503 | 🚨 503 |
-| `a2a-sin-code-backend` | 🚨 503 | 🚨 503 | 🚨 503 | 🚨 503 |
-| `a2a-sin-code-fullstack` | 🚨 503 | 🚨 503 | 🚨 503 | 🚨 503 |
-| `a2a-sin-code-frontend` | 🚨 503 | 🚨 503 | 🚨 503 | 🚨 503 |
+| `a2a-sin-code-plugin` | ✅ 200 | ✅ 200 | ✅ live (endpoint responds; GET shows 405) | ✅ 200 |
+| `a2a-sin-code-command` | ✅ 200 | ✅ 200 | ✅ live (endpoint responds; GET shows 405) | ✅ 200 |
+| `a2a-sin-code-tool` | ✅ 200 | ✅ 200 | ✅ live (endpoint responds; GET shows 405) | ✅ 200 |
+| `a2a-sin-code-backend` | ✅ 200 | ✅ 200 | ✅ live (endpoint responds; GET shows 405) | ✅ 200 |
+| `a2a-sin-code-fullstack` | ✅ 200 | ✅ 200 | ✅ live (endpoint responds; GET shows 405) | ✅ 200 |
+| `a2a-sin-code-frontend` | ✅ 200 | ✅ 200 | ✅ live (endpoint responds; GET shows 405) | ✅ 200 |
 
-**Alle 24 Checks** antworten mit 503. Das bestätigt die Hypothese, dass alle 6 Spaces nach Inaktivitäts-Sleep nicht wieder hochgekommen sind.
+Verification window:
+
+- 10 consecutive minutes of `/health` probes stayed green for all 6 Spaces
+- Window: 2026-04-19 18:48 UTC → 18:59 UTC
+- Manual keep-alive run: https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack/actions/runs/24636464977
 
 ---
 
 ## 2. Root Cause
 
-HuggingFace Free-Tier Spaces schlafen nach 48 h Inaktivität ein. Wenn ein Space nicht sauber zurück-wacht (z. B. wegen fehlendem Secret, Docker-Build-Failure, Quota), bleibt er in einem `SLEEPING` + Docker-Startup-Loop stecken und liefert HTTP 503 an allen Routen.
+HuggingFace Free-Tier Spaces slept after inactivity and there was no active keep-alive in the canonical infrastructure repo. The outage was amplified by stale status reporting that still claimed the fleet was healthy.
 
-Wir haben **keinen Keep-Alive** und **keinen Auto-Restart**, deswegen eskaliert ein 48 h Sleep zu 12+ Tage-Outage.
+Recovery confirmed that the critical missing control was the keep-alive automation, not an irreversible code/runtime failure in the 6 Spaces themselves.
 
 ---
 
-## 3. Fix — Immediate (Tag 1 der Launch-Checklist)
+## 3. Applied recovery
 
-### 3.1 Manueller Restart
+### 3.1 Keep-alive installed in canonical infra repo
 
-Owner: `OpenSIN-backend` maintainer mit gültigem `HF_TOKEN`.
+Installed at:
+
+- `OpenSIN-AI/Infra-SIN-OpenCode-Stack/.github/workflows/hf-keep-alive.yml`
+
+Current behavior:
+
+- scheduled every 10 minutes
+- probes all 6 Spaces
+- exits green when healthy
+- attempts restart on 5xx / timeout when token permissions allow
 
 ```bash
 # Alle 6 Spaces restart:
@@ -69,9 +81,17 @@ for space in a2a-sin-code-plugin a2a-sin-code-command a2a-sin-code-tool \
 done
 ```
 
-**Akzeptanzkriterium:** 6/6 Spaces liefern `200` auf `/health`.
+### 3.2 Actions secret configured
 
-### 3.2 Falls Restart nicht reicht: Secret-Audit
+- `HUGGINGFACE_TOKEN` is now present in `Infra-SIN-OpenCode-Stack` Actions secrets via SIN-Passwordmanager fanout.
+
+### 3.3 Residual risk
+
+- Probe path is operational and currently sufficient to keep the fleet awake.
+- Fallback restart permission still needs a token with explicit `opensin-ai/*` Space write access.
+- Follow-up tracked in `Infra-SIN-OpenCode-Stack#50`.
+
+## 4. Operational notes
 
 Wenn ein Space nach Restart erneut 503 liefert, sind meistens Secrets veraltet (Rate-Limit, OpenAI-Key rotiert, etc.). Checkliste:
 
@@ -84,11 +104,13 @@ Wenn ein Space nach Restart erneut 503 liefert, sind meistens Secrets veraltet (
 
 ---
 
-## 4. Fix — Dauerhafte Prävention
+### 4.1 If a Space goes unhealthy again
 
-### 4.1 Keep-Alive Cron (GitHub Action in `Infra-SIN-OpenCode-Stack`)
+1. Check the latest `HF Spaces keep-alive` run in `Infra-SIN-OpenCode-Stack`.
+2. If the probe stayed green but the Space is still unhealthy, run a manual restart from a token with org-space write access.
+3. If restart returns authorization failure, use follow-up `Infra-SIN-OpenCode-Stack#50` to rotate the token.
 
-Pfad: `.github/workflows/hf-keepalive.yml`
+### 4.2 Historical outage recipe (retained for reference)
 
 ```yaml
 name: HF Spaces Keep-Alive
@@ -137,9 +159,7 @@ jobs:
           fi
 ```
 
-**Owner:** `OpenSIN-backend` maintainers. Repo-Target: `Infra-SIN-OpenCode-Stack` (SSOT für OpenCode/Agent-Config).
-
-### 4.2 Uptime-Monitoring (UptimeRobot oder BetterStack)
+### 4.3 Uptime-Monitoring (UptimeRobot oder BetterStack)
 
 Externe Uptime-Monitore für alle 6 Spaces + 4 Domains (`opensin.ai`, `my.opensin.ai`, `chat.opensin.ai`, `docs.opensin.ai`). Alert-Channel: Slack `#launch-alerts` oder Discord-Webhook.
 
