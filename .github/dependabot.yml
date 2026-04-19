@@ -1,0 +1,68 @@
+# Dependabot configuration for OpenSIN-overview.
+#
+# This repo pins zero runtime dependencies (package.json is `private: true`
+# with no deps). The only recurring supply-chain surface is GitHub Actions
+# version pins inside .github/workflows/ — Dependabot keeps those current.
+#
+# If we ever add npm deps, the `npm` ecosystem block below picks them up
+# without further config.
+#
+# docs: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+updates:
+  # ---- GitHub Actions version pins (primary use case) ----
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Etc/UTC"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "chore(ci)"
+      include: "scope"
+    groups:
+      actions-minor-and-patch:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+    reviewers:
+      - "OpenSIN-AI/core"
+
+  # ---- npm (forward-looking — package.json is currently deps-free) ----
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Etc/UTC"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "npm"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    groups:
+      npm-minor-and-patch:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+    reviewers:
+      - "OpenSIN-AI/core"
+    # Only raise security advisories as PRs if we ever add deps; otherwise
+    # the weekly sweep finds nothing, which is the expected steady state.
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"

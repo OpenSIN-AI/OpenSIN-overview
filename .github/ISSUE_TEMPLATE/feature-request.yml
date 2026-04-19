@@ -1,0 +1,66 @@
+name: Feature / governance proposal
+description: Propose a governance change, a new script, a schema extension, or a registry addition — in THIS repo.
+title: "[PROPOSAL] "
+labels: ["proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Remember:** this repo owns organisational mapping and governance only.
+        Product features belong in the owning repo (see [SUPPORT.md](../blob/main/SUPPORT.md)).
+        Please read [BOUNDARIES.md](../blob/main/BOUNDARIES.md) before proposing anything that could duplicate canonical content.
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of proposal?
+      options:
+        - New governance rule or boundary
+        - New script under scripts/
+        - Schema extension (schemas/*)
+        - Registry addition (registry/ or platforms/)
+        - Team manifest change (templates/teams/*)
+        - Documentation change (docs/ or root .md)
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: What problem does this solve? Who benefits? What breaks today without it?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: Concrete. What files would you change, what would you add.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: boundary
+    attributes:
+      label: Boundary check
+      description: Does your proposal keep OpenSIN-overview as a governance index? (See BOUNDARIES.md)
+      options:
+        - Yes — this is org-map / governance only
+        - Partial — includes some runtime or product detail (explain below)
+        - Unsure — need a boundary review
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Including "do it in repo X instead".
+
+  - type: textarea
+    id: provenance
+    attributes:
+      label: Decided in / Linked PR
+      description: If this follows an earlier decision, link it (PR, doc anchor, FOLLOWUPS ticket).

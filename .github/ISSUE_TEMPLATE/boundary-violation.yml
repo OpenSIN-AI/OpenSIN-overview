@@ -1,0 +1,64 @@
+name: Boundary violation
+description: Report a PR, commit, or doc that violates BOUNDARIES.md — either here or in another OpenSIN-AI repo.
+title: "[BOUNDARY] "
+labels: ["boundary-violation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template when a change duplicates a canonical source, absorbs content that belongs elsewhere, or muddles repo roles.
+        See [BOUNDARIES.md](../blob/main/BOUNDARIES.md) and [governance/BOUNDARY-ROLE-RULES.md](../blob/main/governance/BOUNDARY-ROLE-RULES.md).
+
+  - type: input
+    id: where
+    attributes:
+      label: Where is the violation?
+      description: URL to the PR, commit, or file.
+      placeholder: "https://github.com/OpenSIN-AI/OpenSIN-WebApp/pull/42"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of violation
+      options:
+        - Duplication — canonical content copied into the wrong repo
+        - Absorption — a non-canonical repo is claiming SSOT over a canonical concern
+        - Scope creep — a repo is expanding into a concern owned by another
+        - Link rot — refers to an archived / non-canonical path
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: canonical
+    attributes:
+      label: Which repo IS canonical for this concern?
+      description: See docs/CANONICAL-REPOS.md.
+      placeholder: "OpenSIN-documentation owns docs canon. This PR is adding runtime docs to OpenSIN-overview."
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Specific files, lines, or quotes that demonstrate the violation.
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: remediation
+    attributes:
+      label: Suggested remediation
+      description: What should happen? (Move content, revert, add link, etc.)
+
+  - type: checkboxes
+    id: ack
+    attributes:
+      label: Acknowledgement
+      options:
+        - label: I have read [BOUNDARIES.md](../blob/main/BOUNDARIES.md) and [governance/BOUNDARY-ROLE-RULES.md](../blob/main/governance/BOUNDARY-ROLE-RULES.md).
+          required: true
