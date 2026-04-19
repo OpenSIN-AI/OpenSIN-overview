@@ -150,7 +150,7 @@ Bei grossen Codebases (100k+ Zeilen, 1000+ Dateien) MUESSEN Agenten **5-10 paral
 | [MCP-SIN-memory](https://github.com/OpenSIN-AI/MCP-SIN-memory) | Memory MCP - Persistent Storage |
 | [MCP-SIN-platform-auth](https://github.com/OpenSIN-AI/MCP-SIN-platform-auth) | Platform Auth - OAuth/SSO |
 | [MCP-SIN-usebrowser](https://github.com/OpenSIN-AI/MCP-SIN-usebrowser) | UseBrowser - Web Automation |
-| [Simone-MCP](https://github.com/OpenSIN-AI/Simone-MCP) | Semantic Code Intelligence MCP — Symbol-Navigation, Referenzen, strukturelle Edits, hybrides Memory (PFLICHT für alle Agenten) |
+| [Simone-MCP](https://github.com/Delqhi/Simone-MCP) | Semantic Code Intelligence MCP — Symbol-Navigation, Referenzen, strukturelle Edits, hybrides Memory (PFLICHT für alle Agenten). Liegt noch unter `Delqhi/` — Transfer in die Org ist als **MAN-6** in [docs/FOLLOWUPS.md](./docs/FOLLOWUPS.md) getrackt. |
 
 ---
 
@@ -221,7 +221,7 @@ Bei grossen Codebases (100k+ Zeilen, 1000+ Dateien) MUESSEN Agenten **5-10 paral
 | [Core-SIN-Control-Plane](https://github.com/OpenSIN-AI/Core-SIN-Control-Plane) | Doctor/Preflight/Eval Layer |
 | [Infra-SIN-Docker-Empire](https://github.com/OpenSIN-AI/Infra-SIN-Docker-Empire) | 26-Container Docker Infrastruktur |
 | [Infra-SIN-Dev-Setup](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup) | Development Environment Setup + Box Storage Guide |
-| [cloud-backend](https://github.com/OpenSIN-AI/cloud-backend) | 🔒 Proprietär: Stripe, OAuth, Premium-API |
+| [OpenSIN-backend](https://github.com/OpenSIN-AI/OpenSIN-backend) | 🔒 Proprietär: Fleet Control Plane, Stripe, OAuth, Premium-API (ehemals `cloud-backend`, seit 2026-04 konsolidiert) |
 
 ---
 

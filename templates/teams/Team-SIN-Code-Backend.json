@@ -17,8 +17,16 @@
     ]
   },
   "agents": [
-    {"id": "A2A-SIN-Code-DevOps", "role": "supporting", "summary": "Shared with Code-Core for deploy handoffs."},
-    {"id": "A2A-SIN-Code-Backend", "role": "optional", "summary": "Dedicated backend agent (currently scaffold — see SCAFFOLD_AUDIT.md)."}
+    {
+      "id": "A2A-SIN-Code-DevOps",
+      "role": "supporting",
+      "summary": "Shared with Code-Core for deploy handoffs."
+    },
+    {
+      "id": "A2A-SIN-Code-Backend",
+      "role": "optional",
+      "summary": "Dedicated backend agent (currently scaffold — see SCAFFOLD_AUDIT.md)."
+    }
   ],
   "pricing": {
     "model": "monthly-addon",
@@ -40,6 +48,6 @@
   "provenance": {
     "decided_in": "OpenSIN-overview#35",
     "decided_at": "2026-04-18",
-    "owner_team": "OpenSIN-AI/code-core"
+    "owner_team": "OpenSIN-AI/core-team"
   }
 }

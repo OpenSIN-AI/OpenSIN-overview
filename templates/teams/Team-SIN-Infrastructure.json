@@ -17,12 +17,36 @@
     ]
   },
   "agents": [
-    {"id": "A2A-SIN-CI-CD", "role": "primary", "summary": "CI/CD pipelines across Jenkins/GH/GitLab/CircleCI."},
-    {"id": "A2A-SIN-Github-Action", "role": "primary", "summary": "GitHub Actions failure triage + fixes."},
-    {"id": "A2A-SIN-N8N", "role": "primary", "summary": "n8n workflow authoring + debugging."},
-    {"id": "A2A-SIN-Storage", "role": "supporting", "summary": "Generic object-storage operations."},
-    {"id": "A2A-SIN-Box-Storage", "role": "supporting", "summary": "Box-specific storage operations."},
-    {"id": "A2A-SIN-Opal", "role": "supporting", "summary": "Opal workflow automation."}
+    {
+      "id": "A2A-SIN-CI-CD",
+      "role": "primary",
+      "summary": "CI/CD pipelines across Jenkins/GH/GitLab/CircleCI."
+    },
+    {
+      "id": "A2A-SIN-Github-Action",
+      "role": "primary",
+      "summary": "GitHub Actions failure triage + fixes."
+    },
+    {
+      "id": "A2A-SIN-N8N",
+      "role": "primary",
+      "summary": "n8n workflow authoring + debugging."
+    },
+    {
+      "id": "A2A-SIN-Storage",
+      "role": "supporting",
+      "summary": "Generic object-storage operations."
+    },
+    {
+      "id": "A2A-SIN-Box-Storage",
+      "role": "supporting",
+      "summary": "Box-specific storage operations."
+    },
+    {
+      "id": "A2A-SIN-Opal",
+      "role": "supporting",
+      "summary": "Opal workflow automation."
+    }
   ],
   "pricing": {
     "model": "monthly-addon",
@@ -43,6 +67,6 @@
   "provenance": {
     "decided_in": "OpenSIN-overview#35",
     "decided_at": "2026-04-18",
-    "owner_team": "OpenSIN-AI/infrastructure"
+    "owner_team": "OpenSIN-AI/core-team"
   }
 }

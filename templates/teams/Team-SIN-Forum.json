@@ -17,11 +17,31 @@
     ]
   },
   "agents": [
-    {"id": "A2A-SIN-HackerNews", "role": "primary", "summary": "HN front-page + comments monitoring."},
-    {"id": "A2A-SIN-Lobsters", "role": "primary", "summary": "Lobsters trending + tag filters."},
-    {"id": "A2A-SIN-StackOverflow", "role": "primary", "summary": "SO question discovery + reply drafting."},
-    {"id": "A2A-SIN-Quora", "role": "supporting", "summary": "Quora topic tracking + drafts."},
-    {"id": "A2A-SIN-Slashdot", "role": "supporting", "summary": "Slashdot monitoring."}
+    {
+      "id": "A2A-SIN-HackerNews",
+      "role": "primary",
+      "summary": "HN front-page + comments monitoring."
+    },
+    {
+      "id": "A2A-SIN-Lobsters",
+      "role": "primary",
+      "summary": "Lobsters trending + tag filters."
+    },
+    {
+      "id": "A2A-SIN-StackOverflow",
+      "role": "primary",
+      "summary": "SO question discovery + reply drafting."
+    },
+    {
+      "id": "A2A-SIN-Quora",
+      "role": "supporting",
+      "summary": "Quora topic tracking + drafts."
+    },
+    {
+      "id": "A2A-SIN-Slashdot",
+      "role": "supporting",
+      "summary": "Slashdot monitoring."
+    }
   ],
   "pricing": {
     "model": "monthly-addon",
@@ -39,6 +59,6 @@
   "provenance": {
     "decided_in": "OpenSIN-overview#35",
     "decided_at": "2026-04-18",
-    "owner_team": "OpenSIN-AI/forum"
+    "owner_team": "OpenSIN-AI/core-team"
   }
 }

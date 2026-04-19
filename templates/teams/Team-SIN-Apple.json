@@ -18,18 +18,66 @@
     ]
   },
   "agents": [
-    {"id": "A2A-SIN-Apple-Shortcuts", "role": "primary", "summary": "Entry point — any Shortcut becomes an agent tool."},
-    {"id": "A2A-SIN-Apple-Mail", "role": "primary", "summary": "Mail triage, drafting, search."},
-    {"id": "A2A-SIN-Apple-Calendar-Contacts", "role": "primary", "summary": "Calendar scheduling + Contacts lookup."},
-    {"id": "A2A-SIN-Apple-Notes", "role": "supporting", "summary": "Capture + search across Apple Notes."},
-    {"id": "A2A-SIN-Apple-Reminders", "role": "supporting", "summary": "Task capture with location/time triggers."},
-    {"id": "A2A-SIN-Apple-Notifications", "role": "supporting", "summary": "Notification stream read/dismiss."},
-    {"id": "A2A-SIN-Apple-Mobile", "role": "supporting", "summary": "iPhone automation surface."},
-    {"id": "A2A-SIN-Apple-DeviceControl", "role": "supporting", "summary": "Device-level control primitives."},
-    {"id": "A2A-SIN-Apple-SystemSettings", "role": "supporting", "summary": "Toggle system settings programmatically."},
-    {"id": "A2A-SIN-Apple-Safari-WebKit", "role": "supporting", "summary": "Safari/WebKit browsing and reading."},
-    {"id": "A2A-SIN-Apple-Photos-Files", "role": "supporting", "summary": "Photos + Files search and staging."},
-    {"id": "A2A-SIN-Apple-FaceTime", "role": "optional", "summary": "Programmatic FaceTime call setup."}
+    {
+      "id": "A2A-SIN-Apple-Shortcuts",
+      "role": "primary",
+      "summary": "Entry point — any Shortcut becomes an agent tool."
+    },
+    {
+      "id": "A2A-SIN-Apple-Mail",
+      "role": "primary",
+      "summary": "Mail triage, drafting, search."
+    },
+    {
+      "id": "A2A-SIN-Apple-Calendar-Contacts",
+      "role": "primary",
+      "summary": "Calendar scheduling + Contacts lookup."
+    },
+    {
+      "id": "A2A-SIN-Apple-Notes",
+      "role": "supporting",
+      "summary": "Capture + search across Apple Notes."
+    },
+    {
+      "id": "A2A-SIN-Apple-Reminders",
+      "role": "supporting",
+      "summary": "Task capture with location/time triggers."
+    },
+    {
+      "id": "A2A-SIN-Apple-Notifications",
+      "role": "supporting",
+      "summary": "Notification stream read/dismiss."
+    },
+    {
+      "id": "A2A-SIN-Apple-Mobile",
+      "role": "supporting",
+      "summary": "iPhone automation surface."
+    },
+    {
+      "id": "A2A-SIN-Apple-DeviceControl",
+      "role": "supporting",
+      "summary": "Device-level control primitives."
+    },
+    {
+      "id": "A2A-SIN-Apple-SystemSettings",
+      "role": "supporting",
+      "summary": "Toggle system settings programmatically."
+    },
+    {
+      "id": "A2A-SIN-Apple-Safari-WebKit",
+      "role": "supporting",
+      "summary": "Safari/WebKit browsing and reading."
+    },
+    {
+      "id": "A2A-SIN-Apple-Photos-Files",
+      "role": "supporting",
+      "summary": "Photos + Files search and staging."
+    },
+    {
+      "id": "A2A-SIN-Apple-FaceTime",
+      "role": "optional",
+      "summary": "Programmatic FaceTime call setup."
+    }
   ],
   "pricing": {
     "model": "monthly-addon",
@@ -49,6 +97,6 @@
   "provenance": {
     "decided_in": "OpenSIN-overview#35",
     "decided_at": "2026-04-18",
-    "owner_team": "OpenSIN-AI/apple"
+    "owner_team": "OpenSIN-AI/core-team"
   }
 }

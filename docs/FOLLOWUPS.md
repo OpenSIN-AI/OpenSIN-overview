@@ -172,32 +172,32 @@ When all tickets here are `DONE`, delete this file.
 
 ### MAN-1: Phantom agents hidden from the marketplace
 
-- **Status:** `MITIGATED — 2026-04-19` (code), `OPEN` (content).
-- **What:** 70 unique agent IDs are referenced in `templates/teams/*.json` but have no backing `A2A-SIN-*` repo in the org. Without mitigation, the marketplace UI would render 70 buy-buttons that 404 on click. With mitigation, only 17 live agents are sold on 2026-04-23; the other 10 all-phantom teams render as `coming-soon`.
-- **Mitigation shipped in `scripts/build-oh-my-sin.js`:**
-  - Cross-references each agent ID against `gh repo list OpenSIN-AI`
-  - Annotates every agent entry with `repo_exists: true | false | null`
-  - Sets `live_agent_count` / `phantom_agent_count` per team
-  - Coerces any all-phantom team to `status: "coming-soon"` so the UI filters it out
-  - Logs a summary line at build time: `agents: total=89 live=17 phantom=72`
-- **Content still open:** the 10 coerced teams (Apple, Code-Backend, Code-Core, Code-CyberSec, Code-Frontend, Community, Forum, Infrastructure, Legal, Media-ComfyUI, Research, Social) need honest marketing copy that communicates "coming-soon" to browsers. Either delete the teams from launch OR add a "Notify me" capture form on each team page.
-- **Owner:** `website-my.opensin.ai` maintainers (once that repo exists — see Hypothesis A/B/C in REALITY-CHECK § 5).
+- **Status:** `RESOLVED — 2026-04-19` (authenticated audit + re-normalization).
+- **Outcome:** 0 phantom agents. All 87 unique agent IDs across the 17 manifests resolve to live (non-archived) repos in `OpenSIN-AI/`.
+- **Root cause of the original 70-phantom report:** the 2026-04-19 morning audit used an anonymous GitHub API view that hides private repos; 150 of the org's 222 repos were invisible to the unauthenticated token. See [`docs/REALITY-CHECK-2026-04-19.md § 0`](./REALITY-CHECK-2026-04-19.md) for the full resolution. **Lesson:** any OpenSIN-AI repo audit MUST run authenticated.
+- **Defensive code that stays in place:** `scripts/build-oh-my-sin.js` still computes `live_agent_count` / `phantom_agent_count` and coerces all-phantom teams to `status: "coming-soon"`. The mitigation is strictly defence-in-depth now — if someone adds a new manifest agent ID in the future that doesn't resolve to a live repo, the build still fails gracefully. Current run: `agents: total=89 live=89 phantom=0`.
+- **New guard that makes this class of drift shallow forever:** `scripts/reality-check.js` (new, in this PR) hard-errors if run without `GITHUB_TOKEN`. Wired into `.github/workflows/reality-check.yml` (proposed, needs admin install). Catches both the old incident class (doc says repo X exists but it doesn't) and its inverse (audit says repo X is fictional but it's actually private).
 
 ### MAN-2: Orphan A2A repos — live but unregistered
 
-- **Status:** `OPEN`.
-- **What:** 7 live `A2A-SIN-*` repos are in the org but not referenced in any `templates/teams/*.json` manifest:
+- **Status:** `OPEN` — count expanded from 7 → 16 on 2026-04-19 after authenticated re-audit surfaced 9 additional orphans previously hidden from the anon view.
+- **What:** 16 live `A2A-SIN-*` repos are in the org but not referenced in any `templates/teams/*.json` manifest:
 
   ```
-  A2A-SIN-Nintendo        A2A-SIN-WebChat          A2A-SIN-Xbox
-  A2A-SIN-PlayStation     A2A-SIN-WhatsApp         A2A-SIN-Zoom
-  A2A-SIN-Worker-heypiggy
+  A2A-SIN-Code-Backend       A2A-SIN-Code-Plugin        A2A-SIN-Nintendo          A2A-SIN-WebChat
+  A2A-SIN-Code-Command       A2A-SIN-Code-Tool          A2A-SIN-PlayStation       A2A-SIN-WhatsApp
+  A2A-SIN-Code-Frontend      A2A-SIN-Money-Poker        A2A-SIN-Twitter-X         A2A-SIN-Xbox
+  A2A-SIN-Code-Fullstack     A2A-SIN-Money-Sports       A2A-SIN-Worker-heypiggy   A2A-SIN-Zoom
   ```
 
+  Not listed (already handled): `A2A-SIN-SoundCloud`, `A2A-SIN-YouTube-Studio`, `A2A-SIN-Worker-Prolific`, `A2A-SIN-Skill-Coding-CEO`, `A2A-SIN-Switch` — these appear in manifests already.
 - **Decision needed:**
-  1. Assign WhatsApp, WebChat, Zoom to `Team-SIN-Messaging` manifest (strong candidates — bridge-shaped)
-  2. Decide whether Nintendo/PlayStation/Xbox belong in a new `Team-SIN-Gaming` manifest or stay dark
-  3. Worker-heypiggy appears in STATE-OF-THE-UNION as a "flagship passive-income worker" but has no team slot; assign or document the exclusion
+  1. **Messaging (3):** assign `WhatsApp`, `WebChat`, `Zoom` to `Team-SIN-Messaging` manifest (bridge-shaped)
+  2. **Gaming (4):** decide whether `Nintendo`, `PlayStation`, `Xbox`, plus the live `A2A-SIN-Switch` belong in a new `Team-SIN-Gaming` manifest or stay dark
+  3. **Money (2):** `Money-Poker` and `Money-Sports` — likely `Team-SIN-Money-*` (new team) or fold under existing Commerce
+  4. **Code-* scaffolds (6):** blocked on **R1** decision (merge `opensin-ai-cli` or keep split). If merge: archive all 6 scaffolds. If split: assign to `Team-SIN-Code-Core` as supporting agents.
+  5. **Twitter-X (1):** assign to `Team-SIN-Social`
+  6. **Worker-heypiggy (1):** STATE-OF-THE-UNION calls it a "flagship passive-income worker" but it has no team slot; assign to `Team-SIN-Commerce` as `optional`, or document the exclusion
 - **Owner:** `OpenSIN-overview` maintainers (this repo holds the manifests).
 
 ### MAN-3: Empty `Team-SIN-Media-Music.json` manifest
@@ -207,28 +207,28 @@ When all tickets here are `DONE`, delete this file.
 - **Decision needed:** fill with at least 1 phantom ID and a roadmap, OR delete the manifest file entirely.
 - **Owner:** `OpenSIN-overview` maintainers.
 
-### MAN-4: CODEOWNERS team refs may be inert
+### MAN-4: CODEOWNERS / manifest team slugs were inert
 
-- **Status:** `OPEN` — **pre-launch blocker for branch-protection correctness**.
-- **What:** `.github/CODEOWNERS` references `@OpenSIN-AI/core`, `@OpenSIN-AI/Team-SIN-Code-Core`, etc. The v0 audit token has no `admin:org` scope so it can't list GitHub Teams. If those teams do not actually exist as GitHub Teams, CODEOWNERS rules are silently ignored and branch-protection falls back to the default reviewer rule — which is probably repo-admin only, making ownership meaningless.
-- **Verification command (needs a human maintainer token):**
+- **Status:** `PARTIAL MITIGATED — 2026-04-19` (code+docs normalized to `core-team`), `OPEN` (per-domain team creation decision).
+- **What (resolved on 2026-04-19):** an authenticated `GET /orgs/OpenSIN-AI/teams` call returns exactly two teams: `core-team` and `admin-team`. The 17 domain-team slugs (`apple`, `google`, `microsoft`, `commerce`, `community`, `cybersec`, `forum`, `infrastructure`, `legal`, `media`, `messaging`, `research`, `social`, `code-core`, `code-backend`, `code-frontend`, `meta-tier`) that appeared in CODEOWNERS, dependabot.yml, and all 17 `templates/teams/*.json` `provenance.owner_team` fields were **inert** — GitHub silently ignores unknown team references, so branch protection and review routing were falling back to whichever repo-admin approved the PR.
+- **Mitigations shipped in this PR:**
+  - `.github/CODEOWNERS` — `@OpenSIN-AI/core` → `@OpenSIN-AI/core-team` (real team)
+  - `.github/dependabot.yml` — 2× `reviewers: OpenSIN-AI/core` → `OpenSIN-AI/core-team`
+  - `GOVERNANCE.md`, `CODE_OF_CONDUCT.md`, `templates/workflows/README.md` — 7 prose refs normalized
+  - `templates/teams/*.json` ×17 — `provenance.owner_team` normalized to `OpenSIN-AI/core-team`
+  - `scripts/validate-codeowners.js` — new guard that fails CI if any CODEOWNERS team slug is inert
+- **Still OPEN (per-domain decision):** should the 17 domain-team slugs become real GitHub Teams? Options:
+  - **A)** CTO creates 17 real GitHub Teams in the org and populates with relevant humans (heavy org-admin work; matches the original doc intent). Then this PR's normalization gets reverted for manifest `owner_team` fields.
+  - **B)** Keep the normalization. One review channel (`core-team`) for everything. Fast, less granular. Recommended if staying at 2 humans for ≥3 months.
+  - **C)** Hybrid: create only the teams with >5 agents (`Team-SIN-Code-*` cluster, `Team-SIN-Social`, `Team-SIN-Messaging`), leave small teams under `core-team`.
+- **Owner:** CTO — needs `admin:org` to execute A or C.
+- **Deadline:** 2026-04-22 18:00 UTC (code-freeze). After that, route everything through `core-team` and revisit post-launch.
 
-  ```bash
-  gh api orgs/OpenSIN-AI/teams --jq '.[].slug'
-  ```
+### MAN-5: `Template-SIN-Agent` scaffolding repo
 
-- **Fix:** either create the GitHub Teams that CODEOWNERS references, OR rewrite CODEOWNERS to use individual `@DaSINci` / `@Delqhi` handles and a single `@OpenSIN-AI/owners` meta-team.
-- **Owner:** CTO — needs `admin:org` to fix.
-- **Deadline:** 2026-04-22 18:00 UTC (code-freeze). After that, ownership drift is invisible until a real incident.
-
-### MAN-5: `Template-SIN-Agent` scaffolding repo is missing
-
-- **Status:** `OPEN`.
-- **What:** `WORKFORCE § 5` and [`START-HERE § 2.4`](../START-HERE.md) tell new contributors to "scaffold from `Template-SIN-Agent`". That repo does not exist in the org (verified 2026-04-19 with `gh repo view OpenSIN-AI/Template-SIN-Agent` → `MISSING`).
-- **Fix options:**
-  1. Create the template repo with the A2A protocol handler, HF Space config, health check, structured logging, and release workflow that existing live A2A repos (e.g. `A2A-SIN-Matrix`, `A2A-SIN-Signal`) share
-  2. Rewrite the doc to point at an existing A2A repo as the "fork-me-to-scaffold" reference until the template is built
-- **Owner:** `OpenSIN-overview` maintainers.
+- **Status:** `RESOLVED — 2026-04-19` (false-positive from anon-audit).
+- **Outcome:** `OpenSIN-AI/Template-SIN-Agent` exists as a private repo (`pushed_at: 2026-04-10`). The morning audit's `MISSING` verdict was from an anonymous API call that hid it. See [`docs/REALITY-CHECK-2026-04-19.md § 0`](./REALITY-CHECK-2026-04-19.md).
+- **Remaining work:** nothing blocking, but the template should be reviewed and its contents audited by launch — it's the entry-point for every future A2A repo. Track post-launch if needed.
 
 ### MAN-6: Per-surface DRI pinning for 2-maintainer pager rotation
 
@@ -238,18 +238,29 @@ When all tickets here are `DONE`, delete this file.
 - **Owner:** CTO.
 - **Deadline:** 2026-04-22 18:00 UTC.
 
-### MAN-7: STATE-OF-THE-UNION drift-check
+### MAN-7: Canon-doc drift-check against the live org
+
+- **Status:** `DONE — 2026-04-19` (baseline landed), `OPEN` (number-table auto-check).
+- **What landed:**
+  - [`scripts/reality-check.js`](../scripts/reality-check.js) — scans every `OpenSIN-AI/<repo>` and `@OpenSIN-AI/<team>` mention across every tracked text file and fails CI if any doesn't resolve. Hard-errors without `GITHUB_TOKEN` to prevent the anonymous-API false-positive class. Recognizes no-`@` team refs in `dependabot.yml reviewers:` and manifest `owner_team` fields as valid idiomatic syntax.
+  - [`scripts/validate-codeowners.js`](../scripts/validate-codeowners.js) — focused CODEOWNERS check. Validates every team slug and every individual `@user` handle.
+  - [`governance/workflows-proposed/reality-check.yml`](../governance/workflows-proposed/reality-check.yml) — wires both into PR + daily-cron CI. Needs admin install via `governance/workflows-proposed/install.sh`.
+  - Allow-list guard: `scripts/scan-secrets.sh` now allow-lists `CHANGELOG.md` and `docs/REALITY-CHECK-*.md` (the meta-bug where documenting a leak re-leaks it).
+- **Still OPEN (number-table auto-check):** `STATE-OF-THE-UNION § 1` hand-authored numbers table (total repos, per-prefix counts, live/archived) has no automated check. Options:
+  1. Tiny `scripts/check-state-of-the-union.js` that re-derives the numbers from the live org and diffs against the table; fail on ±2 drift.
+  2. Stronger: generate `STATE-OF-THE-UNION § 1` from data, mark the section as auto-generated. Removes the class entirely.
+- **Owner:** `OpenSIN-overview` maintainers. Post-launch priority.
+
+---
+
+### MAN-8: `Delqhi/Simone-MCP` still under a personal namespace
 
 - **Status:** `OPEN`.
-- **What:** `scripts/check-workforce.js` catches drift between `WORKFORCE.md` and the team manifests. Nothing catches drift between `STATE-OF-THE-UNION.md` (or `START-HERE.md`, or `registry/MASTER_INDEX.md`) and the live GitHub org. That class of drift is what surfaced as the reality-check finding.
-- **Fix:** add `scripts/check-state-of-the-union.js` that:
-  1. Reads `STATE-OF-THE-UNION § 1` (the numbers table)
-  2. Runs `gh repo list OpenSIN-AI --json name,isArchived`
-  3. Computes the same aggregates (total, live, archived, per-prefix)
-  4. Fails if any table number drifts by more than ±2
-- Wire it into `scripts/prelaunch-sweep.sh` as a new step.
-- **Owner:** `OpenSIN-overview` maintainers.
-- **Bonus:** consider generating `STATE-OF-THE-UNION § 1` from data instead of maintaining it manually — removes the class entirely.
+- **What:** `README.md` Critical-MCP table now correctly points at `https://github.com/Delqhi/Simone-MCP` (fixed in this PR — it was previously linking at the 404 `OpenSIN-AI/Simone-MCP`). But the repo itself lives under the personal `Delqhi/` namespace, not the org.
+- **Why it matters:** every agent doc (`AGENTS.md`, `opensin-ai-agent-feature-spec.md`) names Simone-MCP as a **mandatory** capability. Having a mandatory dependency on a personal account is a bus-factor-1 risk and inconsistent with every other canonical dep which is org-owned.
+- **Fix:** `@Delqhi` initiates a repo transfer `Delqhi/Simone-MCP` → `OpenSIN-AI/Simone-MCP`. GitHub keeps redirects for 1 year, so external links don't break. Update README afterwards.
+- **Owner:** `@Delqhi`.
+- **Deadline:** 2026-04-22.
 
 ---
 

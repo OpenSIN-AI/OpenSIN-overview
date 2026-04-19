@@ -1,0 +1,76 @@
+# Reality check — refuse PRs whose docs reference non-existent repos or teams.
+#
+# Background: on 2026-04-19, a canon-drift audit incorrectly flagged 19 live
+# private repos as "fictional" because the audit token had only public-repo
+# scope. The exact inverse (canon docs referencing truly non-existent repos)
+# is just as easy to miss silently. Both classes of bug are caught here.
+#
+# Runs on every PR against main, and on a daily cron to catch external drift
+# (repo deletions, renames, team renames) introduced from outside this repo.
+#
+# Requires GITHUB_TOKEN with at minimum `metadata: read` on the org AND access
+# to see private repos (otherwise the audit falls back to anonymous visibility
+# and produces the exact false-positive we're guarding against). In CI this is
+# solved by providing ORG_READ_TOKEN (fine-grained PAT). If that secret is
+# absent the workflow uses the default GITHUB_TOKEN, which can still see private
+# repos within the same org when the repo is also hosted there.
+
+name: Reality check
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 6 * * *" # daily 06:17 UTC — catches external repo/team drift
+  workflow_dispatch: {}
+
+concurrency:
+  group: reality-check-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  reality-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: reality-check — docs vs. live org
+        env:
+          GITHUB_TOKEN: ${{ secrets.ORG_READ_TOKEN || secrets.GITHUB_TOKEN }}
+        run: node scripts/reality-check.js
+
+      - name: CODEOWNERS team/user validity
+        env:
+          GITHUB_TOKEN: ${{ secrets.ORG_READ_TOKEN || secrets.GITHUB_TOKEN }}
+        run: node scripts/validate-codeowners.js
+
+      - name: Show what to do if this fails
+        if: failure()
+        run: |
+          {
+            echo "### Canon drift detected"
+            echo ""
+            echo "A doc in this PR references a repo or team that does not exist"
+            echo "(or is archived) in OpenSIN-AI/."
+            echo ""
+            echo "**Steps to fix:**"
+            echo ""
+            echo "1. Run locally: \`GITHUB_TOKEN=ghp_xxx node scripts/reality-check.js\`"
+            echo "2. Either correct the reference, or add the real ref to the org."
+            echo "3. If the ref is an intentional historical mention (audit trail,"
+            echo "   CHANGELOG, REALITY-CHECK-dated doc), add its path to DOC_ALLOWLIST"
+            echo "   in scripts/reality-check.js with a one-line rationale."
+            echo ""
+            echo "See docs/REALITY-CHECK-2026-04-19.md § 0 for the original incident"
+            echo "that motivated this gate."
+          } >> "$GITHUB_STEP_SUMMARY"

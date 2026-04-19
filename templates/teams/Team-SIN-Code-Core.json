@@ -17,9 +17,21 @@
     ]
   },
   "agents": [
-    {"id": "A2A-SIN-Code-DataScience", "role": "primary", "summary": "Pandas/NumPy/Jupyter data work."},
-    {"id": "A2A-SIN-Code-DevOps", "role": "primary", "summary": "Containers, deploys, rollbacks, IaC."},
-    {"id": "A2A-SIN-Code-GitLab-LogsCenter", "role": "primary", "summary": "GitLab ops + log-centre triage."}
+    {
+      "id": "A2A-SIN-Code-DataScience",
+      "role": "primary",
+      "summary": "Pandas/NumPy/Jupyter data work."
+    },
+    {
+      "id": "A2A-SIN-Code-DevOps",
+      "role": "primary",
+      "summary": "Containers, deploys, rollbacks, IaC."
+    },
+    {
+      "id": "A2A-SIN-Code-GitLab-LogsCenter",
+      "role": "primary",
+      "summary": "GitLab ops + log-centre triage."
+    }
   ],
   "pricing": {
     "model": "free-with-pro"
@@ -40,6 +52,6 @@
   "provenance": {
     "decided_in": "OpenSIN-overview#35",
     "decided_at": "2026-04-18",
-    "owner_team": "OpenSIN-AI/code-core"
+    "owner_team": "OpenSIN-AI/core-team"
   }
 }

@@ -25,7 +25,7 @@ Everything else belongs in the owning repo.
 
 | Role | Who | Scope | Source of truth |
 |---|---|---|---|
-| **Core maintainers** | `@OpenSIN-AI/core` | May merge any PR in this repo; own every path in `CODEOWNERS` that is not more specifically assigned. | [`.github/CODEOWNERS`](./.github/CODEOWNERS) |
+| **Core maintainers** | `@OpenSIN-AI/core-team` | May merge any PR in this repo; own every path in `CODEOWNERS` that is not more specifically assigned. | [`.github/CODEOWNERS`](./.github/CODEOWNERS) |
 | **Tier owners** | 1 per tier (OSS / Pro / Marketplace / Meta) | Own the Go/No-Go decision for their tier. | [`LAUNCH-CHECKLIST.md § 5 Single Ownership Rule`](./LAUNCH-CHECKLIST.md#5-single-ownership-rule) |
 | **Team owners** | Varies per `Team-SIN-*` manifest | Own the `team.json` content (marketing copy, agent list, pricing). | [`templates/teams/`](./templates/teams/) + `provenance.owner_team` in each manifest |
 | **Boundary reviewers** | Core maintainers | Enforce [`BOUNDARIES.md`](./BOUNDARIES.md). Reject PRs that duplicate canonical content. | [`BOUNDARIES.md`](./BOUNDARIES.md) + [`governance/BOUNDARY-ROLE-RULES.md`](./governance/BOUNDARY-ROLE-RULES.md) |
@@ -47,7 +47,7 @@ Everything else belongs in the owning repo.
 
 Things that change **what this repo is** (naming convention, tier model, boundary rules, canonical-repo map) require:
 
-- Two `@OpenSIN-AI/core` approvals, not one.
+- Two `@OpenSIN-AI/core-team` approvals, not one.
 - A one-paragraph rationale committed in the PR description AND reflected in [`PRODUCT-VISION.md`](./PRODUCT-VISION.md) or [`BOUNDARIES.md`](./BOUNDARIES.md) as a "DECIDED" entry with the date and PR link.
 - If the change breaks a previous public promise, add a deprecation note in [`docs/FOLLOWUPS.md`](./docs/FOLLOWUPS.md) with a migration window.
 
@@ -66,18 +66,18 @@ Everything else still needs a CODEOWNERS review, even under time pressure. **No 
 ## 4. How disagreements are resolved
 
 1. **Discuss in the PR / issue thread.** Most conflicts resolve here.
-2. **Escalate to `@OpenSIN-AI/core`** by pinging the team in the thread.
+2. **Escalate to `@OpenSIN-AI/core-team`** by pinging the team in the thread.
 3. If the core team is split: the **tier owner** (§2) for the tier most affected breaks the tie.
 4. If the tier is unclear: the **Meta tier owner** (`OpenSIN-overview` maintainer lead) decides.
 5. Decisions are recorded in [`governance/WAIVER-LOG.md`](./governance/WAIVER-LOG.md) if they deviate from a written rule; otherwise the PR description is the record.
 
-No veto from outside `@OpenSIN-AI/core` can block a merge that has CODEOWNERS approval. Public feedback is welcome, but the maintainers decide.
+No veto from outside `@OpenSIN-AI/core-team` can block a merge that has CODEOWNERS approval. Public feedback is welcome, but the maintainers decide.
 
 ---
 
 ## 5. Changing this document
 
-This file itself is covered by `@OpenSIN-AI/core` in CODEOWNERS. Edits follow §3.2 (two approvals, rationale in `PRODUCT-VISION.md` if the org's product shape changes).
+This file itself is covered by `@OpenSIN-AI/core-team` in CODEOWNERS. Edits follow §3.2 (two approvals, rationale in `PRODUCT-VISION.md` if the org's product shape changes).
 
 ---
 

@@ -48,4 +48,4 @@ Same approach as Renovate's `config:base`.
 3. Bottom of the file: exit-code semantics (0 = no action needed, 1 = we
    triggered a remediation, 2 = remediation failed).
 4. Add an entry here in this README with copy-paste adopt instructions.
-5. Open a PR. Governance review by `@OpenSIN-AI/core`.
+5. Open a PR. Governance review by `@OpenSIN-AI/core-team`.

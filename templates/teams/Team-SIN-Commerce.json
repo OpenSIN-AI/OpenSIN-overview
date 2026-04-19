@@ -18,11 +18,31 @@
     ]
   },
   "agents": [
-    {"id": "A2A-SIN-Stripe", "role": "primary", "summary": "Payments, subscriptions, refunds and Stripe Connect flows."},
-    {"id": "A2A-SIN-TikTok-Shop", "role": "primary", "summary": "TikTok Shop catalogue, orders and creator programme."},
-    {"id": "A2A-SIN-Medusa", "role": "supporting", "summary": "Headless commerce storefront operations."},
-    {"id": "A2A-SIN-Shop-Finance", "role": "supporting", "summary": "Reconciliation, VAT/GST, daily P&L."},
-    {"id": "A2A-SIN-Shop-Logistic", "role": "supporting", "summary": "Shipping, label creation, tracking updates."}
+    {
+      "id": "A2A-SIN-Stripe",
+      "role": "primary",
+      "summary": "Payments, subscriptions, refunds and Stripe Connect flows."
+    },
+    {
+      "id": "A2A-SIN-TikTok-Shop",
+      "role": "primary",
+      "summary": "TikTok Shop catalogue, orders and creator programme."
+    },
+    {
+      "id": "A2A-SIN-Medusa",
+      "role": "supporting",
+      "summary": "Headless commerce storefront operations."
+    },
+    {
+      "id": "A2A-SIN-Shop-Finance",
+      "role": "supporting",
+      "summary": "Reconciliation, VAT/GST, daily P&L."
+    },
+    {
+      "id": "A2A-SIN-Shop-Logistic",
+      "role": "supporting",
+      "summary": "Shipping, label creation, tracking updates."
+    }
   ],
   "pricing": {
     "model": "monthly-addon",
@@ -42,6 +62,6 @@
   "provenance": {
     "decided_in": "OpenSIN-overview#35",
     "decided_at": "2026-04-18",
-    "owner_team": "OpenSIN-AI/commerce"
+    "owner_team": "OpenSIN-AI/core-team"
   }
 }

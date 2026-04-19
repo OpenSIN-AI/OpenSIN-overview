@@ -17,9 +17,21 @@
     ]
   },
   "agents": [
-    {"id": "A2A-SIN-Community", "role": "primary", "summary": "Cross-platform community orchestration."},
-    {"id": "A2A-SIN-Discord", "role": "primary", "summary": "Discord server ops and engagement."},
-    {"id": "A2A-SIN-Reddit", "role": "supporting", "summary": "Subreddit moderation and posting."}
+    {
+      "id": "A2A-SIN-Community",
+      "role": "primary",
+      "summary": "Cross-platform community orchestration."
+    },
+    {
+      "id": "A2A-SIN-Discord",
+      "role": "primary",
+      "summary": "Discord server ops and engagement."
+    },
+    {
+      "id": "A2A-SIN-Reddit",
+      "role": "supporting",
+      "summary": "Subreddit moderation and posting."
+    }
   ],
   "pricing": {
     "model": "monthly-addon",
@@ -38,6 +50,6 @@
   "provenance": {
     "decided_in": "OpenSIN-overview#35",
     "decided_at": "2026-04-18",
-    "owner_team": "OpenSIN-AI/community"
+    "owner_team": "OpenSIN-AI/core-team"
   }
 }

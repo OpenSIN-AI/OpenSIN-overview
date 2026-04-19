@@ -26,7 +26,9 @@ The three change-categories that matter for downstream consumers:
   - `scripts/check-web-surfaces.sh` — health + render-budget for the 4 canonical websites.
   - `scripts/prelaunch-sweep.sh` — master gate; runs all 7 pre-launch checks.
   - `scripts/check-workforce.js` — fails on drift between WORKFORCE.md and the team manifests.
-  - `scripts/scan-secrets.sh` — regex scanner for live API keys + internal IPs (allow-listed false positives).
+  - `scripts/scan-secrets.sh` — regex scanner for live API keys + internal IPs (allow-listed false positives). 2026-04-19: `CHANGELOG.md` and `docs/REALITY-CHECK-*.md` added to allow-list to fix the meta-bug where documenting a leak-removal re-leaks the value.
+  - `scripts/reality-check.js` (2026-04-19) — scans every `OpenSIN-AI/<repo>` and `@OpenSIN-AI/<team>` mention across the repo and fails CI if any doesn't resolve against the **authenticated** org view. Hard-errors without `GITHUB_TOKEN` to prevent the anonymous-API false-positive that caused the 2026-04-19 canon-drift incident.
+  - `scripts/validate-codeowners.js` (2026-04-19) — fails CI if `.github/CODEOWNERS` references a team or user that doesn't exist. Catches the `@OpenSIN-AI/core` → `@OpenSIN-AI/core-team` class of drift.
   - `scripts/README.md` — script inventory.
 - **Repo hygiene:** `.editorconfig`, `.nvmrc`, `.gitattributes`, `.github/dependabot.yml`, `.github/FUNDING.yml`, `.husky/pre-commit`.
 - **CI:** `governance/workflows-proposed/secret-scan.yml` (5th proposed workflow). All five workflows must be installed once by a human — see `governance/workflows-proposed/install.sh`.
@@ -57,6 +59,11 @@ The three change-categories that matter for downstream consumers:
 
 - WORKFORCE.md previously claimed **149 workers** across the 17 teams. Real count from the manifests is **89** (role assignments, 87 unique IDs). Almost every per-team count was inflated. Recomputed all rows from `templates/teams/*.json`; `scripts/check-workforce.js` now fails the build on drift.
 - LAUNCH-CHECKLIST weekday labels were off by 3–4 days (Tag 1 said Wednesday, was Sunday; Tag 4 said Saturday, was Wednesday). All five day-blocks now carry the correct `(weekday YYYY-MM-DD)` label and T-count.
+- **2026-04-19 canon-drift false-positive correction:** An earlier audit run against the anonymous GitHub API (which hides private repos) reported that 19 canonical repos referenced in `STATE-OF-THE-UNION.md` and `LAUNCH-CHECKLIST.md` were "fictional" (`OpenSIN-backend`, `OpenSIN-WebApp`, website-*, all 6 `A2A-SIN-Code-*`, all 17 `Team-SIN-*`, etc.). Authenticated re-run showed all 19 exist as **private** repos. None of the 10 launch gates is blocked by missing repos. Full resolution preserved in [`docs/REALITY-CHECK-2026-04-19.md § 0`](./docs/REALITY-CHECK-2026-04-19.md#0-resolution-added-2026-04-19-1900-utc--authenticated-re-run) as an audit-trail.
+- **2026-04-19 team-slug normalization:** `@OpenSIN-AI/core` is not a real GitHub Team — `core-team` is. GitHub silently ignores unknown team owners, so CODEOWNERS rules, dependabot `reviewers`, and manifest `owner_team` fields were inert. Fixed across `.github/CODEOWNERS` (15 refs), `.github/dependabot.yml` (2), `GOVERNANCE.md` (5), `CODE_OF_CONDUCT.md` (1), `templates/workflows/README.md` (1), and all 17 `templates/teams/*.json` (17 `provenance.owner_team` fields normalized to `OpenSIN-AI/core-team`). The 17 aspirational domain-team slugs (`apple`, `google`, `commerce`, …) that didn't exist are now collapsed to one real team; see [`MAN-4`](./docs/FOLLOWUPS.md#man-4-codeowners--manifest-team-slugs-were-inert) for the per-domain-creation decision.
+- **2026-04-19 case normalization:** 6 rows in `registry/DEPLOYMENT_STATUS.md` referencing `OpenSIN-AI/a2a-sin-code-*` normalized to canonical `OpenSIN-AI/A2A-SIN-Code-*`. Keeps `scripts/check-workforce.js` happy (case-sensitive) even though HF Space URLs are lowercase (HF normalizes separately).
+- **2026-04-19 archived-repo link fix:** `README.md` link to archived `OpenSIN-AI/cloud-backend` replaced with canonical `OpenSIN-AI/OpenSIN-backend` (Wave-4 consolidation target) with a historical note.
+- **2026-04-19 Simone-MCP link fix:** `README.md` Critical-MCP table linked to the 404 `OpenSIN-AI/Simone-MCP`; now correctly points at the real location `Delqhi/Simone-MCP` with a [`MAN-8`](./docs/FOLLOWUPS.md#man-8-delqhisimone-mcp-still-under-a-personal-namespace) tracking note for the org transfer.
 
 ### Discovered (open — CTO decision required)
 

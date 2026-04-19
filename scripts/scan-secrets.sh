@@ -24,9 +24,16 @@
 #   * Private SSH commands               ssh ubuntu@(?!\$|<)            (literal user, not env-var)
 #
 # Allow-list (intentional public references):
-#   * docs/best-practices/ci-cd-n8n.md  may contain $N8N_KEY placeholder text
 #   * scripts/scan-secrets.sh           contains the patterns themselves
 #   * SECURITY.md                       may quote example tokens for "what to look for"
+#   * .husky/pre-commit                 references scan-secrets.sh by path
+#   * CHANGELOG.md                      documents removed leaks (meta-bug: logging a
+#                                       removal re-leaks the value). Exact-match.
+#   * docs/REALITY-CHECK-*.md           audit trail; may reference historical tokens/IPs
+#                                       that were since rotated. Prefix match.
+#
+# NOT allow-listed: docs/best-practices/ci-cd-n8n.md, docs/03_ops/inbound-intake.md,
+# .pcpm/rules.md — these reference values by env-var name ONLY (no literals).
 
 set -uo pipefail
 
@@ -47,17 +54,27 @@ for arg in "$@"; do
   esac
 done
 
-# Allow-listed paths (relative to repo root)
+# Allow-listed paths (relative to repo root). Exact-match or glob via case.
 ALLOWLIST=(
   "scripts/scan-secrets.sh"
   "SECURITY.md"
   ".husky/pre-commit"
+  "CHANGELOG.md"
+)
+
+# Path prefixes: any file whose relative path starts with one of these is allowlisted.
+# Used for versioned audit trails where old token/IP values intentionally appear.
+ALLOWLIST_PREFIX=(
+  "docs/REALITY-CHECK-"
 )
 
 is_allowlisted() {
   local f="$1"
   for a in "${ALLOWLIST[@]}"; do
     [[ "$f" == "$a" ]] && return 0
+  done
+  for p in "${ALLOWLIST_PREFIX[@]}"; do
+    [[ "$f" == "$p"* ]] && return 0
   done
   return 1
 }

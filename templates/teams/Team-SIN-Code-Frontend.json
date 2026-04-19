@@ -17,8 +17,16 @@
     ]
   },
   "agents": [
-    {"id": "A2A-SIN-Code-DataScience", "role": "supporting", "summary": "For data-heavy frontend work (charts, tables)."},
-    {"id": "A2A-SIN-Code-Frontend", "role": "optional", "summary": "Dedicated frontend agent (currently scaffold — see SCAFFOLD_AUDIT.md)."}
+    {
+      "id": "A2A-SIN-Code-DataScience",
+      "role": "supporting",
+      "summary": "For data-heavy frontend work (charts, tables)."
+    },
+    {
+      "id": "A2A-SIN-Code-Frontend",
+      "role": "optional",
+      "summary": "Dedicated frontend agent (currently scaffold — see SCAFFOLD_AUDIT.md)."
+    }
   ],
   "pricing": {
     "model": "monthly-addon",
@@ -39,6 +47,6 @@
   "provenance": {
     "decided_in": "OpenSIN-overview#35",
     "decided_at": "2026-04-18",
-    "owner_team": "OpenSIN-AI/code-core"
+    "owner_team": "OpenSIN-AI/core-team"
   }
 }

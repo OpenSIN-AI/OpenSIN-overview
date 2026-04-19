@@ -19,13 +19,41 @@
     ]
   },
   "agents": [
-    {"id": "A2A-SIN-Compliance", "role": "primary", "summary": "Compliance framework tracking."},
-    {"id": "A2A-SIN-Contract", "role": "primary", "summary": "Contract drafting + redlines."},
-    {"id": "A2A-SIN-ClaimWriter", "role": "primary", "summary": "Structured claim writing."},
-    {"id": "A2A-SIN-Damages", "role": "supporting", "summary": "Damages modelling."},
-    {"id": "A2A-SIN-Evidence", "role": "supporting", "summary": "Evidence organisation."},
-    {"id": "A2A-SIN-Patents", "role": "supporting", "summary": "Patent + prior-art search."},
-    {"id": "A2A-SIN-Tax", "role": "supporting", "summary": "Tax filing prep + bookkeeping."}
+    {
+      "id": "A2A-SIN-Compliance",
+      "role": "primary",
+      "summary": "Compliance framework tracking."
+    },
+    {
+      "id": "A2A-SIN-Contract",
+      "role": "primary",
+      "summary": "Contract drafting + redlines."
+    },
+    {
+      "id": "A2A-SIN-ClaimWriter",
+      "role": "primary",
+      "summary": "Structured claim writing."
+    },
+    {
+      "id": "A2A-SIN-Damages",
+      "role": "supporting",
+      "summary": "Damages modelling."
+    },
+    {
+      "id": "A2A-SIN-Evidence",
+      "role": "supporting",
+      "summary": "Evidence organisation."
+    },
+    {
+      "id": "A2A-SIN-Patents",
+      "role": "supporting",
+      "summary": "Patent + prior-art search."
+    },
+    {
+      "id": "A2A-SIN-Tax",
+      "role": "supporting",
+      "summary": "Tax filing prep + bookkeeping."
+    }
   ],
   "pricing": {
     "model": "monthly-addon",
@@ -44,6 +72,6 @@
   "provenance": {
     "decided_in": "OpenSIN-overview#35",
     "decided_at": "2026-04-18",
-    "owner_team": "OpenSIN-AI/legal"
+    "owner_team": "OpenSIN-AI/core-team"
   }
 }

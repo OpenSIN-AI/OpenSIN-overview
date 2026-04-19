@@ -17,7 +17,11 @@
     ]
   },
   "agents": [
-    {"id": "A2A-SIN-MiroFish", "role": "primary", "summary": "ComfyUI pipeline authoring, running and tuning."}
+    {
+      "id": "A2A-SIN-MiroFish",
+      "role": "primary",
+      "summary": "ComfyUI pipeline authoring, running and tuning."
+    }
   ],
   "pricing": {
     "model": "monthly-addon",
@@ -39,6 +43,6 @@
   "provenance": {
     "decided_in": "OpenSIN-overview#35",
     "decided_at": "2026-04-18",
-    "owner_team": "OpenSIN-AI/media"
+    "owner_team": "OpenSIN-AI/core-team"
   }
 }

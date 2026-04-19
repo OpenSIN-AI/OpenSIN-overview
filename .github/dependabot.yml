@@ -34,7 +34,7 @@ updates:
           - "minor"
           - "patch"
     reviewers:
-      - "OpenSIN-AI/core"
+      - "OpenSIN-AI/core-team"
 
   # ---- npm (forward-looking — package.json is currently deps-free) ----
   - package-ecosystem: "npm"
@@ -59,7 +59,7 @@ updates:
           - "minor"
           - "patch"
     reviewers:
-      - "OpenSIN-AI/core"
+      - "OpenSIN-AI/core-team"
     # Only raise security advisories as PRs if we ever add deps; otherwise
     # the weekly sweep finds nothing, which is the expected steady state.
     ignore:
