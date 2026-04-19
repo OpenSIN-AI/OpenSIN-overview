@@ -1,0 +1,24 @@
+# Enforce LF everywhere — avoids cross-platform CRLF noise in diffs.
+* text=auto eol=lf
+
+# Explicit text handling
+*.md         text diff=markdown
+*.json       text
+*.js         text
+*.sh         text eol=lf
+*.yml        text
+*.yaml       text
+
+# Generated / auto-maintained files — mark as such so GitHub's "Languages" stats
+# don't credit them, and reviewers know not to hand-edit.
+registry/MASTER_INDEX.md        linguist-generated=true
+registry/SCAFFOLD_AUDIT.md      linguist-generated=true
+registry/DEPLOYMENT_STATUS.md   linguist-generated=true
+templates/oh-my-sin.json        linguist-generated=true
+
+# Mark docs as documentation for language stats
+docs/**                         linguist-documentation=true
+
+# Shell scripts must be executable on checkout
+scripts/*.sh                    text eol=lf
+governance/workflows-proposed/install.sh  text eol=lf

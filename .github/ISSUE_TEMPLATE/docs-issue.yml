@@ -1,0 +1,41 @@
+name: Docs issue (this repo)
+description: A document IN THIS REPO is wrong, outdated, or missing. (For docs.opensin.ai issues, file in OpenSIN-documentation.)
+title: "[DOCS] "
+labels: ["docs"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Not for [docs.opensin.ai](https://docs.opensin.ai).** That site is built from [`OpenSIN-AI/OpenSIN-documentation`](https://github.com/OpenSIN-AI/OpenSIN-documentation). File there.
+
+        Use this template for:
+        - Typos, factual errors, or stale claims in the root `.md` files (`README`, `START-HERE`, `LAUNCH-CHECKLIST`, `PRODUCT-VISION`, `STATE-OF-THE-UNION`, etc.)
+        - Missing or wrong content in `docs/` (except docs canon)
+        - Broken cross-links between files in this repo
+
+  - type: input
+    id: file
+    attributes:
+      label: Which file?
+      placeholder: "LAUNCH-CHECKLIST.md"
+    validations:
+      required: true
+
+  - type: input
+    id: where
+    attributes:
+      label: Section / line
+      placeholder: "§ Tag 3 → row CP-1"
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's wrong?
+      placeholder: "The DoD column says 'curl-Test …bekommt Antwort.' but the linked OpenSIN-backend#42 was closed without the /v1/dispatch endpoint being implemented."
+    validations:
+      required: true
+
+  - type: textarea
+    id: fix
+    attributes:
+      label: Suggested fix

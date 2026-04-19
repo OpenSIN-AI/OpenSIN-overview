@@ -1,3 +1,11 @@
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](./LICENSE)
+[![Launch: T-4](https://img.shields.io/badge/launch-T--4%20(2026--04--23)-red.svg)](./LAUNCH-CHECKLIST.md)
+[![Boundary: index-only](https://img.shields.io/badge/scope-org--map%20%2B%20governance-informational.svg)](./BOUNDARIES.md)
+[![Node: >=20](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](./.nvmrc)
+[![Zero runtime deps](https://img.shields.io/badge/runtime%20deps-0-success.svg)](./package.json)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
+[![Code of Conduct](https://img.shields.io/badge/code%20of%20conduct-Contributor%20Covenant-ff69b4.svg)](./CODE_OF_CONDUCT.md)
+
 > ## NEU HIER? → **[START-HERE.md](./START-HERE.md)**
 >
 > **In 60 Sekunden handlungsfähig** — für menschliche Entwickler UND AI-Agenten.

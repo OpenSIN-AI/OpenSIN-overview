@@ -1,0 +1,83 @@
+name: Bug report (this repo)
+description: A script, schema, registry file, or governance doc in OpenSIN-overview is broken.
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Before you file:** this repo is a governance index. If your bug is in the
+        runtime engine, a CLI, the WebApp, or an individual agent, route it to the
+        owning repo using the [SUPPORT.md routing table](../blob/main/SUPPORT.md).
+
+        Only file here if the problem is in:
+        - `scripts/**` (a script fails or produces wrong output)
+        - `schemas/**` (a schema rejects valid data or accepts invalid data)
+        - `registry/**` (wrong count, stale data, broken table)
+        - `templates/**` (invalid team manifest, wrong aggregator output)
+        - `docs/**` / root `.md` (broken cross-link, factually wrong claim)
+        - `platforms/**` / `governance/**` (wrong ownership, stale rule)
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which area?
+      options:
+        - scripts/ (automation broken)
+        - schemas/ (schema validation wrong)
+        - registry/ (generated registry wrong)
+        - templates/ (team manifest or aggregator wrong)
+        - docs/ or root .md (doc content wrong)
+        - platforms/ or governance/ (ownership/rule wrong)
+        - Other / not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong?
+      description: One paragraph. What you observed.
+      placeholder: "Running `node scripts/launch-status.js` exits 0 even though gate HF-1 shows RED."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+      placeholder: "Exit code should be 1 whenever any gate is RED, per the documented behaviour."
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. `git clone https://github.com/OpenSIN-AI/OpenSIN-overview`
+        2. `node scripts/launch-status.js`
+        3. Observe exit code
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Commit SHA / branch
+      description: Output of `git rev-parse HEAD`
+      placeholder: "abc1234 on main"
+    validations:
+      required: true
+
+  - type: input
+    id: node
+    attributes:
+      label: Node version
+      placeholder: "v20.11.1"
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs / screenshots
+      render: shell

@@ -1,0 +1,16 @@
+# Issue template chooser — tells contributors where to go BEFORE they file.
+# docs: https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository
+blank_issues_enabled: false
+contact_links:
+  - name: Installing or using opensin / opensin-code / chat.opensin.ai
+    url: https://github.com/OpenSIN-AI/OpenSIN-overview/blob/main/SUPPORT.md
+    about: This repo is a governance index. File runtime / product bugs in the owning repo — see SUPPORT.md for the routing table.
+  - name: Security vulnerability
+    url: https://github.com/OpenSIN-AI/OpenSIN-overview/security/advisories/new
+    about: Do NOT open a public issue. Use GitHub Private Vulnerability Reporting. See SECURITY.md.
+  - name: Code of Conduct violation
+    url: mailto:conduct@opensin.ai
+    about: Report privately to conduct@opensin.ai. See CODE_OF_CONDUCT.md.
+  - name: Real-time help (Discord)
+    url: https://opensin.ai
+    about: Invite link on opensin.ai once launched.
