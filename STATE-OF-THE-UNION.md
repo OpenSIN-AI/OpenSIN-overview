@@ -58,8 +58,7 @@ Status: 4 von 5 tragen echten Code. Team-SIN-Code-Core wurde in Wave 4 zum Metad
 |---|---|---:|---|
 | [`Infra-SIN-OpenCode-Stack`](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack) | Public | 3.8 MB | SSOT für OpenCode-Config, Agent-Aggregator (`oh-my-sin.json` nightly) |
 | [`Infra-SIN-Global-Brain`](https://github.com/OpenSIN-AI/Infra-SIN-Global-Brain) | Public | 788 kb | PCPM v4 (persistent cross-session memory) |
-| [`Infra-SIN-Dev-Setup`](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup) | Public | 186 kb | Dev Environment + User-Onboarding Setup |
-| [`Infra-SIN-OpenCode-Stack`](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack) | Public | siehe oben | kanonische SSOT |
+| [`Infra-SIN-Dev-Setup`](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup) | Public | 186 kb | Dev Environment + User-Onboarding Setup + CI runtime secrets |
 | [`Infra-SIN-Docker-Empire`](https://github.com/OpenSIN-AI/Infra-SIN-Docker-Empire) | Private | 166 kb | Docker-Images für alle SIN-Worker |
 | [`Infra-SIN-Doc-Templates`](https://github.com/OpenSIN-AI/Infra-SIN-Doc-Templates) | Public | 46 kb | README-/CONTRIBUTING-Templates |
 

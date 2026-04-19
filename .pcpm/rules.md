@@ -7,7 +7,7 @@
 
 - OpenSIN-AI nutzt **AUSSCHLIESSLICH A2A-SIN-GitHub-Action + n8n** für alle CI/CD, Deployment, Build, Test und Automation Tasks.
 - GitHub Actions Workflows (`.github/workflows/*.yml`) sind **PERMANENT VERBOTEN**.
-- Der n8n-Router auf der OCI VM (`92.5.60.87:5678`) ist unser zentrales Automation-Backend.
+- Der n8n-Router auf der OCI VM (public DNS `n8n.delqhi.com`; internal host/port redacted — see `Infra-SIN-Dev-Setup`) ist unser zentrales Automation-Backend.
 - A2A-SIN-GitHub-Action ist unser GitHub Event Listener und n8n Bridge.
 - Wer GitHub Actions erstellt oder vorschlägt: **Protokollverstoß**.
 

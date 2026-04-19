@@ -30,70 +30,16 @@
 
 ---
 
-## 🚨 CI/CD MANDAT — ABSOLUTES VERBOT FÜR NORMALE GITHUB ACTIONS
+## CI/CD — n8n OCI Runner (not GitHub-hosted)
 
-> **NIEMALS normale GitHub Actions Runner von GitHub nutzen! NIEMALS!**
+All CI runs on a self-hosted n8n + OCI VM pipeline. GitHub-hosted runners are **explicitly disallowed** org-wide (billing failures + zero-cost OCI alternative).
 
-Die OpenSIN-AI Organisation nutzt **ausschließlich** n8n + sin-github-action für CI/CD. GitHub Actions Billing blockiert unsere Pipelines. Alle Builds laufen auf dem kostenlosen OCI VM (Oracle Cloud Always-Free).
+- **Webhook DNS (public):** `https://n8n.delqhi.com/webhook/opensin-ci`
+- **GitHub Action:** [`OpenSIN-AI/sin-github-action`](https://github.com/OpenSIN-AI/sin-github-action) (composite, ~2s curl-only)
+- **Internal infra (IP, API keys, systemd unit names):** documented in `Infra-SIN-Dev-Setup` (private) — see ops-runbook. **Never commit internal IPs, hostnames, or API keys to this repo.**
+- **Full setup for a new repo:** [`docs/best-practices/ci-cd-n8n.md`](./docs/best-practices/ci-cd-n8n.md) (public-safe redacted version) or [docs.opensin.ai/best-practices/ci-cd-n8n](https://docs.opensin.ai/best-practices/ci-cd-n8n).
 
-### Architektur
-
-```
-GitHub Push → sin-github-action (~2s, curl only) → n8n Webhook → OCI CI Runner → Commit Status ✅
-```
-
-### Komponenten
-
-| Komponente | Details |
-|-----------|---------|
-| **GitHub Action** | [sin-github-action](https://github.com/OpenSIN-AI/sin-github-action) — Composite Action (nur curl, ~2s) |
-| **n8n Workflow** | ID `VhDVux7dSCoQdkOP` auf `http://92.5.60.87:5678/webhook/opensin-ci` |
-| **CI Runner** | `opensin-ci-runner.py` als systemd Service auf OCI VM (`ubuntu@92.5.60.87:3456`) |
-| **n8n API Key** | `n8n_api_69175bcabef4b10d619b43598cd557a92ee38aac5ae4b1ca` |
-
-### Setup für jedes neue Repo (3 Schritte)
-
-**1. Secret setzen:**
-```bash
-gh secret set N8N_CI_WEBHOOK_URL \
-  --repo OpenSIN-AI/<REPO> \
-  --body "http://92.5.60.87:5678/webhook/opensin-ci"
-```
-
-**2. `.github/workflows/ci.yml` erstellen:**
-```yaml
-name: CI → n8n OCI Runner
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-jobs:
-  dispatch:
-    runs-on: ubuntu-latest
-    timeout-minutes: 2
-    steps:
-      - uses: OpenSIN-AI/sin-github-action@main
-        with:
-          n8n_webhook_url: ${{ secrets.N8N_CI_WEBHOOK_URL }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          pipeline: all
-```
-
-**3. Fertig.** — Build läuft auf OCI, Status erscheint auf GitHub.
-
-### Vollständige Doku
-
-→ [docs.opensin.ai/best-practices/ci-cd-n8n](https://docs.opensin.ai/best-practices/ci-cd-n8n)
-
-### Bekannte Probleme & Fixes
-
-| Problem | Fix |
-|---------|-----|
-| `Webhook "POST opensin-ci" is not registered` | `docker restart n8n-n8n-1` auf OCI VM (n8n 2.12 lädt Webhooks nur beim Startup) |
-| `account payments have failed` | Normal bei GitHub-hosted Runner — timeout-minutes: 2 setzen oder self-hosted Runner nutzen |
-| CI Runner antwortet nicht | `sudo systemctl restart opensin-ci-runner` auf OCI VM |
-| n8n Container Conflict | `docker rm -f n8n-n8n-1 && cd /opt/n8n && docker compose up -d` |
+Scope note: this repo indexes the CI contract. The operational runbook, credentials, and infrastructure addresses live in `Infra-SIN-Dev-Setup`. See [BOUNDARIES.md § Rule 5](./BOUNDARIES.md).
 
 ---
 
@@ -162,7 +108,7 @@ Bei grossen Codebases (100k+ Zeilen, 1000+ Dateien) MUESSEN Agenten **5-10 paral
 |------|-------|
 | [OpenSIN](https://github.com/OpenSIN-AI/OpenSIN) | Free/Open-Source Core Engine — Python (QueryEngine, Hooks, Tools, MCP, Sandbox, Memory, A2A) |
 | [OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | Autonomes CLI + SDK (`@opensin/sdk`) — Agent Loop, Tool System, Model Routing, Memory, Safety, A2A Transport Layer + Rust Engine (71 Dateien, 37.7K Zeilen) |
-| [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | ⚠️ **Rationalization pending** — Rust coding CLI (70 Dateien, 34.601 Zeilen, 9 Crates). Overlaps with `OpenSIN-Code`. **Do not extend**; see [docs/FOLLOWUPS.md § R1](./docs/FOLLOWUPS.md#r1-opensin-ai-cli--opensin-code) |
+| [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | ⚠��� **Rationalization pending** — Rust coding CLI (70 Dateien, 34.601 Zeilen, 9 Crates). Overlaps with `OpenSIN-Code`. **Do not extend**; see [docs/FOLLOWUPS.md § R1](./docs/FOLLOWUPS.md#r1-opensin-ai-cli--opensin-code) |
 | [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | ⚠️ **Rationalization pending** — Plugin Ecosystem (182 Dateien, 87.247 Zeilen, 14 Plugins). Overlaps with `OpenSIN/opensin_agent_platform/`. **Do not extend**; see [docs/FOLLOWUPS.md § R2](./docs/FOLLOWUPS.md#r2-opensin-ai-platform--opensin) |
 | [OpenSIN-backend](https://github.com/OpenSIN-AI/OpenSIN-backend) | Closed Source Backend — A2A Fleet Control Plane, n8n-Routing, Agenten-Orchestrierung, API für OpenSIN-WebApp |
 | [OpenSIN-WebApp](https://github.com/OpenSIN-AI/OpenSIN-WebApp) | User WebApp (Next.js, Vercel ✅) — Login, Dashboard, Agenten-Steuerung (gekoppelt an OpenSIN-backend) |

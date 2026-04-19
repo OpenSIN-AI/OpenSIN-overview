@@ -2,17 +2,22 @@
 
 > **Wer das hier liest — Mensch oder Agent — ist in unter 60 Sekunden handlungsfähig.**
 
-You just landed in the OpenSIN-AI organization (200 repos, 17 teams, 109 A2A agents, 7 business repos).
+You just landed in the OpenSIN-AI organization: **205 repos, 17 teams, 149 agent workers, 7 business repos, 4 canonical websites**. The counts are live from `registry/MASTER_INDEX.md`; if they look different there, that file wins.
+
 Read this file first. Then [`docs/CANONICAL-REPOS.md`](./docs/CANONICAL-REPOS.md). Then you're working.
 
-> **Wir launchen am 2026-04-23 (T-4).** Wenn du wissen willst was in den 4 Tagen passiert, lies direkt **[LAUNCH-CHECKLIST.md](./LAUNCH-CHECKLIST.md)**. Dort stehen die 10 Go/No-Go-Kriterien, der Tag-für-Tag-Plan und die Rollback-Strategie.
+> **Heute ist 2026-04-19 (Sonntag). Wir launchen in 4 Tagen am 2026-04-23 (Donnerstag) = T-0.**
+> Der 4-Tage-Plan, die 10 Go/No-Go-Kriterien und die Rollback-Strategie stehen in **[LAUNCH-CHECKLIST.md](./LAUNCH-CHECKLIST.md)**.
 >
-> **Neu: Produktverständnis vor Code.** Bevor du irgendwas tust, lies:
+> **Produktverständnis vor Code.** Bevor du irgendwas tust, lies in dieser Reihenfolge:
 > 1. **[PRODUCT-VISION.md](./PRODUCT-VISION.md)** — das 3-Tier-Modell (OpenSIN Free / My.OpenSIN Pro / Marketplace), kompetitive Positionierung, das **eine Ziel** (5 Min).
 > 2. **[STATE-OF-THE-UNION.md](./STATE-OF-THE-UNION.md)** — ehrlicher Lagebericht, was existiert, was läuft, was tot ist (5 Min).
-> 3. **[LAUNCH-CHECKLIST.md](./LAUNCH-CHECKLIST.md)** — 4-Tage-Plan, Go/No-Go-Kriterien, Rollback (nur relevant während Launch-Woche).
+> 3. **[WORKFORCE.md](./WORKFORCE.md)** — wer (Mensch / Team / Worker) macht welche Arbeit (3 Min).
+> 4. **[LAUNCH-CHECKLIST.md](./LAUNCH-CHECKLIST.md)** — 4-Tage-Plan, Go/No-Go, Rollback (relevant während Launch-Woche).
 >
 > Ohne diese Dokumente weißt du nicht wofür du arbeitest. Mit ihnen weißt du es in 15 Minuten.
+
+> **Bevor du einen PR öffnest, egal was:** [BOUNDARIES.md](./BOUNDARIES.md), [GOVERNANCE.md](./GOVERNANCE.md), [CONTRIBUTING.md](./CONTRIBUTING.md). Alles drei zusammen sind 5 Minuten Lesezeit und ersparen dir eine Rückabwicklung.
 
 ---
 
@@ -22,32 +27,42 @@ Lies in dieser Reihenfolge:
 
 1. **[PRODUCT-VISION.md](./PRODUCT-VISION.md)** — das 3-Tier-Produktmodell. Was wir bauen und warum.
 2. **[STATE-OF-THE-UNION.md](./STATE-OF-THE-UNION.md)** — was heute wirklich existiert (nicht was die Docs behaupten).
-3. **[docs/CANONICAL-REPOS.md](./docs/CANONICAL-REPOS.md)** — authoritative map of which repo owns what. **Niemals einen PR öffnen, ohne vorher diese Datei gelesen zu haben.**
-4. **[README.md](./README.md)** — full ecosystem overview (teams, workers, standards, CI).
-5. **[AGENTS.md](./AGENTS.md)** — development guidelines.
-6. **[governance/BOUNDARY-ROLE-RULES.md](./governance/BOUNDARY-ROLE-RULES.md)** — what each repo must *not* be.
+3. **[WORKFORCE.md](./WORKFORCE.md)** — die 3 Layer: Maintainer → 17 Teams → 149 Worker + 109 A2A-Integrations.
+4. **[BOUNDARIES.md](./BOUNDARIES.md)** + **[GOVERNANCE.md](./GOVERNANCE.md)** — was darf in dieses Repo, was nicht; wer entscheidet was.
+5. **[CONTRIBUTING.md](./CONTRIBUTING.md)** — Setup, Preflight (`npm run prelaunch:offline`), Commit-Konvention, PR-Flow.
+6. **[docs/CANONICAL-REPOS.md](./docs/CANONICAL-REPOS.md)** — authoritative map of which repo owns what. **Niemals einen PR öffnen, ohne vorher diese Datei gelesen zu haben.**
+7. **[AGENTS.md](./AGENTS.md)** — Agent-Contract für dieses Repo (gilt für AI-Agenten, ist aber nützlich für Menschen, die mit ihnen arbeiten).
+8. **[SECURITY.md](./SECURITY.md)** + **[CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)** + **[SUPPORT.md](./SUPPORT.md)** — bei Vulnerabilities, Konflikten, Fragen.
 
-Setup in drei Befehlen:
+Setup in vier Befehlen:
 ```bash
 gh auth login
-gh repo clone OpenSIN-AI/Infra-SIN-Dev-Setup   # dev + user-onboarding setup
-gh repo clone OpenSIN-AI/OpenSIN               # Python-Kernel
+git clone https://github.com/OpenSIN-AI/OpenSIN-overview && cd OpenSIN-overview
+nvm use && npm install
+npm run prelaunch:offline   # verify local copy is healthy before you change anything
 ```
 
 ---
 
 ## 2. Du bist ein AI-Agent?
 
-Lies in dieser Reihenfolge:
+Lies in dieser Reihenfolge — dann handle:
 
-1. **`PRODUCT-VISION.md`** — dein Kontext. Du arbeitest für eins der drei Tiers, wisse welches.
-2. **`STATE-OF-THE-UNION.md`** — falls du eine Aufgabe in einem bestimmten Repo kriegst, prüfe erst ob das Repo laut diesem Doc `alive`, `scaffold` oder `dead` ist. Nie an einem `dead`-Repo arbeiten.
-3. **`docs/CANONICAL-REPOS.md`** — Pflichtlektüre. Niemals in archivierten Repos arbeiten.
-4. **`registry/MASTER_INDEX.md`** — the machine-readable index of all repos.
-5. **`platforms/registry.json`** — structured repo list.
-6. **`AGENTS.md`** + **`governance/BOUNDARY-ROLE-RULES.md`** — rules you must follow.
+1. **[`AGENTS.md`](./AGENTS.md)** — **Agent-Contract für dieses Repo.** 7 harte Regeln + Scope-Guard. **Pflicht vor dem ersten Edit.**
+2. **[`PRODUCT-VISION.md`](./PRODUCT-VISION.md)** — dein Kontext. Du arbeitest für eins der drei Tiers — wisse welches.
+3. **[`STATE-OF-THE-UNION.md`](./STATE-OF-THE-UNION.md)** — falls du eine Aufgabe in einem bestimmten Repo kriegst, prüfe erst ob das Repo laut diesem Doc `alive`, `scaffold` oder `dead` ist. **Nie an einem `dead`- oder archivierten Repo arbeiten.**
+4. **[`BOUNDARIES.md`](./BOUNDARIES.md)** + **[`governance/BOUNDARY-ROLE-RULES.md`](./governance/BOUNDARY-ROLE-RULES.md)** — 7 Hard Rules. Rule 5 (keine Secrets) und Rule 6 (Determinismus) sind non-negotiable.
+5. **[`docs/CANONICAL-REPOS.md`](./docs/CANONICAL-REPOS.md)** — Pflichtlektüre. Niemals in archivierten Repos arbeiten.
+6. **[`registry/MASTER_INDEX.md`](./registry/MASTER_INDEX.md)** — the machine-readable index of all repos.
+7. **[`platforms/registry.json`](./platforms/registry.json)** — structured repo list.
+8. **[`WORKFORCE.md`](./WORKFORCE.md)** — the 3-layer model (maintainers → teams → workers). Know which layer you belong to before acting.
 
-Vor jedem Task: `discover-agents.js` ausführen (Routing-Regeln siehe `opencode.json` bei [`OpenSIN-AI/Infra-SIN-OpenCode-Stack`](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack) — in-org SSOT für OpenCode config; see CANONICAL-REPOS.md § 8).
+Vor jedem Task: `discover-agents.js` ausführen (Routing-Regeln siehe `opencode.json` bei [`OpenSIN-AI/Infra-SIN-OpenCode-Stack`](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack) — in-org SSOT für OpenCode config; see [`docs/CANONICAL-REPOS.md`](./docs/CANONICAL-REPOS.md) § 8).
+
+**Hard stop before editing any file in this repo:**
+- If the file is in the canon-lock list (`BOUNDARIES.md`, `GOVERNANCE.md`, `PRODUCT-VISION.md`, `LAUNCH-CHECKLIST.md`, `STATE-OF-THE-UNION.md`, `schemas/*`): mark the PR `canon-lock` and follow GOVERNANCE §3.2.
+- If you are about to write anything that looks like a secret, API key, internal IP, or SSH credential: **stop**. Move it to `Infra-SIN-Dev-Setup` (private). Reference it here only by env-var name.
+- If the change is > 30 lines of content that duplicates another repo: replace with a link. This repo indexes, it does not absorb.
 
 ---
 

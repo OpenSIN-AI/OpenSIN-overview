@@ -1,7 +1,7 @@
 # Product Vision — OpenSIN-AI
 
-> **Stand:** 2026-04-18.
-> **Zweck dieses Dokuments:** Wohin OpenSIN-AI geht und wie die 200 Repos zusammen ein einziges Produkt ergeben. Für neue Menschen und Agenten, die in 5 Minuten das große Bild brauchen. Für den aktuellen Ist-Zustand siehe [STATE-OF-THE-UNION.md](./STATE-OF-THE-UNION.md).
+> **Stand:** 2026-04-19 (T-4 vor Launch 2026-04-23). Inhaltlich unverändert gegenüber der Wave-4-Entscheidungs-Version (2026-04-18) — nur Kopfzeile refreshed.
+> **Zweck dieses Dokuments:** Wohin OpenSIN-AI geht und wie die 200 Repos zusammen ein einziges Produkt ergeben. Für neue Menschen und Agenten, die in 5 Minuten das große Bild brauchen. Für den aktuellen Ist-Zustand siehe [STATE-OF-THE-UNION.md](./STATE-OF-THE-UNION.md). Für den Launch-Plan siehe [LAUNCH-CHECKLIST.md](./LAUNCH-CHECKLIST.md).
 
 ## Der Pitch in einem Satz
 
