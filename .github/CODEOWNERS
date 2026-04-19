@@ -18,14 +18,34 @@
 #       via Org Settings → Teams → New team → "core" (or rename below).
 *                                 @OpenSIN-AI/core
 
-# ------------------------------------------------------------------ charter + boundaries
-# Changing product direction or repo scope needs founder review.
+# ------------------------------------------------------------------ charter + boundaries (canon-locked)
+# These six files are the canon-lock set. Per BOUNDARIES Rule 7 a change
+# requires a §3.2 governance PR with at least one approver from a different
+# team than the author. During launch week (T-4 → T+7) CTO sign-off is
+# additionally required. CHANGELOG.md must record every entry.
 /PRODUCT-VISION.md                @OpenSIN-AI/core
 /STATE-OF-THE-UNION.md            @OpenSIN-AI/core
 /BOUNDARIES.md                    @OpenSIN-AI/core
+/GOVERNANCE.md                    @OpenSIN-AI/core
+/LAUNCH-CHECKLIST.md              @OpenSIN-AI/core
+/WORKFORCE.md                     @OpenSIN-AI/core
+# Adjacent, near-canon docs (still core-only review)
 /AGENTS.md                        @OpenSIN-AI/core
 /START-HERE.md                    @OpenSIN-AI/core
-/LAUNCH-CHECKLIST.md              @OpenSIN-AI/core
+/CHANGELOG.md                     @OpenSIN-AI/core
+
+# ------------------------------------------------------------------ community-health surfaces
+# These files are the org's public face on GitHub (community-standards score).
+# Changes must be reviewed by core to keep the contract stable.
+/SECURITY.md                      @OpenSIN-AI/core
+/CODE_OF_CONDUCT.md               @OpenSIN-AI/core
+/SUPPORT.md                       @OpenSIN-AI/core
+/CONTRIBUTING.md                  @OpenSIN-AI/core
+/LICENSE                          @OpenSIN-AI/core
+/.github/dependabot.yml           @OpenSIN-AI/core
+/.github/FUNDING.yml              @OpenSIN-AI/core
+/.github/ISSUE_TEMPLATE/**        @OpenSIN-AI/core
+/.github/pull_request_template.md @OpenSIN-AI/core
 
 # ------------------------------------------------------------------ registry (external contract)
 # These files feed external sites — changing them without review can
@@ -38,11 +58,16 @@
 
 # ------------------------------------------------------------------ scripts (automation)
 # Scripts regenerate the registry — breakage = dead dashboards.
+# Two scripts are launch gates and need extra care:
+#   - scripts/scan-secrets.sh  : breaks the secret-leak prevention if disabled
+#   - scripts/check-workforce.js : breaks the workforce-drift gate if disabled
 /scripts/**                       @OpenSIN-AI/core
 
 # ------------------------------------------------------------------ CI + automation
 /.github/workflows/**             @OpenSIN-AI/core
+/governance/workflows-proposed/** @OpenSIN-AI/core
 /.github/CODEOWNERS               @OpenSIN-AI/core
+/.husky/**                        @OpenSIN-AI/core
 
 # ------------------------------------------------------------------ team manifests (marketplace catalog)
 # One Team-SIN-* manifest per marketplace bundle. Per Wave-4 Option A,

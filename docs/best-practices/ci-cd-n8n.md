@@ -32,8 +32,8 @@ GitHub Push/PR
 sin-github-action (composite, nur curl — ~2s, fast kostenlos)
      │ POST /webhook/opensin-ci
      ▼
-n8n @ http://92.5.60.87:5678  (n8n.delqhi.com)
-     │ HTTP Request Node → 172.18.0.1:3456/run
+n8n @ https://n8n.delqhi.com  (public DNS; internal IP redacted)
+     │ HTTP Request Node → CI runner on OCI VM loopback
      ▼
 opensin-ci-runner.py (systemd service auf OCI VM)
      │ git clone → bun install → bun run build → bun test
@@ -46,10 +46,17 @@ GitHub Commit Status API ✅ / ❌
 | Komponente | Ort | Zweck |
 |-----------|-----|-------|
 | `sin-github-action` | [github.com/OpenSIN-AI/sin-github-action](https://github.com/OpenSIN-AI/sin-github-action) | Composite GitHub Action (nur curl, ~2s) |
-| n8n Workflow `VhDVux7dSCoQdkOP` | OCI VM 92.5.60.87:5678 | Webhook → CI Runner Dispatcher |
+| n8n Workflow `VhDVux7dSCoQdkOP` | OCI VM (public DNS: `n8n.delqhi.com`) | Webhook → CI Runner Dispatcher |
 | `opensin-ci-runner.py` | `/home/ubuntu/opensin-ci-runner.py` (OCI) | Python HTTP Server, führt Build/Test aus |
 | systemd service | `opensin-ci-runner.service` (OCI) | Hält den CI Runner am Leben |
 | OCI Self-Hosted Runners | 2x `oci-a1flex-arm64` | GitHub runner labels for PR workflow dispatch |
+
+> **Public-repo note:** The internal OCI IP, SSH port, n8n API key, and runner shared secret are **intentionally redacted** below. Operators with legitimate access find them in `Infra-SIN-Dev-Setup` (private) under `ops/ci-runtime.md`.
+> If you ever need to run the admin `curl` examples in this doc, export the placeholders first:
+> ```bash
+> export N8N_URL="https://n8n.delqhi.com"           # public
+> export N8N_KEY="<copy from Infra-SIN-Dev-Setup>"  # never commit
+> ```
 
 ---
 
@@ -58,9 +65,10 @@ GitHub Commit Status API ✅ / ❌
 ### 1. Secret setzen
 
 ```bash
+# Public DNS (TLS-terminated at the edge, private IP never crosses the internet)
 gh secret set N8N_CI_WEBHOOK_URL \
   --repo OpenSIN-AI/<DEIN-REPO> \
-  --body "http://92.5.60.87:5678/webhook/opensin-ci"
+  --body "https://n8n.delqhi.com/webhook/opensin-ci"
 ```
 
 ### 2. `.github/workflows/ci.yml` anlegen
@@ -98,8 +106,8 @@ jobs:
 Der Push triggert automatisch:
 1. GitHub Action startet (ubuntu-latest, ~2s)
 2. `sin-github-action` setzt Commit-Status auf `pending`
-3. POST an n8n Webhook `http://92.5.60.87:5678/webhook/opensin-ci`
-4. n8n leitet weiter an CI Runner (Port 3456 auf OCI Host)
+3. POST an n8n Webhook `https://n8n.delqhi.com/webhook/opensin-ci`
+4. n8n leitet weiter an den CI Runner auf der OCI VM (loopback, port in `Infra-SIN-Dev-Setup`)
 5. CI Runner klont Repo, führt `bun run build` + `bun test` aus
 6. GitHub Commit-Status wird auf `success` ✅ oder `failure` ❌ gesetzt
 
@@ -123,17 +131,20 @@ Der `pipeline` Input in der Action steuert, was gebaut wird:
 ### Workflow: `OpenSIN CI Webhook`
 - **ID:** `VhDVux7dSCoQdkOP`
 - **Webhook Path:** `opensin-ci`
-- **Webhook URL:** `http://92.5.60.87:5678/webhook/opensin-ci`
-- **Öffentliche URL:** `https://n8n.delqhi.com/webhook/opensin-ci`
+- **Public URL:** `https://n8n.delqhi.com/webhook/opensin-ci`
+- **Internal host / port:** redacted — see `Infra-SIN-Dev-Setup/ops/ci-runtime.md`
 
 ### n8n API Key (für Verwaltung)
 
+> **Never commit the key.** It lives in the org's password manager and in the CI runner's systemd `EnvironmentFile`. If you suspect a leak: rotate immediately in the n8n UI, update `Infra-SIN-Dev-Setup/ops/ci-runtime.md`, and alert `#launch-alerts`.
+
 ```bash
-N8N_KEY="n8n_api_69175bcabef4b10d619b43598cd557a92ee38aac5ae4b1ca"
-N8N_URL="http://92.5.60.87:5678"
+export N8N_URL="https://n8n.delqhi.com"
+export N8N_KEY="<paste from password manager, never commit>"
 
 # Workflow Status prüfen
-curl -H "X-N8N-API-KEY: $N8N_KEY" "$N8N_URL/api/v1/workflows/VhDVux7dSCoQdkOP" | python3 -c "import json,sys; d=json.load(sys.stdin); print('active:', d.get('active'))"
+curl -H "X-N8N-API-KEY: $N8N_KEY" "$N8N_URL/api/v1/workflows/VhDVux7dSCoQdkOP" \
+  | python3 -c "import json,sys; d=json.load(sys.stdin); print('active:', d.get('active'))"
 
 # Workflow aktivieren (nach Neustart nötig)
 curl -X POST -H "X-N8N-API-KEY: $N8N_KEY" "$N8N_URL/api/v1/workflows/VhDVux7dSCoQdkOP/activate"
@@ -144,7 +155,8 @@ curl -X POST -H "X-N8N-API-KEY: $N8N_KEY" "$N8N_URL/api/v1/workflows/VhDVux7dSCo
 In n8n 2.12 (SQLite) werden Webhooks **nur beim Startup** aus der DB geladen. Wenn der Workflow nach dem Start über die API aktiviert wird, muss der Container neugestartet werden:
 
 ```bash
-ssh ubuntu@92.5.60.87 "docker restart n8n-n8n-1 && sleep 15"
+# SSH target and user live in Infra-SIN-Dev-Setup; example form only:
+ssh <user>@<oci-vm-host> "docker restart n8n-n8n-1 && sleep 15"
 ```
 
 Nach dem Neustart prüfen:
@@ -159,37 +171,37 @@ curl -H "X-N8N-API-KEY: $N8N_KEY" "$N8N_URL/api/v1/workflows/VhDVux7dSCoQdkOP"
 
 ## CI Runner auf OCI VM
 
+> **Runtime secrets note:** SSH user, host, runner port, and runner shared secret are redacted. Operators export them from `Infra-SIN-Dev-Setup/ops/ci-runtime.env` before running the examples below.
+
 ### Status checken
 
 ```bash
-ssh ubuntu@92.5.60.87 'systemctl status opensin-ci-runner.service'
+ssh "$OCI_USER@$OCI_HOST" 'systemctl status opensin-ci-runner.service'
 ```
 
 ### Logs ansehen (folgen)
 
 ```bash
-ssh ubuntu@92.5.60.87 'journalctl -u opensin-ci-runner.service -f'
+ssh "$OCI_USER@$OCI_HOST" 'journalctl -u opensin-ci-runner.service -f'
 ```
 
 ### Manueller Testlauf
 
 ```bash
-curl -X POST http://172.18.0.1:3456/run \
+# CI_RUNNER_URL and CI_RUNNER_SECRET live in Infra-SIN-Dev-Setup; source the env file first
+curl -X POST "$CI_RUNNER_URL/run" \
   -H "Content-Type: application/json" \
-  -d '{
-    "secret": "opensin-ci-2026",
-    "repo": "OpenSIN-AI/OpenSIN-Code",
-    "sha": "$(git rev-parse HEAD)",
-    "ref": "refs/heads/main",
-    "pipeline": "all",
-    "github_token": "'"$(gh auth token)"'"
-  }'
+  -d "$(jq -n --arg secret "$CI_RUNNER_SECRET" \
+        --arg repo 'OpenSIN-AI/OpenSIN-Code' \
+        --arg sha "$(git rev-parse HEAD)" \
+        --arg token "$(gh auth token)" \
+        '{secret:$secret, repo:$repo, sha:$sha, ref:"refs/heads/main", pipeline:"all", github_token:$token}')"
 ```
 
 ### Neustart
 
 ```bash
-ssh ubuntu@92.5.60.87 'sudo systemctl restart opensin-ci-runner.service'
+ssh "$OCI_USER@$OCI_HOST" 'sudo systemctl restart opensin-ci-runner.service'
 ```
 
 ---

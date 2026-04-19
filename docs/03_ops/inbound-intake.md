@@ -12,14 +12,14 @@ The OpenSIN-overview repository uses an inbound-intake lane to normalize operati
 
 ## Prerequisites
 
-- n8n running on OCI VM (`http://92.5.60.87:5678`)
+- n8n running on OCI VM — public DNS `https://n8n.delqhi.com` (internal host/port in `Infra-SIN-Dev-Setup`, never commit)
 - GitHub Personal Access Token with repo scope
 - `inbound-intake-opensin-overview` workflow imported but inactive until explicitly enabled
 
 ## Workflow: `inbound-intake-opensin-overview`
 
 ### Trigger
-Webhook POST to `http://92.5.60.87:5678/webhook/inbound-work-opensin-overview`
+Webhook POST to `https://n8n.delqhi.com/webhook/inbound-work-opensin-overview`
 
 ### Body Schema
 ```json

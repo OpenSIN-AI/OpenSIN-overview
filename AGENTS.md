@@ -46,12 +46,21 @@ No `bun install`, no `bun run start`, no Docker. Earlier versions of this file w
 
 ## 3. Hard rules for agents
 
-1. **Never** add a runtime dependency to `package.json` without a governance PR. Zero-deps is a deliberate property (supply-chain risk at the org-index layer is unacceptable).
-2. **Never** duplicate implementation content from another repo. If you catch yourself pasting code or a config fragment, STOP and link to the source repo instead.
-3. **Never** edit `BOUNDARIES.md`, `GOVERNANCE.md`, `PRODUCT-VISION.md`, `LICENSE`, or `.github/CODEOWNERS` without two CODEOWNERS approvers.
-4. **Never** commit secrets. Scripts MUST read tokens from env vars (`GITHUB_TOKEN`, `HF_TOKEN`, `STRIPE_*`, `N8N_*`). There is a pre-commit check in [SECURITY.md](./SECURITY.md) — use it.
-5. **Always** run `npm run validate` before proposing a PR that touches `*.md` or `templates/**`. This catches broken links and malformed team manifests.
-6. **Always** run `bash scripts/prelaunch-sweep.sh` before declaring a launch-week PR green.
+These mirror the 7 hard rules in [BOUNDARIES.md](./BOUNDARIES.md#hard-rules). If the two files ever disagree, BOUNDARIES.md wins and this file must be updated in the same PR.
+
+1. **Index, do not absorb.** Never duplicate implementation content from another repo. A summary of more than ~30 lines is a red flag — link to the owning repo instead. (BOUNDARIES Rule 1)
+2. **Governance map, not implementation owner.** State who owns a concern; do not become the repo that implements it. (BOUNDARIES Rule 2)
+3. **SSOT scope stays narrow.** Any "single source of truth" claim here is limited to organizational mapping, governance, community-health surfaces, and the team-manifest schema. (BOUNDARIES Rule 3)
+4. **Link to canon.** When runtime, docs, config, product, or control-plane details are needed, link outward — do not duplicate. (BOUNDARIES Rule 4)
+5. **No live secrets, no internal addresses.** Never commit API keys, tokens, SSH usernames, private hostnames, or internal IP addresses. Scripts read tokens from env vars (`GITHUB_TOKEN`, `HF_TOKEN`, `STRIPE_*`, `N8N_*`). Operational secrets live in `Infra-SIN-Dev-Setup` (private). Violation = P0 incident → rotate via [SECURITY.md](./SECURITY.md). (BOUNDARIES Rule 5)
+6. **Preserve determinism.** Any generated artifact (`registry/MASTER_INDEX.md`, `registry/SCAFFOLD_AUDIT.md`, `templates/oh-my-sin.json`) must rebuild byte-identically from its inputs. Hand-editing generated files is forbidden; change the generator or the inputs instead. (BOUNDARIES Rule 6)
+7. **The Canon-Lock.** `BOUNDARIES.md`, `GOVERNANCE.md`, `PRODUCT-VISION.md`, `LAUNCH-CHECKLIST.md`, `STATE-OF-THE-UNION.md`, and `schemas/*` are canon-locked. Changing them requires a GOVERNANCE §3.2 PR with at least one maintainer approval from **a different team than the author**. Launch-week (T-4 → T+7) additionally requires CTO sign-off. (BOUNDARIES Rule 7)
+
+### Operational addenda (non-negotiable)
+
+- Never add a runtime dependency to `package.json` without a governance PR. Zero-deps is a deliberate supply-chain property.
+- Always run `npm run validate` before proposing a PR that touches `*.md` or `templates/**`.
+- Always run `bash scripts/prelaunch-sweep.sh` (or `npm run prelaunch:offline`) before declaring a launch-week PR green.
 
 ---
 

@@ -2,12 +2,14 @@
 # prelaunch-sweep.sh — run ALL go/no-go checks in one shot.
 #
 # This is the "am I allowed to launch today?" script. It runs:
-#   1. Governance invariants      (link-check, team-manifest schema)
-#   2. Registry freshness         (regenerate, ensure no diff)
-#   3. Aggregator determinism     (oh-my-sin.json rebuilds byte-identical)
-#   4. HF Spaces probe            (G7 / HF-1)
-#   5. Web surface probe          (G1–G4)
-#   6. Live launch-status script  (all 10 gates)
+#   1. Secret scan                (no live API keys, no internal IPs)
+#   2. Governance invariants      (link-check, team-manifest schema)
+#   3. Workforce drift            (WORKFORCE.md vs templates/teams/*.json)
+#   4. Registry freshness         (regenerate, ensure no diff)
+#   5. Aggregator determinism     (oh-my-sin.json rebuilds byte-identical)
+#   6. HF Spaces probe            (G7 / HF-1)
+#   7. Web surface probe          (G1–G4)
+#   8. Live launch-status script  (all 10 gates)
 #
 # Use before every launch-week morning standup. Fail-fast unless --continue.
 #
@@ -67,12 +69,20 @@ step() {
   fi
 }
 
+check_secret_scan() {
+  bash scripts/scan-secrets.sh
+}
+
 check_link_validator() {
   node scripts/validate-links.js
 }
 
 check_manifest_validator() {
   node scripts/validate-team-manifests.js
+}
+
+check_workforce_drift() {
+  node scripts/check-workforce.js --quiet
 }
 
 check_registry_fresh() {
@@ -149,10 +159,12 @@ print_summary() {
   fi
 }
 
+step "security: scan-secrets (regex catalogue)"   check_secret_scan
 step "governance: markdown internal links"        check_link_validator
 step "governance: team manifests vs schema"       check_manifest_validator
+step "governance: workforce drift"                check_workforce_drift
 step "registry: MASTER_INDEX + SCAFFOLD_AUDIT"    check_registry_fresh
-step "aggregator: oh-my-sin.json deterministic"    check_aggregator_deterministic
+step "aggregator: oh-my-sin.json deterministic"   check_aggregator_deterministic
 step "G7 / HF-1: HuggingFace Spaces"              check_hf_spaces
 step "G1-G4: public web surfaces"                 check_web_surfaces
 step "live: scripts/launch-status.js"             check_launch_status

@@ -166,6 +166,93 @@ When all tickets here are `DONE`, delete this file.
 
 ---
 
+## Wave 5 / reality-check tickets (2026-04-19)
+
+> **Context:** surfaced during the 2026-04-19 reality-check audit — see [`docs/REALITY-CHECK-2026-04-19.md`](./REALITY-CHECK-2026-04-19.md). MAN-1 is the only one launch-blocking; the rest are cleanup-shaped but three of them (MAN-4, MAN-6, MAN-7) need resolution before 2026-04-22 code-freeze if launch proceeds on schedule.
+
+### MAN-1: Phantom agents hidden from the marketplace
+
+- **Status:** `MITIGATED — 2026-04-19` (code), `OPEN` (content).
+- **What:** 70 unique agent IDs are referenced in `templates/teams/*.json` but have no backing `A2A-SIN-*` repo in the org. Without mitigation, the marketplace UI would render 70 buy-buttons that 404 on click. With mitigation, only 17 live agents are sold on 2026-04-23; the other 10 all-phantom teams render as `coming-soon`.
+- **Mitigation shipped in `scripts/build-oh-my-sin.js`:**
+  - Cross-references each agent ID against `gh repo list OpenSIN-AI`
+  - Annotates every agent entry with `repo_exists: true | false | null`
+  - Sets `live_agent_count` / `phantom_agent_count` per team
+  - Coerces any all-phantom team to `status: "coming-soon"` so the UI filters it out
+  - Logs a summary line at build time: `agents: total=89 live=17 phantom=72`
+- **Content still open:** the 10 coerced teams (Apple, Code-Backend, Code-Core, Code-CyberSec, Code-Frontend, Community, Forum, Infrastructure, Legal, Media-ComfyUI, Research, Social) need honest marketing copy that communicates "coming-soon" to browsers. Either delete the teams from launch OR add a "Notify me" capture form on each team page.
+- **Owner:** `website-my.opensin.ai` maintainers (once that repo exists — see Hypothesis A/B/C in REALITY-CHECK § 5).
+
+### MAN-2: Orphan A2A repos — live but unregistered
+
+- **Status:** `OPEN`.
+- **What:** 7 live `A2A-SIN-*` repos are in the org but not referenced in any `templates/teams/*.json` manifest:
+
+  ```
+  A2A-SIN-Nintendo        A2A-SIN-WebChat          A2A-SIN-Xbox
+  A2A-SIN-PlayStation     A2A-SIN-WhatsApp         A2A-SIN-Zoom
+  A2A-SIN-Worker-heypiggy
+  ```
+
+- **Decision needed:**
+  1. Assign WhatsApp, WebChat, Zoom to `Team-SIN-Messaging` manifest (strong candidates — bridge-shaped)
+  2. Decide whether Nintendo/PlayStation/Xbox belong in a new `Team-SIN-Gaming` manifest or stay dark
+  3. Worker-heypiggy appears in STATE-OF-THE-UNION as a "flagship passive-income worker" but has no team slot; assign or document the exclusion
+- **Owner:** `OpenSIN-overview` maintainers (this repo holds the manifests).
+
+### MAN-3: Empty `Team-SIN-Media-Music.json` manifest
+
+- **Status:** `OPEN`.
+- **What:** `templates/teams/Team-SIN-Media-Music.json` exists but `agents: []`. Makes the team a Ghost Town in the aggregator — still listable but with 0 workers. The `build-oh-my-sin.js` coerce-to-coming-soon rule handles rendering, but the manifest itself is meaningless.
+- **Decision needed:** fill with at least 1 phantom ID and a roadmap, OR delete the manifest file entirely.
+- **Owner:** `OpenSIN-overview` maintainers.
+
+### MAN-4: CODEOWNERS team refs may be inert
+
+- **Status:** `OPEN` — **pre-launch blocker for branch-protection correctness**.
+- **What:** `.github/CODEOWNERS` references `@OpenSIN-AI/core`, `@OpenSIN-AI/Team-SIN-Code-Core`, etc. The v0 audit token has no `admin:org` scope so it can't list GitHub Teams. If those teams do not actually exist as GitHub Teams, CODEOWNERS rules are silently ignored and branch-protection falls back to the default reviewer rule — which is probably repo-admin only, making ownership meaningless.
+- **Verification command (needs a human maintainer token):**
+
+  ```bash
+  gh api orgs/OpenSIN-AI/teams --jq '.[].slug'
+  ```
+
+- **Fix:** either create the GitHub Teams that CODEOWNERS references, OR rewrite CODEOWNERS to use individual `@DaSINci` / `@Delqhi` handles and a single `@OpenSIN-AI/owners` meta-team.
+- **Owner:** CTO — needs `admin:org` to fix.
+- **Deadline:** 2026-04-22 18:00 UTC (code-freeze). After that, ownership drift is invisible until a real incident.
+
+### MAN-5: `Template-SIN-Agent` scaffolding repo is missing
+
+- **Status:** `OPEN`.
+- **What:** `WORKFORCE § 5` and [`START-HERE § 2.4`](../START-HERE.md) tell new contributors to "scaffold from `Template-SIN-Agent`". That repo does not exist in the org (verified 2026-04-19 with `gh repo view OpenSIN-AI/Template-SIN-Agent` → `MISSING`).
+- **Fix options:**
+  1. Create the template repo with the A2A protocol handler, HF Space config, health check, structured logging, and release workflow that existing live A2A repos (e.g. `A2A-SIN-Matrix`, `A2A-SIN-Signal`) share
+  2. Rewrite the doc to point at an existing A2A repo as the "fork-me-to-scaffold" reference until the template is built
+- **Owner:** `OpenSIN-overview` maintainers.
+
+### MAN-6: Per-surface DRI pinning for 2-maintainer pager rotation
+
+- **Status:** `OPEN` — **pre-launch blocker for incident response**.
+- **What:** The org has exactly 2 active members (`DaSINci`, `Delqhi`). Every canonical surface (OSS / Pro / Marketplace / Meta) needs a primary + secondary DRI pinned so the T-0 pager rotation has a real target. Without this, the `13:00 – EOD Incident-Rotation` row in [`LAUNCH-CHECKLIST.md § 2 Tag 5`](../LAUNCH-CHECKLIST.md) has no one to escalate to.
+- **Fix:** CTO writes a single PR with a DRI table in `WORKFORCE § 4` and `.github/CODEOWNERS`. Remove the placeholder "MAN-6 pending" line from `WORKFORCE.md` in the same PR.
+- **Owner:** CTO.
+- **Deadline:** 2026-04-22 18:00 UTC.
+
+### MAN-7: STATE-OF-THE-UNION drift-check
+
+- **Status:** `OPEN`.
+- **What:** `scripts/check-workforce.js` catches drift between `WORKFORCE.md` and the team manifests. Nothing catches drift between `STATE-OF-THE-UNION.md` (or `START-HERE.md`, or `registry/MASTER_INDEX.md`) and the live GitHub org. That class of drift is what surfaced as the reality-check finding.
+- **Fix:** add `scripts/check-state-of-the-union.js` that:
+  1. Reads `STATE-OF-THE-UNION § 1` (the numbers table)
+  2. Runs `gh repo list OpenSIN-AI --json name,isArchived`
+  3. Computes the same aggregates (total, live, archived, per-prefix)
+  4. Fails if any table number drifts by more than ±2
+- Wire it into `scripts/prelaunch-sweep.sh` as a new step.
+- **Owner:** `OpenSIN-overview` maintainers.
+- **Bonus:** consider generating `STATE-OF-THE-UNION § 1` from data instead of maintaining it manually — removes the class entirely.
+
+---
+
 ## How to close a ticket
 
 1. Do the work.

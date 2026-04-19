@@ -1,6 +1,8 @@
 # Launch Checklist — 4 Days to Public
 
-> **Stand:** 2026-04-19. **Target Launch:** 2026-04-23 (T-4).
+> **Heute:** 2026-04-19 (Sonntag) = **T-4**
+> **Target Launch:** 2026-04-23 (Donnerstag) = **T-0**
+> **Code-Freeze:** 2026-04-22 (Mittwoch) 18:00 UTC = T-1 EOD (= 20:00 Europe/Berlin)
 > **Scope:** Alle 3 Tiers gleichzeitig gehen live (OpenSIN OSS / My.OpenSIN Pro / Marketplace).
 > **Dieses Dokument:** Einziger Wahrheitsort für "ist der Launch möglich". Jeden Morgen 09:00 UTC in der Org-All-Hands durchgehen. Keine Entscheidung fliegt hier rein ohne Commit-Link oder Tracking-Issue.
 >
@@ -67,9 +69,11 @@ Der Launch geht nur, wenn **alle** folgenden Kriterien am T-0 09:00 UTC grün si
 
 Jeder Tag hat drei Phasen: **09:00 Standup · 13:00 Mid-day Checkin · 18:00 EOD Review**. Am Ende jedes Tages wandert jedes Item in eine von zwei Spalten: `DONE` oder `BLOCKED`. Kein `in progress` nach 18:00. Wenn blocked, Name des Blockers in die Checkliste.
 
-### Tag 1 — T-3 (Mittwoch 2026-04-19) — INFRASTRUKTUR & DATENLAGE
+### Tag 1 — T-4 (Sonntag 2026-04-19, heute) — INFRASTRUKTUR & DATENLAGE
 
 **Ziel des Tages:** Ende Tag 1 steht jede Pipeline. Kein Produkt funktioniert noch, aber jede URL kann etwas rendern und die 6 HF Spaces laufen wieder.
+
+> **Wochenend-Realismus:** Heute Sonntag + morgen Sonntag-Abend-Handover. Tag 2 ist Montag-Arbeitstag — wer HF-1 heute nicht fertig bekommt, muss spätestens Montag 13:00 UTC einen Zwischenstand posten. Siehe Risiko #1.
 
 | ID | Owner | Was | Definition of Done |
 |---|---|---|---|
@@ -84,7 +88,7 @@ Jeder Tag hat drei Phasen: **09:00 Standup · 13:00 Mid-day Checkin · 18:00 EOD
 
 ---
 
-### Tag 2 — T-2 (Donnerstag 2026-04-20) — TIER 1 (OSS) FERTIGSTELLEN
+### Tag 2 — T-3 (Montag 2026-04-20) — TIER 1 (OSS) FERTIGSTELLEN
 
 **Ziel des Tages:** OSS-Launch ist fertig und testbar. Drei Kanäle: Website, Docs, Install-Pfad.
 
@@ -101,7 +105,7 @@ Jeder Tag hat drei Phasen: **09:00 Standup · 13:00 Mid-day Checkin · 18:00 EOD
 
 ---
 
-### Tag 3 — T-1 (Freitag 2026-04-21) — TIER 2 (PRO) + TIER 3 (MARKETPLACE) FERTIGSTELLEN
+### Tag 3 — T-2 (Dienstag 2026-04-21) — TIER 2 (PRO) + TIER 3 (MARKETPLACE) FERTIGSTELLEN
 
 **Ziel des Tages:** Ein echter Stripe-Kauf geht end-to-end durch. Marketplace kann man durchklicken und kaufen.
 
@@ -123,21 +127,38 @@ Jeder Tag hat drei Phasen: **09:00 Standup · 13:00 Mid-day Checkin · 18:00 EOD
 
 ---
 
-### Tag 4 — T-0 (Samstag 2026-04-22) — LAUNCH + MONITORING
+### Tag 4 — T-1 (Mittwoch 2026-04-22) — CODE-FREEZE + DRESS REHEARSAL
+
+**Ziel des Tages:** Null neue Features. Nur Smoke-Tests, DNS/TLS-Verification, Announcement-Assets. Code-Freeze um **18:00 UTC** — alles danach braucht CTO-Sign-off.
+
+| ID | Owner | Was | Definition of Done |
+|---|---|---|---|
+| FREEZE-1 | Alle Maintainer | Alle launch-kritischen Branches auf `main` gemerged. Branch-Protection aktiv. | 18:00 UTC: `gh pr list --state open --label launch-critical` → leer. |
+| REHEARSAL-1 | `OpenSIN-WebApp` + `website-my.opensin.ai` | Kompletter Durchlauf von [docs/STRIPE-SMOKE-TEST.md](./docs/STRIPE-SMOKE-TEST.md) §1–§5 in Test-Mode, im Zeitraffer (= 25 Min Zielzeit). | Alle 5 Abschnitte grün ohne manuellen Fix. |
+| REHEARSAL-2 | `Biz-SIN-Marketing` | Announcement-Assets final (Blog-Post, X-Thread-Entwurf, HN-Titel, Discord-Embed). Review durch CTO. | Assets liegen als PRs in den jeweiligen Repos und sind approved. |
+| DNS-1 | `Infra-SIN-Dev-Setup` | `opensin.ai`, `my.opensin.ai`, `chat.opensin.ai`, `docs.opensin.ai` auf Vercel-IPs, TLS Grade A via `ssllabs.com`, HSTS aktiv, `security.txt` live. | Vier grüne SSL-Labs-Reports. |
+| MON-1 | `OpenSIN-backend` | UptimeRobot/BetterStack Monitor-Frequenz für Launch-Woche auf 2×/h anheben. Paging an `#launch-alerts`. | Cadence sichtbar im Monitor-Dashboard. |
+| ROLLBACK-1 | CTO | Letzter bekannter-grüner Vercel-Deploy pro Web-Repo dokumentiert als `rollback-target` Git-Tag. | 4 Tags existieren, CTO hat `vercel rollback <tag>` einmal manuell geübt. |
+
+**18:00 UTC Code-Freeze.** Nur noch P0-Incidents fixen, kein neues Feature.
+
+---
+
+### Tag 5 — T-0 (Donnerstag 2026-04-23) — LAUNCH + MONITORING
 
 **Ziel des Tages:** 09:00 Go/No-Go. 10:00 Switch auf Stripe-Live-Mode. 12:00 Announcement. Rest des Tages: Support + Fire-Fighting.
 
-| Zeit | Was | Owner |
+| Zeit (UTC) | Was | Owner |
 |---|---|---|
 | 09:00 | Go/No-Go Standup. Alle 10 G1–G10 Kriterien durchgehen. Ein rotes = No-Go. | Alle Maintainer |
-| 09:30 | Finaler `gh search code` Sweep für Stale-References | `Infra-SIN-Dev-Setup` |
+| 09:30 | Finaler `gh search code` Sweep für Stale-References + `node scripts/validate-links.js` | `Infra-SIN-Dev-Setup` |
 | 10:00 | Stripe von Test-Mode auf Live-Mode umschalten (Keys tauschen in Vercel Production ENV) | `website-my.opensin.ai` + `OpenSIN-WebApp` |
-| 10:15 | Real-Money Smoke-Test: Ein Maintainer kauft echten €29 Starter-Monat auf eigene Kreditkarte. | Volunteered Maintainer |
-| 10:30 | DNS-Check: `opensin.ai`, `my.opensin.ai`, `chat.opensin.ai`, `docs.opensin.ai` alle auf Vercel-IPs, TLS grün, HSTS aktiv. | `Infra-SIN-Dev-Setup` |
+| 10:15 | Real-Money Smoke-Test: Ein Maintainer kauft echten €29 Starter-Monat auf eigene Kreditkarte. Bei Fehler: Rollback zu 10:00. | Volunteered Maintainer |
+| 10:30 | DNS- + TLS-Re-Check aller 4 Domains. HSTS + `security.txt` verifiziert. | `Infra-SIN-Dev-Setup` |
 | 11:00 | `awesome-opensin` Readme-Update: Launch-Banner + Link zu Blog-Post. | `Biz-SIN-Marketing` |
 | 12:00 | Announcement: Blog-Post auf `Biz-SIN-Blog-Posts`, X-Thread via `A2A-SIN-X-Twitter`, Discord-Ankündigung via `A2A-SIN-Discord`, HN-Submission manuell. | `Biz-SIN-Marketing` |
 | 12:30 | **Die CTO liest jede HN-Antwort und antwortet innerhalb von 30 Minuten.** Dasselbe für Discord & Reddit. | CTO |
-| 13:00 – EOD | Incident-Rotation. Jeder Maintainer hat 2h Pager-Dienst. Alerts aus HF-2 Uptime-Monitor nach `#launch-alerts`. Alles unter P1 in `docs/launch-retro-2026-04.md` loggen. | Alle Maintainer |
+| 13:00 – EOD | Incident-Rotation. Jeder Maintainer hat 2h Pager-Dienst. Alerts aus MON-1 Uptime-Monitor nach `#launch-alerts`. Alles unter P1 in `docs/launch-retro-2026-04.md` loggen. | Alle Maintainer |
 
 ---
 
