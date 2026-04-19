@@ -55,33 +55,32 @@ When all tickets here are `DONE`, delete this file.
 
 ### L1: `Delqhi/*` → `OpenSIN-AI/Infra-SIN-*` link sweep across other repos
 
-- **Status:** `IN PROGRESS` — `OpenSIN-overview` itself is clean after Wave 3. Other repos still have stale refs.
-- **Tracking issues:**
-  - `OpenSIN-backend`: [`#1170`](https://github.com/OpenSIN-AI/OpenSIN-backend/issues/1170) (combined L1+L2)
-  - `Template-SIN-Agent`: [`#156`](https://github.com/OpenSIN-AI/Template-SIN-Agent/issues/156) (template bake-in, prevents regression)
-- **Reality check (2026-04-18 `gh search code`):** actual stale-ref surface across the org is small — 2 hits for `Delqhi/upgraded-opencode-stack` and 0 for `Delqhi/global-brain` outside the meta-repo. The earlier "7 consumer repos affected" claim was based on planning assumptions, not live data. Individual per-repo tickets will be filed on-demand if `gh search code` turns up more hits.
-- **What:** The 2026-04-18 transfer renamed the two SSOT repos. GitHub redirects old URLs, but hard-coded refs in configs, CI jobs, READMEs, and docstrings should be updated to the canonical path.
-- **Known stale refs outside this repo:**
-  - `OpenSIN`, `OpenSIN-Code`, `OpenSIN-WebApp`, `website-opensin.ai`, `website-my.opensin.ai`, `Template-SIN-Agent`, `Biz-SIN-Marketing` — all declare `Delqhi/upgraded-opencode-stack` as `sin-sync` target.
-  - Multiple `A2A-SIN-*` agents reference `Delqhi/global-brain` for PCPM.
-- **Note — NOT a repo reference:** the hostname `n8n.delqhi.com` appears in `docs/best-practices/ci-cd-n8n.md`. That is an OCI VM hostname owned by the Delqhi admin, not the archived GitHub account. Do NOT rewrite it.
-- **How:** Run this regex-sweep in each consumer repo:
-  ```
-  s|Delqhi/upgraded-opencode-stack|OpenSIN-AI/Infra-SIN-OpenCode-Stack|g
-  s|Delqhi/global-brain|OpenSIN-AI/Infra-SIN-Global-Brain|g
-  ```
-  Open a single "link-sweep: Delqhi → OpenSIN-AI" PR per repo.
-- **Owner:** `Infra-SIN-Dev-Setup` or whichever team owns each consumer repo.
+- **Status:** `DONE — 2026-04-19` (org-wide re-verification via `gh search code`).
+- **Tracking issues (retained for history):**
+  - `OpenSIN-backend`: [`#1170`](https://github.com/OpenSIN-AI/OpenSIN-backend/issues/1170) (combined L1+L2; L1 side done, L2 reopened with live evidence)
+  - `Template-SIN-Agent`: [`#156`](https://github.com/OpenSIN-AI/Template-SIN-Agent/issues/156) (template bake-in, prevents regression — keep open as preventive)
+- **Live verification (2026-04-19):**
+  - `gh search code 'Delqhi/upgraded-opencode-stack' --owner OpenSIN-AI` → **0 actionable hits** (the one result is this repo's own README summarizing history).
+  - `gh search code 'Delqhi/global-brain' --owner OpenSIN-AI` → **0 hits**.
+- **Conclusion:** the worry-list was a planning assumption, not a real problem. The 2026-04-18 transfer + GitHub redirects handled it. `Template-SIN-Agent#156` stays open as a preventive measure so new repos spawned from the template don't re-introduce the old refs.
+- **Not a repo reference:** the hostname `n8n.delqhi.com` in `docs/best-practices/ci-cd-n8n.md` is an OCI VM, not a GitHub account. Must not be rewritten.
 
 ### L2: Archived-repo reference sweep
 
-- **Status:** `OPEN`.
+- **Status:** `OPEN` — live evidence 2026-04-19 shows real stale refs; needs a scripted sweep.
 - **Tracking issues:**
-  - `OpenSIN-backend`: [`#1170`](https://github.com/OpenSIN-AI/OpenSIN-backend/issues/1170) (combined L1+L2)
-  - `Core-SIN-Control-Plane`: [`#16`](https://github.com/OpenSIN-AI/Core-SIN-Control-Plane/issues/16)
-- **What:** Ensure no active repo still links to any of the 4 Wave-1/2 archived repos:
-  - `A2A-SIN-Coding-CEO`, `A2A-SIN-Code-AI`, `opensin-ai-code`, `OpenSIN-onboarding`
-- **How:** Run `gh search code 'A2A-SIN-Coding-CEO OR A2A-SIN-Code-AI OR opensin-ai-code OR OpenSIN-onboarding' --owner OpenSIN-AI` and replace each hit with the canonical target from `docs/CANONICAL-REPOS.md § Archived repos`.
+  - `OpenSIN-backend`: [`#1170`](https://github.com/OpenSIN-AI/OpenSIN-backend/issues/1170) (L1 side resolved, L2 side reopened for the sweep)
+  - `Core-SIN-Control-Plane`: [`#16`](https://github.com/OpenSIN-AI/Core-SIN-Control-Plane/issues/16) (will be superseded by CP1 merge)
+- **Live evidence (2026-04-19 `gh search code`, scope public):**
+  - `A2A-SIN-Coding-CEO` → **26 hits** across the org.
+  - `OpenSIN-onboarding` → **1 hit**.
+  - `A2A-SIN-Code-AI`, `opensin-ai-code` → search API returns 404 for those queries (likely private-repo scope limits). Rerun after L2 PR lands with a finer-grained token.
+- **What:** Replace every hit with the canonical target from `docs/CANONICAL-REPOS.md § Archived repos` (e.g. `A2A-SIN-Coding-CEO` → `A2A-SIN-Code-Coordinator` or remove if purely historical).
+- **How:**
+  1. `gh search code 'A2A-SIN-Coding-CEO' --owner OpenSIN-AI --json repository,path,textMatches > /tmp/l2-hits.json`.
+  2. Group by repo. One PR per repo with a sed rewrite + human-verified context diff.
+  3. Bake a guard into the generator/template chain so the strings do not reappear.
+- **Owner:** `OpenSIN` maintainers (largest footprint) + whichever team owns each consumer repo.
 
 ---
 
@@ -137,10 +136,15 @@ When all tickets here are `DONE`, delete this file.
 
 ### S2: Decide fate of 6 `A2A-SIN-Code-*` scaffolds
 
-- **Status:** `OPEN` — kept alive for now.
-- **Repos (9 kb, identical Python scaffolds):** `A2A-SIN-Code-Backend`, `-Command`, `-Frontend`, `-Fullstack`, `-Plugin`, `-Tool`.
-- **Decision needed:** Owning team (`Team-SIN-Code-Core`) decides per-repo whether to promote (implement) or archive (dead). Should happen together with R1 resolution (`opensin-ai-cli` fate).
-- **How to decide:** if R1 merges `opensin-ai-cli` into `OpenSIN-Code`, likely all 6 become redundant → archive. If R1 keeps them split, map each of the 6 to a specific sub-capability of the Rust engine and implement.
+- **Status:** `AUDIT DONE — 2026-04-19. DECISION PENDING R1.` Full audit in [`docs/S2-DEAD-REPO-AUDIT.md`](./S2-DEAD-REPO-AUDIT.md).
+- **Repos (11 kb each, 1 commit each as of 2026-04-19):** `A2A-SIN-Code-Backend`, `-Command`, `-Frontend`, `-Fullstack`, `-Plugin`, `-Tool`.
+- **Zero references:** none of the 6 scaffolds is referenced as a primary or supporting agent by any `templates/teams/Team-SIN-*.json` (verified against `templates/oh-my-sin.json`).
+- **Decision matrix (from the audit doc):**
+  1. **Archive all 6** (recommended) — conditional on R1 = merge. Launch impact: none.
+  2. **Implement 6 thin wrappers** — conditional on R1 = keep split. Cost ≈ 12 days.
+  3. **Collapse to 1** (fallback) — if R1 is undecided at T-0 18:00 CET.
+- **Deadline to pick branch:** 2026-04-22 18:00 CET (so T-0 has a clean story). If no call, branch 3 auto-applies.
+- **Launch impact:** **none**. This is clean-up, not a blocker.
 
 ### M1: Team-manifest pushes into 17 `Team-SIN-*` repos
 
@@ -150,14 +154,15 @@ When all tickets here are `DONE`, delete this file.
 - **Aggregator:** The same script regenerates `oh-my-sin.json` in `Infra-SIN-OpenCode-Stack` nightly via GH Action.
 - **Validation:** `scripts/validate-team-manifests.js` runs in CI on every PR touching `templates/teams/` or `schemas/team.schema.json`.
 
-### M2: Build `oh-my-sin.json` aggregator GitHub Action
+### M2: Build `oh-my-sin.json` aggregator
 
-- **Status:** `OPEN` (local script exists, CI workflow not yet).
-- **What:** GH Actions workflow in `Infra-SIN-OpenCode-Stack` that:
-  1. Fetches all `team.json` from the 17 `Team-SIN-*` repos (or from this repo's `templates/teams/` if we canonicalize there).
-  2. Aggregates into `oh-my-sin.json`.
-  3. Commits.
-- **Recommendation:** SSOT is `OpenSIN-overview/templates/teams/` (not the downstream repos). Aggregator reads from here. Downstream `team.json` files are read-only mirrors for humans browsing individual Team-SIN-* repos.
+- **Status:** `PARTIAL DONE — 2026-04-19`. Builder + SSOT output committed in this repo. Only the nightly CI run needs the proposed workflow installed.
+- **What landed:**
+  - [`scripts/build-oh-my-sin.js`](../scripts/build-oh-my-sin.js) — zero-dep aggregator reading `templates/teams/Team-SIN-*.json` and writing `templates/oh-my-sin.json`. Runs in <1 s.
+  - [`templates/oh-my-sin.json`](../templates/oh-my-sin.json) — SSOT output with 17 teams, 16 listable, 87 agents referenced, tier counts, status counts, marketplace URLs. First version produced by running `pnpm run build-marketplace` on 2026-04-19.
+  - [`governance/workflows-proposed/oh-my-sin-build.yml`](../governance/workflows-proposed/oh-my-sin-build.yml) — nightly + on-change cron that re-runs the builder and commits any diff. Validates manifests first so a broken manifest never produces a bad aggregator.
+- **Remaining work:** install the workflow (run `bash governance/workflows-proposed/install.sh` as repo admin — documented in [`governance/workflows-proposed/README.md`](../governance/workflows-proposed/README.md)). Optionally add a mirror-sync step to `Infra-SIN-OpenCode-Stack`; not required because consumers can read the file directly from this repo's `main`.
+- **Consumer notes:** the marketplace frontend on `website-my.opensin.ai` should consume `https://raw.githubusercontent.com/OpenSIN-AI/OpenSIN-overview/main/templates/oh-my-sin.json` (or a pinned commit) and cache with `revalidate`.
 
 ---
 

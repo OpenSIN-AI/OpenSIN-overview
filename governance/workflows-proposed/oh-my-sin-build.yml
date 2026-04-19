@@ -1,0 +1,58 @@
+name: Build oh-my-sin.json
+
+# Nightly regeneration of templates/oh-my-sin.json from the team manifests.
+# Keeps the marketplace aggregator fresh without any human action.
+#
+# Re-runs also on any manifest/schema/builder change on main, and can be
+# triggered manually.
+#
+# Output is committed to this repo (SSOT). Mirroring into
+# Infra-SIN-OpenCode-Stack is a separate sync workflow (see M2 ticket).
+
+on:
+  schedule:
+    # Nightly at 03:00 UTC.
+    - cron: "0 3 * * *"
+  push:
+    branches: [main]
+    paths:
+      - "templates/teams/**.json"
+      - "schemas/team.schema.json"
+      - "scripts/build-oh-my-sin.js"
+  workflow_dispatch:
+
+concurrency:
+  group: oh-my-sin-build
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Validate manifests first
+        run: node scripts/validate-team-manifests.js
+
+      - name: Build aggregator
+        run: node scripts/build-oh-my-sin.js
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet templates/oh-my-sin.json; then
+            echo "[oh-my-sin] no changes"
+            exit 0
+          fi
+          git config user.name "opensin-bot"
+          git config user.email "opensin-bot@users.noreply.github.com"
+          git add templates/oh-my-sin.json
+          git commit -m "chore(marketplace): nightly rebuild of oh-my-sin.json"
+          git push

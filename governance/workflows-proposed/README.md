@@ -27,6 +27,7 @@ appear and the first scheduled runs will fire within the hour.
 | `registry-autogenerate.yml` | Re-run `scripts/generate-master-index.js` with live org data, commit diff back to `main`. Prevents repo-count drift forever. | Daily cron (06:00 UTC) + manual dispatch |
 | `validate-docs.yml` | Run link-validator + team-manifest-validator on every PR. Fails red if anything is broken. | Pull request into `main` |
 | `launch-status.yml` | Run `scripts/launch-status.js` and publish the Go/No-Go dashboard to a tracking issue. Every 30 min during launch week. | Cron + manual dispatch |
+| `oh-my-sin-build.yml` | Regenerate `templates/oh-my-sin.json` from the 17 team manifests and commit the diff. Keeps the marketplace aggregator fresh. | Nightly cron (03:00 UTC) + on manifest/schema changes + manual dispatch |
 
 ## Prerequisites
 

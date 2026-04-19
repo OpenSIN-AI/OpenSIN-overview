@@ -1,0 +1,1414 @@
+{
+  "$schema_version": "1.0.0",
+  "generated_at": "2026-04-19T03:49:02.703Z",
+  "generator": "OpenSIN-overview/scripts/build-oh-my-sin.js",
+  "org": "OpenSIN-AI",
+  "ssot": {
+    "schema": "schemas/team.schema.json",
+    "manifests_dir": "templates/teams/"
+  },
+  "counts": {
+    "total": 17,
+    "by_tier": {
+      "marketplace": 16,
+      "core-included": 1
+    },
+    "by_status": {
+      "beta": 12,
+      "alpha": 3,
+      "stable": 1,
+      "coming-soon": 1
+    },
+    "listable": 16,
+    "agents_referenced": 87
+  },
+  "tiers": {
+    "core-included": [
+      "Team-SIN-Code-Core"
+    ],
+    "marketplace": [
+      "Team-SIN-Apple",
+      "Team-SIN-Code-Backend",
+      "Team-SIN-Code-CyberSec",
+      "Team-SIN-Code-Frontend",
+      "Team-SIN-Commerce",
+      "Team-SIN-Community",
+      "Team-SIN-Forum",
+      "Team-SIN-Google",
+      "Team-SIN-Infrastructure",
+      "Team-SIN-Legal",
+      "Team-SIN-Media-ComfyUI",
+      "Team-SIN-Media-Music",
+      "Team-SIN-Messaging",
+      "Team-SIN-Microsoft",
+      "Team-SIN-Research",
+      "Team-SIN-Social"
+    ],
+    "enterprise": []
+  },
+  "teams": [
+    {
+      "id": "Team-SIN-Apple",
+      "slug": "apple",
+      "name": "Apple Team",
+      "tagline": "Deep Apple-ecosystem automation: Shortcuts, Mail, Calendar, Notes, and device control.",
+      "tier": "marketplace",
+      "status": "beta",
+      "status_label": "Beta",
+      "pricing": {
+        "model": "monthly-addon",
+        "monthly_addon_eur": 9
+      },
+      "pricing_label": "€9/month add-on",
+      "agents": [
+        {
+          "id": "A2A-SIN-Apple-Shortcuts",
+          "role": "primary",
+          "summary": "Entry point — any Shortcut becomes an agent tool."
+        },
+        {
+          "id": "A2A-SIN-Apple-Mail",
+          "role": "primary",
+          "summary": "Mail triage, drafting, search."
+        },
+        {
+          "id": "A2A-SIN-Apple-Calendar-Contacts",
+          "role": "primary",
+          "summary": "Calendar scheduling + Contacts lookup."
+        },
+        {
+          "id": "A2A-SIN-Apple-Notes",
+          "role": "supporting",
+          "summary": "Capture + search across Apple Notes."
+        },
+        {
+          "id": "A2A-SIN-Apple-Reminders",
+          "role": "supporting",
+          "summary": "Task capture with location/time triggers."
+        },
+        {
+          "id": "A2A-SIN-Apple-Notifications",
+          "role": "supporting",
+          "summary": "Notification stream read/dismiss."
+        },
+        {
+          "id": "A2A-SIN-Apple-Mobile",
+          "role": "supporting",
+          "summary": "iPhone automation surface."
+        },
+        {
+          "id": "A2A-SIN-Apple-DeviceControl",
+          "role": "supporting",
+          "summary": "Device-level control primitives."
+        },
+        {
+          "id": "A2A-SIN-Apple-SystemSettings",
+          "role": "supporting",
+          "summary": "Toggle system settings programmatically."
+        },
+        {
+          "id": "A2A-SIN-Apple-Safari-WebKit",
+          "role": "supporting",
+          "summary": "Safari/WebKit browsing and reading."
+        },
+        {
+          "id": "A2A-SIN-Apple-Photos-Files",
+          "role": "supporting",
+          "summary": "Photos + Files search and staging."
+        },
+        {
+          "id": "A2A-SIN-Apple-FaceTime",
+          "role": "optional",
+          "summary": "Programmatic FaceTime call setup."
+        }
+      ],
+      "agent_count": 12,
+      "primary_agents": [
+        "A2A-SIN-Apple-Shortcuts",
+        "A2A-SIN-Apple-Mail",
+        "A2A-SIN-Apple-Calendar-Contacts"
+      ],
+      "permissions": [
+        "read:user-memory",
+        "write:user-memory",
+        "net:external-http",
+        "filesystem:user-workspace",
+        "shell:user-workspace"
+      ],
+      "marketing": {
+        "summary": "Turns your Mac and iPhone into first-class agent surfaces. Drives Apple Shortcuts, manages Mail and Calendar, captures to Notes and Reminders, and even pilots system settings and Safari. Best-in-class for users who live on Apple hardware.",
+        "bullets": [
+          "One-command Apple Shortcuts execution from any agent",
+          "Mail triage, Calendar scheduling and Contacts sync",
+          "Notes, Reminders and Notifications capture + retrieval",
+          "Photos and Files discovery across iCloud",
+          "Safari/WebKit automation for read-later and research",
+          "FaceTime call setup and SystemSettings toggles"
+        ],
+        "screenshot": null,
+        "demo_video": null
+      },
+      "budgets": {
+        "default_monthly_usd_cap": 20,
+        "per_run_usd_cap": 1
+      },
+      "provenance": {
+        "decided_in": "OpenSIN-overview#35",
+        "decided_at": "2026-04-18",
+        "owner_team": "OpenSIN-AI/apple"
+      },
+      "links": {
+        "repo": "https://github.com/OpenSIN-AI/Team-SIN-Apple",
+        "marketplace": "https://my.opensin.ai/marketplace/apple"
+      },
+      "source_file": "templates/teams/Team-SIN-Apple.json"
+    },
+    {
+      "id": "Team-SIN-Code-Backend",
+      "slug": "code-backend",
+      "name": "Code Backend Team",
+      "tagline": "Backend-focused coding team — APIs, services, infra glue.",
+      "tier": "marketplace",
+      "status": "alpha",
+      "status_label": "Alpha",
+      "pricing": {
+        "model": "monthly-addon",
+        "monthly_addon_eur": 14
+      },
+      "pricing_label": "€14/month add-on",
+      "agents": [
+        {
+          "id": "A2A-SIN-Code-DevOps",
+          "role": "supporting",
+          "summary": "Shared with Code-Core for deploy handoffs."
+        },
+        {
+          "id": "A2A-SIN-Code-Backend",
+          "role": "optional",
+          "summary": "Dedicated backend agent (currently scaffold — see SCAFFOLD_AUDIT.md)."
+        }
+      ],
+      "agent_count": 2,
+      "primary_agents": [],
+      "permissions": [
+        "read:user-memory",
+        "write:user-memory",
+        "net:external-http",
+        "net:cloud-apis",
+        "filesystem:user-workspace",
+        "shell:user-workspace",
+        "spend:llm-budget"
+      ],
+      "marketing": {
+        "summary": "Coding team focused on backend work: REST and GraphQL APIs, service-to-service orchestration, background jobs, and the glue that lives between a frontend and its databases. Complements Team-SIN-Code-Core (included free) and Team-SIN-Code-Frontend.",
+        "bullets": [
+          "REST + GraphQL API authoring",
+          "Service-to-service integration and message queues",
+          "Background job design (BullMQ, Celery, RQ)",
+          "Database schema evolution and query optimisation",
+          "DevOps handoffs via Team-SIN-Code-Core"
+        ],
+        "screenshot": null,
+        "demo_video": null
+      },
+      "budgets": {
+        "default_monthly_usd_cap": 40,
+        "per_run_usd_cap": 3
+      },
+      "provenance": {
+        "decided_in": "OpenSIN-overview#35",
+        "decided_at": "2026-04-18",
+        "owner_team": "OpenSIN-AI/code-core"
+      },
+      "links": {
+        "repo": "https://github.com/OpenSIN-AI/Team-SIN-Code-Backend",
+        "marketplace": "https://my.opensin.ai/marketplace/code-backend"
+      },
+      "source_file": "templates/teams/Team-SIN-Code-Backend.json"
+    },
+    {
+      "id": "Team-SIN-Code-Core",
+      "slug": "code-core",
+      "name": "Code Core Team",
+      "tagline": "The default coding squad included in every Pro plan.",
+      "tier": "core-included",
+      "status": "stable",
+      "status_label": "Stable",
+      "pricing": {
+        "model": "free-with-pro"
+      },
+      "pricing_label": "Included with any Pro plan",
+      "agents": [
+        {
+          "id": "A2A-SIN-Code-DataScience",
+          "role": "primary",
+          "summary": "Pandas/NumPy/Jupyter data work."
+        },
+        {
+          "id": "A2A-SIN-Code-DevOps",
+          "role": "primary",
+          "summary": "Containers, deploys, rollbacks, IaC."
+        },
+        {
+          "id": "A2A-SIN-Code-GitLab-LogsCenter",
+          "role": "primary",
+          "summary": "GitLab ops + log-centre triage."
+        }
+      ],
+      "agent_count": 3,
+      "primary_agents": [
+        "A2A-SIN-Code-DataScience",
+        "A2A-SIN-Code-DevOps",
+        "A2A-SIN-Code-GitLab-LogsCenter"
+      ],
+      "permissions": [
+        "read:user-memory",
+        "write:user-memory",
+        "net:external-http",
+        "net:cloud-apis",
+        "filesystem:user-workspace",
+        "shell:user-workspace",
+        "spend:llm-budget"
+      ],
+      "marketing": {
+        "summary": "Shipped with every OpenSIN Pro plan at no extra cost. The Code Core Team handles day-to-day engineering work: data science notebooks, DevOps runbooks, GitLab repository operations, and log-centre investigations. This is the team you should not have to think about — it just works.",
+        "bullets": [
+          "Data science notebooks with pandas/NumPy conventions",
+          "DevOps runbooks for container, deploy and rollback",
+          "GitLab repository operations: MRs, pipelines, registries",
+          "Log-centre investigations across Sentry / Loki / Datadog",
+          "Included free with Pro — no marketplace purchase needed"
+        ],
+        "screenshot": null,
+        "demo_video": null
+      },
+      "budgets": {
+        "default_monthly_usd_cap": 60,
+        "per_run_usd_cap": 5
+      },
+      "provenance": {
+        "decided_in": "OpenSIN-overview#35",
+        "decided_at": "2026-04-18",
+        "owner_team": "OpenSIN-AI/code-core"
+      },
+      "links": {
+        "repo": "https://github.com/OpenSIN-AI/Team-SIN-Code-Core",
+        "marketplace": "https://my.opensin.ai/marketplace/code-core"
+      },
+      "source_file": "templates/teams/Team-SIN-Code-Core.json"
+    },
+    {
+      "id": "Team-SIN-Code-CyberSec",
+      "slug": "cybersec",
+      "name": "CyberSec Team",
+      "tagline": "Offensive and defensive security squad: red-team, audit, forensics, malware, web, cloud.",
+      "tier": "marketplace",
+      "status": "beta",
+      "status_label": "Beta",
+      "pricing": {
+        "model": "monthly-addon",
+        "monthly_addon_eur": 29
+      },
+      "pricing_label": "€29/month add-on",
+      "agents": [
+        {
+          "id": "A2A-SIN-Security-AI",
+          "role": "primary",
+          "summary": "ML-driven anomaly + triage."
+        },
+        {
+          "id": "A2A-SIN-Security-Audit",
+          "role": "primary",
+          "summary": "Audit pipelines with reporting."
+        },
+        {
+          "id": "A2A-SIN-Security-RedTeam",
+          "role": "primary",
+          "summary": "Adversarial simulation playbooks."
+        },
+        {
+          "id": "A2A-SIN-Security-Auth",
+          "role": "supporting",
+          "summary": "AuthN/AuthZ review."
+        },
+        {
+          "id": "A2A-SIN-Security-Cloud",
+          "role": "supporting",
+          "summary": "Cloud posture + IAM review."
+        },
+        {
+          "id": "A2A-SIN-Security-Crypto",
+          "role": "supporting",
+          "summary": "Crypto primitives + key management review."
+        },
+        {
+          "id": "A2A-SIN-Security-Exploit",
+          "role": "supporting",
+          "summary": "Exploit research and reproduction."
+        },
+        {
+          "id": "A2A-SIN-Security-Forensics",
+          "role": "supporting",
+          "summary": "Disk / memory / network forensics."
+        },
+        {
+          "id": "A2A-SIN-Security-Fuzz",
+          "role": "supporting",
+          "summary": "Fuzz harness generation + triage."
+        },
+        {
+          "id": "A2A-SIN-Security-IoT",
+          "role": "supporting",
+          "summary": "IoT firmware + protocol review."
+        },
+        {
+          "id": "A2A-SIN-Security-Malware",
+          "role": "supporting",
+          "summary": "Malware static + dynamic analysis."
+        },
+        {
+          "id": "A2A-SIN-Security-Mobile",
+          "role": "supporting",
+          "summary": "Mobile app security (iOS/Android)."
+        },
+        {
+          "id": "A2A-SIN-Security-Network",
+          "role": "supporting",
+          "summary": "Network security + pcap triage."
+        },
+        {
+          "id": "A2A-SIN-Security-Recon",
+          "role": "supporting",
+          "summary": "External recon + asset discovery."
+        },
+        {
+          "id": "A2A-SIN-Security-Social",
+          "role": "supporting",
+          "summary": "Social-engineering assessment."
+        },
+        {
+          "id": "A2A-SIN-Security-Web",
+          "role": "supporting",
+          "summary": "Web app security (OWASP-focused)."
+        }
+      ],
+      "agent_count": 16,
+      "primary_agents": [
+        "A2A-SIN-Security-AI",
+        "A2A-SIN-Security-Audit",
+        "A2A-SIN-Security-RedTeam"
+      ],
+      "permissions": [
+        "read:user-memory",
+        "write:user-memory",
+        "net:external-http",
+        "net:cloud-apis",
+        "filesystem:user-workspace",
+        "shell:user-workspace",
+        "spend:llm-budget"
+      ],
+      "marketing": {
+        "summary": "A 16-agent security squad covering the full stack — red-team playbooks, audit pipelines, forensics, crypto, malware analysis, fuzzing, mobile, IoT, network, cloud, web, social engineering, and automated recon. Runs inside your chat.opensin.ai tenant with explicit permission gates.",
+        "bullets": [
+          "Red-team assistant for adversarial simulation",
+          "Audit pipelines with automated reporting",
+          "Forensics, malware triage and crypto review",
+          "Web, cloud, mobile, IoT, network coverage",
+          "Recon, fuzzing and exploit research workflows",
+          "Explicit per-run permission gates — nothing runs without opt-in"
+        ],
+        "screenshot": null,
+        "demo_video": null
+      },
+      "budgets": {
+        "default_monthly_usd_cap": 80,
+        "per_run_usd_cap": 3
+      },
+      "provenance": {
+        "decided_in": "OpenSIN-overview#35",
+        "decided_at": "2026-04-18",
+        "owner_team": "OpenSIN-AI/cybersec"
+      },
+      "links": {
+        "repo": "https://github.com/OpenSIN-AI/Team-SIN-Code-CyberSec",
+        "marketplace": "https://my.opensin.ai/marketplace/cybersec"
+      },
+      "source_file": "templates/teams/Team-SIN-Code-CyberSec.json"
+    },
+    {
+      "id": "Team-SIN-Code-Frontend",
+      "slug": "code-frontend",
+      "name": "Code Frontend Team",
+      "tagline": "Frontend-focused coding team — React, Next.js, design-system work.",
+      "tier": "marketplace",
+      "status": "alpha",
+      "status_label": "Alpha",
+      "pricing": {
+        "model": "monthly-addon",
+        "monthly_addon_eur": 14
+      },
+      "pricing_label": "€14/month add-on",
+      "agents": [
+        {
+          "id": "A2A-SIN-Code-DataScience",
+          "role": "supporting",
+          "summary": "For data-heavy frontend work (charts, tables)."
+        },
+        {
+          "id": "A2A-SIN-Code-Frontend",
+          "role": "optional",
+          "summary": "Dedicated frontend agent (currently scaffold — see SCAFFOLD_AUDIT.md)."
+        }
+      ],
+      "agent_count": 2,
+      "primary_agents": [],
+      "permissions": [
+        "read:user-memory",
+        "write:user-memory",
+        "net:external-http",
+        "filesystem:user-workspace",
+        "shell:user-workspace",
+        "spend:llm-budget"
+      ],
+      "marketing": {
+        "summary": "Coding team focused on frontend engineering: Next.js App Router, React component libraries, design-system refactors, responsive layouts and accessibility. Pairs naturally with Team-SIN-Code-Backend for full-stack work.",
+        "bullets": [
+          "Next.js App Router + server components",
+          "Component-library authoring and refactoring",
+          "Design-system token + theme migrations",
+          "Responsive layouts and a11y hardening",
+          "E2E test authoring (Playwright)"
+        ],
+        "screenshot": null,
+        "demo_video": null
+      },
+      "budgets": {
+        "default_monthly_usd_cap": 40,
+        "per_run_usd_cap": 3
+      },
+      "provenance": {
+        "decided_in": "OpenSIN-overview#35",
+        "decided_at": "2026-04-18",
+        "owner_team": "OpenSIN-AI/code-core"
+      },
+      "links": {
+        "repo": "https://github.com/OpenSIN-AI/Team-SIN-Code-Frontend",
+        "marketplace": "https://my.opensin.ai/marketplace/code-frontend"
+      },
+      "source_file": "templates/teams/Team-SIN-Code-Frontend.json"
+    },
+    {
+      "id": "Team-SIN-Commerce",
+      "slug": "commerce",
+      "name": "Commerce Team",
+      "tagline": "E-commerce automation across Stripe, TikTok Shop, and fulfilment.",
+      "tier": "marketplace",
+      "status": "beta",
+      "status_label": "Beta",
+      "pricing": {
+        "model": "monthly-addon",
+        "monthly_addon_eur": 19
+      },
+      "pricing_label": "€19/month add-on",
+      "agents": [
+        {
+          "id": "A2A-SIN-Stripe",
+          "role": "primary",
+          "summary": "Payments, subscriptions, refunds and Stripe Connect flows."
+        },
+        {
+          "id": "A2A-SIN-TikTok-Shop",
+          "role": "primary",
+          "summary": "TikTok Shop catalogue, orders and creator programme."
+        },
+        {
+          "id": "A2A-SIN-Medusa",
+          "role": "supporting",
+          "summary": "Headless commerce storefront operations."
+        },
+        {
+          "id": "A2A-SIN-Shop-Finance",
+          "role": "supporting",
+          "summary": "Reconciliation, VAT/GST, daily P&L."
+        },
+        {
+          "id": "A2A-SIN-Shop-Logistic",
+          "role": "supporting",
+          "summary": "Shipping, label creation, tracking updates."
+        }
+      ],
+      "agent_count": 5,
+      "primary_agents": [
+        "A2A-SIN-Stripe",
+        "A2A-SIN-TikTok-Shop"
+      ],
+      "permissions": [
+        "read:user-memory",
+        "write:user-memory",
+        "net:external-http",
+        "net:cloud-apis",
+        "spend:user-managed-credentials"
+      ],
+      "marketing": {
+        "summary": "Runs your online shop end-to-end: takes payments via Stripe, pushes inventory and orders to TikTok Shop and Medusa storefronts, reconciles shop finance, and routes logistics. Built for solo founders and small teams who want to sell without being shop-admins.",
+        "bullets": [
+          "Stripe payments, invoices and refunds without writing code",
+          "TikTok Shop inventory + order sync",
+          "Medusa storefront management",
+          "Shop finance reconciliation and VAT-ready reporting",
+          "Shipping label + logistics routing with Shop-Logistic",
+          "Daily commerce brief delivered into chat.opensin.ai"
+        ],
+        "screenshot": null,
+        "demo_video": null
+      },
+      "budgets": {
+        "default_monthly_usd_cap": 40,
+        "per_run_usd_cap": 2
+      },
+      "provenance": {
+        "decided_in": "OpenSIN-overview#35",
+        "decided_at": "2026-04-18",
+        "owner_team": "OpenSIN-AI/commerce"
+      },
+      "links": {
+        "repo": "https://github.com/OpenSIN-AI/Team-SIN-Commerce",
+        "marketplace": "https://my.opensin.ai/marketplace/commerce"
+      },
+      "source_file": "templates/teams/Team-SIN-Commerce.json"
+    },
+    {
+      "id": "Team-SIN-Community",
+      "slug": "community",
+      "name": "Community Team",
+      "tagline": "Run a healthy community across Discord, Reddit, and your own forum.",
+      "tier": "marketplace",
+      "status": "beta",
+      "status_label": "Beta",
+      "pricing": {
+        "model": "monthly-addon",
+        "monthly_addon_eur": 9
+      },
+      "pricing_label": "€9/month add-on",
+      "agents": [
+        {
+          "id": "A2A-SIN-Community",
+          "role": "primary",
+          "summary": "Cross-platform community orchestration."
+        },
+        {
+          "id": "A2A-SIN-Discord",
+          "role": "primary",
+          "summary": "Discord server ops and engagement."
+        },
+        {
+          "id": "A2A-SIN-Reddit",
+          "role": "supporting",
+          "summary": "Subreddit moderation and posting."
+        }
+      ],
+      "agent_count": 3,
+      "primary_agents": [
+        "A2A-SIN-Community",
+        "A2A-SIN-Discord"
+      ],
+      "permissions": [
+        "read:user-memory",
+        "write:user-memory",
+        "net:external-http",
+        "net:cloud-apis"
+      ],
+      "marketing": {
+        "summary": "Community moderation, engagement, and growth across the channels people actually use: Discord servers, Reddit subs, and in-house communities. Handles moderation queues, engagement nudges, FAQ autoresponses, and event coordination.",
+        "bullets": [
+          "Discord server moderation + engagement automation",
+          "Reddit subreddit management and cross-posting",
+          "Community health reports and early-warning signals",
+          "Event coordination with auto-reminders",
+          "Onboarding DMs and FAQ autoresponses"
+        ],
+        "screenshot": null,
+        "demo_video": null
+      },
+      "budgets": {
+        "default_monthly_usd_cap": 15,
+        "per_run_usd_cap": 1
+      },
+      "provenance": {
+        "decided_in": "OpenSIN-overview#35",
+        "decided_at": "2026-04-18",
+        "owner_team": "OpenSIN-AI/community"
+      },
+      "links": {
+        "repo": "https://github.com/OpenSIN-AI/Team-SIN-Community",
+        "marketplace": "https://my.opensin.ai/marketplace/community"
+      },
+      "source_file": "templates/teams/Team-SIN-Community.json"
+    },
+    {
+      "id": "Team-SIN-Forum",
+      "slug": "forum",
+      "name": "Forum Team",
+      "tagline": "Be smart about Hacker News, Lobsters, Stack Overflow, Quora and Slashdot.",
+      "tier": "marketplace",
+      "status": "beta",
+      "status_label": "Beta",
+      "pricing": {
+        "model": "monthly-addon",
+        "monthly_addon_eur": 9
+      },
+      "pricing_label": "€9/month add-on",
+      "agents": [
+        {
+          "id": "A2A-SIN-HackerNews",
+          "role": "primary",
+          "summary": "HN front-page + comments monitoring."
+        },
+        {
+          "id": "A2A-SIN-Lobsters",
+          "role": "primary",
+          "summary": "Lobsters trending + tag filters."
+        },
+        {
+          "id": "A2A-SIN-StackOverflow",
+          "role": "primary",
+          "summary": "SO question discovery + reply drafting."
+        },
+        {
+          "id": "A2A-SIN-Quora",
+          "role": "supporting",
+          "summary": "Quora topic tracking + drafts."
+        },
+        {
+          "id": "A2A-SIN-Slashdot",
+          "role": "supporting",
+          "summary": "Slashdot monitoring."
+        }
+      ],
+      "agent_count": 5,
+      "primary_agents": [
+        "A2A-SIN-HackerNews",
+        "A2A-SIN-Lobsters",
+        "A2A-SIN-StackOverflow"
+      ],
+      "permissions": [
+        "read:user-memory",
+        "write:user-memory",
+        "net:external-http"
+      ],
+      "marketing": {
+        "summary": "Monitors, engages with, and harvests signal from the forums engineers and thinkers actually use. Surfaces trending threads to your inbox, drafts high-signal replies, and answers developer questions on Stack Overflow when your product is mentioned.",
+        "bullets": [
+          "Hacker News and Lobsters trend detection",
+          "Stack Overflow monitoring + developer-support drafts",
+          "Quora and Slashdot engagement",
+          "Auto-digests of threads relevant to your product",
+          "Plagiarism-aware original-reply drafting"
+        ],
+        "screenshot": null,
+        "demo_video": null
+      },
+      "budgets": {
+        "default_monthly_usd_cap": 15,
+        "per_run_usd_cap": 1
+      },
+      "provenance": {
+        "decided_in": "OpenSIN-overview#35",
+        "decided_at": "2026-04-18",
+        "owner_team": "OpenSIN-AI/forum"
+      },
+      "links": {
+        "repo": "https://github.com/OpenSIN-AI/Team-SIN-Forum",
+        "marketplace": "https://my.opensin.ai/marketplace/forum"
+      },
+      "source_file": "templates/teams/Team-SIN-Forum.json"
+    },
+    {
+      "id": "Team-SIN-Google",
+      "slug": "google",
+      "name": "Google Team",
+      "tagline": "Google Workspace automation: Docs, Sheets, Gmail, Drive, Chat.",
+      "tier": "marketplace",
+      "status": "beta",
+      "status_label": "Beta",
+      "pricing": {
+        "model": "monthly-addon",
+        "monthly_addon_eur": 9
+      },
+      "pricing_label": "€9/month add-on",
+      "agents": [
+        {
+          "id": "A2A-SIN-Google-Apps",
+          "role": "primary",
+          "summary": "Google Workspace apps (Docs/Sheets/Slides/Gmail/Drive/Calendar)."
+        },
+        {
+          "id": "A2A-SIN-Google-Chat",
+          "role": "supporting",
+          "summary": "Google Chat spaces and direct messages."
+        }
+      ],
+      "agent_count": 2,
+      "primary_agents": [
+        "A2A-SIN-Google-Apps"
+      ],
+      "permissions": [
+        "read:user-memory",
+        "write:user-memory",
+        "net:external-http",
+        "net:cloud-apis"
+      ],
+      "marketing": {
+        "summary": "First-class Google Workspace automation for professionals living in Docs, Sheets, Gmail, Drive and Google Chat. Builds reports, drafts replies, orchestrates meetings, and searches across the whole workspace.",
+        "bullets": [
+          "Docs / Sheets / Slides generation and edits",
+          "Gmail triage and reply drafting",
+          "Drive search and content staging",
+          "Google Chat orchestration across spaces",
+          "Calendar scheduling and meeting prep"
+        ],
+        "screenshot": null,
+        "demo_video": null
+      },
+      "budgets": {
+        "default_monthly_usd_cap": 20,
+        "per_run_usd_cap": 1
+      },
+      "provenance": {
+        "decided_in": "OpenSIN-overview#35",
+        "decided_at": "2026-04-18",
+        "owner_team": "OpenSIN-AI/google"
+      },
+      "links": {
+        "repo": "https://github.com/OpenSIN-AI/Team-SIN-Google",
+        "marketplace": "https://my.opensin.ai/marketplace/google"
+      },
+      "source_file": "templates/teams/Team-SIN-Google.json"
+    },
+    {
+      "id": "Team-SIN-Infrastructure",
+      "slug": "infrastructure",
+      "name": "Infrastructure Team",
+      "tagline": "CI/CD, n8n workflows, storage, and GitHub Actions — your infra on autopilot.",
+      "tier": "marketplace",
+      "status": "beta",
+      "status_label": "Beta",
+      "pricing": {
+        "model": "monthly-addon",
+        "monthly_addon_eur": 14
+      },
+      "pricing_label": "€14/month add-on",
+      "agents": [
+        {
+          "id": "A2A-SIN-CI-CD",
+          "role": "primary",
+          "summary": "CI/CD pipelines across Jenkins/GH/GitLab/CircleCI."
+        },
+        {
+          "id": "A2A-SIN-Github-Action",
+          "role": "primary",
+          "summary": "GitHub Actions failure triage + fixes."
+        },
+        {
+          "id": "A2A-SIN-N8N",
+          "role": "primary",
+          "summary": "n8n workflow authoring + debugging."
+        },
+        {
+          "id": "A2A-SIN-Storage",
+          "role": "supporting",
+          "summary": "Generic object-storage operations."
+        },
+        {
+          "id": "A2A-SIN-Box-Storage",
+          "role": "supporting",
+          "summary": "Box-specific storage operations."
+        },
+        {
+          "id": "A2A-SIN-Opal",
+          "role": "supporting",
+          "summary": "Opal workflow automation."
+        }
+      ],
+      "agent_count": 6,
+      "primary_agents": [
+        "A2A-SIN-CI-CD",
+        "A2A-SIN-Github-Action",
+        "A2A-SIN-N8N"
+      ],
+      "permissions": [
+        "read:user-memory",
+        "write:user-memory",
+        "net:external-http",
+        "net:cloud-apis",
+        "filesystem:user-workspace",
+        "shell:user-workspace"
+      ],
+      "marketing": {
+        "summary": "Keeps your pipelines, workflows, and storage healthy. Fixes red CI, writes n8n workflows, triages GitHub Actions failures, and manages object storage across providers. The team your ops channel has always wanted.",
+        "bullets": [
+          "CI/CD pipeline healing and flake detection",
+          "n8n workflow authoring and debugging",
+          "GitHub Actions failure triage + fixes",
+          "Object storage management across providers (Box + generic)",
+          "Opal workflow automation integration"
+        ],
+        "screenshot": null,
+        "demo_video": null
+      },
+      "budgets": {
+        "default_monthly_usd_cap": 30,
+        "per_run_usd_cap": 2
+      },
+      "provenance": {
+        "decided_in": "OpenSIN-overview#35",
+        "decided_at": "2026-04-18",
+        "owner_team": "OpenSIN-AI/infrastructure"
+      },
+      "links": {
+        "repo": "https://github.com/OpenSIN-AI/Team-SIN-Infrastructure",
+        "marketplace": "https://my.opensin.ai/marketplace/infrastructure"
+      },
+      "source_file": "templates/teams/Team-SIN-Infrastructure.json"
+    },
+    {
+      "id": "Team-SIN-Legal",
+      "slug": "legal",
+      "name": "Legal Team",
+      "tagline": "Contracts, compliance, patents, tax, damages — legal ops for builders.",
+      "tier": "marketplace",
+      "status": "beta",
+      "status_label": "Beta",
+      "pricing": {
+        "model": "monthly-addon",
+        "monthly_addon_eur": 29
+      },
+      "pricing_label": "€29/month add-on",
+      "agents": [
+        {
+          "id": "A2A-SIN-Compliance",
+          "role": "primary",
+          "summary": "Compliance framework tracking."
+        },
+        {
+          "id": "A2A-SIN-Contract",
+          "role": "primary",
+          "summary": "Contract drafting + redlines."
+        },
+        {
+          "id": "A2A-SIN-ClaimWriter",
+          "role": "primary",
+          "summary": "Structured claim writing."
+        },
+        {
+          "id": "A2A-SIN-Damages",
+          "role": "supporting",
+          "summary": "Damages modelling."
+        },
+        {
+          "id": "A2A-SIN-Evidence",
+          "role": "supporting",
+          "summary": "Evidence organisation."
+        },
+        {
+          "id": "A2A-SIN-Patents",
+          "role": "supporting",
+          "summary": "Patent + prior-art search."
+        },
+        {
+          "id": "A2A-SIN-Tax",
+          "role": "supporting",
+          "summary": "Tax filing prep + bookkeeping."
+        }
+      ],
+      "agent_count": 7,
+      "primary_agents": [
+        "A2A-SIN-Compliance",
+        "A2A-SIN-Contract",
+        "A2A-SIN-ClaimWriter"
+      ],
+      "permissions": [
+        "read:user-memory",
+        "write:user-memory",
+        "net:external-http",
+        "filesystem:user-workspace"
+      ],
+      "marketing": {
+        "summary": "Legal ops squad for startup founders and small practices. Drafts and reviews contracts, triages compliance obligations, handles patent discovery, computes damage models, organises evidence, and prepares tax filings. Not legal advice — but a force multiplier for whoever gives it.",
+        "bullets": [
+          "Contract drafting and clause-by-clause review",
+          "Compliance obligation tracking (GDPR/CCPA/SOC2/HIPAA)",
+          "Patent and prior-art search",
+          "Evidence organisation and chain-of-custody hygiene",
+          "Damages modelling and scenario reports",
+          "Tax filing preparation and bookkeeping bridges",
+          "Claim writing for small-claims and regulatory filings"
+        ],
+        "screenshot": null,
+        "demo_video": null
+      },
+      "budgets": {
+        "default_monthly_usd_cap": 40,
+        "per_run_usd_cap": 2
+      },
+      "provenance": {
+        "decided_in": "OpenSIN-overview#35",
+        "decided_at": "2026-04-18",
+        "owner_team": "OpenSIN-AI/legal"
+      },
+      "links": {
+        "repo": "https://github.com/OpenSIN-AI/Team-SIN-Legal",
+        "marketplace": "https://my.opensin.ai/marketplace/legal"
+      },
+      "source_file": "templates/teams/Team-SIN-Legal.json"
+    },
+    {
+      "id": "Team-SIN-Media-ComfyUI",
+      "slug": "media-comfyui",
+      "name": "Media (ComfyUI) Team",
+      "tagline": "Pro-grade image and video pipelines powered by ComfyUI.",
+      "tier": "marketplace",
+      "status": "beta",
+      "status_label": "Beta",
+      "pricing": {
+        "model": "monthly-addon",
+        "monthly_addon_eur": 19
+      },
+      "pricing_label": "€19/month add-on",
+      "agents": [
+        {
+          "id": "A2A-SIN-MiroFish",
+          "role": "primary",
+          "summary": "ComfyUI pipeline authoring, running and tuning."
+        }
+      ],
+      "agent_count": 1,
+      "primary_agents": [
+        "A2A-SIN-MiroFish"
+      ],
+      "permissions": [
+        "read:user-memory",
+        "write:user-memory",
+        "net:external-http",
+        "net:cloud-apis",
+        "filesystem:user-workspace",
+        "shell:user-workspace",
+        "spend:llm-budget"
+      ],
+      "marketing": {
+        "summary": "Production-grade generative media: builds, tunes, and runs ComfyUI pipelines for images and short-form video. Ships with curated workflows for thumbnails, UGC, ads, storyboards, and post-processing. Compute-heavy — runs on your own GPU or on a managed Cloud-GPU backend.",
+        "bullets": [
+          "Curated ComfyUI workflows for thumbnails, UGC, ads",
+          "Custom pipeline authoring from natural-language brief",
+          "Batch generation with consistent character/brand locking",
+          "LoRA + ControlNet orchestration",
+          "Cloud-GPU or bring-your-own-GPU"
+        ],
+        "screenshot": null,
+        "demo_video": null
+      },
+      "budgets": {
+        "default_monthly_usd_cap": 50,
+        "per_run_usd_cap": 5
+      },
+      "provenance": {
+        "decided_in": "OpenSIN-overview#35",
+        "decided_at": "2026-04-18",
+        "owner_team": "OpenSIN-AI/media"
+      },
+      "links": {
+        "repo": "https://github.com/OpenSIN-AI/Team-SIN-Media-ComfyUI",
+        "marketplace": "https://my.opensin.ai/marketplace/media-comfyui"
+      },
+      "source_file": "templates/teams/Team-SIN-Media-ComfyUI.json"
+    },
+    {
+      "id": "Team-SIN-Media-Music",
+      "slug": "media-music",
+      "name": "Media (Music) Team",
+      "tagline": "Music production pipeline — coming Q3 2026.",
+      "tier": "marketplace",
+      "status": "coming-soon",
+      "status_label": "Coming soon",
+      "pricing": {
+        "model": "monthly-addon",
+        "monthly_addon_eur": 14
+      },
+      "pricing_label": "€14/month add-on",
+      "agents": [],
+      "agent_count": 0,
+      "primary_agents": [],
+      "permissions": [
+        "read:user-memory",
+        "write:user-memory",
+        "net:external-http",
+        "spend:llm-budget"
+      ],
+      "marketing": {
+        "summary": "Music-production agent team: genre-aware composition, stems, mastering, and distribution prep. Currently in design — no agents assigned yet. If you want early access or want to build the core music-generation agent, open an issue on Team-SIN-Media-Music.",
+        "bullets": [
+          "Text-to-music composition with style conditioning",
+          "Stem separation and mix assistance",
+          "Mastering chain with genre-aware presets",
+          "Distribution prep for DSPs (Spotify/Apple Music/Bandcamp)",
+          "Not yet shipping — status: coming-soon"
+        ],
+        "screenshot": null,
+        "demo_video": null
+      },
+      "budgets": {
+        "default_monthly_usd_cap": 40,
+        "per_run_usd_cap": 5
+      },
+      "provenance": {
+        "decided_in": "OpenSIN-overview#35",
+        "decided_at": "2026-04-18",
+        "owner_team": "OpenSIN-AI/media"
+      },
+      "links": {
+        "repo": "https://github.com/OpenSIN-AI/Team-SIN-Media-Music",
+        "marketplace": "https://my.opensin.ai/marketplace/media-music"
+      },
+      "source_file": "templates/teams/Team-SIN-Media-Music.json"
+    },
+    {
+      "id": "Team-SIN-Messaging",
+      "slug": "messaging",
+      "name": "Messaging Team",
+      "tagline": "One inbox across Telegram, Beeper, Signal, Matrix, iMessage, SMS, and more.",
+      "tier": "marketplace",
+      "status": "beta",
+      "status_label": "Beta",
+      "pricing": {
+        "model": "monthly-addon",
+        "monthly_addon_eur": 14
+      },
+      "pricing_label": "€14/month add-on",
+      "agents": [
+        {
+          "id": "A2A-SIN-Telegram",
+          "role": "primary",
+          "summary": "Telegram DMs, groups, channels, bots."
+        },
+        {
+          "id": "A2A-SIN-Beeper",
+          "role": "primary",
+          "summary": "Beeper aggregation layer across networks."
+        },
+        {
+          "id": "A2A-SIN-Signal",
+          "role": "supporting",
+          "summary": "Signal messaging."
+        },
+        {
+          "id": "A2A-SIN-Matrix",
+          "role": "supporting",
+          "summary": "Matrix rooms + bots."
+        },
+        {
+          "id": "A2A-SIN-WeChat",
+          "role": "supporting",
+          "summary": "WeChat chats + Official Accounts."
+        },
+        {
+          "id": "A2A-SIN-LINE",
+          "role": "supporting",
+          "summary": "LINE messaging."
+        },
+        {
+          "id": "A2A-SIN-Feishu",
+          "role": "supporting",
+          "summary": "Feishu / Lark workplace chat."
+        },
+        {
+          "id": "A2A-SIN-BlueBubbles",
+          "role": "supporting",
+          "summary": "iMessage via BlueBubbles bridge."
+        },
+        {
+          "id": "A2A-SIN-Chatroom",
+          "role": "supporting",
+          "summary": "Generic chatroom protocol adapter."
+        },
+        {
+          "id": "A2A-SIN-IRC",
+          "role": "supporting",
+          "summary": "IRC channel operations."
+        },
+        {
+          "id": "A2A-SIN-Email",
+          "role": "supporting",
+          "summary": "Email as a messaging channel."
+        },
+        {
+          "id": "A2A-SIN-SMS",
+          "role": "supporting",
+          "summary": "SMS send/receive via Twilio-like backends."
+        }
+      ],
+      "agent_count": 12,
+      "primary_agents": [
+        "A2A-SIN-Telegram",
+        "A2A-SIN-Beeper"
+      ],
+      "permissions": [
+        "read:user-memory",
+        "write:user-memory",
+        "net:external-http",
+        "net:cloud-apis"
+      ],
+      "marketing": {
+        "summary": "Unifies your messaging sprawl. Drafts replies, digests conversations, triages groups, and runs bots across Telegram, Beeper, Signal, Matrix, WeChat, LINE, Feishu, iMessage (via BlueBubbles), Chatroom, IRC, Email, and SMS. Never miss a thread because it was on the wrong app.",
+        "bullets": [
+          "Unified thread view across 12+ platforms",
+          "Cross-platform reply drafting with context",
+          "Group-chat digests and mute-smart notifications",
+          "Bot hosting for Telegram and Matrix channels",
+          "Email + SMS as first-class messaging surfaces",
+          "Works with Beeper and BlueBubbles as aggregation layers"
+        ],
+        "screenshot": null,
+        "demo_video": null
+      },
+      "budgets": {
+        "default_monthly_usd_cap": 30,
+        "per_run_usd_cap": 1
+      },
+      "provenance": {
+        "decided_in": "OpenSIN-overview#35",
+        "decided_at": "2026-04-18",
+        "owner_team": "OpenSIN-AI/messaging"
+      },
+      "links": {
+        "repo": "https://github.com/OpenSIN-AI/Team-SIN-Messaging",
+        "marketplace": "https://my.opensin.ai/marketplace/messaging"
+      },
+      "source_file": "templates/teams/Team-SIN-Messaging.json"
+    },
+    {
+      "id": "Team-SIN-Microsoft",
+      "slug": "microsoft",
+      "name": "Microsoft Team",
+      "tagline": "Microsoft Teams automation — the start of full Microsoft 365 coverage.",
+      "tier": "marketplace",
+      "status": "alpha",
+      "status_label": "Alpha",
+      "pricing": {
+        "model": "monthly-addon",
+        "monthly_addon_eur": 9
+      },
+      "pricing_label": "€9/month add-on",
+      "agents": [
+        {
+          "id": "A2A-SIN-Teams",
+          "role": "primary",
+          "summary": "Microsoft Teams channels, meetings, chat."
+        }
+      ],
+      "agent_count": 1,
+      "primary_agents": [
+        "A2A-SIN-Teams"
+      ],
+      "permissions": [
+        "read:user-memory",
+        "write:user-memory",
+        "net:external-http",
+        "net:cloud-apis"
+      ],
+      "marketing": {
+        "summary": "Currently ships Microsoft Teams automation — channels, meetings, chat. Roadmap covers Outlook, Word, Excel, PowerPoint, OneDrive, SharePoint and Power Automate. Priced as a growing bundle — buyers today lock in the Teams agent and get future M365 agents added automatically.",
+        "bullets": [
+          "Microsoft Teams channels, meetings and chat ops",
+          "Outlook calendar + mail (roadmap)",
+          "Excel / Word / PowerPoint generation (roadmap)",
+          "SharePoint and OneDrive content ops (roadmap)",
+          "Power Automate flow authoring (roadmap)"
+        ],
+        "screenshot": null,
+        "demo_video": null
+      },
+      "budgets": {
+        "default_monthly_usd_cap": 20,
+        "per_run_usd_cap": 1
+      },
+      "provenance": {
+        "decided_in": "OpenSIN-overview#35",
+        "decided_at": "2026-04-18",
+        "owner_team": "OpenSIN-AI/microsoft"
+      },
+      "links": {
+        "repo": "https://github.com/OpenSIN-AI/Team-SIN-Microsoft",
+        "marketplace": "https://my.opensin.ai/marketplace/microsoft"
+      },
+      "source_file": "templates/teams/Team-SIN-Microsoft.json"
+    },
+    {
+      "id": "Team-SIN-Research",
+      "slug": "research",
+      "name": "Research Team",
+      "tagline": "Deep research, summarisation, and distributed-cognition experiments.",
+      "tier": "marketplace",
+      "status": "beta",
+      "status_label": "Beta",
+      "pricing": {
+        "model": "monthly-addon",
+        "monthly_addon_eur": 19
+      },
+      "pricing_label": "€19/month add-on",
+      "agents": [
+        {
+          "id": "A2A-SIN-Research",
+          "role": "primary",
+          "summary": "Multi-source deep research."
+        },
+        {
+          "id": "A2A-SIN-Summary",
+          "role": "primary",
+          "summary": "Summarisation with verification."
+        },
+        {
+          "id": "A2A-SIN-Mindrift",
+          "role": "supporting",
+          "summary": "Distributed-cognition experimentation."
+        }
+      ],
+      "agent_count": 3,
+      "primary_agents": [
+        "A2A-SIN-Research",
+        "A2A-SIN-Summary"
+      ],
+      "permissions": [
+        "read:user-memory",
+        "write:user-memory",
+        "net:external-http",
+        "spend:llm-budget"
+      ],
+      "marketing": {
+        "summary": "A research squad for people whose job is thinking. Runs multi-source deep research, produces high-quality summaries, and experiments with distributed-cognition (Mindrift) workflows for teams that want their research done collaboratively across agents.",
+        "bullets": [
+          "Multi-source deep research with citation discipline",
+          "Executive-grade summaries with verification trail",
+          "Distributed cognition across multiple agents (Mindrift)",
+          "Topic tracking with daily/weekly digests",
+          "Exports to Google Docs, Notion, or plain markdown"
+        ],
+        "screenshot": null,
+        "demo_video": null
+      },
+      "budgets": {
+        "default_monthly_usd_cap": 40,
+        "per_run_usd_cap": 2
+      },
+      "provenance": {
+        "decided_in": "OpenSIN-overview#35",
+        "decided_at": "2026-04-18",
+        "owner_team": "OpenSIN-AI/research"
+      },
+      "links": {
+        "repo": "https://github.com/OpenSIN-AI/Team-SIN-Research",
+        "marketplace": "https://my.opensin.ai/marketplace/research"
+      },
+      "source_file": "templates/teams/Team-SIN-Research.json"
+    },
+    {
+      "id": "Team-SIN-Social",
+      "slug": "social",
+      "name": "Social Team",
+      "tagline": "Grow on Instagram, LinkedIn, TikTok, ProductHunt and the creator web.",
+      "tier": "marketplace",
+      "status": "beta",
+      "status_label": "Beta",
+      "pricing": {
+        "model": "monthly-addon",
+        "monthly_addon_eur": 14
+      },
+      "pricing_label": "€14/month add-on",
+      "agents": [
+        {
+          "id": "A2A-SIN-Instagram",
+          "role": "primary",
+          "summary": "Instagram scheduling + Reels."
+        },
+        {
+          "id": "A2A-SIN-LinkedIn",
+          "role": "primary",
+          "summary": "LinkedIn posts + articles."
+        },
+        {
+          "id": "A2A-SIN-TikTok",
+          "role": "primary",
+          "summary": "TikTok posting + trend tracking."
+        },
+        {
+          "id": "A2A-SIN-ProductHunt",
+          "role": "supporting",
+          "summary": "ProductHunt launch orchestration."
+        },
+        {
+          "id": "A2A-SIN-DevTo",
+          "role": "supporting",
+          "summary": "DevTo cross-posting."
+        },
+        {
+          "id": "A2A-SIN-Medium",
+          "role": "supporting",
+          "summary": "Medium publications."
+        },
+        {
+          "id": "A2A-SIN-Paragraph",
+          "role": "supporting",
+          "summary": "Paragraph newsletter."
+        },
+        {
+          "id": "A2A-SIN-IndieHackers",
+          "role": "supporting",
+          "summary": "IndieHackers posting."
+        },
+        {
+          "id": "A2A-SIN-Nostr",
+          "role": "supporting",
+          "summary": "Nostr relays + posting."
+        }
+      ],
+      "agent_count": 9,
+      "primary_agents": [
+        "A2A-SIN-Instagram",
+        "A2A-SIN-LinkedIn",
+        "A2A-SIN-TikTok"
+      ],
+      "permissions": [
+        "read:user-memory",
+        "write:user-memory",
+        "net:external-http",
+        "net:cloud-apis"
+      ],
+      "marketing": {
+        "summary": "Content + distribution squad for creators, founders, and brands. Drafts for Instagram, LinkedIn, TikTok and creator-web surfaces (DevTo, Medium, Paragraph, IndieHackers, Nostr), launches on ProductHunt, and repurposes long-form into clips and threads.",
+        "bullets": [
+          "Instagram, LinkedIn and TikTok scheduling + drafting",
+          "ProductHunt launch choreography",
+          "DevTo / Medium / Paragraph / IndieHackers cross-posting",
+          "Nostr for the decentralised-web crowd",
+          "Long-form to short-form repurposing",
+          "Tone + brand-voice memory via PCPM"
+        ],
+        "screenshot": null,
+        "demo_video": null
+      },
+      "budgets": {
+        "default_monthly_usd_cap": 25,
+        "per_run_usd_cap": 1
+      },
+      "provenance": {
+        "decided_in": "OpenSIN-overview#35",
+        "decided_at": "2026-04-18",
+        "owner_team": "OpenSIN-AI/social"
+      },
+      "links": {
+        "repo": "https://github.com/OpenSIN-AI/Team-SIN-Social",
+        "marketplace": "https://my.opensin.ai/marketplace/social"
+      },
+      "source_file": "templates/teams/Team-SIN-Social.json"
+    }
+  ]
+}
