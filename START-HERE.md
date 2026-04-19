@@ -5,11 +5,14 @@
 You just landed in the OpenSIN-AI organization (200 repos, 17 teams, 109 A2A agents, 7 business repos).
 Read this file first. Then [`docs/CANONICAL-REPOS.md`](./docs/CANONICAL-REPOS.md). Then you're working.
 
+> **Wir launchen am 2026-04-23 (T-4).** Wenn du wissen willst was in den 4 Tagen passiert, lies direkt **[LAUNCH-CHECKLIST.md](./LAUNCH-CHECKLIST.md)**. Dort stehen die 10 Go/No-Go-Kriterien, der Tag-für-Tag-Plan und die Rollback-Strategie.
+>
 > **Neu: Produktverständnis vor Code.** Bevor du irgendwas tust, lies:
 > 1. **[PRODUCT-VISION.md](./PRODUCT-VISION.md)** — das 3-Tier-Modell (OpenSIN Free / My.OpenSIN Pro / Marketplace), kompetitive Positionierung, das **eine Ziel** (5 Min).
 > 2. **[STATE-OF-THE-UNION.md](./STATE-OF-THE-UNION.md)** — ehrlicher Lagebericht, was existiert, was läuft, was tot ist (5 Min).
+> 3. **[LAUNCH-CHECKLIST.md](./LAUNCH-CHECKLIST.md)** — 4-Tage-Plan, Go/No-Go-Kriterien, Rollback (nur relevant während Launch-Woche).
 >
-> Ohne diese zwei Dokumente weißt du nicht wofür du arbeitest. Mit ihnen weißt du es in 10 Minuten.
+> Ohne diese Dokumente weißt du nicht wofür du arbeitest. Mit ihnen weißt du es in 15 Minuten.
 
 ---
 

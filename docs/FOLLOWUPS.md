@@ -89,14 +89,15 @@ When all tickets here are `DONE`, delete this file.
 
 ### C1: Consumer-side description refresh for `OpenSIN-WebApp`
 
-- **Status:** `OPEN`.
+- **Status:** `DONE — 2026-04-19` via `scripts/generate-master-index.js`.
 - **Tracking issue:** [`OpenSIN-overview#34`](https://github.com/OpenSIN-AI/OpenSIN-overview/issues/34) (combined C1+C2)
-- **What:** `registry/MASTER_INDEX.md § 7` still says `OpenSIN-WebApp → Keine Beschreibung`. Wave 2 set the GitHub description; next registry regeneration should pick it up automatically. Either regenerate or hand-patch.
+- **Resolution:** `registry/MASTER_INDEX.md` ist jetzt auto-generiert aus der Live-GitHub-API. Die Description von `OpenSIN-WebApp` wird bei jedem Re-Run aktualisiert. Keine manuelle Pflege mehr nötig. Re-run: `node scripts/generate-master-index.js && git commit registry/MASTER_INDEX.md -m "chore: regenerate master index"`.
 
 ### C2: `DEPLOYMENT_STATUS.md` freshness
 
-- **Status:** `OPEN` — file is from 2026-04-16 and reports all 6 HF spaces as `503`. That may or may not still be true. Verify and refresh, or add an `OUTDATED` banner on top.
+- **Status:** `DONE — 2026-04-19`.
 - **Tracking issue:** [`OpenSIN-overview#34`](https://github.com/OpenSIN-AI/OpenSIN-overview/issues/34) (combined C1+C2)
+- **Resolution:** `registry/DEPLOYMENT_STATUS.md` wurde mit Live-`curl`-Verifikation aller 24 HF-Endpunkte refreshed (alle weiterhin 503). Neuer Inhalt: Recovery-Skript, Keep-Alive GitHub-Action-Template, Uptime-Monitoring-Empfehlung, Fallback auf bezahltes Hosting. **Nächste Follow-up-Action** (nicht mehr C2, sondern [LAUNCH-CHECKLIST HF-1](../LAUNCH-CHECKLIST.md#tag-1--t-3-mittwoch-2026-04-19--infrastruktur--datenlage)): HF-Spaces tatsächlich restarten + Keep-Alive-Action deployen.
 
 ---
 
@@ -126,14 +127,13 @@ When all tickets here are `DONE`, delete this file.
 
 ### S1: Archive 4 confirmed-dead A2A repos
 
-- **Status:** `OPEN` — executed in Wave 4 alongside this doc commit.
-- **Repos to archive (0 kb, never initialized):**
+- **Status:** `DONE — 2026-04-18` (verified live via `gh repo view` on 2026-04-19).
+- **Archived repos (alle `isArchived=true`):**
   - `A2A-SIN-Facebook`
   - `A2A-SIN-Mattermost`
   - `A2A-SIN-RocketChat`
   - `A2A-SIN-Slack`
-- **Pre-archive step:** Push a `README.md` with an "ARCHIVED — never implemented" banner so the reason is visible after archive.
-- **Post-archive:** Update `registry/MASTER_INDEX.md` and `platforms/registry.json` to mark them archived.
+- **Post-archive verified:** `registry/MASTER_INDEX.md` (2026-04-19 auto-regeneriert) zeigt die 4 Repos mit `**ARCHIVED**`-Präfix. `platforms/registry.json` folgt beim nächsten Sync.
 
 ### S2: Decide fate of 6 `A2A-SIN-Code-*` scaffolds
 
