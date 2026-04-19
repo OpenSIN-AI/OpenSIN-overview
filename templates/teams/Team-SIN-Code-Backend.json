@@ -1,0 +1,45 @@
+{
+  "$schema_version": "1.0.0",
+  "id": "Team-SIN-Code-Backend",
+  "name": "Code Backend Team",
+  "slug": "code-backend",
+  "tier": "marketplace",
+  "status": "alpha",
+  "tagline": "Backend-focused coding team — APIs, services, infra glue.",
+  "marketing": {
+    "summary": "Coding team focused on backend work: REST and GraphQL APIs, service-to-service orchestration, background jobs, and the glue that lives between a frontend and its databases. Complements Team-SIN-Code-Core (included free) and Team-SIN-Code-Frontend.",
+    "bullets": [
+      "REST + GraphQL API authoring",
+      "Service-to-service integration and message queues",
+      "Background job design (BullMQ, Celery, RQ)",
+      "Database schema evolution and query optimisation",
+      "DevOps handoffs via Team-SIN-Code-Core"
+    ]
+  },
+  "agents": [
+    {"id": "A2A-SIN-Code-DevOps", "role": "supporting", "summary": "Shared with Code-Core for deploy handoffs."},
+    {"id": "A2A-SIN-Code-Backend", "role": "optional", "summary": "Dedicated backend agent (currently scaffold — see SCAFFOLD_AUDIT.md)."}
+  ],
+  "pricing": {
+    "model": "monthly-addon",
+    "monthly_addon_eur": 14
+  },
+  "permissions": [
+    "read:user-memory",
+    "write:user-memory",
+    "net:external-http",
+    "net:cloud-apis",
+    "filesystem:user-workspace",
+    "shell:user-workspace",
+    "spend:llm-budget"
+  ],
+  "budgets": {
+    "default_monthly_usd_cap": 40,
+    "per_run_usd_cap": 3
+  },
+  "provenance": {
+    "decided_in": "OpenSIN-overview#35",
+    "decided_at": "2026-04-18",
+    "owner_team": "OpenSIN-AI/code-core"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "$schema_version": "1.0.0",
+  "id": "Team-SIN-Google",
+  "name": "Google Team",
+  "slug": "google",
+  "tier": "marketplace",
+  "status": "beta",
+  "tagline": "Google Workspace automation: Docs, Sheets, Gmail, Drive, Chat.",
+  "marketing": {
+    "summary": "First-class Google Workspace automation for professionals living in Docs, Sheets, Gmail, Drive and Google Chat. Builds reports, drafts replies, orchestrates meetings, and searches across the whole workspace.",
+    "bullets": [
+      "Docs / Sheets / Slides generation and edits",
+      "Gmail triage and reply drafting",
+      "Drive search and content staging",
+      "Google Chat orchestration across spaces",
+      "Calendar scheduling and meeting prep"
+    ]
+  },
+  "agents": [
+    {"id": "A2A-SIN-Google-Apps", "role": "primary", "summary": "Google Workspace apps (Docs/Sheets/Slides/Gmail/Drive/Calendar)."},
+    {"id": "A2A-SIN-Google-Chat", "role": "supporting", "summary": "Google Chat spaces and direct messages."}
+  ],
+  "pricing": {
+    "model": "monthly-addon",
+    "monthly_addon_eur": 9
+  },
+  "permissions": [
+    "read:user-memory",
+    "write:user-memory",
+    "net:external-http",
+    "net:cloud-apis"
+  ],
+  "budgets": {
+    "default_monthly_usd_cap": 20,
+    "per_run_usd_cap": 1
+  },
+  "provenance": {
+    "decided_in": "OpenSIN-overview#35",
+    "decided_at": "2026-04-18",
+    "owner_team": "OpenSIN-AI/google"
+  }
+}

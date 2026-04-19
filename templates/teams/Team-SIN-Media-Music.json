@@ -1,0 +1,39 @@
+{
+  "$schema_version": "1.0.0",
+  "id": "Team-SIN-Media-Music",
+  "name": "Media (Music) Team",
+  "slug": "media-music",
+  "tier": "marketplace",
+  "status": "coming-soon",
+  "tagline": "Music production pipeline — coming Q3 2026.",
+  "marketing": {
+    "summary": "Music-production agent team: genre-aware composition, stems, mastering, and distribution prep. Currently in design — no agents assigned yet. If you want early access or want to build the core music-generation agent, open an issue on Team-SIN-Media-Music.",
+    "bullets": [
+      "Text-to-music composition with style conditioning",
+      "Stem separation and mix assistance",
+      "Mastering chain with genre-aware presets",
+      "Distribution prep for DSPs (Spotify/Apple Music/Bandcamp)",
+      "Not yet shipping — status: coming-soon"
+    ]
+  },
+  "agents": [],
+  "pricing": {
+    "model": "monthly-addon",
+    "monthly_addon_eur": 14
+  },
+  "permissions": [
+    "read:user-memory",
+    "write:user-memory",
+    "net:external-http",
+    "spend:llm-budget"
+  ],
+  "budgets": {
+    "default_monthly_usd_cap": 40,
+    "per_run_usd_cap": 5
+  },
+  "provenance": {
+    "decided_in": "OpenSIN-overview#35",
+    "decided_at": "2026-04-18",
+    "owner_team": "OpenSIN-AI/media"
+  }
+}

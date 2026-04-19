@@ -1,0 +1,53 @@
+{
+  "$schema_version": "1.0.0",
+  "id": "Team-SIN-Messaging",
+  "name": "Messaging Team",
+  "slug": "messaging",
+  "tier": "marketplace",
+  "status": "beta",
+  "tagline": "One inbox across Telegram, Beeper, Signal, Matrix, iMessage, SMS, and more.",
+  "marketing": {
+    "summary": "Unifies your messaging sprawl. Drafts replies, digests conversations, triages groups, and runs bots across Telegram, Beeper, Signal, Matrix, WeChat, LINE, Feishu, iMessage (via BlueBubbles), Chatroom, IRC, Email, and SMS. Never miss a thread because it was on the wrong app.",
+    "bullets": [
+      "Unified thread view across 12+ platforms",
+      "Cross-platform reply drafting with context",
+      "Group-chat digests and mute-smart notifications",
+      "Bot hosting for Telegram and Matrix channels",
+      "Email + SMS as first-class messaging surfaces",
+      "Works with Beeper and BlueBubbles as aggregation layers"
+    ]
+  },
+  "agents": [
+    {"id": "A2A-SIN-Telegram", "role": "primary", "summary": "Telegram DMs, groups, channels, bots."},
+    {"id": "A2A-SIN-Beeper", "role": "primary", "summary": "Beeper aggregation layer across networks."},
+    {"id": "A2A-SIN-Signal", "role": "supporting", "summary": "Signal messaging."},
+    {"id": "A2A-SIN-Matrix", "role": "supporting", "summary": "Matrix rooms + bots."},
+    {"id": "A2A-SIN-WeChat", "role": "supporting", "summary": "WeChat chats + Official Accounts."},
+    {"id": "A2A-SIN-LINE", "role": "supporting", "summary": "LINE messaging."},
+    {"id": "A2A-SIN-Feishu", "role": "supporting", "summary": "Feishu / Lark workplace chat."},
+    {"id": "A2A-SIN-BlueBubbles", "role": "supporting", "summary": "iMessage via BlueBubbles bridge."},
+    {"id": "A2A-SIN-Chatroom", "role": "supporting", "summary": "Generic chatroom protocol adapter."},
+    {"id": "A2A-SIN-IRC", "role": "supporting", "summary": "IRC channel operations."},
+    {"id": "A2A-SIN-Email", "role": "supporting", "summary": "Email as a messaging channel."},
+    {"id": "A2A-SIN-SMS", "role": "supporting", "summary": "SMS send/receive via Twilio-like backends."}
+  ],
+  "pricing": {
+    "model": "monthly-addon",
+    "monthly_addon_eur": 14
+  },
+  "permissions": [
+    "read:user-memory",
+    "write:user-memory",
+    "net:external-http",
+    "net:cloud-apis"
+  ],
+  "budgets": {
+    "default_monthly_usd_cap": 30,
+    "per_run_usd_cap": 1
+  },
+  "provenance": {
+    "decided_in": "OpenSIN-overview#35",
+    "decided_at": "2026-04-18",
+    "owner_team": "OpenSIN-AI/messaging"
+  }
+}

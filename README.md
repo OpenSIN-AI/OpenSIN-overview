@@ -1,8 +1,22 @@
+> ## NEU HIER? → **[START-HERE.md](./START-HERE.md)**
+>
+> **In 60 Sekunden handlungsfähig** — für menschliche Entwickler UND AI-Agenten.
+>
+> Konsolidierung April 2026 (9 → 4 Code-Repos, Wave 3 abgeschlossen): [docs/CONSOLIDATION-2026-04.md](./docs/CONSOLIDATION-2026-04.md)
+> Kanonische Repo-Zuordnung: [docs/CANONICAL-REPOS.md](./docs/CANONICAL-REPOS.md)
+> Offene Rationalisierungs-Tickets: [docs/FOLLOWUPS.md](./docs/FOLLOWUPS.md)
+
+---
+
 # 🦅 OPENSIN-AI: KOMPAKT-ÜBERSICHT
 
 > **The Ultimate Single Source of Truth für die OpenSIN-AI Organisation**
 >
-> 📊 **165 Repositories** | **17 Teams** | **92 Worker** | **4 Templates** | **19 Plugins/Skills** | **6 Websites**
+> 📊 **195 Repositories** | **17 Teams** | **149 Worker** | **4 Templates** | **44 Skills** | **6 Websites**
+
+> [!IMPORTANT]
+> **SSOT:** Die kanonische OpenCode-Konfiguration liegt unter [OpenSIN-AI/Infra-SIN-OpenCode-Stack](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack) (v2.2.1, 44 Skills, 27 MCPs, 5 Provider).
+> Nach jeder Änderung an `opencode.json` MUSS `sin-sync` ausgeführt werden.
 
 ---
 
@@ -82,7 +96,7 @@ jobs:
 | [my.opensin.ai](https://my.opensin.ai) | [website-my.opensin.ai](https://github.com/OpenSIN-AI/website-my.opensin.ai) | Premium Abo-Modell: User-Login, Cloud-Agenten, Billing, API-Keys | 🔒 Privat |
 | [docs.opensin.ai](https://docs.opensin.ai) | [OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation) | Offizielle Benutzer-Dokumentation (VitePress) | 🌍 Public |
 | [blog.opensin.ai](https://blog.opensin.ai) | [Biz-SIN-Blog-Posts](https://github.com/OpenSIN-AI/Biz-SIN-Blog-Posts) | OpenSIN-AI Blog & Marketing | 🌍 Public |
-| [a2a.delqhi.com](https://a2a.delqhi.com) | [OpenSIN-backend](https://github.com/OpenSIN-AI/OpenSIN-backend) | A2A Fleet Control Plane (Closed Source) — Backend-API, n8n-Routing, Agenten-Orchestrierung | 🔒 Privat |
+| *(internal API)* | [OpenSIN-backend](https://github.com/OpenSIN-AI/OpenSIN-backend) | A2A Fleet Control Plane (Closed Source) — Backend-API, n8n-Routing, Agenten-Orchestrierung — konsumiert von `OpenSIN-WebApp` | 🔒 Privat |
 
 ---
 
@@ -106,12 +120,14 @@ Die Agenten-Modelle werden durch ein mehrstufiges Konfigurationssystem verwaltet
 
 | Datei | Zweck | Repo |
 |:---|:---|:---|
-| `opencode.json` | Haupt-Config — Provider, Modelle, MCPs, sichtbare Agenten | `upgraded-opencode-stack` |
-| `oh-my-openagent.json` | Subagenten-Modelle — explore, librarian, oracle, etc. | `upgraded-opencode-stack` |
-| `oh-my-sin.json` | Zentrales A2A Team Register — alle Teams klassifiziert | `upgraded-opencode-stack` |
-| `my-sin-team-code.json` | Team Coding Agenten + Modelle | `upgraded-opencode-stack` |
-| `my-sin-team-worker.json` | Team Worker Agenten + Modelle | `upgraded-opencode-stack` |
-| `my-sin-team-infrastructure.json` | Team Infra Agenten + Modelle | `upgraded-opencode-stack` |
+| `opencode.json` | Haupt-Config — Provider, Modelle, MCPs, sichtbare Agenten | [`Infra-SIN-OpenCode-Stack`](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack) |
+| `oh-my-openagent.json` | Subagenten-Modelle — explore, librarian, oracle, etc. | [`Infra-SIN-OpenCode-Stack`](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack) |
+| `oh-my-sin.json` | Zentrales A2A Team Register — alle Teams klassifiziert | [`Infra-SIN-OpenCode-Stack`](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack) |
+| `my-sin-team-code.json` | Team Coding Agenten + Modelle | [`Infra-SIN-OpenCode-Stack`](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack) |
+| `my-sin-team-worker.json` | Team Worker Agenten + Modelle | [`Infra-SIN-OpenCode-Stack`](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack) |
+| `my-sin-team-infrastructure.json` | Team Infra Agenten + Modelle | [`Infra-SIN-OpenCode-Stack`](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack) |
+
+> Legacy path `Delqhi/upgraded-opencode-stack` redirects to the canonical repo above. All new links must use the canonical path.
 
 ### Explore/Librarian Modelle
 
@@ -136,9 +152,8 @@ Bei grossen Codebases (100k+ Zeilen, 1000+ Dateien) MUESSEN Agenten **5-10 paral
 |------|-------|
 | [OpenSIN](https://github.com/OpenSIN-AI/OpenSIN) | Free/Open-Source Core Engine — Python (QueryEngine, Hooks, Tools, MCP, Sandbox, Memory, A2A) |
 | [OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | Autonomes CLI + SDK (`@opensin/sdk`) — Agent Loop, Tool System, Model Routing, Memory, Safety, A2A Transport Layer + Rust Engine (71 Dateien, 37.7K Zeilen) |
-| [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | **NEU (April 2026)** — AI Coding Assistant in Rust (70 Dateien, 34.601 Zeilen, 9 Crates) |
-| [opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code) | **NEU (April 2026)** — Python Agent Development Platform (100 Dateien, 2.386 Zeilen, 26 Subsysteme) |
-| [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | **NEU (April 2026)** — Plugin Ecosystem & GitHub Automation (182 Dateien, 87.247 Zeilen, 14 Plugins) |
+| [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | ⚠️ **Rationalization pending** — Rust coding CLI (70 Dateien, 34.601 Zeilen, 9 Crates). Overlaps with `OpenSIN-Code`. **Do not extend**; see [docs/FOLLOWUPS.md § R1](./docs/FOLLOWUPS.md#r1-opensin-ai-cli--opensin-code) |
+| [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | ⚠️ **Rationalization pending** — Plugin Ecosystem (182 Dateien, 87.247 Zeilen, 14 Plugins). Overlaps with `OpenSIN/opensin_agent_platform/`. **Do not extend**; see [docs/FOLLOWUPS.md § R2](./docs/FOLLOWUPS.md#r2-opensin-ai-platform--opensin) |
 | [OpenSIN-backend](https://github.com/OpenSIN-AI/OpenSIN-backend) | Closed Source Backend — A2A Fleet Control Plane, n8n-Routing, Agenten-Orchestrierung, API für OpenSIN-WebApp |
 | [OpenSIN-WebApp](https://github.com/OpenSIN-AI/OpenSIN-WebApp) | User WebApp (Next.js, Vercel ✅) — Login, Dashboard, Agenten-Steuerung (gekoppelt an OpenSIN-backend) |
 
@@ -240,6 +255,8 @@ Bei grossen Codebases (100k+ Zeilen, 1000+ Dateien) MUESSEN Agenten **5-10 paral
 → [Vollständige Box Storage Doku](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup/blob/main/box-storage.md)
 
 ## 🛠️ INFRA & TOOLS
+> **Note:** As of April 2026, `OpenSIN-onboarding` has been consolidated into `Infra-SIN-Dev-Setup/user-onboarding/`. See [docs/CANONICAL-REPOS.md](./docs/CANONICAL-REPOS.md) for the complete archival map.
+
 
 | Repo | Zweck |
 |------|-------|
@@ -248,7 +265,6 @@ Bei grossen Codebases (100k+ Zeilen, 1000+ Dateien) MUESSEN Agenten **5-10 paral
 | [Core-SIN-Control-Plane](https://github.com/OpenSIN-AI/Core-SIN-Control-Plane) | Doctor/Preflight/Eval Layer |
 | [Infra-SIN-Docker-Empire](https://github.com/OpenSIN-AI/Infra-SIN-Docker-Empire) | 26-Container Docker Infrastruktur |
 | [Infra-SIN-Dev-Setup](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup) | Development Environment Setup + Box Storage Guide |
-| [OpenSIN-onboarding](https://github.com/OpenSIN-AI/OpenSIN-onboarding) | Autonomous 6-phase onboarding — GCP, Passwordmanager, Chrome Extension, Box/Drive Setup |
 | [cloud-backend](https://github.com/OpenSIN-AI/cloud-backend) | 🔒 Proprietär: Stripe, OAuth, Premium-API |
 
 ---
@@ -257,12 +273,11 @@ Bei grossen Codebases (100k+ Zeilen, 1000+ Dateien) MUESSEN Agenten **5-10 paral
 
 | Repo | Zweck |
 |------|-------|
-| [OpenSIN-overview](https://github.com/OpenSIN-AI/OpenSIN-overview) | **SSOT**: rules.md, MASTER_INDEX.md, Registry aller 165 Repos |
+| [OpenSIN-overview](https://github.com/OpenSIN-AI/OpenSIN-overview) | **SSOT**: START-HERE.md, CANONICAL-REPOS.md, MASTER_INDEX.md (188 Repos) |
 | [OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation) | Offizielle Doku (VitePress) — docs.opensin.ai |
 | [OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | Core Engine Doku: [OpenSIN Code](https://docs.opensin.ai/docs/guide/opensin-code), [Rust Engine](https://docs.opensin.ai/docs/guide/opensin-code-rust-engine), [Plugins](https://docs.opensin.ai/docs/plugins/opensin-code-plugins) |
-| [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | **NEU** — [OpenSIN-AI CLI Doku](https://docs.opensin.ai/docs/guide/opensin-ai-cli) |
-| [opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code) | **NEU** — [OpenSIN-AI Code Doku](https://docs.opensin.ai/docs/guide/opensin-ai-code) |
-| [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | **NEU** — [OpenSIN-AI Platform Doku](https://docs.opensin.ai/docs/guide/opensin-ai-platform) |
+| [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | ⚠️ Rationalization pending → see [docs/FOLLOWUPS.md § R1](./docs/FOLLOWUPS.md#r1-opensin-ai-cli--opensin-code) |
+| [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | ⚠️ Rationalization pending → see [docs/FOLLOWUPS.md § R2](./docs/FOLLOWUPS.md#r2-opensin-ai-platform--opensin) |
 
 ---
 
@@ -333,3 +348,9 @@ Bei grossen Codebases (100k+ Zeilen, 1000+ Dateien) MUESSEN Agenten **5-10 paral
 ---
 
 *Zuletzt aktualisiert: 2026-04-09 | OpenSIN-AI CEO Audit*
+
+
+## 🤖 Agent Configuration (A2A v5)
+
+New agents are configured via the `/create-a2a-sin-agent` skill. 
+Documentation: [How to Configure Agents](https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/guide/how-to-configure-agents.md)
