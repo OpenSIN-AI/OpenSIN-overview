@@ -24,6 +24,7 @@ Short version:
 | Runtime core / engine | `OpenSIN` |
 | Autonomous CLI + SDK | `OpenSIN-Code` |
 | Official documentation body | `OpenSIN-documentation` |
+| Developer portal body | `website-developers.opensin.ai` |
 | OpenCode config / skills / plugins | `OpenSIN-AI/Infra-SIN-OpenCode-Stack` |
 | Persistent agent memory (PCPM v4) | `OpenSIN-AI/Infra-SIN-Global-Brain` |
 | Product web app | `OpenSIN-AI/OpenSIN-WebApp` |

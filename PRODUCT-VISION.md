@@ -17,7 +17,7 @@ Drei Tiers. Jedes Tier hat einen klaren URL, einen klaren Kunden, eine klare Val
 
 ### Tier 1 — OpenSIN (Free, Open Source)
 
-- **URL:** [opensin.ai](https://opensin.ai) (Marketing) + [github.com/OpenSIN-AI](https://github.com/OpenSIN-AI) (Code) + [docs.opensin.ai](https://docs.opensin.ai) (Docs)
+- **URL:** [opensin.ai](https://opensin.ai) (Marketing) + [github.com/OpenSIN-AI](https://github.com/OpenSIN-AI) (Code) + [docs.opensin.ai](https://docs.opensin.ai) (Consumer Docs) + [developers.opensin.ai](https://developers.opensin.ai/docs) (Developer Docs)
 - **Zielgruppe:** Developer, Tinkerer, OSS-Enthusiasten, Security-Researcher
 - **Value:**
   - Vollständiger `OpenSIN` Core (Python, 310+ packages) — lokal klonbar, lokal ausführbar
@@ -54,14 +54,15 @@ Drei Tiers. Jedes Tier hat einen klaren URL, einen klaren Kunden, eine klare Val
 
 ---
 
-## UI-Schichtung (4 Oberflächen, 4 Rollen)
+## UI-Schichtung (5 Oberflächen, 5 Rollen)
 
-> **Status:** DECIDED 2026-04-18 (Wave 4). Diese Trennung ist jetzt bindend. Jede Änderung, die sie verwischt, ist ein Rollback.
+> **Status:** DECIDED 2026-04-21 (Wave 4 + docs split). Diese Trennung ist jetzt bindend. Jede Änderung, die sie verwischt, ist ein Rollback.
 
 | Repo | Domain | Rolle | Auth | Payment |
 |---|---|---|---|---|
 | `website-opensin.ai` | opensin.ai | **Marketing für OSS** — "Clone repo, run locally, join Discord" | keine | keine |
-| `OpenSIN-documentation` | docs.opensin.ai | **Dokumentation** (Docusaurus) | keine | keine |
+| `OpenSIN-documentation` | docs.opensin.ai | **Verbraucher-Dokumentation** (VitePress) | keine | keine |
+| `website-developers.opensin.ai` | developers.opensin.ai/docs | **Developer Docs** — APIs, SDKs, Auth, Webhooks | keine | keine |
 | `website-my.opensin.ai` | my.opensin.ai | **Marketing für Paid + Marketplace-Katalog + Stripe-Checkout** — "Buy Pro / Browse Teams / Redirect nach Kauf auf chat.opensin.ai" | keine (außer Session nach Kauf) | Stripe Checkout |
 | `OpenSIN-WebApp` | chat.opensin.ai | **Authenticated Dashboard** — fleet management, API keys, PCPM memory browser, billing portal | Supabase Auth (required) | Stripe Customer Portal (upgrade/downgrade) |
 
@@ -187,7 +188,8 @@ Alle 5 Prio-1-Entscheidungen aus der ersten Vision-Version sind jetzt fix. Jede 
 - `opensin.ai` = OSS-Marketing (unauthenticated, keine Stripe)
 - `my.opensin.ai` = Paid-Marketing + Marketplace-Katalog + Stripe Checkout (unauthenticated)
 - `chat.opensin.ai` = Authenticated App + Stripe Customer Portal
-- `docs.opensin.ai` = Docs
+- `docs.opensin.ai` = Consumer Docs
+- `developers.opensin.ai/docs` = Developer Docs
 
 **Artefakte:** Diese Datei (§ UI-Schichtung). Follow-up: READMEs auf `website-my.opensin.ai` und `OpenSIN-WebApp` deep-linken hierher (Tracking-Issues offen).
 

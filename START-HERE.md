@@ -81,6 +81,7 @@ Vor jedem Task: `discover-agents.js` ausführen (Routing-Regeln siehe `opencode.
 |---|---|---|
 | [website-opensin.ai](https://github.com/OpenSIN-AI/website-opensin.ai) | `opensin.ai` | Open-Source Marketing |
 | [website-my.opensin.ai](https://github.com/OpenSIN-AI/website-my.opensin.ai) | `my.opensin.ai` | Paid-Layer Marketing / Marketplace |
+| [website-developers.opensin.ai](https://github.com/OpenSIN-AI/website-developers.opensin.ai) | `developers.opensin.ai/docs` | Developer Portal |
 
 ### Team-Monorepos (`Team-SIN-*`)
 | Repo | Zweck |
@@ -106,7 +107,7 @@ Vor jedem Task: `discover-agents.js` ausführen (Routing-Regeln siehe `opencode.
 | Repo | Zweck |
 |---|---|
 | [OpenSIN-overview](https://github.com/OpenSIN-AI/OpenSIN-overview) | **Dieses Repo** — SSOT für alle Org-Repos, Onboarding, Governance |
-| [OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation) | `docs.opensin.ai` — end-user documentation |
+| [OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation) | `docs.opensin.ai` — consumer documentation |
 
 ### Infrastruktur-SSOT (seit 2026-04-18 in-Org)
 > Diese beiden Repos waren bis April 2026 unter `Delqhi/...` — sie wurden transferiert und umbenannt. GitHub leitet die alten URLs weiter, aber alle neuen Links und Tools müssen die kanonischen `OpenSIN-AI/Infra-SIN-*` Pfade nutzen.
@@ -137,7 +138,7 @@ Open rationalization work: [docs/FOLLOWUPS.md](./docs/FOLLOWUPS.md) — check be
 
 ## 5. Naming convention in 2 Sätzen
 
-- **Flagship / Produkt-Namen:** kein Präfix (`OpenSIN`, `OpenSIN-Code`, `OpenSIN-backend`, `OpenSIN-WebApp`, `website-opensin.ai`, `website-my.opensin.ai`).
+- **Flagship / Produkt-Namen:** kein Präfix (`OpenSIN`, `OpenSIN-Code`, `OpenSIN-backend`, `OpenSIN-WebApp`, `website-opensin.ai`, `website-my.opensin.ai`, `website-developers.opensin.ai`).
 - **Supporting-Artefakte:** Domain-Präfix (`Team-SIN-*`, `Infra-SIN-*`, `Biz-SIN-*`, `Template-SIN-*`).
 
 Volle Regeln: [docs/CANONICAL-REPOS.md § Naming convention](./docs/CANONICAL-REPOS.md#naming-convention).

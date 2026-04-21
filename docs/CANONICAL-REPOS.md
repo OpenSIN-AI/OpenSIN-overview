@@ -66,16 +66,17 @@ rules.
 
 ## 3. Web surface (TypeScript)
 
-Three repos for three distinct properties. Do not confuse them.
+Four repos for four distinct properties. Do not confuse them.
 
 | Repo | Deployed at | Purpose |
 |---|---|---|
 | [`website-opensin.ai`](https://github.com/OpenSIN-AI/website-opensin.ai) | `opensin.ai` | **Open-source marketing site.** Developers, self-hosters, community. Static Vite/Bun site. |
 | [`website-my.opensin.ai`](https://github.com/OpenSIN-AI/website-my.opensin.ai) | `my.opensin.ai` | **Paid-layer marketing + marketplace.** Team packages, bundles, conversion funnel. Static Vite/Bun site. |
+| [`website-developers.opensin.ai`](https://github.com/OpenSIN-AI/website-developers.opensin.ai) | `developers.opensin.ai` | **Developer portal.** APIs, SDKs, auth, webhooks. Cloudflare Pages static site. |
 | [`OpenSIN-WebApp`](https://github.com/OpenSIN-AI/OpenSIN-WebApp) (package: `opensin-chat`) | `chat.opensin.ai` | **Authenticated dashboard.** Login, agent fleet, chat, api-keys, billing. Next.js 16 + Supabase. **Private repo** — contains business logic. |
 
 **Rule of thumb:**
-- Anonymous visitor → `website-opensin.ai` or `website-my.opensin.ai`
+- Anonymous visitor → `website-opensin.ai`, `website-my.opensin.ai`, or `website-developers.opensin.ai`
 - Logged-in user → `OpenSIN-WebApp`
 
 ---
@@ -85,7 +86,7 @@ Three repos for three distinct properties. Do not confuse them.
 ### OpenSIN-documentation — Public docs website
 - **URL:** https://github.com/OpenSIN-AI/OpenSIN-documentation
 - **Serves:** https://docs.opensin.ai
-- **Owns:** all end-user documentation (guides, tutorials, API reference, install).
+- **Owns:** all consumer documentation (guides, tutorials, install, high-level product help).
 - **Not:** organizational / onboarding material. That lives here in `OpenSIN-overview`.
 
 ---
