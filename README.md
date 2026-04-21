@@ -52,6 +52,7 @@ Scope note: this repo indexes the CI contract. The operational runbook, credenti
 | [my.opensin.ai](https://my.opensin.ai) | [website-my.opensin.ai](https://github.com/OpenSIN-AI/website-my.opensin.ai) | Premium Abo-Modell: User-Login, Cloud-Agenten, Billing, API-Keys | 🔒 Privat |
 | [docs.opensin.ai](https://docs.opensin.ai) | [OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation) | Offizielle Verbraucher-Dokumentation (VitePress) | 🌍 Public |
 | [developers.opensin.ai](https://developers.opensin.ai) | [website-developers.opensin.ai](https://github.com/OpenSIN-AI/website-developers.opensin.ai) | Entwickler-Portal — APIs, SDKs, Auth, Webhooks | 🌍 Public |
+| [member.opensin.ai](https://member.opensin.ai) | [website-member.opensin.ai](https://github.com/OpenSIN-AI/website-member.opensin.ai) | Member Portal — Dashboard, Beiträge, API-Keys | 🔒 Privat |
 | [blog.opensin.ai](https://blog.opensin.ai) | [Biz-SIN-Blog-Posts](https://github.com/OpenSIN-AI/Biz-SIN-Blog-Posts) | OpenSIN-AI Blog & Marketing | 🌍 Public |
 | *(internal API)* | [OpenSIN-backend](https://github.com/OpenSIN-AI/OpenSIN-backend) | A2A Fleet Control Plane (Closed Source) — Backend-API, n8n-Routing, Agenten-Orchestrierung — konsumiert von `OpenSIN-WebApp` | 🔒 Privat |
 
