@@ -110,6 +110,7 @@ Bei grossen Codebases (100k+ Zeilen, 1000+ Dateien) MUESSEN Agenten **5-10 paral
 |------|-------|
 | [OpenSIN](https://github.com/OpenSIN-AI/OpenSIN) | Free/Open-Source Core Engine — Python (QueryEngine, Hooks, Tools, MCP, Sandbox, Memory, A2A) |
 | [OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | Autonomes CLI + SDK (`@opensin/sdk`) — Agent Loop, Tool System, Model Routing, Memory, Safety, A2A Transport Layer + Rust Engine (71 Dateien, 37.7K Zeilen) |
+| [coder-SIN-Qwen](https://github.com/OpenSIN-Browser-Use-Agents/coder-SIN-Qwen) | Free Qwen 3.6 Max CLI Relay -- kein API-Key noetig, Browser-Automation, Self-Healing, 200+ Tests |
 | [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | ⚠��� **Rationalization pending** — Rust coding CLI (70 Dateien, 34.601 Zeilen, 9 Crates). Overlaps with `OpenSIN-Code`. **Do not extend**; see [docs/FOLLOWUPS.md § R1](./docs/FOLLOWUPS.md#r1-opensin-ai-cli--opensin-code) |
 | [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | ⚠️ **Rationalization pending** — Plugin Ecosystem (182 Dateien, 87.247 Zeilen, 14 Plugins). Overlaps with `OpenSIN/opensin_agent_platform/`. **Do not extend**; see [docs/FOLLOWUPS.md § R2](./docs/FOLLOWUPS.md#r2-opensin-ai-platform--opensin) |
 | [OpenSIN-backend](https://github.com/OpenSIN-AI/OpenSIN-backend) | Closed Source Backend — A2A Fleet Control Plane, n8n-Routing, Agenten-Orchestrierung, API für OpenSIN-WebApp |
