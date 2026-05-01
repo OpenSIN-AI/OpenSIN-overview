@@ -19,9 +19,11 @@ The OpenSIN-overview repository uses an inbound-intake lane to normalize operati
 ## Workflow: `inbound-intake-opensin-overview`
 
 ### Trigger
+
 Webhook POST to `https://n8n.delqhi.com/webhook/inbound-work-opensin-overview`
 
 ### Body Schema
+
 ```json
 {
   "source": "github|telegram|manual|compliance",
@@ -34,6 +36,7 @@ Webhook POST to `https://n8n.delqhi.com/webhook/inbound-work-opensin-overview`
 ```
 
 ### Steps
+
 1. Webhook receives incoming payload
 2. Normalize Work Item transforms the payload into the canonical schema
 3. Create GitHub Issue opens a tracker in `OpenSIN-AI/OpenSIN-overview`
@@ -45,14 +48,14 @@ Webhook POST to `https://n8n.delqhi.com/webhook/inbound-work-opensin-overview`
 
 ## File Locations
 
-| File | Path |
-|------|------|
-| governance contract | `governance/repo-governance.json` |
-| PR watcher contract | `governance/pr-watcher.json` |
-| platform registry | `platforms/registry.json` |
-| n8n workflow | `n8n-workflows/inbound-intake.json` |
-| watcher script | `scripts/watch-pr-feedback.sh` |
-| operations guide | `docs/03_ops/inbound-intake.md` |
+| File                | Path                                |
+| ------------------- | ----------------------------------- |
+| governance contract | `governance/repo-governance.json`   |
+| PR watcher contract | `governance/pr-watcher.json`        |
+| platform registry   | `platforms/registry.json`           |
+| n8n workflow        | `n8n-workflows/inbound-intake.json` |
+| watcher script      | `scripts/watch-pr-feedback.sh`      |
+| operations guide    | `docs/03_ops/inbound-intake.md`     |
 
 ## Activation
 

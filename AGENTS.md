@@ -15,15 +15,15 @@
 
 **Is not** (these live in other repos — link, don't copy):
 
-| Detail | Canonical repo |
-|---|---|
-| Python core runtime | [`OpenSIN`](https://github.com/OpenSIN-AI/OpenSIN) |
-| TS CLI runtime | [`OpenSIN-Code`](https://github.com/OpenSIN-AI/OpenSIN-Code) |
-| Docs canon | [`OpenSIN-documentation`](https://github.com/OpenSIN-AI/OpenSIN-documentation) |
-| Fleet control-plane | [`OpenSIN-backend`](https://github.com/OpenSIN-AI/OpenSIN-backend) |
+| Detail                | Canonical repo                                                                       |
+| --------------------- | ------------------------------------------------------------------------------------ |
+| Python core runtime   | [`OpenSIN`](https://github.com/OpenSIN-AI/OpenSIN)                                   |
+| TS CLI runtime        | [`OpenSIN-Code`](https://github.com/OpenSIN-AI/OpenSIN-Code)                         |
+| Docs canon            | [`OpenSIN-documentation`](https://github.com/OpenSIN-AI/OpenSIN-documentation)       |
+| Fleet control-plane   | [`OpenSIN-backend`](https://github.com/OpenSIN-AI/OpenSIN-backend)                   |
 | OpenCode stack config | [`Infra-SIN-OpenCode-Stack`](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack) |
-| Pro web app | [`OpenSIN-WebApp`](https://github.com/OpenSIN-AI/OpenSIN-WebApp) |
-| Marketplace frontend | [`website-my.opensin.ai`](https://github.com/OpenSIN-AI/website-my.opensin.ai) |
+| Pro web app           | [`OpenSIN-WebApp`](https://github.com/OpenSIN-AI/OpenSIN-WebApp)                     |
+| Marketplace frontend  | [`website-my.opensin.ai`](https://github.com/OpenSIN-AI/website-my.opensin.ai)       |
 
 See [BOUNDARIES.md](./BOUNDARIES.md) for the enforceable rules. A PR that moves implementation canon **into** this repo should be rejected.
 
@@ -66,20 +66,20 @@ These mirror the 7 hard rules in [BOUNDARIES.md](./BOUNDARIES.md#hard-rules). If
 
 ## 4. Where to find truth
 
-| Question | File |
-|---|---|
-| Where am I? What is this org? | [README.md](./README.md) |
-| I'm new, where do I start? | [START-HERE.md](./START-HERE.md) |
-| What's the launch status? | [LAUNCH-CHECKLIST.md](./LAUNCH-CHECKLIST.md) + `npm run launch-status` |
+| Question                      | File                                                                                       |
+| ----------------------------- | ------------------------------------------------------------------------------------------ |
+| Where am I? What is this org? | [README.md](./README.md)                                                                   |
+| I'm new, where do I start?    | [START-HERE.md](./START-HERE.md)                                                           |
+| What's the launch status?     | [LAUNCH-CHECKLIST.md](./LAUNCH-CHECKLIST.md) + `npm run launch-status`                     |
 | Current state vs target state | [STATE-OF-THE-UNION.md](./STATE-OF-THE-UNION.md), [PRODUCT-VISION.md](./PRODUCT-VISION.md) |
-| What can go in this repo? | [BOUNDARIES.md](./BOUNDARIES.md) |
-| How are decisions made? | [GOVERNANCE.md](./GOVERNANCE.md) |
-| How do I contribute? | [CONTRIBUTING.md](./CONTRIBUTING.md) |
-| How do I report a vuln? | [SECURITY.md](./SECURITY.md) |
-| What does script X do? | [scripts/README.md](./scripts/README.md) |
-| What does schema X describe? | [schemas/README.md](./schemas/README.md) |
-| Who owns repo X? | [registry/MASTER_INDEX.md](./registry/MASTER_INDEX.md) |
-| Which team sells which agent? | [templates/oh-my-sin.json](./templates/oh-my-sin.json) (generated) |
+| What can go in this repo?     | [BOUNDARIES.md](./BOUNDARIES.md)                                                           |
+| How are decisions made?       | [GOVERNANCE.md](./GOVERNANCE.md)                                                           |
+| How do I contribute?          | [CONTRIBUTING.md](./CONTRIBUTING.md)                                                       |
+| How do I report a vuln?       | [SECURITY.md](./SECURITY.md)                                                               |
+| What does script X do?        | [scripts/README.md](./scripts/README.md)                                                   |
+| What does schema X describe?  | [schemas/README.md](./schemas/README.md)                                                   |
+| Who owns repo X?              | [registry/MASTER_INDEX.md](./registry/MASTER_INDEX.md)                                     |
+| Which team sells which agent? | [templates/oh-my-sin.json](./templates/oh-my-sin.json) (generated)                         |
 
 ---
 

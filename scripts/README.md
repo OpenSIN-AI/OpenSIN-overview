@@ -6,20 +6,20 @@ Automation for the OpenSIN-overview governance index. Zero runtime dependencies.
 
 ## Quick reference
 
-| Script | Purpose | Runtime | Scheduled? |
-|---|---|---|---|
-| `generate-master-index.js` | Rebuild `registry/MASTER_INDEX.md` from live `gh repo list`. | Node | Daily 06:00 UTC via `.github/workflows/registry-autogenerate.yml` |
-| `audit-repos.js` | Classify every repo as alive / scaffold / dead / canonical / meta; write `registry/SCAFFOLD_AUDIT.md`. | Node | Daily, same workflow |
-| `build-oh-my-sin.js` | Aggregate `templates/teams/*.json` into `templates/oh-my-sin.json`. | Node | Nightly 03:00 UTC via `oh-my-sin-build.yml` |
-| `validate-links.js` | Check every Markdown internal link resolves. Fast, PR-gated. | Node | On every PR + push via `validate-docs.yml` |
-| `validate-team-manifests.js` | Validate each `templates/teams/*.json` against `schemas/team.schema.json` + cross-check agent IDs against the org. | Node | On every PR + push via `validate-docs.yml` |
-| `launch-status.js` | Live Go/No-Go dashboard for the 2026-04-23 launch. Exits non-zero if any gate is RED. | Node | Every 30 min launch-week via `launch-status.yml` |
-| `push-team-manifests.js` | **Manual only.** Push `team.json` + README header into each of the 17 `Team-SIN-*` repos (Wave-4 migration). | Node + `gh` CLI | No |
-| `check-hf-spaces.sh` | Probe the 6 A2A-SIN-Code-\* HF Spaces (Gate G7 / HF-1). | Bash + curl | On demand; `hf-keep-alive.yml` is the automated twin (runs in each Code-Space repo) |
-| `check-web-surfaces.sh` | Probe the 4 public domains for 200 + TLS + HSTS (Gates G1–G4). | Bash + curl + openssl | On demand |
-| `prelaunch-sweep.sh` | Run all of the above in one go — the "can I launch today?" command. | Bash | Manual, pre-standup |
-| `validate-links.js` | see above | | |
-| `watch-pr-feedback.sh` | Local helper to watch a PR's feedback stream. | Bash + `gh` CLI | No |
+| Script                       | Purpose                                                                                                            | Runtime               | Scheduled?                                                                          |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------ | --------------------- | ----------------------------------------------------------------------------------- |
+| `generate-master-index.js`   | Rebuild `registry/MASTER_INDEX.md` from live `gh repo list`.                                                       | Node                  | Daily 06:00 UTC via `.github/workflows/registry-autogenerate.yml`                   |
+| `audit-repos.js`             | Classify every repo as alive / scaffold / dead / canonical / meta; write `registry/SCAFFOLD_AUDIT.md`.             | Node                  | Daily, same workflow                                                                |
+| `build-oh-my-sin.js`         | Aggregate `templates/teams/*.json` into `templates/oh-my-sin.json`.                                                | Node                  | Nightly 03:00 UTC via `oh-my-sin-build.yml`                                         |
+| `validate-links.js`          | Check every Markdown internal link resolves. Fast, PR-gated.                                                       | Node                  | On every PR + push via `validate-docs.yml`                                          |
+| `validate-team-manifests.js` | Validate each `templates/teams/*.json` against `schemas/team.schema.json` + cross-check agent IDs against the org. | Node                  | On every PR + push via `validate-docs.yml`                                          |
+| `launch-status.js`           | Live Go/No-Go dashboard for the 2026-04-23 launch. Exits non-zero if any gate is RED.                              | Node                  | Every 30 min launch-week via `launch-status.yml`                                    |
+| `push-team-manifests.js`     | **Manual only.** Push `team.json` + README header into each of the 17 `Team-SIN-*` repos (Wave-4 migration).       | Node + `gh` CLI       | No                                                                                  |
+| `check-hf-spaces.sh`         | Probe the 6 A2A-SIN-Code-\* HF Spaces (Gate G7 / HF-1).                                                            | Bash + curl           | On demand; `hf-keep-alive.yml` is the automated twin (runs in each Code-Space repo) |
+| `check-web-surfaces.sh`      | Probe the 4 public domains for 200 + TLS + HSTS (Gates G1–G4).                                                     | Bash + curl + openssl | On demand                                                                           |
+| `prelaunch-sweep.sh`         | Run all of the above in one go — the "can I launch today?" command.                                                | Bash                  | Manual, pre-standup                                                                 |
+| `validate-links.js`          | see above                                                                                                          |                       |                                                                                     |
+| `watch-pr-feedback.sh`       | Local helper to watch a PR's feedback stream.                                                                      | Bash + `gh` CLI       | No                                                                                  |
 
 ## Usage
 

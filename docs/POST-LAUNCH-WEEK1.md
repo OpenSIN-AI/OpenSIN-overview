@@ -12,8 +12,8 @@
 
 ## Daily rhythm
 
-| Time  | Action                                                                              |
-| ----- | ----------------------------------------------------------------------------------- |
+| Time  | Action                                                                               |
+| ----- | ------------------------------------------------------------------------------------ |
 | 09:00 | Stand-up: read all new `launch-incident` issues, triage severity, assign owner       |
 | 09:30 | Fix S1/S2 from yesterday. No exceptions.                                             |
 | 13:00 | Read all support messages / Twitter mentions / Discord. Route to issues.             |

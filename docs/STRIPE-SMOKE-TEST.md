@@ -8,15 +8,15 @@
 
 Bevor Tag 3 des Launch-Plans startet, müssen folgende ENV-Variablen in **allen** Produkt-Repos gesetzt sein (Vercel ENV, `Preview` + `Production`):
 
-| Variable | `website-my.opensin.ai` | `OpenSIN-WebApp` | `OpenSIN-backend` |
-|---|:---:|:---:|:---:|
-| `STRIPE_SECRET_KEY` (`sk_test_*`) | ✅ | ✅ | ✅ |
-| `STRIPE_PUBLISHABLE_KEY` (`pk_test_*`) | ✅ | ✅ | — |
-| `STRIPE_WEBHOOK_SECRET` (`whsec_*`) | ✅ (für `/api/webhooks/stripe`) | ✅ (für `/api/webhooks/stripe`) | — |
-| `NEXT_PUBLIC_CHAT_URL` = `https://chat.opensin.ai` | ✅ | ✅ | — |
-| `NEXT_PUBLIC_MY_URL` = `https://my.opensin.ai` | ✅ | ✅ | — |
-| `SUPABASE_SERVICE_ROLE_KEY` | — | ✅ | — |
-| `SUPABASE_URL` + `SUPABASE_ANON_KEY` | — | ✅ | — |
+| Variable                                           |     `website-my.opensin.ai`     |        `OpenSIN-WebApp`         | `OpenSIN-backend` |
+| -------------------------------------------------- | :-----------------------------: | :-----------------------------: | :---------------: |
+| `STRIPE_SECRET_KEY` (`sk_test_*`)                  |               ✅                |               ✅                |        ✅         |
+| `STRIPE_PUBLISHABLE_KEY` (`pk_test_*`)             |               ✅                |               ✅                |         —         |
+| `STRIPE_WEBHOOK_SECRET` (`whsec_*`)                | ✅ (für `/api/webhooks/stripe`) | ✅ (für `/api/webhooks/stripe`) |         —         |
+| `NEXT_PUBLIC_CHAT_URL` = `https://chat.opensin.ai` |               ✅                |               ✅                |         —         |
+| `NEXT_PUBLIC_MY_URL` = `https://my.opensin.ai`     |               ✅                |               ✅                |         —         |
+| `SUPABASE_SERVICE_ROLE_KEY`                        |                —                |               ✅                |         —         |
+| `SUPABASE_URL` + `SUPABASE_ANON_KEY`               |                —                |               ✅                |         —         |
 
 **Stripe Dashboard Setup (einmalig):**
 
@@ -129,15 +129,15 @@ Nach §1–§4 muss ein einziger User-Record folgenden End-Zustand haben:
 ```yaml
 user:
   email: smoke+t1@opensin.ai
-  subscription_tier: cancelled   # nach §3 Cancel
+  subscription_tier: cancelled # nach §3 Cancel
   stripe_customer_id: cus_test_xxx
 user_teams:
   - team_id: Team-SIN-Commerce
-    status: cancelled            # nach §4 Cancel
+    status: cancelled # nach §4 Cancel
 stripe_customer:
   has_payment_method: true
   active_subscriptions: 0
-  past_subscriptions: 2          # starter→pro upgrade + team-commerce
+  past_subscriptions: 2 # starter→pro upgrade + team-commerce
 ```
 
 ### Definition of Done §5
@@ -151,11 +151,11 @@ stripe_customer:
 
 Nicht nur Happy-Path. Diese Fälle müssen nicht "grün" sein, aber **kontrolliert fehlschlagen** (Error-Toast, kein 500, kein inkonsistenter DB-State):
 
-| Fall | Karte | Erwartetes Verhalten |
-|---|---|---|
-| Decline | `4000 0000 0000 0002` | Stripe zeigt Fehler, kein Redirect, kein DB-Write |
-| Insufficient funds | `4000 0000 0000 9995` | wie oben |
-| Authentication required (3DS) | `4000 0025 0000 3155` | 3DS-Modal öffnet sich, bei Cancel bleibt kein State |
+| Fall                                    | Karte                                            | Erwartetes Verhalten                                                                                               |
+| --------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| Decline                                 | `4000 0000 0000 0002`                            | Stripe zeigt Fehler, kein Redirect, kein DB-Write                                                                  |
+| Insufficient funds                      | `4000 0000 0000 9995`                            | wie oben                                                                                                           |
+| Authentication required (3DS)           | `4000 0025 0000 3155`                            | 3DS-Modal öffnet sich, bei Cancel bleibt kein State                                                                |
 | Invoice payment fails post-subscription | `4000 0000 0000 0341` (attaches, later declines) | Webhook `invoice.payment_failed` → DB setzt `subscription_status = 'past_due'`, User sieht Banner "Update payment" |
 
 ---
@@ -174,11 +174,11 @@ Email-Pattern: Immer `smoke+<section>@opensin.ai` nutzen (`+t1`, `+t2`, `+t3`, `
 
 ## §8 — Wer macht was
 
-| Abschnitt | Owner |
-|---|---|
-| §1, §2, §3 | `OpenSIN-WebApp` maintainer |
-| §4 Frontend | `website-my.opensin.ai` maintainer |
-| §4 Backend (Webhook + `user_teams`) | `OpenSIN-WebApp` maintainer |
-| §6 Failure-Modi | `OpenSIN-WebApp` maintainer (ein Pair mit `website-my.opensin.ai`) |
+| Abschnitt                           | Owner                                                              |
+| ----------------------------------- | ------------------------------------------------------------------ |
+| §1, §2, §3                          | `OpenSIN-WebApp` maintainer                                        |
+| §4 Frontend                         | `website-my.opensin.ai` maintainer                                 |
+| §4 Backend (Webhook + `user_teams`) | `OpenSIN-WebApp` maintainer                                        |
+| §6 Failure-Modi                     | `OpenSIN-WebApp` maintainer (ein Pair mit `website-my.opensin.ai`) |
 
 Ergebnis jedes Durchlaufs landet als Kommentar im Tracking-Issue **`OpenSIN-WebApp#stripe-smoke`** (anlegen wenn nicht vorhanden) mit Screenshots, Supabase-Diff, Vercel-Log-Link. Keine mündlichen "funktioniert bei mir"-Aussagen.

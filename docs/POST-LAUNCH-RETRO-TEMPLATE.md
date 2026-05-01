@@ -14,16 +14,16 @@
 
 Pull these from `launch-status.yml` cron archive on [`overview#47`](https://github.com/OpenSIN-AI/OpenSIN-overview/issues/47) and Stripe/GA dashboards.
 
-| Metric | Target | Actual |
-| ------ | ------ | ------ |
-| Day-1 visitors (opensin.ai + my.opensin.ai) | 500 | |
-| Day-1 signups | 50 | |
-| Day-1 paid conversions | 3 | |
-| Week-1 paid conversions | 20 | |
-| Week-1 MRR | €500 | |
-| Week-1 incident count | <5 | |
-| Week-1 mean incident MTTR | <1h | |
-| Week-1 `launch-status` GREEN uptime | >95% | |
+| Metric                                      | Target | Actual |
+| ------------------------------------------- | ------ | ------ |
+| Day-1 visitors (opensin.ai + my.opensin.ai) | 500    |        |
+| Day-1 signups                               | 50     |        |
+| Day-1 paid conversions                      | 3      |        |
+| Week-1 paid conversions                     | 20     |        |
+| Week-1 MRR                                  | €500   |        |
+| Week-1 incident count                       | <5     |        |
+| Week-1 mean incident MTTR                   | <1h    |        |
+| Week-1 `launch-status` GREEN uptime         | >95%   |        |
 
 ## What went well
 

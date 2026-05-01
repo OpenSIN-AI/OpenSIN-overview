@@ -6,7 +6,7 @@ This file follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/)
 
 The three change-categories that matter for downstream consumers:
 
-- **canon-lock** — change to a canon-locked document (BOUNDARIES, GOVERNANCE, PRODUCT-VISION, LAUNCH-CHECKLIST, STATE-OF-THE-UNION, schemas/*). Requires §3.2 review.
+- **canon-lock** — change to a canon-locked document (BOUNDARIES, GOVERNANCE, PRODUCT-VISION, LAUNCH-CHECKLIST, STATE-OF-THE-UNION, schemas/\*). Requires §3.2 review.
 - **schema** — `templates/teams/*`, `templates/oh-my-sin.json`, `schemas/*`. Bumping `$schema_version` is breaking for the marketplace UI, chat entitlements, and the Infra-SIN-OpenCode-Stack mirror.
 - **tooling** — scripts, workflows, lints. Internal to this repo.
 
@@ -50,7 +50,7 @@ The three change-categories that matter for downstream consumers:
 ### Fixed (security)
 
 - **Removed live `n8n_api_…` API key** from `README.md` and `docs/best-practices/ci-cd-n8n.md`.
-  *External action required: rotate the key in n8n UI; the value lives in git history.*
+  _External action required: rotate the key in n8n UI; the value lives in git history._
 - **Removed internal OCI VM IP `92.5.60.87`** from 5 files (`README.md`, `docs/best-practices/ci-cd-n8n.md`, `docs/03_ops/inbound-intake.md`, `.pcpm/rules.md`).
 - **Removed internal Docker bridge IP `172.18.0.1`** from `docs/best-practices/ci-cd-n8n.md`.
 - All four files now reference values by env-var name and link to `Infra-SIN-Dev-Setup` (private) for the actual values.
@@ -59,7 +59,7 @@ The three change-categories that matter for downstream consumers:
 
 - WORKFORCE.md previously claimed **149 workers** across the 17 teams. Real count from the manifests is **89** (role assignments, 87 unique IDs). Almost every per-team count was inflated. Recomputed all rows from `templates/teams/*.json`; `scripts/check-workforce.js` now fails the build on drift.
 - LAUNCH-CHECKLIST weekday labels were off by 3–4 days (Tag 1 said Wednesday, was Sunday; Tag 4 said Saturday, was Wednesday). All five day-blocks now carry the correct `(weekday YYYY-MM-DD)` label and T-count.
-- **2026-04-19 canon-drift false-positive correction:** An earlier audit run against the anonymous GitHub API (which hides private repos) reported that 19 canonical repos referenced in `STATE-OF-THE-UNION.md` and `LAUNCH-CHECKLIST.md` were "fictional" (`OpenSIN-backend`, `OpenSIN-WebApp`, website-*, all 6 `A2A-SIN-Code-*`, all 17 `Team-SIN-*`, etc.). Authenticated re-run showed all 19 exist as **private** repos. None of the 10 launch gates is blocked by missing repos. Full resolution preserved in [`docs/REALITY-CHECK-2026-04-19.md § 0`](./docs/REALITY-CHECK-2026-04-19.md#0-resolution-added-2026-04-19-1900-utc--authenticated-re-run) as an audit-trail.
+- **2026-04-19 canon-drift false-positive correction:** An earlier audit run against the anonymous GitHub API (which hides private repos) reported that 19 canonical repos referenced in `STATE-OF-THE-UNION.md` and `LAUNCH-CHECKLIST.md` were "fictional" (`OpenSIN-backend`, `OpenSIN-WebApp`, website-_, all 6 `A2A-SIN-Code-_`, all 17 `Team-SIN-\*`, etc.). Authenticated re-run showed all 19 exist as **private** repos. None of the 10 launch gates is blocked by missing repos. Full resolution preserved in [`docs/REALITY-CHECK-2026-04-19.md § 0`](./docs/REALITY-CHECK-2026-04-19.md#0-resolution-added-2026-04-19-1900-utc--authenticated-re-run) as an audit-trail.
 - **2026-04-19 team-slug normalization:** `@OpenSIN-AI/core` is not a real GitHub Team — `core-team` is. GitHub silently ignores unknown team owners, so CODEOWNERS rules, dependabot `reviewers`, and manifest `owner_team` fields were inert. Fixed across `.github/CODEOWNERS` (15 refs), `.github/dependabot.yml` (2), `GOVERNANCE.md` (5), `CODE_OF_CONDUCT.md` (1), `templates/workflows/README.md` (1), and all 17 `templates/teams/*.json` (17 `provenance.owner_team` fields normalized to `OpenSIN-AI/core-team`). The 17 aspirational domain-team slugs (`apple`, `google`, `commerce`, …) that didn't exist are now collapsed to one real team; see [`MAN-4`](./docs/FOLLOWUPS.md#man-4-codeowners--manifest-team-slugs-were-inert) for the per-domain-creation decision.
 - **2026-04-19 case normalization:** 6 rows in `registry/DEPLOYMENT_STATUS.md` referencing `OpenSIN-AI/a2a-sin-code-*` normalized to canonical `OpenSIN-AI/A2A-SIN-Code-*`. Keeps `scripts/check-workforce.js` happy (case-sensitive) even though HF Space URLs are lowercase (HF normalizes separately).
 - **2026-04-19 archived-repo link fix:** `README.md` link to archived `OpenSIN-AI/cloud-backend` replaced with canonical `OpenSIN-AI/OpenSIN-backend` (Wave-4 consolidation target) with a historical note.

@@ -20,14 +20,14 @@ for s in a2a-sin-code-plugin a2a-sin-code-command a2a-sin-code-tool \
 done
 ```
 
-| Space | `/health` | `/` | `POST /a2a/v1` | `/.well-known/agent-card.json` |
-|---|:---:|:---:|:---:|:---:|
-| `a2a-sin-code-plugin` | ✅ 200 | ✅ 200 | ✅ live (endpoint responds; GET shows 405) | ✅ 200 |
-| `a2a-sin-code-command` | ✅ 200 | ✅ 200 | ✅ live (endpoint responds; GET shows 405) | ✅ 200 |
-| `a2a-sin-code-tool` | ✅ 200 | ✅ 200 | ✅ live (endpoint responds; GET shows 405) | ✅ 200 |
-| `a2a-sin-code-backend` | ✅ 200 | ✅ 200 | ✅ live (endpoint responds; GET shows 405) | ✅ 200 |
-| `a2a-sin-code-fullstack` | ✅ 200 | ✅ 200 | ✅ live (endpoint responds; GET shows 405) | ✅ 200 |
-| `a2a-sin-code-frontend` | ✅ 200 | ✅ 200 | ✅ live (endpoint responds; GET shows 405) | ✅ 200 |
+| Space                    | `/health` |  `/`   |               `POST /a2a/v1`               | `/.well-known/agent-card.json` |
+| ------------------------ | :-------: | :----: | :----------------------------------------: | :----------------------------: |
+| `a2a-sin-code-plugin`    |  ✅ 200   | ✅ 200 | ✅ live (endpoint responds; GET shows 405) |             ✅ 200             |
+| `a2a-sin-code-command`   |  ✅ 200   | ✅ 200 | ✅ live (endpoint responds; GET shows 405) |             ✅ 200             |
+| `a2a-sin-code-tool`      |  ✅ 200   | ✅ 200 | ✅ live (endpoint responds; GET shows 405) |             ✅ 200             |
+| `a2a-sin-code-backend`   |  ✅ 200   | ✅ 200 | ✅ live (endpoint responds; GET shows 405) |             ✅ 200             |
+| `a2a-sin-code-fullstack` |  ✅ 200   | ✅ 200 | ✅ live (endpoint responds; GET shows 405) |             ✅ 200             |
+| `a2a-sin-code-frontend`  |  ✅ 200   | ✅ 200 | ✅ live (endpoint responds; GET shows 405) |             ✅ 200             |
 
 Verification window:
 
@@ -119,7 +119,7 @@ on:
   schedule:
     # Alle 2 Stunden in den ersten 48 h nach Launch (T-0 bis T+2).
     # Danach kann man auf alle 12 h zurückfahren.
-    - cron: '0 */2 * * *'
+    - cron: "0 */2 * * *"
   workflow_dispatch:
 
 jobs:
@@ -179,14 +179,14 @@ Entscheidung trifft `OpenSIN-backend` maintainer nach Launch-Week-1.
 
 ## 5. Historical: Last Known Good (2026-04-08)
 
-| Agent | Space | URL | Status am 2026-04-08 |
-|---|---|---|---|
-| plugin | `OpenSIN-AI/A2A-SIN-Code-Plugin` | https://opensin-ai-a2a-sin-code-plugin.hf.space | 200 |
-| command | `OpenSIN-AI/A2A-SIN-Code-Command` | https://opensin-ai-a2a-sin-code-command.hf.space | 200 |
-| tool | `OpenSIN-AI/A2A-SIN-Code-Tool` | https://opensin-ai-a2a-sin-code-tool.hf.space | 200 |
-| backend | `OpenSIN-AI/A2A-SIN-Code-Backend` | https://opensin-ai-a2a-sin-code-backend.hf.space | 200 |
-| fullstack | `OpenSIN-AI/A2A-SIN-Code-Fullstack` | https://opensin-ai-a2a-sin-code-fullstack.hf.space | 200 |
-| frontend | `OpenSIN-AI/A2A-SIN-Code-Frontend` | https://opensin-ai-a2a-sin-code-frontend.hf.space | 200 |
+| Agent     | Space                               | URL                                                | Status am 2026-04-08 |
+| --------- | ----------------------------------- | -------------------------------------------------- | -------------------- |
+| plugin    | `OpenSIN-AI/A2A-SIN-Code-Plugin`    | https://opensin-ai-a2a-sin-code-plugin.hf.space    | 200                  |
+| command   | `OpenSIN-AI/A2A-SIN-Code-Command`   | https://opensin-ai-a2a-sin-code-command.hf.space   | 200                  |
+| tool      | `OpenSIN-AI/A2A-SIN-Code-Tool`      | https://opensin-ai-a2a-sin-code-tool.hf.space      | 200                  |
+| backend   | `OpenSIN-AI/A2A-SIN-Code-Backend`   | https://opensin-ai-a2a-sin-code-backend.hf.space   | 200                  |
+| fullstack | `OpenSIN-AI/A2A-SIN-Code-Fullstack` | https://opensin-ai-a2a-sin-code-fullstack.hf.space | 200                  |
+| frontend  | `OpenSIN-AI/A2A-SIN-Code-Frontend`  | https://opensin-ai-a2a-sin-code-frontend.hf.space  | 200                  |
 
 Zwischen 2026-04-08 und 2026-04-19 (heute): keine gesunde Gesundheitsmessung dokumentiert. Das muss sich ändern — siehe § 4.1 + § 4.2.
 

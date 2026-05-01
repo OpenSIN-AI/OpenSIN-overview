@@ -23,13 +23,13 @@ Everything else belongs in the owning repo.
 
 ## 2. Roles
 
-| Role | Who | Scope | Source of truth |
-|---|---|---|---|
-| **Core maintainers** | `@OpenSIN-AI/core-team` | May merge any PR in this repo; own every path in `CODEOWNERS` that is not more specifically assigned. | [`.github/CODEOWNERS`](./.github/CODEOWNERS) |
-| **Tier owners** | 1 per tier (OSS / Pro / Marketplace / Meta) | Own the Go/No-Go decision for their tier. | [`LAUNCH-CHECKLIST.md § 5 Single Ownership Rule`](./LAUNCH-CHECKLIST.md#5-single-ownership-rule) |
-| **Team owners** | Varies per `Team-SIN-*` manifest | Own the `team.json` content (marketing copy, agent list, pricing). | [`templates/teams/`](./templates/teams/) + `provenance.owner_team` in each manifest |
-| **Boundary reviewers** | Core maintainers | Enforce [`BOUNDARIES.md`](./BOUNDARIES.md). Reject PRs that duplicate canonical content. | [`BOUNDARIES.md`](./BOUNDARIES.md) + [`governance/BOUNDARY-ROLE-RULES.md`](./governance/BOUNDARY-ROLE-RULES.md) |
-| **Agents** | Any autonomous agent acting on behalf of an operator | Same rights as the operator. The operator is accountable for the agent's output. | [`CODE_OF_CONDUCT.md § Agent-specific`](./CODE_OF_CONDUCT.md) |
+| Role                   | Who                                                  | Scope                                                                                                 | Source of truth                                                                                                 |
+| ---------------------- | ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Core maintainers**   | `@OpenSIN-AI/core-team`                              | May merge any PR in this repo; own every path in `CODEOWNERS` that is not more specifically assigned. | [`.github/CODEOWNERS`](./.github/CODEOWNERS)                                                                    |
+| **Tier owners**        | 1 per tier (OSS / Pro / Marketplace / Meta)          | Own the Go/No-Go decision for their tier.                                                             | [`LAUNCH-CHECKLIST.md § 5 Single Ownership Rule`](./LAUNCH-CHECKLIST.md#5-single-ownership-rule)                |
+| **Team owners**        | Varies per `Team-SIN-*` manifest                     | Own the `team.json` content (marketing copy, agent list, pricing).                                    | [`templates/teams/`](./templates/teams/) + `provenance.owner_team` in each manifest                             |
+| **Boundary reviewers** | Core maintainers                                     | Enforce [`BOUNDARIES.md`](./BOUNDARIES.md). Reject PRs that duplicate canonical content.              | [`BOUNDARIES.md`](./BOUNDARIES.md) + [`governance/BOUNDARY-ROLE-RULES.md`](./governance/BOUNDARY-ROLE-RULES.md) |
+| **Agents**             | Any autonomous agent acting on behalf of an operator | Same rights as the operator. The operator is accountable for the agent's output.                      | [`CODE_OF_CONDUCT.md § Agent-specific`](./CODE_OF_CONDUCT.md)                                                   |
 
 ---
 
@@ -83,15 +83,15 @@ This file itself is covered by `@OpenSIN-AI/core-team` in CODEOWNERS. Edits foll
 
 ## 6. Related documents (in this repo)
 
-| File | Role |
-|---|---|
-| [`BOUNDARIES.md`](./BOUNDARIES.md) | What this repo MUST and MUST NOT own. |
-| [`CONTRIBUTING.md`](./CONTRIBUTING.md) | Per-PR checklist for the boundary test. |
-| [`CODE_OF_CONDUCT.md`](./CODE_OF_CONDUCT.md) | Behaviour standards (including agents). |
-| [`SECURITY.md`](./SECURITY.md) | Vulnerability reporting. |
-| [`AGENTS.md`](./AGENTS.md) | Development guidelines for agents working in this repo. |
-| [`PRODUCT-VISION.md`](./PRODUCT-VISION.md) | Why the tier model / UI layering / marketplace mechanic is the way it is. |
-| [`LAUNCH-CHECKLIST.md`](./LAUNCH-CHECKLIST.md) | Go/No-Go gates and single ownership per tier. |
-| [`.github/CODEOWNERS`](./.github/CODEOWNERS) | Machine-enforced review ownership. |
-| [`governance/BOUNDARY-ROLE-RULES.md`](./governance/BOUNDARY-ROLE-RULES.md) | Expanded rules for boundary reviewers. |
-| [`governance/WAIVER-LOG.md`](./governance/WAIVER-LOG.md) | Recorded exceptions to written rules. |
+| File                                                                       | Role                                                                      |
+| -------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| [`BOUNDARIES.md`](./BOUNDARIES.md)                                         | What this repo MUST and MUST NOT own.                                     |
+| [`CONTRIBUTING.md`](./CONTRIBUTING.md)                                     | Per-PR checklist for the boundary test.                                   |
+| [`CODE_OF_CONDUCT.md`](./CODE_OF_CONDUCT.md)                               | Behaviour standards (including agents).                                   |
+| [`SECURITY.md`](./SECURITY.md)                                             | Vulnerability reporting.                                                  |
+| [`AGENTS.md`](./AGENTS.md)                                                 | Development guidelines for agents working in this repo.                   |
+| [`PRODUCT-VISION.md`](./PRODUCT-VISION.md)                                 | Why the tier model / UI layering / marketplace mechanic is the way it is. |
+| [`LAUNCH-CHECKLIST.md`](./LAUNCH-CHECKLIST.md)                             | Go/No-Go gates and single ownership per tier.                             |
+| [`.github/CODEOWNERS`](./.github/CODEOWNERS)                               | Machine-enforced review ownership.                                        |
+| [`governance/BOUNDARY-ROLE-RULES.md`](./governance/BOUNDARY-ROLE-RULES.md) | Expanded rules for boundary reviewers.                                    |
+| [`governance/WAIVER-LOG.md`](./governance/WAIVER-LOG.md)                   | Recorded exceptions to written rules.                                     |

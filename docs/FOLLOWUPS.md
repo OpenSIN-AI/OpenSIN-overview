@@ -10,7 +10,7 @@ When all tickets here are `DONE`, delete this file.
 
 ### R1: `opensin-ai-cli` vs `OpenSIN-Code`
 
-- **Status:**  — Merged into OpenSIN-Code (2026-04-19)
+- **Status:** — Merged into OpenSIN-Code (2026-04-19)
 - **Tracking issues:**
   - Decision: [`OpenSIN-Code#1116`](https://github.com/OpenSIN-AI/OpenSIN-Code/issues/1116)
   - Banner: [`opensin-ai-cli#7`](https://github.com/OpenSIN-AI/opensin-ai-cli/issues/7)
@@ -191,11 +191,12 @@ When all tickets here are `DONE`, delete this file.
   ```
 
   Not listed (already handled): `A2A-SIN-SoundCloud`, `A2A-SIN-YouTube-Studio`, `A2A-SIN-Worker-Prolific`, `A2A-SIN-Skill-Coding-CEO`, `A2A-SIN-Switch` — these appear in manifests already.
+
 - **Decision needed:**
   1. **Messaging (3):** assign `WhatsApp`, `WebChat`, `Zoom` to `Team-SIN-Messaging` manifest (bridge-shaped)
   2. **Gaming (4):** decide whether `Nintendo`, `PlayStation`, `Xbox`, plus the live `A2A-SIN-Switch` belong in a new `Team-SIN-Gaming` manifest or stay dark
   3. **Money (2):** `Money-Poker` and `Money-Sports` — likely `Team-SIN-Money-*` (new team) or fold under existing Commerce
-  4. **Code-* scaffolds (6):** blocked on **R1** decision (merge `opensin-ai-cli` or keep split). If merge: archive all 6 scaffolds. If split: assign to `Team-SIN-Code-Core` as supporting agents.
+  4. **Code-\* scaffolds (6):** blocked on **R1** decision (merge `opensin-ai-cli` or keep split). If merge: archive all 6 scaffolds. If split: assign to `Team-SIN-Code-Core` as supporting agents.
   5. **Twitter-X (1):** assign to `Team-SIN-Social`
   6. **Worker-heypiggy (1):** STATE-OF-THE-UNION calls it a "flagship passive-income worker" but it has no team slot; assign to `Team-SIN-Commerce` as `optional`, or document the exclusion
 - **Owner:** `OpenSIN-overview` maintainers (this repo holds the manifests).

@@ -27,6 +27,7 @@ P2 = noticeable but workaround exists.
 ## P1 — Pre-launch (filled before launch)
 
 ### 2026-04-19 12:00 UTC — Live n8n API key found in public README
+
 **Severity:** P1 (security, pre-launch)
 **Duration:** key was committed in earlier governance PRs; tree redacted on 2026-04-19.
 **Affected:** none confirmed externally. Key has admin access to the n8n instance that triggers all CI runs.
@@ -35,6 +36,7 @@ P2 = noticeable but workaround exists.
 **Follow-up:** added `scripts/scan-secrets.sh` + proposed `secret-scan.yml` CI workflow + `.husky/pre-commit` hook so the same class of leak fails the build going forward.
 
 ### 2026-04-19 12:30 UTC — WORKFORCE.md inflated worker counts
+
 **Severity:** P2 (correctness, public-facing claim)
 **Duration:** at least one Wave-4 PR had the inflated numbers.
 **Affected:** marketing-adjacent claim ("149 workers") that does not match the actual manifest data (89 workers).
@@ -43,6 +45,7 @@ P2 = noticeable but workaround exists.
 **Follow-up:** added `scripts/check-workforce.js` (run by `npm run validate` and the pre-commit hook). Drift now fails CI.
 
 ### 2026-04-19 12:45 UTC — LAUNCH-CHECKLIST weekday labels off by 3–4 days
+
 **Severity:** P2 (planning correctness)
 **Duration:** since the file was written.
 **Affected:** any human or agent reading the day-by-day plan would mis-schedule.
@@ -54,19 +57,19 @@ P2 = noticeable but workaround exists.
 
 ## P0 — Launch day (Donnerstag 2026-04-23)
 
-*Append entries here as they happen.*
+_Append entries here as they happen._
 
 ---
 
 ## Post-launch week (T+1 → T+7)
 
-*Append entries here as they happen.*
+_Append entries here as they happen._
 
 ---
 
 ## Retro meeting — 2026-04-30
 
-*To be filled at the meeting.*
+_To be filled at the meeting._
 
 - What worked
 - What didn't

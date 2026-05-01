@@ -13,7 +13,9 @@ wrongly-located repos across four distinct failure modes:
 ## Wave 1 — agent and platform merges
 
 ### 1.1 Coding-team monorepo
+
 Merged into `OpenSIN-AI/Team-SIN-Code-Core`:
+
 - `A2A-SIN-Coding-CEO` → `agents/coding-ceo/`
 - `A2A-SIN-Code-AI` → `agents/code-ai/`
 
@@ -22,12 +24,15 @@ Added `pnpm-workspace.yaml`, `packages/shared-helpers/` (previously-missing `wor
 **PR:** https://github.com/OpenSIN-AI/Team-SIN-Code-Core/pull/2 — merged.
 
 ### 1.2 Python platform merge
+
 Merged `opensin-ai-code` → `OpenSIN/opensin_agent_platform/`. Preserved source tree; rationalization plan documented in the new folder's README. Not yet wired into production build.
 
 **PR:** https://github.com/OpenSIN-AI/OpenSIN/pull/1720 — merged.
 
 ### 1.3 Initial onboarding SSOT
+
 Added to `OpenSIN-overview`:
+
 - `START-HERE.md`
 - `docs/CANONICAL-REPOS.md` (initial version)
 - `docs/CONSOLIDATION-2026-04.md`
@@ -35,6 +40,7 @@ Added to `OpenSIN-overview`:
 **PR:** https://github.com/OpenSIN-AI/OpenSIN-overview/pull/29 — merged.
 
 ### 1.4 Wave 1 archival
+
 - `OpenSIN-AI/A2A-SIN-Coding-CEO` — archived with redirect README.
 - `OpenSIN-AI/A2A-SIN-Code-AI` — archived with redirect README.
 - `OpenSIN-AI/opensin-ai-code` — archived with redirect README.
@@ -42,6 +48,7 @@ Added to `OpenSIN-overview`:
 ## Wave 2 — setup merge + surface cleanup
 
 ### 2.1 Setup merge
+
 Merged `OpenSIN-onboarding` → `Infra-SIN-Dev-Setup/user-onboarding/`. New top-level README splits developer vs. end-user paths.
 
 **PR:** https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup/pull/34
@@ -49,6 +56,7 @@ Merged `OpenSIN-onboarding` → `Infra-SIN-Dev-Setup/user-onboarding/`. New top-
 **Redirect PR:** https://github.com/OpenSIN-AI/OpenSIN-onboarding/pull/5
 
 ### 2.2 OpenSIN-WebApp clarification
+
 - Added `Related repos` table to README distinguishing the three web properties (`chat.opensin.ai`, `my.opensin.ai`, `opensin.ai`).
 - Fixed `Delhi/upgraded-opencode-stack` typo → `Delqhi/...`.
 - Set GitHub repo description and homepage (was blank).
@@ -56,6 +64,7 @@ Merged `OpenSIN-onboarding` → `Infra-SIN-Dev-Setup/user-onboarding/`. New top-
 **PR:** https://github.com/OpenSIN-AI/OpenSIN-WebApp/pull/13
 
 ### 2.3 Marketing factual correction
+
 - Blog-post badge 79 → 89 (actual disk count).
 - Replaced hard-coded "372 Packages · 620 Agent Teams" with a qualitative claim + pointer to `OpenSIN-overview/registry/` as the future SSOT for numbers.
 - Quick Links: `OpenSIN-Code` is the Autonomous CLI, not a VS Code Extension.
@@ -63,6 +72,7 @@ Merged `OpenSIN-onboarding` → `Infra-SIN-Dev-Setup/user-onboarding/`. New top-
 **PR:** https://github.com/OpenSIN-AI/Biz-SIN-Marketing/pull/60
 
 ### 2.4 Canonical map expansion
+
 - `docs/CANONICAL-REPOS.md` expanded from 6 entries (wave 1) to ~14 entries covering: Python kernel, coding surface, web surface (3), documentation, infra (merged), marketing, templates, org meta, external SSOT.
 - Added explicit **Naming convention** section documenting the two schemes (flagship vs. domain-prefix) and when to use each.
 - Added a **repo-proposal gate** — four questions that must be answered before creating any new `OpenSIN-AI/*` repo.
@@ -71,45 +81,52 @@ Merged `OpenSIN-onboarding` → `Infra-SIN-Dev-Setup/user-onboarding/`. New top-
 **This PR** — https://github.com/OpenSIN-AI/OpenSIN-overview/pull/<this>
 
 ### 2.5 Wave 2 archival
+
 - `OpenSIN-AI/OpenSIN-onboarding` — archived with redirect README.
 
 ## Result
 
-| Before | After |
-|---|---|
+| Before                   | After                                                                                                                                 |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
 | 9 overlapping code repos | 4 code repos + clearly-split web surface (3) + infra (1) + template (1) + marketing (1) + 2 meta = 12 distinct, non-overlapping repos |
-| 4 archived Wave-1+2 | `A2A-SIN-Coding-CEO`, `A2A-SIN-Code-AI`, `opensin-ai-code`, `OpenSIN-onboarding` |
+| 4 archived Wave-1+2      | `A2A-SIN-Coding-CEO`, `A2A-SIN-Code-AI`, `opensin-ai-code`, `OpenSIN-onboarding`                                                      |
 
 ## Follow-ups
 
 ### Governance
+
 1. **Transfer `OpenSIN-AI/Infra-SIN-OpenCode-Stack` and `OpenSIN-AI/Infra-SIN-Global-Brain` to OpenSIN-AI.** Six+ repos declare these as SSOT in their READMEs. They must live under the same governance as the repos that depend on them.
 
 ### Rationalization
+
 2. Diff `OpenSIN/opensin_agent_platform/` against `OpenSIN/opensin_core/` (both have `hooks`, `plugins`, `skills`). Port genuinely useful logic into `opensin_core` and retire the folder.
 
 ### Content
+
 3. Regenerate `OpenSIN-overview/registry/MASTER_INDEX.md` and `platforms/registry.json` to reflect post-wave-2 layout.
 4. Run a link-fixer across all README files: find every reference to the archived repos (`A2A-SIN-Coding-CEO`, `A2A-SIN-Code-AI`, `opensin-ai-code`, `OpenSIN-onboarding`) and replace with the canonical target from `docs/CANONICAL-REPOS.md`.
 
 ### Expansion
+
 5. When adding `Team-SIN-Google`, `Team-SIN-BugBounty`, etc. — they go as folders under the existing `Team-SIN-*` monorepo that owns their domain, NOT as standalone repos. See the repo-proposal gate in `docs/CANONICAL-REPOS.md`.
 
 ## Wave 2.5 — Governance transfer (completed 2026-04-18)
 
 Transferred the two external SSOT repos from `Delqhi` (personal account) to `OpenSIN-AI` (organization) and renamed them per the canonical `Infra-SIN-*` convention:
 
-| Before | After |
-|---|---|
+| Before                           | After                                 |
+| -------------------------------- | ------------------------------------- |
 | `Delqhi/upgraded-opencode-stack` | `OpenSIN-AI/Infra-SIN-OpenCode-Stack` |
-| `Delqhi/global-brain`            | `OpenSIN-AI/Infra-SIN-Global-Brain` |
+| `Delqhi/global-brain`            | `OpenSIN-AI/Infra-SIN-Global-Brain`   |
 
 **Impact:**
+
 - Both repos now live under the organization's governance: branch protection, team reviews, audit log.
 - GitHub automatically redirects the old URLs, so `sin-sync` references and the 6+ repo READMEs that cited the old paths continue to work during the transition. They will be updated to the canonical path in a follow-up link-sweep.
 - The transfer fixes the governance gap called out in `docs/CANONICAL-REPOS.md § 8` — the section is rewritten to reflect the new home in this PR.
 
 **Follow-ups:**
+
 1. Link-sweep: update all repo READMEs that reference the old `Delqhi/...` paths to the new canonical paths (GitHub redirects cover us for now, but we don't want permanent indirection). → tracked as [FOLLOWUPS.md § L1](./FOLLOWUPS.md#l1-delqhi--opensin-ai-link-sweep-across-other-repos).
 2. Verify `sin-sync` tooling works with the new repo names or uses the GitHub redirect transparently.
 
@@ -118,6 +135,7 @@ Transferred the two external SSOT repos from `Delqhi` (personal account) to `Ope
 Closes the remaining Wave-2.5 inconsistencies inside `OpenSIN-overview` and categorizes the last two in-org duplicate repos.
 
 ### 3.1 Internal Delqhi-link cleanup
+
 Every remaining `Delqhi/upgraded-opencode-stack` and `Delqhi/global-brain` reference inside `OpenSIN-overview` has been rewritten to the canonical `OpenSIN-AI/Infra-SIN-*` path, with a one-line note where the legacy path still matters (for people searching for the old name):
 
 - `README.md` — agent config table (6 rows) now points to `Infra-SIN-OpenCode-Stack`
@@ -127,6 +145,7 @@ Every remaining `Delqhi/upgraded-opencode-stack` and `Delqhi/global-brain` refer
 - `platforms/canonical-repos.json` — full rewrite (v3.0.0): moved the two SSOT entries out of `external_ssot` into a new `infrastructure_ssot` section under `canonical_repos`, marked `transferred_at: 2026-04-18`, recorded `legacy_path` for searchability, and emptied `external_ssot`
 
 ### 3.2 Orphan-repo classification
+
 `OpenSIN-AI/opensin-ai-cli` (Rust coding CLI) and `OpenSIN-AI/opensin-ai-platform` (plugin ecosystem) were listed as "NEU April 2026" in the README but were not in the canonical map. Both overlap with existing canonical repos:
 
 - `opensin-ai-cli` ⟷ `OpenSIN-Code` (TS autonomous CLI + Rust engine)
@@ -142,12 +161,14 @@ Instead of silently accepting them, Wave 3 flags both as **"Rationalization pend
 Each has a decision ticket in `docs/FOLLOWUPS.md § R1` and `§ R2`.
 
 ### 3.3 Secondary fixes
+
 - `README.md` — fixed the accidental duplicate `chat.opensin.ai` row where `OpenSIN-backend` was also claimed to serve that domain (corrected: backend is the internal API consumed by `OpenSIN-WebApp`).
 - `README.md` — `OpenSIN-overview` SSOT entry "Registry aller 165 Repos" → "MASTER_INDEX.md (188 Repos)".
 - `registry/MASTER_INDEX.md` — header count 187 vs 188 inconsistency fixed; `Infra-SIN-OpenCode-Stack` and `Infra-SIN-Global-Brain` added to § 11 Infrastructure.
 - `docs/opensin-ai-agent-feature-spec.md` — 5 references to the now-flagged `opensin-ai-cli` and 1 reference to the archived `opensin-ai-code` rewritten to canonical `OpenSIN-Code` / `opensin_sdk`.
 
 ### 3.4 New artifact: `docs/FOLLOWUPS.md`
+
 Central, stable-anchor tracker for all open consolidation work:
 
 - `R1` — `opensin-ai-cli` vs `OpenSIN-Code` decision
@@ -162,16 +183,16 @@ Every ticket has a stable `#anchor` so other docs deep-link to it.
 
 ## End state after Wave 3
 
-| Category | Count | Notes |
-|---|---|---|
-| Canonical code repos | 4 | `OpenSIN`, `OpenSIN-Code`, `OpenSIN-backend`, `Team-SIN-Code-Core` |
-| Canonical web surfaces | 3 | `website-opensin.ai`, `website-my.opensin.ai`, `OpenSIN-WebApp` |
-| Canonical meta / docs | 2 | `OpenSIN-overview`, `OpenSIN-documentation` |
-| Canonical infra | 3 | `Infra-SIN-Dev-Setup`, `Infra-SIN-OpenCode-Stack`, `Infra-SIN-Global-Brain` |
-| Canonical templates | 1 | `Template-SIN-Agent` |
-| Canonical business | 1 | `Biz-SIN-Marketing` |
-| Wave 1/2 archived | 4 | `A2A-SIN-Coding-CEO`, `A2A-SIN-Code-AI`, `opensin-ai-code`, `OpenSIN-onboarding` |
-| Rationalization pending | 2 | `opensin-ai-cli`, `opensin-ai-platform` (flagged, not extended) |
+| Category                | Count | Notes                                                                            |
+| ----------------------- | ----- | -------------------------------------------------------------------------------- |
+| Canonical code repos    | 4     | `OpenSIN`, `OpenSIN-Code`, `OpenSIN-backend`, `Team-SIN-Code-Core`               |
+| Canonical web surfaces  | 3     | `website-opensin.ai`, `website-my.opensin.ai`, `OpenSIN-WebApp`                  |
+| Canonical meta / docs   | 2     | `OpenSIN-overview`, `OpenSIN-documentation`                                      |
+| Canonical infra         | 3     | `Infra-SIN-Dev-Setup`, `Infra-SIN-OpenCode-Stack`, `Infra-SIN-Global-Brain`      |
+| Canonical templates     | 1     | `Template-SIN-Agent`                                                             |
+| Canonical business      | 1     | `Biz-SIN-Marketing`                                                              |
+| Wave 1/2 archived       | 4     | `A2A-SIN-Coding-CEO`, `A2A-SIN-Code-AI`, `opensin-ai-code`, `OpenSIN-onboarding` |
+| Rationalization pending | 2     | `opensin-ai-cli`, `opensin-ai-platform` (flagged, not extended)                  |
 
 Every ambiguously-owned repo now has exactly one of three states: **canonical**, **archived**, or **rationalization-pending with an open decision ticket**. Agents opening PRs can read `CANONICAL-REPOS.md` and `FOLLOWUPS.md` and know where their change belongs without asking.
 
@@ -181,13 +202,13 @@ Wave 3 identified 5 Prio-1 decisions that needed to be made before the next mark
 
 ### Decisions made
 
-| # | Topic | Decision |
-|---|---|---|
-| 1 | UI-layer role conflict | Strict 4-surface separation: `opensin.ai` / `my.opensin.ai` / `chat.opensin.ai` / `docs.opensin.ai` — see `PRODUCT-VISION.md § UI-Schichtung` |
-| 2 | Marketplace mechanic | **Option A** — `Team-SIN-*` are metadata manifests. Schema + 17 manifests shipped. |
-| 3 | `OpenSIN-backend` vs `Core-SIN-Control-Plane` | Merge into `OpenSIN-backend`. `Core-SIN-Control-Plane` → archived with redirect after migration (§ CP1). |
-| 4 | `Team-SIN-Code-Core` integrity | Audit-confirmed scaffold (not a broken merge). Normalized into Option A like the other 16 teams. |
-| 5 | Scaffold + dead repo audit | Audit script shipped; 4 dead repos archived; 6 `A2A-SIN-Code-*` kept open pending R1 decision (§ S2). |
+| #   | Topic                                         | Decision                                                                                                                                      |
+| --- | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | UI-layer role conflict                        | Strict 4-surface separation: `opensin.ai` / `my.opensin.ai` / `chat.opensin.ai` / `docs.opensin.ai` — see `PRODUCT-VISION.md § UI-Schichtung` |
+| 2   | Marketplace mechanic                          | **Option A** — `Team-SIN-*` are metadata manifests. Schema + 17 manifests shipped.                                                            |
+| 3   | `OpenSIN-backend` vs `Core-SIN-Control-Plane` | Merge into `OpenSIN-backend`. `Core-SIN-Control-Plane` → archived with redirect after migration (§ CP1).                                      |
+| 4   | `Team-SIN-Code-Core` integrity                | Audit-confirmed scaffold (not a broken merge). Normalized into Option A like the other 16 teams.                                              |
+| 5   | Scaffold + dead repo audit                    | Audit script shipped; 4 dead repos archived; 6 `A2A-SIN-Code-*` kept open pending R1 decision (§ S2).                                         |
 
 ### New artifacts
 

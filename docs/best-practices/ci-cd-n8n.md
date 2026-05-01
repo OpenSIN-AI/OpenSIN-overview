@@ -12,12 +12,12 @@ title: "CI/CD mit n8n + sin-github-action"
 
 ## Warum kein normales GitHub Actions?
 
-| Problem | Details |
-|---------|---------|
+| Problem                  | Details                                                  |
+| ------------------------ | -------------------------------------------------------- |
 | 💸 **Billing blockiert** | GitHub Actions Billing schlägt fehl → Jobs starten nicht |
-| 🐢 **Zu langsam** | Paid Runner: 10+ Minuten Startup + Build |
-| 🔒 **Vendor Lock-in** | Abhängigkeit von GitHub Infrastruktur |
-| 💰 **Kosten** | Bezahlte Runner = direkte Kosten pro Minute |
+| 🐢 **Zu langsam**        | Paid Runner: 10+ Minuten Startup + Build                 |
+| 🔒 **Vendor Lock-in**    | Abhängigkeit von GitHub Infrastruktur                    |
+| 💰 **Kosten**            | Bezahlte Runner = direkte Kosten pro Minute              |
 
 **Unsere Lösung:** GitHub Runner läuft nur ~2 Sekunden (curl-only), der eigentliche Build läuft auf unserem **kostenlosen OCI VM (Oracle Cloud Always-Free)**. Zero Billing.
 
@@ -43,16 +43,17 @@ GitHub Commit Status API ✅ / ❌
 
 ### Komponenten
 
-| Komponente | Ort | Zweck |
-|-----------|-----|-------|
-| `sin-github-action` | [github.com/OpenSIN-AI/sin-github-action](https://github.com/OpenSIN-AI/sin-github-action) | Composite GitHub Action (nur curl, ~2s) |
-| n8n Workflow `VhDVux7dSCoQdkOP` | OCI VM (public DNS: `n8n.delqhi.com`) | Webhook → CI Runner Dispatcher |
-| `opensin-ci-runner.py` | `/home/ubuntu/opensin-ci-runner.py` (OCI) | Python HTTP Server, führt Build/Test aus |
-| systemd service | `opensin-ci-runner.service` (OCI) | Hält den CI Runner am Leben |
-| OCI Self-Hosted Runners | 2x `oci-a1flex-arm64` | GitHub runner labels for PR workflow dispatch |
+| Komponente                      | Ort                                                                                        | Zweck                                         |
+| ------------------------------- | ------------------------------------------------------------------------------------------ | --------------------------------------------- |
+| `sin-github-action`             | [github.com/OpenSIN-AI/sin-github-action](https://github.com/OpenSIN-AI/sin-github-action) | Composite GitHub Action (nur curl, ~2s)       |
+| n8n Workflow `VhDVux7dSCoQdkOP` | OCI VM (public DNS: `n8n.delqhi.com`)                                                      | Webhook → CI Runner Dispatcher                |
+| `opensin-ci-runner.py`          | `/home/ubuntu/opensin-ci-runner.py` (OCI)                                                  | Python HTTP Server, führt Build/Test aus      |
+| systemd service                 | `opensin-ci-runner.service` (OCI)                                                          | Hält den CI Runner am Leben                   |
+| OCI Self-Hosted Runners         | 2x `oci-a1flex-arm64`                                                                      | GitHub runner labels for PR workflow dispatch |
 
 > **Public-repo note:** The internal OCI IP, SSH port, n8n API key, and runner shared secret are **intentionally redacted** below. Operators with legitimate access find them in `Infra-SIN-Dev-Setup` (private) under `ops/ci-runtime.md`.
 > If you ever need to run the admin `curl` examples in this doc, export the placeholders first:
+>
 > ```bash
 > export N8N_URL="https://n8n.delqhi.com"           # public
 > export N8N_KEY="<copy from Infra-SIN-Dev-Setup>"  # never commit
@@ -104,6 +105,7 @@ jobs:
 ### 3. Fertig
 
 Der Push triggert automatisch:
+
 1. GitHub Action startet (ubuntu-latest, ~2s)
 2. `sin-github-action` setzt Commit-Status auf `pending`
 3. POST an n8n Webhook `https://n8n.delqhi.com/webhook/opensin-ci`
@@ -117,18 +119,19 @@ Der Push triggert automatisch:
 
 Der `pipeline` Input in der Action steuert, was gebaut wird:
 
-| Wert | Was läuft |
-|------|-----------|
-| `all` | build + test (Standard) |
-| `build` | Nur `bun run build` |
-| `test` | Nur `bun test` |
-| `lint` | Nur `bun run lint` |
+| Wert    | Was läuft               |
+| ------- | ----------------------- |
+| `all`   | build + test (Standard) |
+| `build` | Nur `bun run build`     |
+| `test`  | Nur `bun test`          |
+| `lint`  | Nur `bun run lint`      |
 
 ---
 
 ## n8n Workflow Details
 
 ### Workflow: `OpenSIN CI Webhook`
+
 - **ID:** `VhDVux7dSCoQdkOP`
 - **Webhook Path:** `opensin-ci`
 - **Public URL:** `https://n8n.delqhi.com/webhook/opensin-ci`
@@ -211,6 +214,7 @@ ssh "$OCI_USER@$OCI_HOST" 'sudo systemctl restart opensin-ci-runner.service'
 ### Zwei Runner auf einer VM
 
 Auf der OCI VM laufen zwei unabhängige GitHub Self-Hosted Runner:
+
 - `oci-a1flex-arm64`
 - `oci-a1flex-arm64-2`
 
@@ -244,13 +248,13 @@ gh api -X POST repos/OpenSIN-AI/<REPO>/statuses/<SHA> \
 
 ## Bekannte Probleme & Fixes
 
-| Problem | Fix |
-|---------|-----|
-| `Webhook "POST opensin-ci" is not registered` | `docker restart n8n-n8n-1` auf OCI VM (n8n 2.12 lädt Webhooks nur beim Startup) |
-| `account payments have failed` | Normal bei GitHub-hosted Runner — timeout-minutes: 2 setzen oder self-hosted Runner nutzen |
-| CI Runner antwortet nicht | `sudo systemctl restart opensin-ci-runner` auf OCI VM |
-| n8n Container Conflict | `docker rm -f n8n-n8n-1 && cd /opt/n8n && docker compose up -d` |
-| Build zu langsam | Turbo Remote Cache prüfen (`ls /opt/turbo-cache`) und sicherstellen, dass beide Runner denselben Pfad nutzen |
+| Problem                                       | Fix                                                                                                          |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `Webhook "POST opensin-ci" is not registered` | `docker restart n8n-n8n-1` auf OCI VM (n8n 2.12 lädt Webhooks nur beim Startup)                              |
+| `account payments have failed`                | Normal bei GitHub-hosted Runner — timeout-minutes: 2 setzen oder self-hosted Runner nutzen                   |
+| CI Runner antwortet nicht                     | `sudo systemctl restart opensin-ci-runner` auf OCI VM                                                        |
+| n8n Container Conflict                        | `docker rm -f n8n-n8n-1 && cd /opt/n8n && docker compose up -d`                                              |
+| Build zu langsam                              | Turbo Remote Cache prüfen (`ls /opt/turbo-cache`) und sicherstellen, dass beide Runner denselben Pfad nutzen |
 
 ---
 
@@ -279,14 +283,14 @@ Vorhandene Repos mit normalem GitHub Actions Workflow:
 
 ## Glossary
 
-| Begriff | Bedeutung |
-|---------|-----------|
-| OCI VM | Oracle Cloud Infrastructure Always-Free VM (aarch64, Ubuntu 24.04) |
-| n8n | Workflow Automation Server auf OCI (`n8n.delqhi.com`) |
- sin-github-action | Leichtgewicht GitHub Composite Action, POSTet nur an n8n |
-| opensin-ci-runner.py | Python HTTP Server, führt Build/Test auf OCI aus |
-| pipeline | Modus: `all`, `build`, `test`, `lint` |
+| Begriff              | Bedeutung                                                          |
+| -------------------- | ------------------------------------------------------------------ |
+| OCI VM               | Oracle Cloud Infrastructure Always-Free VM (aarch64, Ubuntu 24.04) |
+| n8n                  | Workflow Automation Server auf OCI (`n8n.delqhi.com`)              |
+| sin-github-action    | Leichtgewicht GitHub Composite Action, POSTet nur an n8n           |
+| opensin-ci-runner.py | Python HTTP Server, führt Build/Test auf OCI aus                   |
+| pipeline             | Modus: `all`, `build`, `test`, `lint`                              |
 
 ---
 
-*Zuletzt aktualisiert: 2026-04-08 | OpenSIN-AI CEO Audit*
+_Zuletzt aktualisiert: 2026-04-08 | OpenSIN-AI CEO Audit_

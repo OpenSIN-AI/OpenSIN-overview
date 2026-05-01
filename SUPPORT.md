@@ -4,19 +4,19 @@
 
 ## 1. Route your question to the right repo
 
-| What you need help with | Correct repo |
-|---|---|
-| Installing `opensin` (Python) | [OpenSIN-AI/OpenSIN](https://github.com/OpenSIN-AI/OpenSIN/issues) |
-| Using `opensin-code` CLI | [OpenSIN-AI/OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code/issues) |
-| `chat.opensin.ai` login / billing / dashboard | [OpenSIN-AI/OpenSIN-WebApp](https://github.com/OpenSIN-AI/OpenSIN-WebApp/issues) |
-| `my.opensin.ai` marketplace / checkout | [OpenSIN-AI/website-my.opensin.ai](https://github.com/OpenSIN-AI/website-my.opensin.ai/issues) |
-| Documentation on [docs.opensin.ai](https://docs.opensin.ai) | [OpenSIN-AI/OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation/issues) |
-| A specific agent (`A2A-SIN-*`) misbehaving | that agent's own repo |
-| PCPM / memory daemon | [OpenSIN-AI/Infra-SIN-Global-Brain](https://github.com/OpenSIN-AI/Infra-SIN-Global-Brain/issues) |
-| OpenCode skills, plugins, `opencode.json` | [OpenSIN-AI/Infra-SIN-OpenCode-Stack](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack/issues) |
-| Security vulnerability | [SECURITY.md](./SECURITY.md) — **not** a public issue |
+| What you need help with                                     | Correct repo                                                                                         |
+| ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| Installing `opensin` (Python)                               | [OpenSIN-AI/OpenSIN](https://github.com/OpenSIN-AI/OpenSIN/issues)                                   |
+| Using `opensin-code` CLI                                    | [OpenSIN-AI/OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code/issues)                         |
+| `chat.opensin.ai` login / billing / dashboard               | [OpenSIN-AI/OpenSIN-WebApp](https://github.com/OpenSIN-AI/OpenSIN-WebApp/issues)                     |
+| `my.opensin.ai` marketplace / checkout                      | [OpenSIN-AI/website-my.opensin.ai](https://github.com/OpenSIN-AI/website-my.opensin.ai/issues)       |
+| Documentation on [docs.opensin.ai](https://docs.opensin.ai) | [OpenSIN-AI/OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation/issues)       |
+| A specific agent (`A2A-SIN-*`) misbehaving                  | that agent's own repo                                                                                |
+| PCPM / memory daemon                                        | [OpenSIN-AI/Infra-SIN-Global-Brain](https://github.com/OpenSIN-AI/Infra-SIN-Global-Brain/issues)     |
+| OpenCode skills, plugins, `opencode.json`                   | [OpenSIN-AI/Infra-SIN-OpenCode-Stack](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack/issues) |
+| Security vulnerability                                      | [SECURITY.md](./SECURITY.md) — **not** a public issue                                                |
 
-## 2. When to open an issue *in this repo*
+## 2. When to open an issue _in this repo_
 
 Only when your question is about **organisational topology or governance**:
 

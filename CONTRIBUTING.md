@@ -15,6 +15,7 @@ Answer these three questions. If you cannot, open a [Boundary issue](./.github/I
 3. **Should this repo summarize and link, or should the change happen in the owning repo instead?**
 
 ### Put it in `OpenSIN-overview` if:
+
 - It clarifies repo roles, ownership boundaries, or canonical responsibilities.
 - It indexes teams, agents, MCPs, websites, templates, or registries.
 - It helps people find the correct canonical repo.
@@ -23,12 +24,13 @@ Answer these three questions. If you cannot, open a [Boundary issue](./.github/I
 - It adds or refines validation, schema, or launch tooling that keeps this repo's claims honest.
 
 ### Do **not** put it in `OpenSIN-overview` if:
+
 - It is the detailed docs canon → `OpenSIN-documentation`.
 - It is runtime implementation truth → `OpenSIN` / `OpenSIN-Code`.
 - It is product or control-plane implementation truth → `OpenSIN-WebApp` / `website-*` / `OpenSIN-backend`.
 - It is canonical OpenCode config content → `Infra-SIN-OpenCode-Stack`.
 - It is operational secrets, internal IPs, SSH credentials, or runner shared secrets → `Infra-SIN-Dev-Setup` (private).
-- It is team-specific `team.json` *content* → the team's own repo.
+- It is team-specific `team.json` _content_ → the team's own repo.
 
 ---
 
@@ -55,13 +57,13 @@ npm run prelaunch:offline
 
 It chains:
 
-| Step | What | Script |
-|---|---|---|
-| 1 | Markdown link validity (relative paths only) | `scripts/validate-links.js` |
-| 2 | Every `templates/teams/*.json` matches the schema | `scripts/validate-team-manifests.js` |
-| 3 | Registry auto-audit re-runs and matches committed `registry/SCAFFOLD_AUDIT.md` | `scripts/audit-repos.js` |
-| 4 | `templates/oh-my-sin.json` re-builds byte-identical | `scripts/build-oh-my-sin.js` + `diff` |
-| 5 | `scripts/launch-status.js` runs without error | `scripts/launch-status.js` |
+| Step | What                                                                           | Script                                |
+| ---- | ------------------------------------------------------------------------------ | ------------------------------------- |
+| 1    | Markdown link validity (relative paths only)                                   | `scripts/validate-links.js`           |
+| 2    | Every `templates/teams/*.json` matches the schema                              | `scripts/validate-team-manifests.js`  |
+| 3    | Registry auto-audit re-runs and matches committed `registry/SCAFFOLD_AUDIT.md` | `scripts/audit-repos.js`              |
+| 4    | `templates/oh-my-sin.json` re-builds byte-identical                            | `scripts/build-oh-my-sin.js` + `diff` |
+| 5    | `scripts/launch-status.js` runs without error                                  | `scripts/launch-status.js`            |
 
 If you changed anything with a launch-critical surface (HF Spaces, web surfaces), also run `npm run prelaunch` (full, includes network probes).
 
@@ -73,13 +75,13 @@ If you changed anything with a launch-critical surface (HF Spaces, web surfaces)
 
 We use [Conventional Commits](https://www.conventionalcommits.org/). Required.
 
-| Type | Use for |
-|---|---|
-| `feat:` | New content, new manifest, new schema, new script |
-| `fix:` | Broken link, stale data, wrong count, broken script |
-| `docs:` | Clarification or rewording of existing docs |
-| `chore:` | Tooling, CI config, dependency, lint |
-| `refactor:` | Internal restructure without user-visible change |
+| Type        | Use for                                                            |
+| ----------- | ------------------------------------------------------------------ |
+| `feat:`     | New content, new manifest, new schema, new script                  |
+| `fix:`      | Broken link, stale data, wrong count, broken script                |
+| `docs:`     | Clarification or rewording of existing docs                        |
+| `chore:`    | Tooling, CI config, dependency, lint                               |
+| `refactor:` | Internal restructure without user-visible change                   |
 | `security:` | Anything touching `SECURITY.md`, secret redaction, or key rotation |
 
 Scope is optional but appreciated: `feat(schema): add oh-my-sin.json schema`.
@@ -101,13 +103,13 @@ All commits landing on `main` must be GPG- or SSH-signed. GitHub must show the �
 
 ### Required review rules
 
-| File path | Minimum reviewers | Canon-lock |
-|---|---|---|
+| File path                                                                                             | Minimum reviewers                                  | Canon-lock            |
+| ----------------------------------------------------------------------------------------------------- | -------------------------------------------------- | --------------------- |
 | `BOUNDARIES.md`, `GOVERNANCE.md`, `PRODUCT-VISION.md`, `LAUNCH-CHECKLIST.md`, `STATE-OF-THE-UNION.md` | 1 maintainer **from a different team than author** | yes — GOVERNANCE §3.2 |
-| `schemas/*.schema.json` | 1 maintainer + 1 consumer of the schema | yes |
-| `templates/oh-my-sin.json` | **forbidden — generator-only** | yes |
-| `templates/teams/*.json` | 1 maintainer | no |
-| everything else | 1 maintainer | no |
+| `schemas/*.schema.json`                                                                               | 1 maintainer + 1 consumer of the schema            | yes                   |
+| `templates/oh-my-sin.json`                                                                            | **forbidden — generator-only**                     | yes                   |
+| `templates/teams/*.json`                                                                              | 1 maintainer                                       | no                    |
+| everything else                                                                                       | 1 maintainer                                       | no                    |
 
 Launch-week (T-4 → T+7) adds CTO sign-off on any canon-locked file.
 

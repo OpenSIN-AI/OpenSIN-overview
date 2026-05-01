@@ -24,7 +24,7 @@ Drei Tiers. Jedes Tier hat einen klaren URL, einen klaren Kunden, eine klare Val
   - `OpenSIN-Code` autonomous CLI — wie Claude Code / OpenCode, nur mit Multi-Agent-Koordination und persistent memory
   - `Infra-SIN-OpenCode-Stack` — kanonische OpenCode-Konfiguration mit 44 Skills, 27 MCPs, 5 Providern
   - `Infra-SIN-Global-Brain` (PCPM v4) — persistenter Agent-Speicher, lokal betreibbar
-  - Zugriff auf den gesamten A2A-SIN-* Fleet als Blaupausen — jeder kann eigene Agenten klonen
+  - Zugriff auf den gesamten A2A-SIN-\* Fleet als Blaupausen — jeder kann eigene Agenten klonen
 - **Preis:** 0
 - **Betriebsmodell:** User läuft es auf eigener Hardware, mit eigenen API-Keys
 
@@ -58,13 +58,13 @@ Drei Tiers. Jedes Tier hat einen klaren URL, einen klaren Kunden, eine klare Val
 
 > **Status:** DECIDED 2026-04-21 (Wave 4 + docs split). Diese Trennung ist jetzt bindend. Jede Änderung, die sie verwischt, ist ein Rollback.
 
-| Repo | Domain | Rolle | Auth | Payment |
-|---|---|---|---|---|
-| `website-opensin.ai` | opensin.ai | **Marketing für OSS** — "Clone repo, run locally, join Discord" | keine | keine |
-| `OpenSIN-documentation` | docs.opensin.ai | **Verbraucher-Dokumentation** (VitePress) | keine | keine |
-| `website-developers.opensin.ai` | developers.opensin.ai/docs | **Developer Docs** — APIs, SDKs, Auth, Webhooks | keine | keine |
-| `website-my.opensin.ai` | my.opensin.ai | **Marketing für Paid + Marketplace-Katalog + Stripe-Checkout** — "Buy Pro / Browse Teams / Redirect nach Kauf auf chat.opensin.ai" | keine (außer Session nach Kauf) | Stripe Checkout |
-| `OpenSIN-WebApp` | chat.opensin.ai | **Authenticated Dashboard** — fleet management, API keys, PCPM memory browser, billing portal | Supabase Auth (required) | Stripe Customer Portal (upgrade/downgrade) |
+| Repo                            | Domain                     | Rolle                                                                                                                              | Auth                            | Payment                                    |
+| ------------------------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ------------------------------------------ |
+| `website-opensin.ai`            | opensin.ai                 | **Marketing für OSS** — "Clone repo, run locally, join Discord"                                                                    | keine                           | keine                                      |
+| `OpenSIN-documentation`         | docs.opensin.ai            | **Verbraucher-Dokumentation** (VitePress)                                                                                          | keine                           | keine                                      |
+| `website-developers.opensin.ai` | developers.opensin.ai/docs | **Developer Docs** — APIs, SDKs, Auth, Webhooks                                                                                    | keine                           | keine                                      |
+| `website-my.opensin.ai`         | my.opensin.ai              | **Marketing für Paid + Marketplace-Katalog + Stripe-Checkout** — "Buy Pro / Browse Teams / Redirect nach Kauf auf chat.opensin.ai" | keine (außer Session nach Kauf) | Stripe Checkout                            |
+| `OpenSIN-WebApp`                | chat.opensin.ai            | **Authenticated Dashboard** — fleet management, API keys, PCPM memory browser, billing portal                                      | Supabase Auth (required)        | Stripe Customer Portal (upgrade/downgrade) |
 
 **Warum diese Trennung:**
 
@@ -86,7 +86,7 @@ Drei Tiers. Jedes Tier hat einen klaren URL, einen klaren Kunden, eine klare Val
 
 **Frage (beantwortet):** Sind `Team-SIN-*` Repos Code-Pakete oder Metadata-Manifeste?
 
-**Evidenz (siehe [STATE-OF-THE-UNION.md § Team-SIN-*](./STATE-OF-THE-UNION.md#team-sin-----17-team-repos)):** Alle 17 sind 26-35 kb groß. Das ist zu wenig für echten Code, zu viel für reine Metadata.
+**Evidenz (siehe [STATE-OF-THE-UNION.md § Team-SIN-\*](./STATE-OF-THE-UNION.md#team-sin-----17-team-repos)):** Alle 17 sind 26-35 kb groß. Das ist zu wenig für echten Code, zu viel für reine Metadata.
 
 **Zwei valide Architekturen — eine muss gewählt werden:**
 
@@ -133,6 +133,7 @@ Gegen jede realistische Konkurrenz. Kein Wunschdenken, keine Marketing-Lügen.
 **Was die tun:** Einzelner Coding-Agent im Editor. Session-basiert. Kein Team-Konzept. Kein persistentes Gedächtnis zwischen Sessions (Ausnahme: Claude Memory ist seit 2026 beta, aber vendor-locked).
 
 **OpenSIN-Differenzierung:**
+
 - **Multi-Agent native** — `OpenSIN-Code` startet Agent-Teams, nicht einzelne Prompts
 - **PCPM v4** — persistentes Memory zwischen Sessions, zwischen Agenten, local oder cloud
 - **OSS-Kern** — User kann das ganze System klonen, anpassen, self-hosten. Claude Code kann man nicht self-hosten.
@@ -143,6 +144,7 @@ Gegen jede realistische Konkurrenz. Kein Wunschdenken, keine Marketing-Lügen.
 **Was sie tun:** General-purpose autonomous agent. Closed-source, Cloud-only, Preis nach Credits. Seit 2025 viel Hype.
 
 **OpenSIN-Differenzierung:**
+
 - **Open-Source-Kern** — Manus ist eine Black-Box, OpenSIN ist ein Repo das jeder klonen kann
 - **Teams statt Einzelagent** — Manus ist ein Agent der alles kann, OpenSIN ist ein Orchestrator der spezialisierte Agenten dirigiert
 - **Transparente Billing** — OpenSIN Pro hat klare Flat-Rates und Add-on-Mini-Abos; Manus hat intransparente Credit-Konsumption
@@ -153,6 +155,7 @@ Gegen jede realistische Konkurrenz. Kein Wunschdenken, keine Marketing-Lügen.
 **Was sie tun:** Einzelagent als Feature ihrer Foundation-Model-Plattform. Vendor-locked.
 
 **OpenSIN-Differenzierung:**
+
 - **Model-agnostisch via AI Gateway** — OpenSIN nutzt 5 Provider zero-config, User ist nie vendor-locked
 - **Cross-vendor Workflows** — Agent A läuft auf Claude Opus, Agent B auf GPT-5, Agent C auf Gemini Flash, alle koordinieren über PCPM
 - **Community-Fleet** — 109 Platform-Agents als OSS-Repos, die die Community erweitern kann; die geschlossenen Systeme sind vendor-definierte Feature-Listen
@@ -184,7 +187,9 @@ Jede Entscheidung die dem Dreier-Tier-Modell (OSS / Pro / Marketplace) widerspri
 Alle 5 Prio-1-Entscheidungen aus der ersten Vision-Version sind jetzt fix. Jede hat ein Artefakt im Repo:
 
 ### 1. UI-Schichtung — DECIDED
+
 **Entscheidung:** Die 4-Rollen-Tabelle in § UI-Schichtung oben ist bindend.
+
 - `opensin.ai` = OSS-Marketing (unauthenticated, keine Stripe)
 - `my.opensin.ai` = Paid-Marketing + Marketplace-Katalog + Stripe Checkout (unauthenticated)
 - `chat.opensin.ai` = Authenticated App + Stripe Customer Portal
@@ -194,9 +199,11 @@ Alle 5 Prio-1-Entscheidungen aus der ersten Vision-Version sind jetzt fix. Jede 
 **Artefakte:** Diese Datei (§ UI-Schichtung). Follow-up: READMEs auf `website-my.opensin.ai` und `OpenSIN-WebApp` deep-linken hierher (Tracking-Issues offen).
 
 ### 2. Marketplace-Mechanik — DECIDED: Option A
+
 **Entscheidung:** `Team-SIN-*` sind Metadata-Manifeste. `team.json` pro Repo, aggregiert in `oh-my-sin.json` (SSOT) in `Infra-SIN-OpenCode-Stack`.
 
 **Artefakte:**
+
 - JSON Schema: [`schemas/team.schema.json`](./schemas/team.schema.json)
 - Schema-Doku: [`schemas/README.md`](./schemas/README.md)
 - Gold-Standard-Referenz: [`templates/teams/Team-SIN-Commerce.json`](./templates/teams/Team-SIN-Commerce.json)
@@ -204,24 +211,30 @@ Alle 5 Prio-1-Entscheidungen aus der ersten Vision-Version sind jetzt fix. Jede 
 - Migration-Script: [`scripts/push-team-manifests.js`](./scripts/push-team-manifests.js) — pushed `team.json` + README-Header in alle 17 `Team-SIN-*` Repos
 
 ### 3. `OpenSIN-backend` vs `Core-SIN-Control-Plane` — DECIDED: Merge
+
 **Entscheidung:** `Core-SIN-Control-Plane` (neuer) wird in `OpenSIN-backend` (älter, behält Namen wegen externer Abhängigkeiten) absorbiert. Nach Migration wird `Core-SIN-Control-Plane` archiviert mit Redirect-README.
 
-**Artefakte:** 
+**Artefakte:**
+
 - Canonical-Map-Update in [`docs/CANONICAL-REPOS.md`](./docs/CANONICAL-REPOS.md)
 - Migration-Tracking-Issue in `OpenSIN-backend` (Reference-Kommit in diesem PR)
 - Archive-Prep-Tracking-Issue in `Core-SIN-Control-Plane`
 
 ### 4. `Team-SIN-Code-Core` Integrität — CHECKED
+
 **Befund:** Nach dem Audit (siehe [`registry/SCAFFOLD_AUDIT.md`](./registry/SCAFFOLD_AUDIT.md)) ist `Team-SIN-Code-Core` tatsächlich nur ein Scaffold, nicht ein kaputtes Merge-Resultat. Die Wave-1-Absorption schuf die Monorepo-Struktur, füllte sie aber nicht. Die echten Coding-Agenten leben in `A2A-SIN-Code-DataScience`, `A2A-SIN-Code-DevOps`, `A2A-SIN-Code-GitLab-LogsCenter`.
 
 **Entscheidung:** `Team-SIN-Code-Core` wird in Option A normalisiert — wird zu reinem `team.json`-Repo wie die anderen 16. Die `packages/shared-helpers/`-Struktur bleibt als Legacy, aber die Team-Semantik ist jetzt die Manifest-Datei.
 
 ### 5. Scaffold + Dead Repo Audit — DONE
+
 **Artefakte:**
+
 - Audit-Script: [`scripts/audit-repos.js`](./scripts/audit-repos.js)
 - Audit-Ergebnis: [`registry/SCAFFOLD_AUDIT.md`](./registry/SCAFFOLD_AUDIT.md)
 
 **Klassifikation (aus Live-Audit):**
+
 - **4 confirmed dead** (0 kb, werden in Wave 4 archiviert): `A2A-SIN-Facebook`, `A2A-SIN-Mattermost`, `A2A-SIN-RocketChat`, `A2A-SIN-Slack`
 - **6 scaffold** (9 kb, identische Python-Shells): `A2A-SIN-Code-Backend`, `-Command`, `-Frontend`, `-Fullstack`, `-Plugin`, `-Tool` — bleiben vorerst offen (Coding-Team-Roadmap entscheidet später)
 - **17 team-scaffolds** (26-57 kb): werden durch Option-A-Migration in Manifest-Repos umgewandelt (Commit in diesem PR)

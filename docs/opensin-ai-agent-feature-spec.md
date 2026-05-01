@@ -11,24 +11,24 @@ OpenSIN-AI Agent is the autonomous AI agent system at the core of the OpenSIN ec
 
 ### Competitive Position
 
-| Feature | OpenSIN-AI | OpenClaw | Gemini Agent | Claude Code |
-|---------|-----------|----------|--------------|-------------|
-| Open Source | ✅ | ✅ | ❌ | ❌ |
-| Self-Hosted | ✅ | ✅ | ❌ | ❌ |
-| 24/7 Autonomous | ✅ (Heartbeat + Cron) | ✅ (Heartbeat + Cron) | ❌ (Prompt-only) | ✅ (/loop, up to 3 days) |
-| Multi-Model | ✅ (Antigravity + OCI) | ✅ (Claude/GPT/Gemini/Llama) | ❌ (Gemini only) | ❌ (Claude only) |
-| Multi-Channel Messaging | ✅ (19 agents: TG/WA/Discord/Signal/iMessage/...) | ✅ (TG/WA/Discord/Slack/Signal/iMessage) | ❌ | ✅ (TG/Discord Channels) |
-| Subagent Spawning | ✅ (A2A Fleet + opencode) | ✅ (Subagent Progress) | ❌ | ✅ (Task tool, 3 types) |
-| External Harness Control | ✅ (opencode CLI + A2A) | ✅ (ACP: Claude Code/Codex/Gemini CLI) | ❌ | ❌ |
-| Persistent Memory | ✅ (MCP-SIN-memory + Supabase) | ✅ (Memory Wiki + SOUL.md) | ❌ | ✅ (CLAUDE.md + auto-memory) |
-| Agent SDK | ✅ (`opensin_sdk` in `OpenSIN`) | ❌ | ❌ | ✅ (Python/TypeScript) |
-| Webhook Triggers | ✅ (n8n + A2A webhooks) | ✅ (Built-in webhook server) | ❌ | ❌ |
-| Voice Interaction | ✅ (Siri + Apple agents) | ✅ (Voice Wake + Talk Mode) | ✅ (Gemini Live) | ❌ |
-| Google Workspace | ✅ (A2A-SIN-Google-Apps) | ✅ (Google Workspace plugin) | ✅ (Native deep integration) | ❌ |
-| Browser Automation | ✅ (webauto-nodriver-mcp) | ✅ (Computer Use) | ✅ (Gemini native) | ✅ (Computer Use) |
-| Session Branching | 🔲 (TODO) | ✅ (Branch + Compaction) | ❌ | ❌ |
-| Canvas/A2UI | 🔲 (TODO) | ✅ (A2UI interactive HTML) | ❌ | ❌ |
-| Plugin Approval Hooks | 🔲 (TODO) | ✅ (requireApproval) | ❌ | ❌ |
+| Feature                  | OpenSIN-AI                                        | OpenClaw                                 | Gemini Agent                 | Claude Code                  |
+| ------------------------ | ------------------------------------------------- | ---------------------------------------- | ---------------------------- | ---------------------------- |
+| Open Source              | ✅                                                | ✅                                       | ❌                           | ❌                           |
+| Self-Hosted              | ✅                                                | ✅                                       | ❌                           | ❌                           |
+| 24/7 Autonomous          | ✅ (Heartbeat + Cron)                             | ✅ (Heartbeat + Cron)                    | ❌ (Prompt-only)             | ✅ (/loop, up to 3 days)     |
+| Multi-Model              | ✅ (Antigravity + OCI)                            | ✅ (Claude/GPT/Gemini/Llama)             | ❌ (Gemini only)             | ❌ (Claude only)             |
+| Multi-Channel Messaging  | ✅ (19 agents: TG/WA/Discord/Signal/iMessage/...) | ✅ (TG/WA/Discord/Slack/Signal/iMessage) | ❌                           | ✅ (TG/Discord Channels)     |
+| Subagent Spawning        | ✅ (A2A Fleet + opencode)                         | ✅ (Subagent Progress)                   | ❌                           | ✅ (Task tool, 3 types)      |
+| External Harness Control | ✅ (opencode CLI + A2A)                           | ✅ (ACP: Claude Code/Codex/Gemini CLI)   | ❌                           | ❌                           |
+| Persistent Memory        | ✅ (MCP-SIN-memory + Supabase)                    | ✅ (Memory Wiki + SOUL.md)               | ❌                           | ✅ (CLAUDE.md + auto-memory) |
+| Agent SDK                | ✅ (`opensin_sdk` in `OpenSIN`)                   | ❌                                       | ❌                           | ✅ (Python/TypeScript)       |
+| Webhook Triggers         | ✅ (n8n + A2A webhooks)                           | ✅ (Built-in webhook server)             | ❌                           | ❌                           |
+| Voice Interaction        | ✅ (Siri + Apple agents)                          | ✅ (Voice Wake + Talk Mode)              | ✅ (Gemini Live)             | ❌                           |
+| Google Workspace         | ✅ (A2A-SIN-Google-Apps)                          | ✅ (Google Workspace plugin)             | ✅ (Native deep integration) | ❌                           |
+| Browser Automation       | ✅ (skylight-cli-mcp)                         | ✅ (Computer Use)                        | ✅ (Gemini native)           | ✅ (Computer Use)            |
+| Session Branching        | 🔲 (TODO)                                         | ✅ (Branch + Compaction)                 | ❌                           | ❌                           |
+| Canvas/A2UI              | 🔲 (TODO)                                         | ✅ (A2UI interactive HTML)               | ❌                           | ❌                           |
+| Plugin Approval Hooks    | 🔲 (TODO)                                         | ✅ (requireApproval)                     | ❌                           | ❌                           |
 
 **Legend:** ✅ Implemented | 🔲 Planned/TODO | ❌ Not available
 
@@ -39,6 +39,7 @@ OpenSIN-AI Agent is the autonomous AI agent system at the core of the OpenSIN ec
 ### Phase 1: Core Agent Loop (P0 — Foundation)
 
 #### 2.1 Autonomous Agent Loop (`OpenSIN-Code`)
+
 - **What:** A persistent agent loop that runs 24/7, processes tasks from queues, and executes them autonomously
 - **Competitor Parity:** OpenClaw Heartbeat, Claude Code /loop, Gemini Scheduled Actions
 - **Implementation:**
@@ -50,6 +51,7 @@ OpenSIN-AI Agent is the autonomous AI agent system at the core of the OpenSIN ec
 - **Target Repo:** `OpenSIN-Code` (Rust Engine + SDK) — note: `opensin-ai-cli` is rationalization-pending, see [FOLLOWUPS.md § R1](./FOLLOWUPS.md#r1-opensin-ai-cli--opensin-code)
 
 #### 2.2 Multi-Model Router
+
 - **What:** Intelligent model routing with failover chains, cost optimization, and task-based model selection
 - **Competitor Parity:** OpenClaw multi-model support
 - **Implementation:**
@@ -61,6 +63,7 @@ OpenSIN-AI Agent is the autonomous AI agent system at the core of the OpenSIN ec
 - **Target Repo:** `OpenSIN-Code` (Rust Engine)
 
 #### 2.3 Persistent Memory System
+
 - **What:** Structured persistent memory with wiki, journals, and cross-session recall
 - **Competitor Parity:** OpenClaw Memory Wiki + SOUL.md, Claude Code CLAUDE.md
 - **Implementation:**
@@ -74,6 +77,7 @@ OpenSIN-AI Agent is the autonomous AI agent system at the core of the OpenSIN ec
 ### Phase 2: Multi-Channel & Messaging (P0 — Reach)
 
 #### 2.4 Multi-Channel Messaging Hub
+
 - **What:** Unified messaging interface across 19+ platforms via A2A-SIN agents
 - **Competitor Parity:** OpenClaw multi-channel, Claude Code Channels
 - **Implementation:**
@@ -84,6 +88,7 @@ OpenSIN-AI Agent is the autonomous AI agent system at the core of the OpenSIN ec
 - **Target Repo:** `OpenSIN-backend` + individual `A2A-SIN-*` agents
 
 #### 2.5 Channel-Based Remote Control
+
 - **What:** Control running agent sessions from Telegram, Discord, WhatsApp
 - **Competitor Parity:** Claude Code Channels, OpenClaw chat integration
 - **Implementation:**
@@ -96,6 +101,7 @@ OpenSIN-AI Agent is the autonomous AI agent system at the core of the OpenSIN ec
 ### Phase 3: Subagent Orchestration (P1 — Scale)
 
 #### 2.6 Subagent Spawning & Progress Tracking
+
 - **What:** Spawn parallel subagents for concurrent task execution with real-time progress reporting
 - **Competitor Parity:** OpenClaw subagent_progress, Claude Code Task tool
 - **Implementation:**
@@ -107,6 +113,7 @@ OpenSIN-AI Agent is the autonomous AI agent system at the core of the OpenSIN ec
 - **Target Repo:** `OpenSIN-Code` + `OpenSIN-backend`
 
 #### 2.7 External Harness Control (ACP)
+
 - **What:** Control external coding harnesses (Claude Code, Codex, Gemini CLI, Cursor) from OpenSIN chat
 - **Competitor Parity:** OpenClaw ACP Agents
 - **Implementation:**
@@ -119,6 +126,7 @@ OpenSIN-AI Agent is the autonomous AI agent system at the core of the OpenSIN ec
 ### Phase 4: Safety & Governance (P1 — Trust)
 
 #### 2.8 Plugin Approval Hooks
+
 - **What:** Safety gates that require human approval before autonomous operations
 - **Competitor Parity:** OpenClaw requireApproval
 - **Implementation:**
@@ -130,6 +138,7 @@ OpenSIN-AI Agent is the autonomous AI agent system at the core of the OpenSIN ec
 - **Target Repo:** `OpenSIN-Code` + `OpenSIN-backend`
 
 #### 2.9 Session Branching & Compaction
+
 - **What:** Branch and restore sessions, compact long sessions for context efficiency
 - **Competitor Parity:** OpenClaw session management
 - **Implementation:**
@@ -142,6 +151,7 @@ OpenSIN-AI Agent is the autonomous AI agent system at the core of the OpenSIN ec
 ### Phase 5: Advanced Features (P2 — Differentiation)
 
 #### 2.10 Canvas / A2UI Interactive Workspace
+
 - **What:** Interactive HTML workspace for visual task execution and collaboration
 - **Competitor Parity:** OpenClaw A2UI / Canvas
 - **Implementation:**
@@ -152,6 +162,7 @@ OpenSIN-AI Agent is the autonomous AI agent system at the core of the OpenSIN ec
 - **Target Repo:** `OpenSIN-WebApp`
 
 #### 2.11 Voice Interaction
+
 - **What:** Voice wake word, talk mode, and voice-to-task pipeline
 - **Competitor Parity:** OpenClaw Voice Wake + Talk Mode, Gemini Live
 - **Implementation:**
@@ -163,6 +174,7 @@ OpenSIN-AI Agent is the autonomous AI agent system at the core of the OpenSIN ec
 - **Target Repo:** `OpenSIN-Code` + `A2A-SIN-Apple-Shortcuts`
 
 #### 2.12 Google Workspace Deep Integration
+
 - **What:** Native deep integration with Gmail, Drive, Calendar, Docs, Sheets, Slides
 - **Competitor Parity:** Gemini Agent Workspace integration
 - **Implementation:**
@@ -178,24 +190,28 @@ OpenSIN-AI Agent is the autonomous AI agent system at the core of the OpenSIN ec
 ## 3. Implementation Roadmap
 
 ### Sprint 1 (Week 1-2): Foundation
+
 - [ ] Implement heartbeat system in `OpenSIN-Code`
 - [ ] Extend multi-model router with failover chains
 - [ ] Create unified messaging API in `OpenSIN-backend`
 - [ ] Extend `MCP-SIN-memory` with wiki-style storage
 
 ### Sprint 2 (Week 3-4): Reach & Control
+
 - [ ] Implement Channel-Based Remote Control (Telegram first)
 - [ ] Build generic subagent spawning API
 - [ ] Create progress tracking system for subagents
 - [ ] Implement approval hooks framework
 
 ### Sprint 3 (Week 5-6): Orchestration
+
 - [ ] Implement external harness control (opencode CLI)
 - [ ] Build session branching & compaction
 - [ ] Create ACP-style harness management
 - [ ] Implement audit logging system
 
 ### Sprint 4 (Week 7-8): Differentiation
+
 - [ ] Build Canvas/A2UI interactive workspace
 - [ ] Implement voice interaction pipeline
 - [ ] Extend Google Workspace integration (Gmail, Calendar, Slides)
@@ -239,19 +255,19 @@ OpenSIN-AI Agent is the autonomous AI agent system at the core of the OpenSIN ec
 
 ## 5. Key Differentiators vs. Competitors
 
-| Differentiator | Description |
-|---------------|-------------|
-| **A2A Fleet Architecture** | 92+ specialized agents, each with its own CLI/MCP/A2A endpoint — not a monolith |
-| **n8n Foundation** | Indestructible routing backbone on free OCI VM — no vendor lock-in |
-| **Open + Self-Hosted** | Full control over data, models, and infrastructure |
-| **Multi-Model Freedom** | Route to ANY model (OpenAI, Google, Anthropic, local) without vendor restriction |
-| **Cross-Platform Messaging** | 19+ messaging platforms via dedicated A2A agents — not just Slack/Discord |
-| **Google Workspace** | Deep integration via A2A-SIN-Google-Apps, not just API calls |
-| **Apple Ecosystem** | Native macOS/iOS automation via 12 A2A-Apple agents — no competitor has this |
-| **Subagent Fleet** | Entire fleet can collaborate, not just 2-3 subagents |
-| **Webhook + Cron + Heartbeat** | Triple trigger system for maximum automation coverage |
-| **Supabase Persistence** | Enterprise-grade DB on free tier — all agent state persisted centrally |
+| Differentiator                 | Description                                                                      |
+| ------------------------------ | -------------------------------------------------------------------------------- |
+| **A2A Fleet Architecture**     | 92+ specialized agents, each with its own CLI/MCP/A2A endpoint — not a monolith  |
+| **n8n Foundation**             | Indestructible routing backbone on free OCI VM — no vendor lock-in               |
+| **Open + Self-Hosted**         | Full control over data, models, and infrastructure                               |
+| **Multi-Model Freedom**        | Route to ANY model (OpenAI, Google, Anthropic, local) without vendor restriction |
+| **Cross-Platform Messaging**   | 19+ messaging platforms via dedicated A2A agents — not just Slack/Discord        |
+| **Google Workspace**           | Deep integration via A2A-SIN-Google-Apps, not just API calls                     |
+| **Apple Ecosystem**            | Native macOS/iOS automation via 12 A2A-Apple agents — no competitor has this     |
+| **Subagent Fleet**             | Entire fleet can collaborate, not just 2-3 subagents                             |
+| **Webhook + Cron + Heartbeat** | Triple trigger system for maximum automation coverage                            |
+| **Supabase Persistence**       | Enterprise-grade DB on free tier — all agent state persisted centrally           |
 
 ---
 
-*This document is the Source of Truth for OpenSIN-AI Agent feature development. Last updated: 2026-04-09*
+_This document is the Source of Truth for OpenSIN-AI Agent feature development. Last updated: 2026-04-09_
