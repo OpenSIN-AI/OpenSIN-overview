@@ -316,3 +316,4 @@ _Zuletzt aktualisiert: 2026-04-09 | OpenSIN-AI CEO Audit_
 
 New agents are configured via the `/create-a2a-sin-agent` skill.
 Documentation: [How to Configure Agents](https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/guide/how-to-configure-agents.md)
+RecursiveMAS integration plan now live at docs/03_ops/recursive-mas-integration.md
